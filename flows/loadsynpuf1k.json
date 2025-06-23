@@ -1,6 +1,6 @@
 {
   "id": "0ca294ba-fe97-468b-ac35-2078aa2da10b",
-  "name": "loadsynpuf1k",
+  "name": "dataload_synpuf1k",
   "flow": {
     "edges": [
       {
@@ -360,10 +360,8 @@
         "data": {
           "file": "003_CARE_SITE.csv",
           "name": "care_site_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node d1f322db",
-          "errorMessage": null
+          "description": "Describe the task of node d1f322db"
         },
         "type": "csv_node",
         "width": 350,
@@ -387,10 +385,8 @@
         "data": {
           "file": "004_PROVIDER.csv",
           "name": "provider_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node a23b4fd9",
-          "errorMessage": null
+          "description": "Describe the task of node a23b4fd9"
         },
         "type": "csv_node",
         "width": 350,
@@ -414,10 +410,8 @@
         "data": {
           "file": "005_COST.csv",
           "name": "cost_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 1a1a17ff",
-          "errorMessage": null
+          "description": "Describe the task of node 1a1a17ff"
         },
         "type": "csv_node",
         "width": 350,
@@ -441,10 +435,8 @@
         "data": {
           "file": "006_PERSON.csv",
           "name": "person_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 10285cef",
-          "errorMessage": null
+          "description": "Describe the task of node 10285cef"
         },
         "type": "csv_node",
         "width": 350,
@@ -468,10 +460,8 @@
         "data": {
           "file": "007_DEATH.csv",
           "name": "death_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 3f2687a0",
-          "errorMessage": null
+          "description": "Describe the task of node 3f2687a0"
         },
         "type": "csv_node",
         "width": 350,
@@ -495,10 +485,8 @@
         "data": {
           "file": "010_DEVICE_EXPOSURE.csv",
           "name": "device_exposure_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node f2c67a41",
-          "errorMessage": null
+          "description": "Describe the task of node f2c67a41"
         },
         "type": "csv_node",
         "width": 350,
@@ -522,10 +510,8 @@
         "data": {
           "file": "011_DRUG_EXPOSURE.csv",
           "name": "drug_exposure_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 97698c96",
-          "errorMessage": null
+          "description": "Describe the task of node 97698c96"
         },
         "type": "csv_node",
         "width": 350,
@@ -549,10 +535,8 @@
         "data": {
           "file": "012_DRUG_ERA.csv",
           "name": "drug_era_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 8f7add49",
-          "errorMessage": null
+          "description": "Describe the task of node 8f7add49"
         },
         "type": "csv_node",
         "width": 350,
@@ -576,10 +560,8 @@
         "data": {
           "file": "013_MEASUREMENT.csv",
           "name": "measurement_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 3b3d4405",
-          "errorMessage": null
+          "description": "Describe the task of node 3b3d4405"
         },
         "type": "csv_node",
         "width": 350,
@@ -603,10 +585,8 @@
         "data": {
           "file": "014_OBSERVATION.csv",
           "name": "observation_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node d8b5dce6",
-          "errorMessage": null
+          "description": "Describe the task of node d8b5dce6"
         },
         "type": "csv_node",
         "width": 350,
@@ -630,10 +610,8 @@
         "data": {
           "file": "015_OBSERVATION_PERIOD.csv",
           "name": "observation_period_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 0523a96c",
-          "errorMessage": null
+          "description": "Describe the task of node 0523a96c"
         },
         "type": "csv_node",
         "width": 350,
@@ -657,10 +635,8 @@
         "data": {
           "file": "016_PAYER_PLAN_PERIOD.csv",
           "name": "payer_plan_period_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node a563f09c",
-          "errorMessage": null
+          "description": "Describe the task of node a563f09c"
         },
         "type": "csv_node",
         "width": 350,
@@ -684,10 +660,8 @@
         "data": {
           "file": "017_PROCEDURE_OCCURRENCE.csv",
           "name": "procedure_occurrence_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 5c905d0e",
-          "errorMessage": null
+          "description": "Describe the task of node 5c905d0e"
         },
         "type": "csv_node",
         "width": 350,
@@ -711,10 +685,8 @@
         "data": {
           "file": "018_VISIT_OCCURRENCE.csv",
           "name": "visit_occurrence_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 312796fb",
-          "errorMessage": null
+          "description": "Describe the task of node 312796fb"
         },
         "type": "csv_node",
         "width": 350,
@@ -743,13 +715,11 @@
             ]
           },
           "name": "transformed_location",
-          "error": false,
           "uiMap": {
             "path": "$.location",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node fce01769",
-          "errorMessage": null
+          "description": "Describe the task of node fce01769"
         },
         "type": "py2table_node",
         "width": 350,
@@ -778,13 +748,11 @@
             ]
           },
           "name": "transformed_care_site",
-          "error": false,
           "uiMap": {
             "path": "$.care_site",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node c696f053",
-          "errorMessage": null
+          "description": "Describe the task of node c696f053"
         },
         "type": "py2table_node",
         "width": 350,
@@ -813,13 +781,11 @@
             ]
           },
           "name": "transformed_provider",
-          "error": false,
           "uiMap": {
             "path": "provider",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node 9ed84450",
-          "errorMessage": null
+          "description": "Describe the task of node 9ed84450"
         },
         "type": "py2table_node",
         "width": 350,
@@ -842,15 +808,13 @@
         "id": "3113c57f-2787-4584-9ecf-150c6a7a3a9d",
         "data": {
           "name": "write_to_provider",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_provider"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "provider",
-          "description": "Describe the task of node 3113c57f",
-          "errorMessage": null
+          "description": "Describe the task of node 3113c57f"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -873,15 +837,13 @@
         "id": "2e9c9a23-f3ca-4818-9701-78aca5e32c1b",
         "data": {
           "name": "write_to_care_site",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_care_site"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "care_site",
-          "description": "Describe the task of node 2e9c9a23",
-          "errorMessage": null
+          "description": "Describe the task of node 2e9c9a23"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -904,15 +866,13 @@
         "id": "38946cee-cf75-44cd-a9e8-df1ccd5d228a",
         "data": {
           "name": "write_to_location",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_location"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "location",
-          "description": "Describe the task of node 38946cee",
-          "errorMessage": null
+          "description": "Describe the task of node 38946cee"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -960,10 +920,8 @@
         "data": {
           "file": "002_LOCATION.csv",
           "name": "location_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 91f8290a",
-          "errorMessage": null
+          "description": "Describe the task of node 91f8290a"
         },
         "type": "csv_node",
         "width": 350,
@@ -992,13 +950,11 @@
             ]
           },
           "name": "transformed_observation",
-          "error": false,
           "uiMap": {
             "path": "$.observation",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node d9bfdbe6",
-          "errorMessage": null
+          "description": "Describe the task of node d9bfdbe6"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1021,15 +977,13 @@
         "id": "43992393-822a-4759-a798-d4bd9ef55cc9",
         "data": {
           "name": "write_to_observation",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_observation"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "observation",
-          "description": "Describe the task of node 43992393",
-          "errorMessage": null
+          "description": "Describe the task of node 43992393"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1058,13 +1012,11 @@
             ]
           },
           "name": "transformed_person",
-          "error": false,
           "uiMap": {
             "path": "$.person",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node c3df5960",
-          "errorMessage": null
+          "description": "Describe the task of node c3df5960"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1093,13 +1045,11 @@
             ]
           },
           "name": "transformed_death",
-          "error": false,
           "uiMap": {
             "path": "$.death",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node eac5fccf",
-          "errorMessage": null
+          "description": "Describe the task of node eac5fccf"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1122,15 +1072,13 @@
         "id": "070d554b-54e6-478d-bb2f-994e1fc8d47d",
         "data": {
           "name": "write_to_person",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_person"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "person",
-          "description": "Describe the task of node 070d554b",
-          "errorMessage": null
+          "description": "Describe the task of node 070d554b"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1153,15 +1101,13 @@
         "id": "d7e8d904-4097-4ebf-bb76-deeb787e5f3a",
         "data": {
           "name": "write_to_death",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_death"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "death",
-          "description": "Describe the task of node d7e8d904",
-          "errorMessage": null
+          "description": "Describe the task of node d7e8d904"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1190,13 +1136,11 @@
             ]
           },
           "name": "transformed_cost",
-          "error": false,
           "uiMap": {
             "path": "$.cost",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node a730b7a5",
-          "errorMessage": null
+          "description": "Describe the task of node a730b7a5"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1225,13 +1169,11 @@
             ]
           },
           "name": "transformed_payer_plan_period",
-          "error": false,
           "uiMap": {
             "path": "$.payer_plan_period",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node ea22ad9f",
-          "errorMessage": null
+          "description": "Describe the task of node ea22ad9f"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1254,15 +1196,13 @@
         "id": "b0ddf7d9-3bc6-4729-800d-db7596adc94a",
         "data": {
           "name": "write_to_cost",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_cost"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "cost",
-          "description": "Describe the task of node b0ddf7d9",
-          "errorMessage": null
+          "description": "Describe the task of node b0ddf7d9"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1285,15 +1225,13 @@
         "id": "003a15bb-ed30-482f-b38a-6d69e6ffd2d6",
         "data": {
           "name": "write_to_payer_plan_period",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_payer_plan_period"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "payer_plan_period",
-          "description": "Describe the task of node 003a15bb",
-          "errorMessage": null
+          "description": "Describe the task of node 003a15bb"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1317,10 +1255,8 @@
         "data": {
           "file": "008_CONDITION_OCCURRENCE.csv",
           "name": "condition_occurrence_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 14a85f1e",
-          "errorMessage": null
+          "description": "Describe the task of node 14a85f1e"
         },
         "type": "csv_node",
         "width": 350,
@@ -1344,10 +1280,8 @@
         "data": {
           "file": "009_CONDITION_ERA.csv",
           "name": "condition_era_csv",
-          "error": false,
           "delimiter": ",",
-          "description": "Describe the task of node 57197e42",
-          "errorMessage": null
+          "description": "Describe the task of node 57197e42"
         },
         "type": "csv_node",
         "width": 350,
@@ -1376,13 +1310,11 @@
             ]
           },
           "name": "transformed_procedure_occurrence",
-          "error": false,
           "uiMap": {
             "path": "$.procedure_occurrence",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node d6dd953c",
-          "errorMessage": null
+          "description": "Describe the task of node d6dd953c"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1411,13 +1343,11 @@
             ]
           },
           "name": "transformed_visit_occurrence",
-          "error": false,
           "uiMap": {
             "path": "$.visit_occurrence",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node 35e49adb",
-          "errorMessage": null
+          "description": "Describe the task of node 35e49adb"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1446,13 +1376,11 @@
             ]
           },
           "name": "transformed_condition_era",
-          "error": false,
           "uiMap": {
             "path": "$.condition_era",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node b9aca654",
-          "errorMessage": null
+          "description": "Describe the task of node b9aca654"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1481,13 +1409,11 @@
             ]
           },
           "name": "transformed_condition_occurrence",
-          "error": false,
           "uiMap": {
             "path": "$.condition_occurrence",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node c605347f",
-          "errorMessage": null
+          "description": "Describe the task of node c605347f"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1510,15 +1436,13 @@
         "id": "0f3c59f2-98ad-4f35-983e-558ce93972eb",
         "data": {
           "name": "write_to_procedure_occurrence",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_procedure_occurrence"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "procedure_occurrence",
-          "description": "Describe the task of node 0f3c59f2",
-          "errorMessage": null
+          "description": "Describe the task of node 0f3c59f2"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1541,15 +1465,13 @@
         "id": "ca74e9d1-803d-412b-bc75-1abcb04aa1ac",
         "data": {
           "name": "write_to_visit_occurrence",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_visit_occurrence"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "visit_occurrence",
-          "description": "Describe the task of node ca74e9d1",
-          "errorMessage": null
+          "description": "Describe the task of node ca74e9d1"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1572,15 +1494,13 @@
         "id": "d0411333-7948-406d-8b72-dfb422c03570",
         "data": {
           "name": "write_to_condition_occurrence",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_condition_occurrence"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "condition_occurrence",
-          "description": "Describe the task of node d0411333",
-          "errorMessage": null
+          "description": "Describe the task of node d0411333"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1603,15 +1523,13 @@
         "id": "3b56f2eb-e627-4c10-a4a2-0f73f994eb22",
         "data": {
           "name": "write_to_condition_era",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_condition_era"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "condition_era",
-          "description": "Describe the task of node 3b56f2eb",
-          "errorMessage": null
+          "description": "Describe the task of node 3b56f2eb"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1640,13 +1558,11 @@
             ]
           },
           "name": "transformed_measurement",
-          "error": false,
           "uiMap": {
             "path": "$.measurement",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node 3257ab34",
-          "errorMessage": null
+          "description": "Describe the task of node 3257ab34"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1669,15 +1585,13 @@
         "id": "00e3fef2-9057-47cf-89c8-3eb2743020de",
         "data": {
           "name": "write_to_measurement",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_measurement"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "measurement",
-          "description": "Describe the task of node 00e3fef2",
-          "errorMessage": null
+          "description": "Describe the task of node 00e3fef2"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1706,13 +1620,11 @@
             ]
           },
           "name": "transformed_device_exposure",
-          "error": false,
           "uiMap": {
             "path": "$.device_exposure",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node 19d43213",
-          "errorMessage": null
+          "description": "Describe the task of node 19d43213"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1735,15 +1647,13 @@
         "id": "7ed3de41-03f6-4510-8b66-2cee8254e9f6",
         "data": {
           "name": "write_to_device_exposure",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_device_exposure"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "device_exposure",
-          "description": "Describe the task of node 7ed3de41",
-          "errorMessage": null
+          "description": "Describe the task of node 7ed3de41"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1772,13 +1682,11 @@
             ]
           },
           "name": "transformed_drug_exposure",
-          "error": false,
           "uiMap": {
             "path": "$.drug_exposure",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node 632c1623",
-          "errorMessage": null
+          "description": "Describe the task of node 632c1623"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1801,15 +1709,13 @@
         "id": "5bbb05a0-abb3-4bb2-b930-04faaf66ece4",
         "data": {
           "name": "write_to_drug_exposure",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_drug_exposure"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "drug_exposure",
-          "description": "Describe the task of node 5bbb05a0",
-          "errorMessage": null
+          "description": "Describe the task of node 5bbb05a0"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1838,13 +1744,11 @@
             ]
           },
           "name": "transformed_drug_era",
-          "error": false,
           "uiMap": {
             "path": "$.drug_era",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node 7abdf118",
-          "errorMessage": null
+          "description": "Describe the task of node 7abdf118"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1867,15 +1771,13 @@
         "id": "be8ff213-3cf7-4878-9cc7-197b8307b335",
         "data": {
           "name": "write_to_drug_era",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_drug_era"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "drug_era",
-          "description": "Describe the task of node be8ff213",
-          "errorMessage": null
+          "description": "Describe the task of node be8ff213"
         },
         "type": "db_writer_node",
         "width": 350,
@@ -1904,13 +1806,11 @@
             ]
           },
           "name": "transformed_observation_period",
-          "error": false,
           "uiMap": {
             "path": "$.observation_period",
             "source": "transform_df.script_node"
           },
-          "description": "Describe the task of node b5fbbf4c",
-          "errorMessage": null
+          "description": "Describe the task of node b5fbbf4c"
         },
         "type": "py2table_node",
         "width": 350,
@@ -1933,15 +1833,13 @@
         "id": "fa2be361-e2cb-42d0-aaa4-2169133d8471",
         "data": {
           "name": "write_to_observation_period",
-          "error": false,
           "database": "alpdev_pg",
           "dataframe": [
             "transformed_observation_period"
           ],
           "schemaname": "cdmdefault",
           "dbtablename": "observation_period",
-          "description": "Describe the task of node fa2be361",
-          "errorMessage": null
+          "description": "Describe the task of node fa2be361"
         },
         "type": "db_writer_node",
         "width": 350,
