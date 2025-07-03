@@ -1,329 +1,325 @@
 {
-    "id": "c5c6b108-971b-439c-9e50-a26a686ab49d",
     "name": "MIMIC_OMOP",
-    "flow": {
-        "edges": [
-            {
-                "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-cb55047a-bd77-4049-9250-9f37200fc4e9target_cb55047a-bd77-4049-9250-9f37200fc4e9_any",
-                "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
-                "target": "cb55047a-bd77-4049-9250-9f37200fc4e9",
-                "selected": false,
-                "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
-                "targetHandle": "target_cb55047a-bd77-4049-9250-9f37200fc4e9_any"
+    "description": "Load MIMIC data into OMOP CDM format",
+    "edges": [
+        {
+            "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-cb55047a-bd77-4049-9250-9f37200fc4e9target_cb55047a-bd77-4049-9250-9f37200fc4e9_any",
+            "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
+            "target": "cb55047a-bd77-4049-9250-9f37200fc4e9",
+            "selected": false,
+            "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
+            "targetHandle": "target_cb55047a-bd77-4049-9250-9f37200fc4e9_any"
+        },
+        {
+            "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-1267dc31-e42f-4fd5-b6bc-0155f7fa152atarget_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_any",
+            "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
+            "target": "1267dc31-e42f-4fd5-b6bc-0155f7fa152a",
+            "selected": false,
+            "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
+            "targetHandle": "target_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_any"
+        },
+        {
+            "id": "reactflow__edge-cb55047a-bd77-4049-9250-9f37200fc4e9source_cb55047a-bd77-4049-9250-9f37200fc4e9_object-1267dc31-e42f-4fd5-b6bc-0155f7fa152atarget_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_any",
+            "source": "cb55047a-bd77-4049-9250-9f37200fc4e9",
+            "target": "1267dc31-e42f-4fd5-b6bc-0155f7fa152a",
+            "selected": false,
+            "sourceHandle": "source_cb55047a-bd77-4049-9250-9f37200fc4e9_object",
+            "targetHandle": "target_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_any"
+        },
+        {
+            "id": "reactflow__edge-1267dc31-e42f-4fd5-b6bc-0155f7fa152asource_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_object-27f3ea40-5402-4503-b244-1a8ce91ec60atarget_27f3ea40-5402-4503-b244-1a8ce91ec60a_any",
+            "source": "1267dc31-e42f-4fd5-b6bc-0155f7fa152a",
+            "target": "27f3ea40-5402-4503-b244-1a8ce91ec60a",
+            "selected": false,
+            "sourceHandle": "source_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_object",
+            "targetHandle": "target_27f3ea40-5402-4503-b244-1a8ce91ec60a_any"
+        },
+        {
+            "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-27f3ea40-5402-4503-b244-1a8ce91ec60atarget_27f3ea40-5402-4503-b244-1a8ce91ec60a_any",
+            "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
+            "target": "27f3ea40-5402-4503-b244-1a8ce91ec60a",
+            "selected": false,
+            "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
+            "targetHandle": "target_27f3ea40-5402-4503-b244-1a8ce91ec60a_any"
+        },
+        {
+            "id": "reactflow__edge-ab8bb824-e5f2-4d35-9885-291f7387b184source_ab8bb824-e5f2-4d35-9885-291f7387b184_object-0044e283-1c05-417c-b88c-9b2dd07f6f23target_0044e283-1c05-417c-b88c-9b2dd07f6f23_any",
+            "source": "ab8bb824-e5f2-4d35-9885-291f7387b184",
+            "target": "0044e283-1c05-417c-b88c-9b2dd07f6f23",
+            "selected": false,
+            "sourceHandle": "source_ab8bb824-e5f2-4d35-9885-291f7387b184_object",
+            "targetHandle": "target_0044e283-1c05-417c-b88c-9b2dd07f6f23_any"
+        },
+        {
+            "id": "reactflow__edge-0044e283-1c05-417c-b88c-9b2dd07f6f23source_0044e283-1c05-417c-b88c-9b2dd07f6f23_object-4fd78512-3896-472c-be32-a303f915a0aetarget_4fd78512-3896-472c-be32-a303f915a0ae_any",
+            "source": "0044e283-1c05-417c-b88c-9b2dd07f6f23",
+            "target": "4fd78512-3896-472c-be32-a303f915a0ae",
+            "selected": false,
+            "sourceHandle": "source_0044e283-1c05-417c-b88c-9b2dd07f6f23_object",
+            "targetHandle": "target_4fd78512-3896-472c-be32-a303f915a0ae_any"
+        },
+        {
+            "id": "reactflow__edge-4fd78512-3896-472c-be32-a303f915a0aesource_4fd78512-3896-472c-be32-a303f915a0ae_object-ef8a714c-4c71-4318-af85-20de8699a4edtarget_ef8a714c-4c71-4318-af85-20de8699a4ed_any",
+            "source": "4fd78512-3896-472c-be32-a303f915a0ae",
+            "target": "ef8a714c-4c71-4318-af85-20de8699a4ed",
+            "selected": false,
+            "sourceHandle": "source_4fd78512-3896-472c-be32-a303f915a0ae_object",
+            "targetHandle": "target_ef8a714c-4c71-4318-af85-20de8699a4ed_any"
+        },
+        {
+            "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-ab8bb824-e5f2-4d35-9885-291f7387b184target_ab8bb824-e5f2-4d35-9885-291f7387b184_any",
+            "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
+            "target": "ab8bb824-e5f2-4d35-9885-291f7387b184",
+            "selected": false,
+            "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
+            "targetHandle": "target_ab8bb824-e5f2-4d35-9885-291f7387b184_any"
+        },
+        {
+            "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-0044e283-1c05-417c-b88c-9b2dd07f6f23target_0044e283-1c05-417c-b88c-9b2dd07f6f23_any",
+            "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
+            "target": "0044e283-1c05-417c-b88c-9b2dd07f6f23",
+            "selected": false,
+            "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
+            "targetHandle": "target_0044e283-1c05-417c-b88c-9b2dd07f6f23_any"
+        },
+        {
+            "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-4fd78512-3896-472c-be32-a303f915a0aetarget_4fd78512-3896-472c-be32-a303f915a0ae_any",
+            "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
+            "target": "4fd78512-3896-472c-be32-a303f915a0ae",
+            "selected": false,
+            "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
+            "targetHandle": "target_4fd78512-3896-472c-be32-a303f915a0ae_any"
+        },
+        {
+            "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-ef8a714c-4c71-4318-af85-20de8699a4edtarget_ef8a714c-4c71-4318-af85-20de8699a4ed_any",
+            "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
+            "target": "ef8a714c-4c71-4318-af85-20de8699a4ed",
+            "selected": false,
+            "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
+            "targetHandle": "target_ef8a714c-4c71-4318-af85-20de8699a4ed_any"
+        },
+        {
+            "id": "reactflow__edge-27f3ea40-5402-4503-b244-1a8ce91ec60asource_27f3ea40-5402-4503-b244-1a8ce91ec60a_object-ab8bb824-e5f2-4d35-9885-291f7387b184target_ab8bb824-e5f2-4d35-9885-291f7387b184_any",
+            "source": "27f3ea40-5402-4503-b244-1a8ce91ec60a",
+            "target": "ab8bb824-e5f2-4d35-9885-291f7387b184",
+            "selected": false,
+            "sourceHandle": "source_27f3ea40-5402-4503-b244-1a8ce91ec60a_object",
+            "targetHandle": "target_ab8bb824-e5f2-4d35-9885-291f7387b184_any"
+        }
+    ],
+    "nodes": [
+        {
+            "id": "cb55047a-bd77-4049-9250-9f37200fc4e9",
+            "data": {
+                "name": "load_mimic_data",
+                "error": false,
+                "result": "{\n  \"result\": \"\\\"Load mimic data successful\\\"\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"load_mimic_data\"\n}",
+                "description": "Describe the task of node python_node_1",
+                "python_code": "import duckdb\nimport os, glob\nfrom prefect.logging import get_run_logger\n\ndef initialize_id_sequence(conn):\n    conn.execute('CREATE SEQUENCE IF NOT EXISTS main.id_sequence;')\n\ndef create_table(conn, sql_file, schema_name=None):\n    with open(sql_file, 'r') as file:\n        sql_qry = file.read()\n        if \"@schema_name\" in sql_qry:\n            sql_qry = sql_qry.replace('@schema_name', schema_name)\n        conn.execute(sql_qry)\n\ndef make_table_name(file_path):\n    basename = os.path.basename(file_path)\n    table_name = os.path.splitext(basename)[0]\n    pathname = os.path.dirname(file_path)\n    dirname = os.path.basename(pathname)\n    return f\"mimiciv_{dirname}.{table_name}\", dirname\n\ndef exec(myinput):\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    MIMICCreateSql = consts['MIMICCreateSql']\n    duckdb_file_name = params['duckdb_file_name']\n    mimic_dir = params['mimic_dir']\n    load_mimic_vocab = params['load_mimic_vocab']\n    flow_action_type = params['flow_action_type']\n    if (flow_action_type in ['mimic_to_database','mimic_to_duckdb']) and load_mimic_vocab:\n        logger.info('Start loading mimic data')\n        with duckdb.connect(duckdb_file_name) as conn:\n            # initialize_id_sequence\n            initialize_id_sequence(conn)\n            # create tables\n            create_table(conn, MIMICCreateSql)\n            # copy csv tables\n            csv_files = glob.glob(os.path.join(mimic_dir, \"**/*.csv*\"), recursive=True)\n            for file_path in csv_files:\n                table_name, dir_name = make_table_name(file_path)\n                if not dir_name in ['hosp','icu']:\n                    continue\n                try:\n                    sql_qry = f\"\"\"COPY {table_name} FROM '{file_path}' (ESCAPE '\\\"', HEADER);\"\"\"\n                    conn.execute(sql_qry)\n                    print(f\"Loading {table_name} done\")\n                except Exception as e:\n                    print(f\"Error loading {file_path}: {str(e)}\")\n                    raise Exception()\n            return \"Load mimic data successful\"\n",
+                "errorMessage": null
             },
-            {
-                "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-1267dc31-e42f-4fd5-b6bc-0155f7fa152atarget_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_any",
-                "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
-                "target": "1267dc31-e42f-4fd5-b6bc-0155f7fa152a",
-                "selected": false,
-                "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
-                "targetHandle": "target_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_any"
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -2810,
+                "y": -320
             },
-            {
-                "id": "reactflow__edge-cb55047a-bd77-4049-9250-9f37200fc4e9source_cb55047a-bd77-4049-9250-9f37200fc4e9_object-1267dc31-e42f-4fd5-b6bc-0155f7fa152atarget_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_any",
-                "source": "cb55047a-bd77-4049-9250-9f37200fc4e9",
-                "target": "1267dc31-e42f-4fd5-b6bc-0155f7fa152a",
-                "selected": false,
-                "sourceHandle": "source_cb55047a-bd77-4049-9250-9f37200fc4e9_object",
-                "targetHandle": "target_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_any"
-            },
-            {
-                "id": "reactflow__edge-1267dc31-e42f-4fd5-b6bc-0155f7fa152asource_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_object-27f3ea40-5402-4503-b244-1a8ce91ec60atarget_27f3ea40-5402-4503-b244-1a8ce91ec60a_any",
-                "source": "1267dc31-e42f-4fd5-b6bc-0155f7fa152a",
-                "target": "27f3ea40-5402-4503-b244-1a8ce91ec60a",
-                "selected": false,
-                "sourceHandle": "source_1267dc31-e42f-4fd5-b6bc-0155f7fa152a_object",
-                "targetHandle": "target_27f3ea40-5402-4503-b244-1a8ce91ec60a_any"
-            },
-            {
-                "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-27f3ea40-5402-4503-b244-1a8ce91ec60atarget_27f3ea40-5402-4503-b244-1a8ce91ec60a_any",
-                "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
-                "target": "27f3ea40-5402-4503-b244-1a8ce91ec60a",
-                "selected": false,
-                "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
-                "targetHandle": "target_27f3ea40-5402-4503-b244-1a8ce91ec60a_any"
-            },
-            {
-                "id": "reactflow__edge-ab8bb824-e5f2-4d35-9885-291f7387b184source_ab8bb824-e5f2-4d35-9885-291f7387b184_object-0044e283-1c05-417c-b88c-9b2dd07f6f23target_0044e283-1c05-417c-b88c-9b2dd07f6f23_any",
-                "source": "ab8bb824-e5f2-4d35-9885-291f7387b184",
-                "target": "0044e283-1c05-417c-b88c-9b2dd07f6f23",
-                "selected": false,
-                "sourceHandle": "source_ab8bb824-e5f2-4d35-9885-291f7387b184_object",
-                "targetHandle": "target_0044e283-1c05-417c-b88c-9b2dd07f6f23_any"
-            },
-            {
-                "id": "reactflow__edge-0044e283-1c05-417c-b88c-9b2dd07f6f23source_0044e283-1c05-417c-b88c-9b2dd07f6f23_object-4fd78512-3896-472c-be32-a303f915a0aetarget_4fd78512-3896-472c-be32-a303f915a0ae_any",
-                "source": "0044e283-1c05-417c-b88c-9b2dd07f6f23",
-                "target": "4fd78512-3896-472c-be32-a303f915a0ae",
-                "selected": false,
-                "sourceHandle": "source_0044e283-1c05-417c-b88c-9b2dd07f6f23_object",
-                "targetHandle": "target_4fd78512-3896-472c-be32-a303f915a0ae_any"
-            },
-            {
-                "id": "reactflow__edge-4fd78512-3896-472c-be32-a303f915a0aesource_4fd78512-3896-472c-be32-a303f915a0ae_object-ef8a714c-4c71-4318-af85-20de8699a4edtarget_ef8a714c-4c71-4318-af85-20de8699a4ed_any",
-                "source": "4fd78512-3896-472c-be32-a303f915a0ae",
-                "target": "ef8a714c-4c71-4318-af85-20de8699a4ed",
-                "selected": false,
-                "sourceHandle": "source_4fd78512-3896-472c-be32-a303f915a0ae_object",
-                "targetHandle": "target_ef8a714c-4c71-4318-af85-20de8699a4ed_any"
-            },
-            {
-                "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-ab8bb824-e5f2-4d35-9885-291f7387b184target_ab8bb824-e5f2-4d35-9885-291f7387b184_any",
-                "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
-                "target": "ab8bb824-e5f2-4d35-9885-291f7387b184",
-                "selected": false,
-                "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
-                "targetHandle": "target_ab8bb824-e5f2-4d35-9885-291f7387b184_any"
-            },
-            {
-                "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-0044e283-1c05-417c-b88c-9b2dd07f6f23target_0044e283-1c05-417c-b88c-9b2dd07f6f23_any",
-                "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
-                "target": "0044e283-1c05-417c-b88c-9b2dd07f6f23",
-                "selected": false,
-                "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
-                "targetHandle": "target_0044e283-1c05-417c-b88c-9b2dd07f6f23_any"
-            },
-            {
-                "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-4fd78512-3896-472c-be32-a303f915a0aetarget_4fd78512-3896-472c-be32-a303f915a0ae_any",
-                "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
-                "target": "4fd78512-3896-472c-be32-a303f915a0ae",
-                "selected": false,
-                "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
-                "targetHandle": "target_4fd78512-3896-472c-be32-a303f915a0ae_any"
-            },
-            {
-                "id": "reactflow__edge-89534f59-2a71-4088-8c42-eabb6ae6435fsource_89534f59-2a71-4088-8c42-eabb6ae6435f_object-ef8a714c-4c71-4318-af85-20de8699a4edtarget_ef8a714c-4c71-4318-af85-20de8699a4ed_any",
-                "source": "89534f59-2a71-4088-8c42-eabb6ae6435f",
-                "target": "ef8a714c-4c71-4318-af85-20de8699a4ed",
-                "selected": false,
-                "sourceHandle": "source_89534f59-2a71-4088-8c42-eabb6ae6435f_object",
-                "targetHandle": "target_ef8a714c-4c71-4318-af85-20de8699a4ed_any"
-            },
-            {
-                "id": "reactflow__edge-27f3ea40-5402-4503-b244-1a8ce91ec60asource_27f3ea40-5402-4503-b244-1a8ce91ec60a_object-ab8bb824-e5f2-4d35-9885-291f7387b184target_ab8bb824-e5f2-4d35-9885-291f7387b184_any",
-                "source": "27f3ea40-5402-4503-b244-1a8ce91ec60a",
-                "target": "ab8bb824-e5f2-4d35-9885-291f7387b184",
-                "selected": false,
-                "sourceHandle": "source_27f3ea40-5402-4503-b244-1a8ce91ec60a_object",
-                "targetHandle": "target_ab8bb824-e5f2-4d35-9885-291f7387b184_any"
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -2810,
+                "y": -320
             }
-        ],
-        "nodes": [
-            {
-                "id": "cb55047a-bd77-4049-9250-9f37200fc4e9",
-                "data": {
-                    "name": "load_mimic_data",
-                    "error": false,
-                    "result": "{\n  \"result\": \"\\\"Load mimic data successful\\\"\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"load_mimic_data\"\n}",
-                    "description": "Describe the task of node python_node_1",
-                    "python_code": "import duckdb\nimport os, glob\nfrom prefect.logging import get_run_logger\n\ndef initialize_id_sequence(conn):\n    conn.execute('CREATE SEQUENCE IF NOT EXISTS main.id_sequence;')\n\ndef create_table(conn, sql_file, schema_name=None):\n    with open(sql_file, 'r') as file:\n        sql_qry = file.read()\n        if \"@schema_name\" in sql_qry:\n            sql_qry = sql_qry.replace('@schema_name', schema_name)\n        conn.execute(sql_qry)\n\ndef make_table_name(file_path):\n    basename = os.path.basename(file_path)\n    table_name = os.path.splitext(basename)[0]\n    pathname = os.path.dirname(file_path)\n    dirname = os.path.basename(pathname)\n    return f\"mimiciv_{dirname}.{table_name}\", dirname\n\ndef exec(myinput):\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    MIMICCreateSql = consts['MIMICCreateSql']\n    duckdb_file_name = params['duckdb_file_name']\n    mimic_dir = params['mimic_dir']\n    load_mimic_vocab = params['load_mimic_vocab']\n    flow_action_type = params['flow_action_type']\n    if (flow_action_type in ['mimic_to_database','mimic_to_duckdb']) and load_mimic_vocab:\n        logger.info('Start loading mimic data')\n        with duckdb.connect(duckdb_file_name) as conn:\n            # initialize_id_sequence\n            initialize_id_sequence(conn)\n            # create tables\n            create_table(conn, MIMICCreateSql)\n            # copy csv tables\n            csv_files = glob.glob(os.path.join(mimic_dir, \"**/*.csv*\"), recursive=True)\n            for file_path in csv_files:\n                table_name, dir_name = make_table_name(file_path)\n                if not dir_name in ['hosp','icu']:\n                    continue\n                try:\n                    sql_qry = f\"\"\"COPY {table_name} FROM '{file_path}' (ESCAPE '\\\"', HEADER);\"\"\"\n                    conn.execute(sql_qry)\n                    print(f\"Loading {table_name} done\")\n                except Exception as e:\n                    print(f\"Error loading {file_path}: {str(e)}\")\n                    raise Exception()\n            return \"Load mimic data successful\"\n",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -2810,
-                    "y": -320
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -2810,
-                    "y": -320
-                }
+        },
+        {
+            "id": "89534f59-2a71-4088-8c42-eabb6ae6435f",
+            "data": {
+                "name": "constant_node",
+                "error": false,
+                "result": "{\n  \"result\": {\n    \"params\": {\n      \"duckdb_file_name\": \"/app/mimic_omop/mimic/mimic_omop_duckdb\",\n      \"mimic_dir\": \"/app/mimic_omop/mimic\",\n      \"vocab_dir\": \"/app/mimic_omop/vocab\",\n      \"load_mimic_vocab\": true,\n      \"database_code\": \"alpdev_pg\",\n      \"schema_name\": \"dataflow_ui_mimic\",\n      \"overwrite_schema\": true,\n      \"use_cache_db\": false,\n      \"chunk_size\": 10000,\n      \"flow_action_type\": \"mimic_to_database\"\n    },\n    \"consts\": {\n      \"MIMICCreateSql\": \"flows/mimic_omop_conversion_plugin/external/duckdb_create_mimic.sql\",\n      \"CreatVocabTable\": \"flows/mimic_omop_conversion_plugin/external/vocabulary-refresh/create_vocab_input_tables.sql\",\n      \"StagDir\": \"flows/mimic_omop_conversion_plugin/external/staging\",\n      \"StagSql\": [\n        \"etl_OMOPCDM_postgresql_5.3_ddl_adapted_no_vocab.sql\",\n        \"st_core.sql\",\n        \"st_hosp.sql\",\n        \"st_icu.sql\",\n        \"voc_copy_to_target_dataset.sql\"\n      ],\n      \"CustomVocabDir\": \"flows/mimic_omop_conversion_plugin/external/vocabulary-refresh/\",\n      \"CustomVocabSqls\": [\n        \"create_voc_from_tmp.sql\",\n        \"custom_mapping_load.sql\",\n        \"custom_vocabularies.sql\",\n        \"vocabulary_cleanup.sql\"\n      ],\n      \"ETLDir\": \"flows/mimic_omop_conversion_plugin/external/etl\",\n      \"ETLSqls\": [\n        \"cdm_location.sql\",\n        \"cdm_care_site.sql\",\n        \"cdm_person.sql\",\n        \"cdm_death.sql\",\n        \"lk_vis_part_1.sql\",\n        \"lk_meas_unit.sql\",\n        \"lk_meas_chartevents.sql\",\n        \"lk_meas_labevents.sql\",\n        \"lk_meas_specimen.sql\",\n        \"lk_vis_part_2.sql\",\n        \"cdm_visit_occurrence.sql\",\n        \"cdm_visit_detail.sql\",\n        \"lk_cond_diagnoses.sql\",\n        \"lk_procedure.sql\",\n        \"lk_observation.sql\",\n        \"cdm_condition_occurrence.sql\",\n        \"cdm_procedure_occurrence.sql\",\n        \"cdm_specimen.sql\",\n        \"cdm_measurement.sql\",\n        \"lk_drug.sql\",\n        \"cdm_drug_exposure.sql\",\n        \"cdm_device_exposure.sql\",\n        \"cdm_observation.sql\",\n        \"cdm_observation_period.sql\",\n        \"cdm_finalize_person.sql\",\n        \"cdm_fact_relationship.sql\",\n        \"cdm_condition_era.sql\",\n        \"cdm_drug_era.sql\",\n        \"cdm_dose_era.sql\",\n        \"ext_d_itemid_to_concept.sql\",\n        \"cdm_cdm_source.sql\",\n        \"extra_cdm_tables.sql\"\n      ],\n      \"CdmDir\": \"flows/mimic_omop_conversion_plugin/external/unload/\",\n      \"CdmSqls\": [\n        \"OMOPCDM_duckdb_5.3_ddl_adapted.sql\",\n        \"unload_to_atlas_gen.sql\"\n      ],\n      \"PostgresDDL\": \"flows/mimic_omop_conversion_plugin/external/unload/export_postgresql_5.3_ddl_adapted.sql\",\n      \"HANADDL\": \"flows/mimic_omop_conversion_plugin/external/unload/export_hana_5.3_ddl_adapted.sql\"\n    }\n  },\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"constant_node\"\n}",
+                "description": "Describe the task of node python_node_2",
+                "python_code": "def exec(myinput):\n    SqlDir = 'flows/mimic_omop_conversion_plugin/external'\n    CdmDir = f'{SqlDir}/unload/'\n    ouput_dict = {\n    'MIMICCreateSql':f'{SqlDir}/duckdb_create_mimic.sql',\n    'CreatVocabTable':f'{SqlDir}/vocabulary-refresh/create_vocab_input_tables.sql',\n    'StagDir':f'{SqlDir}/staging',\n    'StagSql':['etl_OMOPCDM_postgresql_5.3_ddl_adapted_no_vocab.sql', \n                    'st_core.sql',\n                    'st_hosp.sql',\n                    'st_icu.sql',\n                    'voc_copy_to_target_dataset.sql'],\n    'CustomVocabDir':f'{SqlDir}/vocabulary-refresh/',\n    'CustomVocabSqls':['create_voc_from_tmp.sql', \n                    'custom_mapping_load.sql',\n                    'custom_vocabularies.sql',\n                    'vocabulary_cleanup.sql'],\n    'ETLDir':f'{SqlDir}/etl',\n    'ETLSqls':['cdm_location.sql',\n                'cdm_care_site.sql',\n                'cdm_person.sql',\n                'cdm_death.sql',\n                'lk_vis_part_1.sql',\n                'lk_meas_unit.sql',\n                # ULLIF(regexp_extract(),'') replace postgres(regexp_match)\n                'lk_meas_chartevents.sql',\n                'lk_meas_labevents.sql',\n                'lk_meas_specimen.sql',\n                'lk_vis_part_2.sql',\n                'cdm_visit_occurrence.sql',\n                'cdm_visit_detail.sql',\n                'lk_cond_diagnoses.sql',\n                'lk_procedure.sql',\n                'lk_observation.sql',\n                'cdm_condition_occurrence.sql',\n                'cdm_procedure_occurrence.sql',\n                'cdm_specimen.sql',\n                'cdm_measurement.sql',\n                'lk_drug.sql',\n                'cdm_drug_exposure.sql',\n                'cdm_device_exposure.sql',\n                'cdm_observation.sql',\n                'cdm_observation_period.sql',\n                'cdm_finalize_person.sql',\n                'cdm_fact_relationship.sql',\n                'cdm_condition_era.sql',\n                'cdm_drug_era.sql',\n                'cdm_dose_era.sql',\n                'ext_d_itemid_to_concept.sql',\n                'cdm_cdm_source.sql',\n                'extra_cdm_tables.sql'],\n    'CdmDir': f'{SqlDir}/unload/',\n    'CdmSqls':['OMOPCDM_duckdb_5.3_ddl_adapted.sql',\n                'unload_to_atlas_gen.sql'],\n    'PostgresDDL':f'{CdmDir}export_postgresql_5.3_ddl_adapted.sql',\n    'HANADDL':f'{CdmDir}export_hana_5.3_ddl_adapted.sql'\n    }\n\n    params = {\n    'duckdb_file_name':'/app/mimic_omop/mimic/mimic_omop_duckdb',\n    'mimic_dir':'/app/mimic_omop/mimic',\n    'vocab_dir':'/app/mimic_omop/vocab',\n    'load_mimic_vocab':True,\n    'database_code':'alpdev_pg',\n    'schema_name':'dataflow_ui_mimic',\n    'overwrite_schema':True,\n    'use_cache_db':False,\n    'chunk_size':10000,\n    'flow_action_type': 'mimic_to_database',\n    }\n\n    return {'params':params, 'consts':ouput_dict}",
+                "errorMessage": null
             },
-            {
-                "id": "89534f59-2a71-4088-8c42-eabb6ae6435f",
-                "data": {
-                    "name": "constant_node",
-                    "error": false,
-                    "result": "{\n  \"result\": {\n    \"params\": {\n      \"duckdb_file_name\": \"/app/mimic_omop/mimic/mimic_omop_duckdb\",\n      \"mimic_dir\": \"/app/mimic_omop/mimic\",\n      \"vocab_dir\": \"/app/mimic_omop/vocab\",\n      \"load_mimic_vocab\": true,\n      \"database_code\": \"alpdev_pg\",\n      \"schema_name\": \"dataflow_ui_mimic\",\n      \"overwrite_schema\": true,\n      \"use_cache_db\": false,\n      \"chunk_size\": 10000,\n      \"flow_action_type\": \"mimic_to_database\"\n    },\n    \"consts\": {\n      \"MIMICCreateSql\": \"flows/mimic_omop_conversion_plugin/external/duckdb_create_mimic.sql\",\n      \"CreatVocabTable\": \"flows/mimic_omop_conversion_plugin/external/vocabulary-refresh/create_vocab_input_tables.sql\",\n      \"StagDir\": \"flows/mimic_omop_conversion_plugin/external/staging\",\n      \"StagSql\": [\n        \"etl_OMOPCDM_postgresql_5.3_ddl_adapted_no_vocab.sql\",\n        \"st_core.sql\",\n        \"st_hosp.sql\",\n        \"st_icu.sql\",\n        \"voc_copy_to_target_dataset.sql\"\n      ],\n      \"CustomVocabDir\": \"flows/mimic_omop_conversion_plugin/external/vocabulary-refresh/\",\n      \"CustomVocabSqls\": [\n        \"create_voc_from_tmp.sql\",\n        \"custom_mapping_load.sql\",\n        \"custom_vocabularies.sql\",\n        \"vocabulary_cleanup.sql\"\n      ],\n      \"ETLDir\": \"flows/mimic_omop_conversion_plugin/external/etl\",\n      \"ETLSqls\": [\n        \"cdm_location.sql\",\n        \"cdm_care_site.sql\",\n        \"cdm_person.sql\",\n        \"cdm_death.sql\",\n        \"lk_vis_part_1.sql\",\n        \"lk_meas_unit.sql\",\n        \"lk_meas_chartevents.sql\",\n        \"lk_meas_labevents.sql\",\n        \"lk_meas_specimen.sql\",\n        \"lk_vis_part_2.sql\",\n        \"cdm_visit_occurrence.sql\",\n        \"cdm_visit_detail.sql\",\n        \"lk_cond_diagnoses.sql\",\n        \"lk_procedure.sql\",\n        \"lk_observation.sql\",\n        \"cdm_condition_occurrence.sql\",\n        \"cdm_procedure_occurrence.sql\",\n        \"cdm_specimen.sql\",\n        \"cdm_measurement.sql\",\n        \"lk_drug.sql\",\n        \"cdm_drug_exposure.sql\",\n        \"cdm_device_exposure.sql\",\n        \"cdm_observation.sql\",\n        \"cdm_observation_period.sql\",\n        \"cdm_finalize_person.sql\",\n        \"cdm_fact_relationship.sql\",\n        \"cdm_condition_era.sql\",\n        \"cdm_drug_era.sql\",\n        \"cdm_dose_era.sql\",\n        \"ext_d_itemid_to_concept.sql\",\n        \"cdm_cdm_source.sql\",\n        \"extra_cdm_tables.sql\"\n      ],\n      \"CdmDir\": \"flows/mimic_omop_conversion_plugin/external/unload/\",\n      \"CdmSqls\": [\n        \"OMOPCDM_duckdb_5.3_ddl_adapted.sql\",\n        \"unload_to_atlas_gen.sql\"\n      ],\n      \"PostgresDDL\": \"flows/mimic_omop_conversion_plugin/external/unload/export_postgresql_5.3_ddl_adapted.sql\",\n      \"HANADDL\": \"flows/mimic_omop_conversion_plugin/external/unload/export_hana_5.3_ddl_adapted.sql\"\n    }\n  },\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"constant_node\"\n}",
-                    "description": "Describe the task of node python_node_2",
-                    "python_code": "def exec(myinput):\n    SqlDir = 'flows/mimic_omop_conversion_plugin/external'\n    CdmDir = f'{SqlDir}/unload/'\n    ouput_dict = {\n    'MIMICCreateSql':f'{SqlDir}/duckdb_create_mimic.sql',\n    'CreatVocabTable':f'{SqlDir}/vocabulary-refresh/create_vocab_input_tables.sql',\n    'StagDir':f'{SqlDir}/staging',\n    'StagSql':['etl_OMOPCDM_postgresql_5.3_ddl_adapted_no_vocab.sql', \n                    'st_core.sql',\n                    'st_hosp.sql',\n                    'st_icu.sql',\n                    'voc_copy_to_target_dataset.sql'],\n    'CustomVocabDir':f'{SqlDir}/vocabulary-refresh/',\n    'CustomVocabSqls':['create_voc_from_tmp.sql', \n                    'custom_mapping_load.sql',\n                    'custom_vocabularies.sql',\n                    'vocabulary_cleanup.sql'],\n    'ETLDir':f'{SqlDir}/etl',\n    'ETLSqls':['cdm_location.sql',\n                'cdm_care_site.sql',\n                'cdm_person.sql',\n                'cdm_death.sql',\n                'lk_vis_part_1.sql',\n                'lk_meas_unit.sql',\n                # ULLIF(regexp_extract(),'') replace postgres(regexp_match)\n                'lk_meas_chartevents.sql',\n                'lk_meas_labevents.sql',\n                'lk_meas_specimen.sql',\n                'lk_vis_part_2.sql',\n                'cdm_visit_occurrence.sql',\n                'cdm_visit_detail.sql',\n                'lk_cond_diagnoses.sql',\n                'lk_procedure.sql',\n                'lk_observation.sql',\n                'cdm_condition_occurrence.sql',\n                'cdm_procedure_occurrence.sql',\n                'cdm_specimen.sql',\n                'cdm_measurement.sql',\n                'lk_drug.sql',\n                'cdm_drug_exposure.sql',\n                'cdm_device_exposure.sql',\n                'cdm_observation.sql',\n                'cdm_observation_period.sql',\n                'cdm_finalize_person.sql',\n                'cdm_fact_relationship.sql',\n                'cdm_condition_era.sql',\n                'cdm_drug_era.sql',\n                'cdm_dose_era.sql',\n                'ext_d_itemid_to_concept.sql',\n                'cdm_cdm_source.sql',\n                'extra_cdm_tables.sql'],\n    'CdmDir': f'{SqlDir}/unload/',\n    'CdmSqls':['OMOPCDM_duckdb_5.3_ddl_adapted.sql',\n                'unload_to_atlas_gen.sql'],\n    'PostgresDDL':f'{CdmDir}export_postgresql_5.3_ddl_adapted.sql',\n    'HANADDL':f'{CdmDir}export_hana_5.3_ddl_adapted.sql'\n    }\n\n    params = {\n    'duckdb_file_name':'/app/mimic_omop/mimic/mimic_omop_duckdb',\n    'mimic_dir':'/app/mimic_omop/mimic',\n    'vocab_dir':'/app/mimic_omop/vocab',\n    'load_mimic_vocab':True,\n    'database_code':'alpdev_pg',\n    'schema_name':'dataflow_ui_mimic',\n    'overwrite_schema':True,\n    'use_cache_db':False,\n    'chunk_size':10000,\n    'flow_action_type': 'mimic_to_database',\n    }\n\n    return {'params':params, 'consts':ouput_dict}",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -2820,
-                    "y": -690
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -2820,
-                    "y": -690
-                }
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -2820,
+                "y": -690
             },
-            {
-                "id": "1267dc31-e42f-4fd5-b6bc-0155f7fa152a",
-                "data": {
-                    "name": "load_vocab",
-                    "error": false,
-                    "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"load_vocab\"\n}",
-                    "description": "Describe the task of node python_node_3",
-                    "python_code": "import duckdb\nimport os, glob\nfrom prefect.logging import get_run_logger\n\ndef execute_raw_sql_from_file(conn, dir_root, sql_files):\n    for sql_file in sql_files:\n        with open(os.path.join(dir_root, sql_file), 'r') as file:\n            query = file.read()\n            conn.execute(query)\n\ndef create_table(conn, sql_file, schema_name=None):\n    with open(sql_file, 'r') as file:\n        sql_qry = file.read()\n        if \"@schema_name\" in sql_qry:\n            sql_qry = sql_qry.replace('@schema_name', schema_name)\n        conn.execute(sql_qry)\n\ndef create_schema(conn, schema_name:str):\n    conn.execute(f\"\"\"\n    DROP SCHEMA IF EXISTS {schema_name} CASCADE ;\n    CREATE SCHEMA {schema_name} ;\n    \"\"\")\n\ndef exec(myinput):\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    CreatVocabTable = consts['CreatVocabTable']\n    CustomVocabDir = consts['CustomVocabDir']\n    CustomVocabSqls = consts['CustomVocabSqls']\n    duckdb_file_name = params['duckdb_file_name']\n    vocab_dir = params['vocab_dir']\n    load_mimic_vocab = params['load_mimic_vocab']\n    flow_action_type = params['flow_action_type']\n    if (flow_action_type in ['mimic_to_database','mimic_to_duckdb']) and load_mimic_vocab:\n        logger.info('Start loading vocab')\n        with duckdb.connect(duckdb_file_name) as conn:\n            create_schema(conn, 'mimic_staging')\n            create_table(conn, CreatVocabTable)\n            # insert vocab tables\n            csv_files = glob.glob(os.path.join(vocab_dir, \"**/*.csv*\"), recursive=True)\n            for file in csv_files:\n                if 'CONCEPT_CPT4' in file:\n                    continue\n                csv_name = os.path.basename(file).split('.')[0].lower()\n                table_name = '_'.join(['mimic_staging.tmp', csv_name])\n                try:\n                    query = f\"\"\"\n                    TRUNCATE TABLE {table_name};\n                    COPY {table_name} FROM '{file}' (DATEFORMAT '%Y%m%d', DELIMITER '\\t', FORMAT CSV, HEADER, QUOTE '\"',ESCAPE '\\\"');\n                    \"\"\"\n                    conn.execute(query)\n                    print(f\"Loading {table_name} done\")\n                except Exception as e:\n                    print(f\"Error loading {file}: {str(e)}\")\n                    raise Exception()\n            # generate_custom_vocab\n            try: \n                execute_raw_sql_from_file(conn, CustomVocabDir, CustomVocabSqls)\n            except Exception as e:\n                print(f\"Error generating custom vocabulories: {str(e)}\")\n                raise Exception()",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -2290,
-                    "y": -320
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -2290,
-                    "y": -320
-                }
-            },
-            {
-                "id": "27f3ea40-5402-4503-b244-1a8ce91ec60a",
-                "data": {
-                    "name": "staging_mimic",
-                    "error": false,
-                    "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"staging_mimic\"\n}",
-                    "description": "Describe the task of node python_node_4",
-                    "python_code": "import duckdb\nimport os, glob\nimport time\n\ndef execute_raw_sql_from_file(conn, dir_root, sql_files):\n    for sql_file in sql_files:\n        print(sql_file)\n        with open(os.path.join(dir_root, sql_file), 'r') as file:\n            query = file.read()\n            conn.execute(query)\n\ndef create_schema(conn, schema_name:str):\n    conn.execute(f\"\"\"\n    DROP SCHEMA IF EXISTS {schema_name} CASCADE ;\n    CREATE SCHEMA {schema_name} ;\n    \"\"\")\n\ndef staging_mimic_data(conn, StagDir, StagSql):\n    create_schema(conn, 'mimic_etl')\n    execute_raw_sql_from_file(conn, StagDir, StagSql)\n\ndef exec(myinput):\n    # time.sleep(600)\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    StagDir = consts['StagDir']\n    StagSql = consts['StagSql']\n    duckdb_file_name = params['duckdb_file_name']\n    vocab_dir = params['vocab_dir']\n    load_mimic_vocab = params['load_mimic_vocab']\n    flow_action_type = params['flow_action_type']\n    if flow_action_type in ['mimic_to_database','mimic_to_duckdb'] and load_mimic_vocab:\n        with duckdb.connect(duckdb_file_name) as conn:\n            staging_mimic_data(conn, StagDir, StagSql)\n            conn.execute(\"DROP SCHEMA mimiciv_hosp CASCADE\")\n            conn.execute(\"DROP SCHEMA mimiciv_icu CASCADE\")\n            conn.execute(\"DROP SCHEMA mimic_staging CASCADE\")",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -1730,
-                    "y": -320
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -1730,
-                    "y": -320
-                }
-            },
-            {
-                "id": "ab8bb824-e5f2-4d35-9885-291f7387b184",
-                "data": {
-                    "name": "etl_transformation",
-                    "error": false,
-                    "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"etl_transformation\"\n}",
-                    "description": "Describe the task of node python_node_4",
-                    "python_code": "import duckdb\nimport os, glob\nimport time\nfrom prefect.logging import get_run_logger\n\ndef execute_raw_sql_from_file(conn, dir_root, sql_files):\n    for sql_file in sql_files:\n        print(sql_file)\n        with open(os.path.join(dir_root, sql_file), 'r') as file:\n            query = file.read()\n            conn.execute(query)\n            \ndef exec(myinput):\n    logger = get_run_logger()\n    # time.sleep(600)\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    ETLDir = consts['ETLDir']\n    ETLSqls = consts['ETLSqls']\n    duckdb_file_name = params['duckdb_file_name']\n    vocab_dir = params['vocab_dir']\n    flow_action_type = params['flow_action_type']\n    if flow_action_type in ['mimic_to_database','mimic_to_duckdb']:\n        with duckdb.connect(duckdb_file_name) as conn:\n            logger.info(\"*** Doing ETL transformations ***\")\n            try:\n                execute_raw_sql_from_file(conn, ETLDir, ETLSqls)\n            except Exception as e:\n                logger.error(f\"Error tranforming mimic: {str(e)}\")\n                raise Exception()",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 354,
-                "height": 214,
-                "dragging": false,
-                "position": {
-                    "x": -1210,
-                    "y": -320
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -1210,
-                    "y": -320
-                }
-            },
-            {
-                "id": "0044e283-1c05-417c-b88c-9b2dd07f6f23",
-                "data": {
-                    "name": "cdm_tables",
-                    "error": false,
-                    "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"cdm_tables\"\n}",
-                    "description": "Describe the task of node python_node_5",
-                    "python_code": "import duckdb\nimport os, glob\nimport time\nfrom prefect.logging import get_run_logger\n\ndef execute_raw_sql_from_file(conn, dir_root, sql_files):\n    for sql_file in sql_files:\n        print(sql_file)\n        with open(os.path.join(dir_root, sql_file), 'r') as file:\n            query = file.read()\n            conn.execute(query)\n\ndef create_schema(conn, schema_name:str):\n    conn.execute(f\"\"\"\n    DROP SCHEMA IF EXISTS {schema_name} CASCADE ;\n    CREATE SCHEMA {schema_name} ;\n    \"\"\")\n            \ndef exec(myinput):\n    # time.sleep(600)\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    CdmDir = consts['CdmDir']\n    CdmSqls = consts['CdmSqls']\n    duckdb_file_name = params['duckdb_file_name']\n    vocab_dir = params['vocab_dir']\n    flow_action_type = params['flow_action_type']\n    if flow_action_type in ['mimic_to_database','mimic_to_duckdb']:\n        logger.info(\"*** Creating final CDM tables and copy data into them ***\")\n        with duckdb.connect(duckdb_file_name) as conn:\n            try:\n                create_schema(conn, 'cdm')\n                execute_raw_sql_from_file(conn, CdmDir, CdmSqls)\n            except Exception as e:\n                logger.error(f\"Error creating final cdm data: {str(e)}\")\n                raise Exception()",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -720,
-                    "y": -320
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -720,
-                    "y": -320
-                }
-            },
-            {
-                "id": "ef8a714c-4c71-4318-af85-20de8699a4ed",
-                "data": {
-                    "name": "cleanup",
-                    "error": false,
-                    "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"cleanup\"\n}",
-                    "description": "Describe the task of node python_node_6",
-                    "python_code": "import os\nfrom prefect.logging import get_run_logger\n            \ndef exec(myinput):\n    # time.sleep(600)\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    duckdb_file_name = params['duckdb_file_name']\n    flow_action_type = params['flow_action_type']\n    if flow_action_type in ['mimic_to_database']:\n        logger.info(\"<--------- Cleaning up DuckDB file --------->\")\n        # Get options\n        os.remove(duckdb_file_name)\n        logger.info(f\"File '{duckdb_file_name}' deleted successfully.\")\n        logger.info(\"<--------- Workflow complete --------->\")\n",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": 300,
-                    "y": -320
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": 300,
-                    "y": -320
-                }
-            },
-            {
-                "id": "4fd78512-3896-472c-be32-a303f915a0ae",
-                "data": {
-                    "name": "duckdb_to_database",
-                    "description": "Describe the task of node python_node_7",
-                    "python_code": "import duckdb\nimport os, glob\nimport time\nfrom prefect.logging import get_run_logger\nfrom _shared_flow_utils.types import SupportedDatabaseDialects\nfrom _shared_flow_utils.dao.DBDao import DBDao\n\ndef create_table(conn, sql_file, schema_name=None):\n    with open(sql_file, 'r') as file:\n        sql_qry = file.read()\n        if \"@schema_name\" in sql_qry:\n            sql_qry = sql_qry.replace('@schema_name', schema_name)\n        conn.execute(sql_qry)\n\ndef export_data(duckdb_file_name, schema_name, to_dbdao, overwrite_schema, chunk_size, database_ddl):\n    logger = get_run_logger()\n    db_credentials = to_dbdao.tenant_configs\n    dialect = to_dbdao.dialect\n    if to_dbdao.check_schema_exists(schema_name):\n        if overwrite_schema:\n            to_dbdao.drop_schema(schema_name, cascade=True)\n        else:\n            logger.error(f\"Schema '{schema_name}'exist! To overwrite the existing schema, set 'Overwrite Schema' to True\")\n            raise ValueError()\n    to_dbdao.create_schema(schema_name)\n    match dialect:\n        case SupportedDatabaseDialects.POSTGRES:\n            attach_qry = f\"\"\"ATTACH 'host={db_credentials.host} port={db_credentials.port} dbname={db_credentials.databaseName} \n            user={db_credentials.adminUser} password={db_credentials.adminPassword.get_secret_value()}' \n            AS pg (TYPE POSTGRES, SCHEMA {schema_name});\n            \"\"\"\n            # Attach Posgres Database\n            with duckdb.connect(duckdb_file_name) as conn:\n                conn.execute(attach_qry)\n                # Creat schema and tables in postgres database\n                create_table(conn, database_ddl, schema_name=schema_name)\n                tables = conn.execute(f\"SELECT table_name FROM duckdb_tables() WHERE (database_name = 'pg')\").fetchall()\n                tables = [x[0] for x in tables]\n                for table in tables:\n                    conn.execute(f\"\"\"\n                    INSERT INTO pg.{schema_name}.{table}\n                    SELECT * FROM cdm.{table};    \n                    \"\"\")\n                conn.execute(\"DETACH pg;\")\n\n        case SupportedDatabaseDialects.HANA:\n            create_sqls = open(database_ddl).read().replace('@schema_name', schema_name).split(';')[:-1]\n            for create_sql in create_sqls:\n                with to_dbdao.engine.connect() as hana_conn:\n                    hana_conn.execute(text(create_sql))\n                    hana_conn.commit()\n            tables = to_dbdao.get_table_names(schema=schema_name)\n            for table in tables:\n                tmp = 0\n                for chunk, percent in read_table_chunks(duckdb_file_name, table, chunk_size=chunk_size):   \n                    if percent != tmp: \n                        flag = True\n                        tmp = percent  \n                    else:\n                        flag = False           \n                    if not chunk.empty:\n                        insert_to_hana_direct(to_dbdao, chunk, schema_name, table)\n                    if flag: \n                        logger.info(f\"{int(percent)}% of table '{table}' is inserted\")\n                logger.info(f\"100% of table '{table}' is inserted\")\n\n\ndef read_table_chunks(duckdb_file_name, table, chunk_size):\n    with duckdb.connect(duckdb_file_name) as conn:\n        count = conn.execute(f\"SELECT COUNT(*) FROM cdm.{table}\").fetchone()[0]\n        for offset in range(0, count, chunk_size):\n            chunk = conn.execute(f\"\"\"\n                SELECT * FROM cdm.{table}\n                LIMIT {chunk_size} OFFSET {offset}\n            \"\"\").df()\n            percent = (offset/count * 100)//10 * 10\n            yield chunk, percent\n\ndef insert_to_hana_direct(to_dbdao, chunk, schema_name, table):\n    with to_dbdao.engine.connect() as hana_conn:\n        # Use Upper case for HANA\n        chunk.columns = chunk.columns.str.upper()\n        # Replace np.nan with None\n        chunk.replace([np.nan], [None], inplace=True)\n        columns = chunk.columns.tolist()\n        columns_str = ', '.join(f'\"{col}\"' for col in columns)\n        placeholders = ','.join(f':{col}' for col in columns)\n        insert_stmt = f'INSERT INTO {schema_name}.{table} ({columns_str}) VALUES ({placeholders})'\n        data = chunk.to_dict('records')\n        hana_conn.execute(text(insert_stmt), data)\n        hana_conn.commit()\n    to_dbdao.engine.dispose()\n            \ndef exec(myinput):\n    # time.sleep(600)\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    duckdb_file_name = params['duckdb_file_name']\n    schema_name = params['schema_name']\n    use_cache_db = params['use_cache_db']\n    database_code = params['database_code']\n    overwrite_schema = params['overwrite_schema']\n    chunk_size = params['chunk_size']\n    flow_action_type = params['flow_action_type']\n    to_dbdao = DBDao(use_cache_db=use_cache_db, database_code=database_code)\n    dialect = to_dbdao.dialect\n    database_ddl = consts['PostgresDDL'] if SupportedDatabaseDialects.POSTGRES else consts['HANADDL']\n    if flow_action_type in ['mimic_to_database','duckdb_to_database']:\n        logger.info(\"<--------- Exporting CDM tables to Database --------->\")\n        export_data(duckdb_file_name=duckdb_file_name, schema_name=schema_name, to_dbdao=to_dbdao, overwrite_schema=overwrite_schema, chunk_size=chunk_size, database_ddl=database_ddl)"
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -210,
-                    "y": -320
-                },
-                "selected": true,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -210,
-                    "y": -320
-                }
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -2820,
+                "y": -690
             }
-        ]
-    },
-    "createdBy": "vvvgxo0w1fn5",
-    "createdDate": "2025-06-18T06:11:54.222Z"
+        },
+        {
+            "id": "1267dc31-e42f-4fd5-b6bc-0155f7fa152a",
+            "data": {
+                "name": "load_vocab",
+                "error": false,
+                "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"load_vocab\"\n}",
+                "description": "Describe the task of node python_node_3",
+                "python_code": "import duckdb\nimport os, glob\nfrom prefect.logging import get_run_logger\n\ndef execute_raw_sql_from_file(conn, dir_root, sql_files):\n    for sql_file in sql_files:\n        with open(os.path.join(dir_root, sql_file), 'r') as file:\n            query = file.read()\n            conn.execute(query)\n\ndef create_table(conn, sql_file, schema_name=None):\n    with open(sql_file, 'r') as file:\n        sql_qry = file.read()\n        if \"@schema_name\" in sql_qry:\n            sql_qry = sql_qry.replace('@schema_name', schema_name)\n        conn.execute(sql_qry)\n\ndef create_schema(conn, schema_name:str):\n    conn.execute(f\"\"\"\n    DROP SCHEMA IF EXISTS {schema_name} CASCADE ;\n    CREATE SCHEMA {schema_name} ;\n    \"\"\")\n\ndef exec(myinput):\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    CreatVocabTable = consts['CreatVocabTable']\n    CustomVocabDir = consts['CustomVocabDir']\n    CustomVocabSqls = consts['CustomVocabSqls']\n    duckdb_file_name = params['duckdb_file_name']\n    vocab_dir = params['vocab_dir']\n    load_mimic_vocab = params['load_mimic_vocab']\n    flow_action_type = params['flow_action_type']\n    if (flow_action_type in ['mimic_to_database','mimic_to_duckdb']) and load_mimic_vocab:\n        logger.info('Start loading vocab')\n        with duckdb.connect(duckdb_file_name) as conn:\n            create_schema(conn, 'mimic_staging')\n            create_table(conn, CreatVocabTable)\n            # insert vocab tables\n            csv_files = glob.glob(os.path.join(vocab_dir, \"**/*.csv*\"), recursive=True)\n            for file in csv_files:\n                if 'CONCEPT_CPT4' in file:\n                    continue\n                csv_name = os.path.basename(file).split('.')[0].lower()\n                table_name = '_'.join(['mimic_staging.tmp', csv_name])\n                try:\n                    query = f\"\"\"\n                    TRUNCATE TABLE {table_name};\n                    COPY {table_name} FROM '{file}' (DATEFORMAT '%Y%m%d', DELIMITER '\\t', FORMAT CSV, HEADER, QUOTE '\"',ESCAPE '\\\"');\n                    \"\"\"\n                    conn.execute(query)\n                    print(f\"Loading {table_name} done\")\n                except Exception as e:\n                    print(f\"Error loading {file}: {str(e)}\")\n                    raise Exception()\n            # generate_custom_vocab\n            try: \n                execute_raw_sql_from_file(conn, CustomVocabDir, CustomVocabSqls)\n            except Exception as e:\n                print(f\"Error generating custom vocabulories: {str(e)}\")\n                raise Exception()",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -2290,
+                "y": -320
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -2290,
+                "y": -320
+            }
+        },
+        {
+            "id": "27f3ea40-5402-4503-b244-1a8ce91ec60a",
+            "data": {
+                "name": "staging_mimic",
+                "error": false,
+                "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"staging_mimic\"\n}",
+                "description": "Describe the task of node python_node_4",
+                "python_code": "import duckdb\nimport os, glob\nimport time\n\ndef execute_raw_sql_from_file(conn, dir_root, sql_files):\n    for sql_file in sql_files:\n        print(sql_file)\n        with open(os.path.join(dir_root, sql_file), 'r') as file:\n            query = file.read()\n            conn.execute(query)\n\ndef create_schema(conn, schema_name:str):\n    conn.execute(f\"\"\"\n    DROP SCHEMA IF EXISTS {schema_name} CASCADE ;\n    CREATE SCHEMA {schema_name} ;\n    \"\"\")\n\ndef staging_mimic_data(conn, StagDir, StagSql):\n    create_schema(conn, 'mimic_etl')\n    execute_raw_sql_from_file(conn, StagDir, StagSql)\n\ndef exec(myinput):\n    # time.sleep(600)\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    StagDir = consts['StagDir']\n    StagSql = consts['StagSql']\n    duckdb_file_name = params['duckdb_file_name']\n    vocab_dir = params['vocab_dir']\n    load_mimic_vocab = params['load_mimic_vocab']\n    flow_action_type = params['flow_action_type']\n    if flow_action_type in ['mimic_to_database','mimic_to_duckdb'] and load_mimic_vocab:\n        with duckdb.connect(duckdb_file_name) as conn:\n            staging_mimic_data(conn, StagDir, StagSql)\n            conn.execute(\"DROP SCHEMA mimiciv_hosp CASCADE\")\n            conn.execute(\"DROP SCHEMA mimiciv_icu CASCADE\")\n            conn.execute(\"DROP SCHEMA mimic_staging CASCADE\")",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -1730,
+                "y": -320
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -1730,
+                "y": -320
+            }
+        },
+        {
+            "id": "ab8bb824-e5f2-4d35-9885-291f7387b184",
+            "data": {
+                "name": "etl_transformation",
+                "error": false,
+                "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"etl_transformation\"\n}",
+                "description": "Describe the task of node python_node_4",
+                "python_code": "import duckdb\nimport os, glob\nimport time\nfrom prefect.logging import get_run_logger\n\ndef execute_raw_sql_from_file(conn, dir_root, sql_files):\n    for sql_file in sql_files:\n        print(sql_file)\n        with open(os.path.join(dir_root, sql_file), 'r') as file:\n            query = file.read()\n            conn.execute(query)\n            \ndef exec(myinput):\n    logger = get_run_logger()\n    # time.sleep(600)\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    ETLDir = consts['ETLDir']\n    ETLSqls = consts['ETLSqls']\n    duckdb_file_name = params['duckdb_file_name']\n    vocab_dir = params['vocab_dir']\n    flow_action_type = params['flow_action_type']\n    if flow_action_type in ['mimic_to_database','mimic_to_duckdb']:\n        with duckdb.connect(duckdb_file_name) as conn:\n            logger.info(\"*** Doing ETL transformations ***\")\n            try:\n                execute_raw_sql_from_file(conn, ETLDir, ETLSqls)\n            except Exception as e:\n                logger.error(f\"Error tranforming mimic: {str(e)}\")\n                raise Exception()",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 354,
+            "height": 214,
+            "dragging": false,
+            "position": {
+                "x": -1210,
+                "y": -320
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -1210,
+                "y": -320
+            }
+        },
+        {
+            "id": "0044e283-1c05-417c-b88c-9b2dd07f6f23",
+            "data": {
+                "name": "cdm_tables",
+                "error": false,
+                "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"cdm_tables\"\n}",
+                "description": "Describe the task of node python_node_5",
+                "python_code": "import duckdb\nimport os, glob\nimport time\nfrom prefect.logging import get_run_logger\n\ndef execute_raw_sql_from_file(conn, dir_root, sql_files):\n    for sql_file in sql_files:\n        print(sql_file)\n        with open(os.path.join(dir_root, sql_file), 'r') as file:\n            query = file.read()\n            conn.execute(query)\n\ndef create_schema(conn, schema_name:str):\n    conn.execute(f\"\"\"\n    DROP SCHEMA IF EXISTS {schema_name} CASCADE ;\n    CREATE SCHEMA {schema_name} ;\n    \"\"\")\n            \ndef exec(myinput):\n    # time.sleep(600)\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    CdmDir = consts['CdmDir']\n    CdmSqls = consts['CdmSqls']\n    duckdb_file_name = params['duckdb_file_name']\n    vocab_dir = params['vocab_dir']\n    flow_action_type = params['flow_action_type']\n    if flow_action_type in ['mimic_to_database','mimic_to_duckdb']:\n        logger.info(\"*** Creating final CDM tables and copy data into them ***\")\n        with duckdb.connect(duckdb_file_name) as conn:\n            try:\n                create_schema(conn, 'cdm')\n                execute_raw_sql_from_file(conn, CdmDir, CdmSqls)\n            except Exception as e:\n                logger.error(f\"Error creating final cdm data: {str(e)}\")\n                raise Exception()",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -720,
+                "y": -320
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -720,
+                "y": -320
+            }
+        },
+        {
+            "id": "ef8a714c-4c71-4318-af85-20de8699a4ed",
+            "data": {
+                "name": "cleanup",
+                "error": false,
+                "result": "{\n  \"result\": \"null\",\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"cleanup\"\n}",
+                "description": "Describe the task of node python_node_6",
+                "python_code": "import os\nfrom prefect.logging import get_run_logger\n            \ndef exec(myinput):\n    # time.sleep(600)\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    duckdb_file_name = params['duckdb_file_name']\n    flow_action_type = params['flow_action_type']\n    if flow_action_type in ['mimic_to_database']:\n        logger.info(\"<--------- Cleaning up DuckDB file --------->\")\n        # Get options\n        os.remove(duckdb_file_name)\n        logger.info(f\"File '{duckdb_file_name}' deleted successfully.\")\n        logger.info(\"<--------- Workflow complete --------->\")\n",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 300,
+                "y": -320
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 300,
+                "y": -320
+            }
+        },
+        {
+            "id": "4fd78512-3896-472c-be32-a303f915a0ae",
+            "data": {
+                "name": "duckdb_to_database",
+                "description": "Describe the task of node python_node_7",
+                "python_code": "import duckdb\nimport os, glob\nimport time\nfrom prefect.logging import get_run_logger\nfrom _shared_flow_utils.types import SupportedDatabaseDialects\nfrom _shared_flow_utils.dao.DBDao import DBDao\n\ndef create_table(conn, sql_file, schema_name=None):\n    with open(sql_file, 'r') as file:\n        sql_qry = file.read()\n        if \"@schema_name\" in sql_qry:\n            sql_qry = sql_qry.replace('@schema_name', schema_name)\n        conn.execute(sql_qry)\n\ndef export_data(duckdb_file_name, schema_name, to_dbdao, overwrite_schema, chunk_size, database_ddl):\n    logger = get_run_logger()\n    db_credentials = to_dbdao.tenant_configs\n    dialect = to_dbdao.dialect\n    if to_dbdao.check_schema_exists(schema_name):\n        if overwrite_schema:\n            to_dbdao.drop_schema(schema_name, cascade=True)\n        else:\n            logger.error(f\"Schema '{schema_name}'exist! To overwrite the existing schema, set 'Overwrite Schema' to True\")\n            raise ValueError()\n    to_dbdao.create_schema(schema_name)\n    match dialect:\n        case SupportedDatabaseDialects.POSTGRES:\n            attach_qry = f\"\"\"ATTACH 'host={db_credentials.host} port={db_credentials.port} dbname={db_credentials.databaseName} \n            user={db_credentials.adminUser} password={db_credentials.adminPassword.get_secret_value()}' \n            AS pg (TYPE POSTGRES, SCHEMA {schema_name});\n            \"\"\"\n            # Attach Posgres Database\n            with duckdb.connect(duckdb_file_name) as conn:\n                conn.execute(attach_qry)\n                # Creat schema and tables in postgres database\n                create_table(conn, database_ddl, schema_name=schema_name)\n                tables = conn.execute(f\"SELECT table_name FROM duckdb_tables() WHERE (database_name = 'pg')\").fetchall()\n                tables = [x[0] for x in tables]\n                for table in tables:\n                    conn.execute(f\"\"\"\n                    INSERT INTO pg.{schema_name}.{table}\n                    SELECT * FROM cdm.{table};    \n                    \"\"\")\n                conn.execute(\"DETACH pg;\")\n\n        case SupportedDatabaseDialects.HANA:\n            create_sqls = open(database_ddl).read().replace('@schema_name', schema_name).split(';')[:-1]\n            for create_sql in create_sqls:\n                with to_dbdao.engine.connect() as hana_conn:\n                    hana_conn.execute(text(create_sql))\n                    hana_conn.commit()\n            tables = to_dbdao.get_table_names(schema=schema_name)\n            for table in tables:\n                tmp = 0\n                for chunk, percent in read_table_chunks(duckdb_file_name, table, chunk_size=chunk_size):   \n                    if percent != tmp: \n                        flag = True\n                        tmp = percent  \n                    else:\n                        flag = False           \n                    if not chunk.empty:\n                        insert_to_hana_direct(to_dbdao, chunk, schema_name, table)\n                    if flag: \n                        logger.info(f\"{int(percent)}% of table '{table}' is inserted\")\n                logger.info(f\"100% of table '{table}' is inserted\")\n\n\ndef read_table_chunks(duckdb_file_name, table, chunk_size):\n    with duckdb.connect(duckdb_file_name) as conn:\n        count = conn.execute(f\"SELECT COUNT(*) FROM cdm.{table}\").fetchone()[0]\n        for offset in range(0, count, chunk_size):\n            chunk = conn.execute(f\"\"\"\n                SELECT * FROM cdm.{table}\n                LIMIT {chunk_size} OFFSET {offset}\n            \"\"\").df()\n            percent = (offset/count * 100)//10 * 10\n            yield chunk, percent\n\ndef insert_to_hana_direct(to_dbdao, chunk, schema_name, table):\n    with to_dbdao.engine.connect() as hana_conn:\n        # Use Upper case for HANA\n        chunk.columns = chunk.columns.str.upper()\n        # Replace np.nan with None\n        chunk.replace([np.nan], [None], inplace=True)\n        columns = chunk.columns.tolist()\n        columns_str = ', '.join(f'\"{col}\"' for col in columns)\n        placeholders = ','.join(f':{col}' for col in columns)\n        insert_stmt = f'INSERT INTO {schema_name}.{table} ({columns_str}) VALUES ({placeholders})'\n        data = chunk.to_dict('records')\n        hana_conn.execute(text(insert_stmt), data)\n        hana_conn.commit()\n    to_dbdao.engine.dispose()\n            \ndef exec(myinput):\n    # time.sleep(600)\n    logger = get_run_logger()\n    params = myinput.get('constant_node').result['params']\n    consts = myinput.get('constant_node').result['consts']\n    duckdb_file_name = params['duckdb_file_name']\n    schema_name = params['schema_name']\n    use_cache_db = params['use_cache_db']\n    database_code = params['database_code']\n    overwrite_schema = params['overwrite_schema']\n    chunk_size = params['chunk_size']\n    flow_action_type = params['flow_action_type']\n    to_dbdao = DBDao(use_cache_db=use_cache_db, database_code=database_code)\n    dialect = to_dbdao.dialect\n    database_ddl = consts['PostgresDDL'] if SupportedDatabaseDialects.POSTGRES else consts['HANADDL']\n    if flow_action_type in ['mimic_to_database','duckdb_to_database']:\n        logger.info(\"<--------- Exporting CDM tables to Database --------->\")\n        export_data(duckdb_file_name=duckdb_file_name, schema_name=schema_name, to_dbdao=to_dbdao, overwrite_schema=overwrite_schema, chunk_size=chunk_size, database_ddl=database_ddl)"
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -210,
+                "y": -320
+            },
+            "selected": true,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -210,
+                "y": -320
+            }
+        }
+    ]
 }
