@@ -1,1865 +1,1861 @@
 {
-  "id": "0ca294ba-fe97-468b-ac35-2078aa2da10b",
   "name": "dataload_synpuf1k",
-  "flow": {
-    "edges": [
-      {
-        "id": "reactflow__edge-9ed84450-efc1-40cb-a940-05f8f4332dbfsource_9ed84450-efc1-40cb-a940-05f8f4332dbf_dataframe-3113c57f-2787-4584-9ecf-150c6a7a3a9dtarget_3113c57f-2787-4584-9ecf-150c6a7a3a9d_dataframe",
-        "source": "9ed84450-efc1-40cb-a940-05f8f4332dbf",
-        "target": "3113c57f-2787-4584-9ecf-150c6a7a3a9d",
-        "sourceHandle": "source_9ed84450-efc1-40cb-a940-05f8f4332dbf_dataframe",
-        "targetHandle": "target_3113c57f-2787-4584-9ecf-150c6a7a3a9d_dataframe"
+  "description": "Load SynPUF 1K dataset into the database",
+  "edges": [
+    {
+      "id": "reactflow__edge-9ed84450-efc1-40cb-a940-05f8f4332dbfsource_9ed84450-efc1-40cb-a940-05f8f4332dbf_dataframe-3113c57f-2787-4584-9ecf-150c6a7a3a9dtarget_3113c57f-2787-4584-9ecf-150c6a7a3a9d_dataframe",
+      "source": "9ed84450-efc1-40cb-a940-05f8f4332dbf",
+      "target": "3113c57f-2787-4584-9ecf-150c6a7a3a9d",
+      "sourceHandle": "source_9ed84450-efc1-40cb-a940-05f8f4332dbf_dataframe",
+      "targetHandle": "target_3113c57f-2787-4584-9ecf-150c6a7a3a9d_dataframe"
+    },
+    {
+      "id": "reactflow__edge-c696f053-c661-4a43-b225-2a83614308b5source_c696f053-c661-4a43-b225-2a83614308b5_dataframe-2e9c9a23-f3ca-4818-9701-78aca5e32c1btarget_2e9c9a23-f3ca-4818-9701-78aca5e32c1b_dataframe",
+      "source": "c696f053-c661-4a43-b225-2a83614308b5",
+      "target": "2e9c9a23-f3ca-4818-9701-78aca5e32c1b",
+      "sourceHandle": "source_c696f053-c661-4a43-b225-2a83614308b5_dataframe",
+      "targetHandle": "target_2e9c9a23-f3ca-4818-9701-78aca5e32c1b_dataframe"
+    },
+    {
+      "id": "reactflow__edge-fce01769-b65e-4f25-a864-fb307de41a69source_fce01769-b65e-4f25-a864-fb307de41a69_dataframe-38946cee-cf75-44cd-a9e8-df1ccd5d228atarget_38946cee-cf75-44cd-a9e8-df1ccd5d228a_dataframe",
+      "source": "fce01769-b65e-4f25-a864-fb307de41a69",
+      "target": "38946cee-cf75-44cd-a9e8-df1ccd5d228a",
+      "sourceHandle": "source_fce01769-b65e-4f25-a864-fb307de41a69_dataframe",
+      "targetHandle": "target_38946cee-cf75-44cd-a9e8-df1ccd5d228a_dataframe"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-9ed84450-efc1-40cb-a940-05f8f4332dbftarget_9ed84450-efc1-40cb-a940-05f8f4332dbf_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "9ed84450-efc1-40cb-a940-05f8f4332dbf",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_9ed84450-efc1-40cb-a940-05f8f4332dbf_object"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-c696f053-c661-4a43-b225-2a83614308b5target_c696f053-c661-4a43-b225-2a83614308b5_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "c696f053-c661-4a43-b225-2a83614308b5",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_c696f053-c661-4a43-b225-2a83614308b5_object"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-fce01769-b65e-4f25-a864-fb307de41a69target_fce01769-b65e-4f25-a864-fb307de41a69_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "fce01769-b65e-4f25-a864-fb307de41a69",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_fce01769-b65e-4f25-a864-fb307de41a69_object"
+    },
+    {
+      "id": "reactflow__edge-d1f322db-3f25-4f97-84c2-5d63dfa8c0e9source_d1f322db-3f25-4f97-84c2-5d63dfa8c0e9_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "d1f322db-3f25-4f97-84c2-5d63dfa8c0e9",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "selected": false,
+      "sourceHandle": "source_d1f322db-3f25-4f97-84c2-5d63dfa8c0e9_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-a23b4fd9-6252-42dd-bea3-f559b72e24d4source_a23b4fd9-6252-42dd-bea3-f559b72e24d4_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "a23b4fd9-6252-42dd-bea3-f559b72e24d4",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "selected": false,
+      "sourceHandle": "source_a23b4fd9-6252-42dd-bea3-f559b72e24d4_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "215676bf-b21e-453d-bf6a-40a8349a2c8f",
+      "source": "a23b4fd9-6252-42dd-bea3-f559b72e24d4",
+      "target": "91f8290a-27b7-4423-824a-83b619e09c17",
+      "selected": false
+    },
+    {
+      "id": "reactflow__edge-91f8290a-27b7-4423-824a-83b619e09c17source_91f8290a-27b7-4423-824a-83b619e09c17_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "91f8290a-27b7-4423-824a-83b619e09c17",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "selected": false,
+      "sourceHandle": "source_91f8290a-27b7-4423-824a-83b619e09c17_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-d8b5dce6-2d3a-45a7-9cb3-ee10958facb2source_d8b5dce6-2d3a-45a7-9cb3-ee10958facb2_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "d8b5dce6-2d3a-45a7-9cb3-ee10958facb2",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "selected": false,
+      "sourceHandle": "source_d8b5dce6-2d3a-45a7-9cb3-ee10958facb2_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-d9bfdbe6-f31f-4c79-b71c-76893b9c6a52target_d9bfdbe6-f31f-4c79-b71c-76893b9c6a52_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "d9bfdbe6-f31f-4c79-b71c-76893b9c6a52",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_d9bfdbe6-f31f-4c79-b71c-76893b9c6a52_object"
+    },
+    {
+      "id": "reactflow__edge-d9bfdbe6-f31f-4c79-b71c-76893b9c6a52source_d9bfdbe6-f31f-4c79-b71c-76893b9c6a52_dataframe-43992393-822a-4759-a798-d4bd9ef55cc9target_43992393-822a-4759-a798-d4bd9ef55cc9_dataframe",
+      "source": "d9bfdbe6-f31f-4c79-b71c-76893b9c6a52",
+      "target": "43992393-822a-4759-a798-d4bd9ef55cc9",
+      "sourceHandle": "source_d9bfdbe6-f31f-4c79-b71c-76893b9c6a52_dataframe",
+      "targetHandle": "target_43992393-822a-4759-a798-d4bd9ef55cc9_dataframe"
+    },
+    {
+      "id": "reactflow__edge-10285cef-57df-4cf0-b6aa-8b817b72a5d6source_10285cef-57df-4cf0-b6aa-8b817b72a5d6_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "10285cef-57df-4cf0-b6aa-8b817b72a5d6",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "selected": false,
+      "sourceHandle": "source_10285cef-57df-4cf0-b6aa-8b817b72a5d6_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-3f2687a0-58df-49fa-81c4-1cac0145d9aesource_3f2687a0-58df-49fa-81c4-1cac0145d9ae_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "3f2687a0-58df-49fa-81c4-1cac0145d9ae",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_3f2687a0-58df-49fa-81c4-1cac0145d9ae_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-c3df5960-e0ba-4e08-863b-0a7b8504585ftarget_c3df5960-e0ba-4e08-863b-0a7b8504585f_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "c3df5960-e0ba-4e08-863b-0a7b8504585f",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_c3df5960-e0ba-4e08-863b-0a7b8504585f_object"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-eac5fccf-c296-4b8e-b679-78663ee23204target_eac5fccf-c296-4b8e-b679-78663ee23204_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "eac5fccf-c296-4b8e-b679-78663ee23204",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_eac5fccf-c296-4b8e-b679-78663ee23204_object"
+    },
+    {
+      "id": "reactflow__edge-c3df5960-e0ba-4e08-863b-0a7b8504585fsource_c3df5960-e0ba-4e08-863b-0a7b8504585f_dataframe-070d554b-54e6-478d-bb2f-994e1fc8d47dtarget_070d554b-54e6-478d-bb2f-994e1fc8d47d_dataframe",
+      "source": "c3df5960-e0ba-4e08-863b-0a7b8504585f",
+      "target": "070d554b-54e6-478d-bb2f-994e1fc8d47d",
+      "sourceHandle": "source_c3df5960-e0ba-4e08-863b-0a7b8504585f_dataframe",
+      "targetHandle": "target_070d554b-54e6-478d-bb2f-994e1fc8d47d_dataframe"
+    },
+    {
+      "id": "reactflow__edge-eac5fccf-c296-4b8e-b679-78663ee23204source_eac5fccf-c296-4b8e-b679-78663ee23204_dataframe-d7e8d904-4097-4ebf-bb76-deeb787e5f3atarget_d7e8d904-4097-4ebf-bb76-deeb787e5f3a_dataframe",
+      "source": "eac5fccf-c296-4b8e-b679-78663ee23204",
+      "target": "d7e8d904-4097-4ebf-bb76-deeb787e5f3a",
+      "sourceHandle": "source_eac5fccf-c296-4b8e-b679-78663ee23204_dataframe",
+      "targetHandle": "target_d7e8d904-4097-4ebf-bb76-deeb787e5f3a_dataframe"
+    },
+    {
+      "id": "reactflow__edge-1a1a17ff-683c-4aaf-bbc4-87d58d3f49dbsource_1a1a17ff-683c-4aaf-bbc4-87d58d3f49db_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "1a1a17ff-683c-4aaf-bbc4-87d58d3f49db",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_1a1a17ff-683c-4aaf-bbc4-87d58d3f49db_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-a563f09c-4873-444f-b819-54652559471dsource_a563f09c-4873-444f-b819-54652559471d_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "a563f09c-4873-444f-b819-54652559471d",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_a563f09c-4873-444f-b819-54652559471d_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-a730b7a5-0e63-411d-892e-834592978277target_a730b7a5-0e63-411d-892e-834592978277_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "a730b7a5-0e63-411d-892e-834592978277",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_a730b7a5-0e63-411d-892e-834592978277_object"
+    },
+    {
+      "id": "e9525301-f7d1-4ea3-9441-065004fad492",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "ea22ad9f-d40d-477e-8d1c-504020af126c"
+    },
+    {
+      "id": "reactflow__edge-a730b7a5-0e63-411d-892e-834592978277source_a730b7a5-0e63-411d-892e-834592978277_dataframe-b0ddf7d9-3bc6-4729-800d-db7596adc94atarget_b0ddf7d9-3bc6-4729-800d-db7596adc94a_dataframe",
+      "source": "a730b7a5-0e63-411d-892e-834592978277",
+      "target": "b0ddf7d9-3bc6-4729-800d-db7596adc94a",
+      "sourceHandle": "source_a730b7a5-0e63-411d-892e-834592978277_dataframe",
+      "targetHandle": "target_b0ddf7d9-3bc6-4729-800d-db7596adc94a_dataframe"
+    },
+    {
+      "id": "reactflow__edge-ea22ad9f-d40d-477e-8d1c-504020af126csource_ea22ad9f-d40d-477e-8d1c-504020af126c_dataframe-003a15bb-ed30-482f-b38a-6d69e6ffd2d6target_003a15bb-ed30-482f-b38a-6d69e6ffd2d6_dataframe",
+      "source": "ea22ad9f-d40d-477e-8d1c-504020af126c",
+      "target": "003a15bb-ed30-482f-b38a-6d69e6ffd2d6",
+      "sourceHandle": "source_ea22ad9f-d40d-477e-8d1c-504020af126c_dataframe",
+      "targetHandle": "target_003a15bb-ed30-482f-b38a-6d69e6ffd2d6_dataframe"
+    },
+    {
+      "id": "reactflow__edge-5c905d0e-3c53-4dbb-80a5-1a2dbc60582csource_5c905d0e-3c53-4dbb-80a5-1a2dbc60582c_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "5c905d0e-3c53-4dbb-80a5-1a2dbc60582c",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_5c905d0e-3c53-4dbb-80a5-1a2dbc60582c_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-312796fb-867a-4c67-9c95-c8d032bfe8e3source_312796fb-867a-4c67-9c95-c8d032bfe8e3_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "312796fb-867a-4c67-9c95-c8d032bfe8e3",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_312796fb-867a-4c67-9c95-c8d032bfe8e3_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-14a85f1e-70ea-4095-81c1-03e0db98846asource_14a85f1e-70ea-4095-81c1-03e0db98846a_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "14a85f1e-70ea-4095-81c1-03e0db98846a",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_14a85f1e-70ea-4095-81c1-03e0db98846a_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-57197e42-7e5a-45a6-bdfb-842ab2f286fcsource_57197e42-7e5a-45a6-bdfb-842ab2f286fc_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "57197e42-7e5a-45a6-bdfb-842ab2f286fc",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_57197e42-7e5a-45a6-bdfb-842ab2f286fc_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-d6dd953c-7550-47f5-8437-243c582ca5datarget_d6dd953c-7550-47f5-8437-243c582ca5da_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "d6dd953c-7550-47f5-8437-243c582ca5da",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_d6dd953c-7550-47f5-8437-243c582ca5da_object"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-35e49adb-def7-4a8b-9ba1-fac64e7f4638target_35e49adb-def7-4a8b-9ba1-fac64e7f4638_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "35e49adb-def7-4a8b-9ba1-fac64e7f4638",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_35e49adb-def7-4a8b-9ba1-fac64e7f4638_object"
+    },
+    {
+      "id": "b8338209-a7d1-4a75-9aa8-1a8d10da98b9",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "c605347f-d95e-49e9-91f5-6c18ec99c49d"
+    },
+    {
+      "id": "reactflow__edge-d6dd953c-7550-47f5-8437-243c582ca5dasource_d6dd953c-7550-47f5-8437-243c582ca5da_dataframe-0f3c59f2-98ad-4f35-983e-558ce93972ebtarget_0f3c59f2-98ad-4f35-983e-558ce93972eb_dataframe",
+      "source": "d6dd953c-7550-47f5-8437-243c582ca5da",
+      "target": "0f3c59f2-98ad-4f35-983e-558ce93972eb",
+      "sourceHandle": "source_d6dd953c-7550-47f5-8437-243c582ca5da_dataframe",
+      "targetHandle": "target_0f3c59f2-98ad-4f35-983e-558ce93972eb_dataframe"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-b9aca654-0570-428c-81c7-2ad2b654ec3ftarget_b9aca654-0570-428c-81c7-2ad2b654ec3f_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "b9aca654-0570-428c-81c7-2ad2b654ec3f",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_b9aca654-0570-428c-81c7-2ad2b654ec3f_object"
+    },
+    {
+      "id": "reactflow__edge-35e49adb-def7-4a8b-9ba1-fac64e7f4638source_35e49adb-def7-4a8b-9ba1-fac64e7f4638_dataframe-ca74e9d1-803d-412b-bc75-1abcb04aa1actarget_ca74e9d1-803d-412b-bc75-1abcb04aa1ac_dataframe",
+      "source": "35e49adb-def7-4a8b-9ba1-fac64e7f4638",
+      "target": "ca74e9d1-803d-412b-bc75-1abcb04aa1ac",
+      "sourceHandle": "source_35e49adb-def7-4a8b-9ba1-fac64e7f4638_dataframe",
+      "targetHandle": "target_ca74e9d1-803d-412b-bc75-1abcb04aa1ac_dataframe"
+    },
+    {
+      "id": "reactflow__edge-c605347f-d95e-49e9-91f5-6c18ec99c49dsource_c605347f-d95e-49e9-91f5-6c18ec99c49d_dataframe-d0411333-7948-406d-8b72-dfb422c03570target_d0411333-7948-406d-8b72-dfb422c03570_dataframe",
+      "source": "c605347f-d95e-49e9-91f5-6c18ec99c49d",
+      "target": "d0411333-7948-406d-8b72-dfb422c03570",
+      "sourceHandle": "source_c605347f-d95e-49e9-91f5-6c18ec99c49d_dataframe",
+      "targetHandle": "target_d0411333-7948-406d-8b72-dfb422c03570_dataframe"
+    },
+    {
+      "id": "reactflow__edge-b9aca654-0570-428c-81c7-2ad2b654ec3fsource_b9aca654-0570-428c-81c7-2ad2b654ec3f_dataframe-3b56f2eb-e627-4c10-a4a2-0f73f994eb22target_3b56f2eb-e627-4c10-a4a2-0f73f994eb22_dataframe",
+      "source": "b9aca654-0570-428c-81c7-2ad2b654ec3f",
+      "target": "3b56f2eb-e627-4c10-a4a2-0f73f994eb22",
+      "sourceHandle": "source_b9aca654-0570-428c-81c7-2ad2b654ec3f_dataframe",
+      "targetHandle": "target_3b56f2eb-e627-4c10-a4a2-0f73f994eb22_dataframe"
+    },
+    {
+      "id": "reactflow__edge-3b3d4405-bbc1-4c65-bfc2-65203e17375csource_3b3d4405-bbc1-4c65-bfc2-65203e17375c_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "3b3d4405-bbc1-4c65-bfc2-65203e17375c",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_3b3d4405-bbc1-4c65-bfc2-65203e17375c_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-f2c67a41-0fa8-49f5-af94-fc0a31a57b65source_f2c67a41-0fa8-49f5-af94-fc0a31a57b65_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "f2c67a41-0fa8-49f5-af94-fc0a31a57b65",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_f2c67a41-0fa8-49f5-af94-fc0a31a57b65_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-97698c96-9f1d-464d-86ee-081c490d24absource_97698c96-9f1d-464d-86ee-081c490d24ab_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "97698c96-9f1d-464d-86ee-081c490d24ab",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_97698c96-9f1d-464d-86ee-081c490d24ab_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-8f7add49-8952-4016-8ae9-bfddcd501ca0source_8f7add49-8952-4016-8ae9-bfddcd501ca0_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "8f7add49-8952-4016-8ae9-bfddcd501ca0",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_8f7add49-8952-4016-8ae9-bfddcd501ca0_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-0523a96c-3ad6-4ad8-b922-b7161552fb08source_0523a96c-3ad6-4ad8-b922-b7161552fb08_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
+      "source": "0523a96c-3ad6-4ad8-b922-b7161552fb08",
+      "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "sourceHandle": "source_0523a96c-3ad6-4ad8-b922-b7161552fb08_any",
+      "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6target_3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6_object"
+    },
+    {
+      "id": "5112a487-de16-4586-ba33-6844710b456d",
+      "source": "3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6",
+      "target": "00e3fef2-9057-47cf-89c8-3eb2743020de"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-19d43213-3205-4d97-994b-6cc82a5a792etarget_19d43213-3205-4d97-994b-6cc82a5a792e_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "19d43213-3205-4d97-994b-6cc82a5a792e",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_19d43213-3205-4d97-994b-6cc82a5a792e_object"
+    },
+    {
+      "id": "67398058-304e-4fbd-9b60-391fefb98a6f",
+      "source": "19d43213-3205-4d97-994b-6cc82a5a792e",
+      "target": "7ed3de41-03f6-4510-8b66-2cee8254e9f6"
+    },
+    {
+      "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-632c1623-8ee8-4b68-aec6-93776fc672a0target_632c1623-8ee8-4b68-aec6-93776fc672a0_object",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "632c1623-8ee8-4b68-aec6-93776fc672a0",
+      "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
+      "targetHandle": "target_632c1623-8ee8-4b68-aec6-93776fc672a0_object"
+    },
+    {
+      "id": "b459064b-1ad7-40ed-abb0-6a7b02a874f5",
+      "source": "632c1623-8ee8-4b68-aec6-93776fc672a0",
+      "target": "5bbb05a0-abb3-4bb2-b930-04faaf66ece4"
+    },
+    {
+      "id": "b6ae998d-6922-4cfc-8299-050a4f746f06",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "7abdf118-6819-458c-8b55-6bc5af2bc6ec"
+    },
+    {
+      "id": "01c00d0a-dfc1-4b82-9058-6d3f74372b7c",
+      "source": "7abdf118-6819-458c-8b55-6bc5af2bc6ec",
+      "target": "be8ff213-3cf7-4878-9cc7-197b8307b335"
+    },
+    {
+      "id": "ff15e740-1663-404c-b0fc-73cff3372943",
+      "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "target": "b5fbbf4c-592a-4924-8594-ed5fd27e1f3a"
+    },
+    {
+      "id": "c835dcf2-60ba-4d87-8bac-a99254ebb5c8",
+      "source": "b5fbbf4c-592a-4924-8594-ed5fd27e1f3a",
+      "target": "fa2be361-e2cb-42d0-aaa4-2169133d8471"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "d1f322db-3f25-4f97-84c2-5d63dfa8c0e9",
+      "data": {
+        "file": "003_CARE_SITE.csv",
+        "name": "care_site_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node d1f322db"
       },
-      {
-        "id": "reactflow__edge-c696f053-c661-4a43-b225-2a83614308b5source_c696f053-c661-4a43-b225-2a83614308b5_dataframe-2e9c9a23-f3ca-4818-9701-78aca5e32c1btarget_2e9c9a23-f3ca-4818-9701-78aca5e32c1b_dataframe",
-        "source": "c696f053-c661-4a43-b225-2a83614308b5",
-        "target": "2e9c9a23-f3ca-4818-9701-78aca5e32c1b",
-        "sourceHandle": "source_c696f053-c661-4a43-b225-2a83614308b5_dataframe",
-        "targetHandle": "target_2e9c9a23-f3ca-4818-9701-78aca5e32c1b_dataframe"
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 520
       },
-      {
-        "id": "reactflow__edge-fce01769-b65e-4f25-a864-fb307de41a69source_fce01769-b65e-4f25-a864-fb307de41a69_dataframe-38946cee-cf75-44cd-a9e8-df1ccd5d228atarget_38946cee-cf75-44cd-a9e8-df1ccd5d228a_dataframe",
-        "source": "fce01769-b65e-4f25-a864-fb307de41a69",
-        "target": "38946cee-cf75-44cd-a9e8-df1ccd5d228a",
-        "sourceHandle": "source_fce01769-b65e-4f25-a864-fb307de41a69_dataframe",
-        "targetHandle": "target_38946cee-cf75-44cd-a9e8-df1ccd5d228a_dataframe"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-9ed84450-efc1-40cb-a940-05f8f4332dbftarget_9ed84450-efc1-40cb-a940-05f8f4332dbf_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "9ed84450-efc1-40cb-a940-05f8f4332dbf",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_9ed84450-efc1-40cb-a940-05f8f4332dbf_object"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-c696f053-c661-4a43-b225-2a83614308b5target_c696f053-c661-4a43-b225-2a83614308b5_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "c696f053-c661-4a43-b225-2a83614308b5",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_c696f053-c661-4a43-b225-2a83614308b5_object"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-fce01769-b65e-4f25-a864-fb307de41a69target_fce01769-b65e-4f25-a864-fb307de41a69_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "fce01769-b65e-4f25-a864-fb307de41a69",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_fce01769-b65e-4f25-a864-fb307de41a69_object"
-      },
-      {
-        "id": "reactflow__edge-d1f322db-3f25-4f97-84c2-5d63dfa8c0e9source_d1f322db-3f25-4f97-84c2-5d63dfa8c0e9_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "d1f322db-3f25-4f97-84c2-5d63dfa8c0e9",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "selected": false,
-        "sourceHandle": "source_d1f322db-3f25-4f97-84c2-5d63dfa8c0e9_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-a23b4fd9-6252-42dd-bea3-f559b72e24d4source_a23b4fd9-6252-42dd-bea3-f559b72e24d4_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "a23b4fd9-6252-42dd-bea3-f559b72e24d4",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "selected": false,
-        "sourceHandle": "source_a23b4fd9-6252-42dd-bea3-f559b72e24d4_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "215676bf-b21e-453d-bf6a-40a8349a2c8f",
-        "source": "a23b4fd9-6252-42dd-bea3-f559b72e24d4",
-        "target": "91f8290a-27b7-4423-824a-83b619e09c17",
-        "selected": false
-      },
-      {
-        "id": "reactflow__edge-91f8290a-27b7-4423-824a-83b619e09c17source_91f8290a-27b7-4423-824a-83b619e09c17_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "91f8290a-27b7-4423-824a-83b619e09c17",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "selected": false,
-        "sourceHandle": "source_91f8290a-27b7-4423-824a-83b619e09c17_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-d8b5dce6-2d3a-45a7-9cb3-ee10958facb2source_d8b5dce6-2d3a-45a7-9cb3-ee10958facb2_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "d8b5dce6-2d3a-45a7-9cb3-ee10958facb2",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "selected": false,
-        "sourceHandle": "source_d8b5dce6-2d3a-45a7-9cb3-ee10958facb2_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-d9bfdbe6-f31f-4c79-b71c-76893b9c6a52target_d9bfdbe6-f31f-4c79-b71c-76893b9c6a52_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "d9bfdbe6-f31f-4c79-b71c-76893b9c6a52",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_d9bfdbe6-f31f-4c79-b71c-76893b9c6a52_object"
-      },
-      {
-        "id": "reactflow__edge-d9bfdbe6-f31f-4c79-b71c-76893b9c6a52source_d9bfdbe6-f31f-4c79-b71c-76893b9c6a52_dataframe-43992393-822a-4759-a798-d4bd9ef55cc9target_43992393-822a-4759-a798-d4bd9ef55cc9_dataframe",
-        "source": "d9bfdbe6-f31f-4c79-b71c-76893b9c6a52",
-        "target": "43992393-822a-4759-a798-d4bd9ef55cc9",
-        "sourceHandle": "source_d9bfdbe6-f31f-4c79-b71c-76893b9c6a52_dataframe",
-        "targetHandle": "target_43992393-822a-4759-a798-d4bd9ef55cc9_dataframe"
-      },
-      {
-        "id": "reactflow__edge-10285cef-57df-4cf0-b6aa-8b817b72a5d6source_10285cef-57df-4cf0-b6aa-8b817b72a5d6_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "10285cef-57df-4cf0-b6aa-8b817b72a5d6",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "selected": false,
-        "sourceHandle": "source_10285cef-57df-4cf0-b6aa-8b817b72a5d6_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-3f2687a0-58df-49fa-81c4-1cac0145d9aesource_3f2687a0-58df-49fa-81c4-1cac0145d9ae_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "3f2687a0-58df-49fa-81c4-1cac0145d9ae",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_3f2687a0-58df-49fa-81c4-1cac0145d9ae_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-c3df5960-e0ba-4e08-863b-0a7b8504585ftarget_c3df5960-e0ba-4e08-863b-0a7b8504585f_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "c3df5960-e0ba-4e08-863b-0a7b8504585f",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_c3df5960-e0ba-4e08-863b-0a7b8504585f_object"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-eac5fccf-c296-4b8e-b679-78663ee23204target_eac5fccf-c296-4b8e-b679-78663ee23204_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "eac5fccf-c296-4b8e-b679-78663ee23204",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_eac5fccf-c296-4b8e-b679-78663ee23204_object"
-      },
-      {
-        "id": "reactflow__edge-c3df5960-e0ba-4e08-863b-0a7b8504585fsource_c3df5960-e0ba-4e08-863b-0a7b8504585f_dataframe-070d554b-54e6-478d-bb2f-994e1fc8d47dtarget_070d554b-54e6-478d-bb2f-994e1fc8d47d_dataframe",
-        "source": "c3df5960-e0ba-4e08-863b-0a7b8504585f",
-        "target": "070d554b-54e6-478d-bb2f-994e1fc8d47d",
-        "sourceHandle": "source_c3df5960-e0ba-4e08-863b-0a7b8504585f_dataframe",
-        "targetHandle": "target_070d554b-54e6-478d-bb2f-994e1fc8d47d_dataframe"
-      },
-      {
-        "id": "reactflow__edge-eac5fccf-c296-4b8e-b679-78663ee23204source_eac5fccf-c296-4b8e-b679-78663ee23204_dataframe-d7e8d904-4097-4ebf-bb76-deeb787e5f3atarget_d7e8d904-4097-4ebf-bb76-deeb787e5f3a_dataframe",
-        "source": "eac5fccf-c296-4b8e-b679-78663ee23204",
-        "target": "d7e8d904-4097-4ebf-bb76-deeb787e5f3a",
-        "sourceHandle": "source_eac5fccf-c296-4b8e-b679-78663ee23204_dataframe",
-        "targetHandle": "target_d7e8d904-4097-4ebf-bb76-deeb787e5f3a_dataframe"
-      },
-      {
-        "id": "reactflow__edge-1a1a17ff-683c-4aaf-bbc4-87d58d3f49dbsource_1a1a17ff-683c-4aaf-bbc4-87d58d3f49db_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "1a1a17ff-683c-4aaf-bbc4-87d58d3f49db",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_1a1a17ff-683c-4aaf-bbc4-87d58d3f49db_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-a563f09c-4873-444f-b819-54652559471dsource_a563f09c-4873-444f-b819-54652559471d_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "a563f09c-4873-444f-b819-54652559471d",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_a563f09c-4873-444f-b819-54652559471d_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-a730b7a5-0e63-411d-892e-834592978277target_a730b7a5-0e63-411d-892e-834592978277_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "a730b7a5-0e63-411d-892e-834592978277",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_a730b7a5-0e63-411d-892e-834592978277_object"
-      },
-      {
-        "id": "e9525301-f7d1-4ea3-9441-065004fad492",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "ea22ad9f-d40d-477e-8d1c-504020af126c"
-      },
-      {
-        "id": "reactflow__edge-a730b7a5-0e63-411d-892e-834592978277source_a730b7a5-0e63-411d-892e-834592978277_dataframe-b0ddf7d9-3bc6-4729-800d-db7596adc94atarget_b0ddf7d9-3bc6-4729-800d-db7596adc94a_dataframe",
-        "source": "a730b7a5-0e63-411d-892e-834592978277",
-        "target": "b0ddf7d9-3bc6-4729-800d-db7596adc94a",
-        "sourceHandle": "source_a730b7a5-0e63-411d-892e-834592978277_dataframe",
-        "targetHandle": "target_b0ddf7d9-3bc6-4729-800d-db7596adc94a_dataframe"
-      },
-      {
-        "id": "reactflow__edge-ea22ad9f-d40d-477e-8d1c-504020af126csource_ea22ad9f-d40d-477e-8d1c-504020af126c_dataframe-003a15bb-ed30-482f-b38a-6d69e6ffd2d6target_003a15bb-ed30-482f-b38a-6d69e6ffd2d6_dataframe",
-        "source": "ea22ad9f-d40d-477e-8d1c-504020af126c",
-        "target": "003a15bb-ed30-482f-b38a-6d69e6ffd2d6",
-        "sourceHandle": "source_ea22ad9f-d40d-477e-8d1c-504020af126c_dataframe",
-        "targetHandle": "target_003a15bb-ed30-482f-b38a-6d69e6ffd2d6_dataframe"
-      },
-      {
-        "id": "reactflow__edge-5c905d0e-3c53-4dbb-80a5-1a2dbc60582csource_5c905d0e-3c53-4dbb-80a5-1a2dbc60582c_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "5c905d0e-3c53-4dbb-80a5-1a2dbc60582c",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_5c905d0e-3c53-4dbb-80a5-1a2dbc60582c_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-312796fb-867a-4c67-9c95-c8d032bfe8e3source_312796fb-867a-4c67-9c95-c8d032bfe8e3_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "312796fb-867a-4c67-9c95-c8d032bfe8e3",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_312796fb-867a-4c67-9c95-c8d032bfe8e3_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-14a85f1e-70ea-4095-81c1-03e0db98846asource_14a85f1e-70ea-4095-81c1-03e0db98846a_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "14a85f1e-70ea-4095-81c1-03e0db98846a",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_14a85f1e-70ea-4095-81c1-03e0db98846a_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-57197e42-7e5a-45a6-bdfb-842ab2f286fcsource_57197e42-7e5a-45a6-bdfb-842ab2f286fc_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "57197e42-7e5a-45a6-bdfb-842ab2f286fc",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_57197e42-7e5a-45a6-bdfb-842ab2f286fc_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-d6dd953c-7550-47f5-8437-243c582ca5datarget_d6dd953c-7550-47f5-8437-243c582ca5da_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "d6dd953c-7550-47f5-8437-243c582ca5da",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_d6dd953c-7550-47f5-8437-243c582ca5da_object"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-35e49adb-def7-4a8b-9ba1-fac64e7f4638target_35e49adb-def7-4a8b-9ba1-fac64e7f4638_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "35e49adb-def7-4a8b-9ba1-fac64e7f4638",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_35e49adb-def7-4a8b-9ba1-fac64e7f4638_object"
-      },
-      {
-        "id": "b8338209-a7d1-4a75-9aa8-1a8d10da98b9",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "c605347f-d95e-49e9-91f5-6c18ec99c49d"
-      },
-      {
-        "id": "reactflow__edge-d6dd953c-7550-47f5-8437-243c582ca5dasource_d6dd953c-7550-47f5-8437-243c582ca5da_dataframe-0f3c59f2-98ad-4f35-983e-558ce93972ebtarget_0f3c59f2-98ad-4f35-983e-558ce93972eb_dataframe",
-        "source": "d6dd953c-7550-47f5-8437-243c582ca5da",
-        "target": "0f3c59f2-98ad-4f35-983e-558ce93972eb",
-        "sourceHandle": "source_d6dd953c-7550-47f5-8437-243c582ca5da_dataframe",
-        "targetHandle": "target_0f3c59f2-98ad-4f35-983e-558ce93972eb_dataframe"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-b9aca654-0570-428c-81c7-2ad2b654ec3ftarget_b9aca654-0570-428c-81c7-2ad2b654ec3f_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "b9aca654-0570-428c-81c7-2ad2b654ec3f",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_b9aca654-0570-428c-81c7-2ad2b654ec3f_object"
-      },
-      {
-        "id": "reactflow__edge-35e49adb-def7-4a8b-9ba1-fac64e7f4638source_35e49adb-def7-4a8b-9ba1-fac64e7f4638_dataframe-ca74e9d1-803d-412b-bc75-1abcb04aa1actarget_ca74e9d1-803d-412b-bc75-1abcb04aa1ac_dataframe",
-        "source": "35e49adb-def7-4a8b-9ba1-fac64e7f4638",
-        "target": "ca74e9d1-803d-412b-bc75-1abcb04aa1ac",
-        "sourceHandle": "source_35e49adb-def7-4a8b-9ba1-fac64e7f4638_dataframe",
-        "targetHandle": "target_ca74e9d1-803d-412b-bc75-1abcb04aa1ac_dataframe"
-      },
-      {
-        "id": "reactflow__edge-c605347f-d95e-49e9-91f5-6c18ec99c49dsource_c605347f-d95e-49e9-91f5-6c18ec99c49d_dataframe-d0411333-7948-406d-8b72-dfb422c03570target_d0411333-7948-406d-8b72-dfb422c03570_dataframe",
-        "source": "c605347f-d95e-49e9-91f5-6c18ec99c49d",
-        "target": "d0411333-7948-406d-8b72-dfb422c03570",
-        "sourceHandle": "source_c605347f-d95e-49e9-91f5-6c18ec99c49d_dataframe",
-        "targetHandle": "target_d0411333-7948-406d-8b72-dfb422c03570_dataframe"
-      },
-      {
-        "id": "reactflow__edge-b9aca654-0570-428c-81c7-2ad2b654ec3fsource_b9aca654-0570-428c-81c7-2ad2b654ec3f_dataframe-3b56f2eb-e627-4c10-a4a2-0f73f994eb22target_3b56f2eb-e627-4c10-a4a2-0f73f994eb22_dataframe",
-        "source": "b9aca654-0570-428c-81c7-2ad2b654ec3f",
-        "target": "3b56f2eb-e627-4c10-a4a2-0f73f994eb22",
-        "sourceHandle": "source_b9aca654-0570-428c-81c7-2ad2b654ec3f_dataframe",
-        "targetHandle": "target_3b56f2eb-e627-4c10-a4a2-0f73f994eb22_dataframe"
-      },
-      {
-        "id": "reactflow__edge-3b3d4405-bbc1-4c65-bfc2-65203e17375csource_3b3d4405-bbc1-4c65-bfc2-65203e17375c_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "3b3d4405-bbc1-4c65-bfc2-65203e17375c",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_3b3d4405-bbc1-4c65-bfc2-65203e17375c_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-f2c67a41-0fa8-49f5-af94-fc0a31a57b65source_f2c67a41-0fa8-49f5-af94-fc0a31a57b65_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "f2c67a41-0fa8-49f5-af94-fc0a31a57b65",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_f2c67a41-0fa8-49f5-af94-fc0a31a57b65_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-97698c96-9f1d-464d-86ee-081c490d24absource_97698c96-9f1d-464d-86ee-081c490d24ab_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "97698c96-9f1d-464d-86ee-081c490d24ab",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_97698c96-9f1d-464d-86ee-081c490d24ab_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-8f7add49-8952-4016-8ae9-bfddcd501ca0source_8f7add49-8952-4016-8ae9-bfddcd501ca0_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "8f7add49-8952-4016-8ae9-bfddcd501ca0",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_8f7add49-8952-4016-8ae9-bfddcd501ca0_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-0523a96c-3ad6-4ad8-b922-b7161552fb08source_0523a96c-3ad6-4ad8-b922-b7161552fb08_any-b37efa23-23ef-42ca-960d-2f528a5ad4c0target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any",
-        "source": "0523a96c-3ad6-4ad8-b922-b7161552fb08",
-        "target": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "sourceHandle": "source_0523a96c-3ad6-4ad8-b922-b7161552fb08_any",
-        "targetHandle": "target_b37efa23-23ef-42ca-960d-2f528a5ad4c0_any"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6target_3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6_object"
-      },
-      {
-        "id": "5112a487-de16-4586-ba33-6844710b456d",
-        "source": "3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6",
-        "target": "00e3fef2-9057-47cf-89c8-3eb2743020de"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-19d43213-3205-4d97-994b-6cc82a5a792etarget_19d43213-3205-4d97-994b-6cc82a5a792e_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "19d43213-3205-4d97-994b-6cc82a5a792e",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_19d43213-3205-4d97-994b-6cc82a5a792e_object"
-      },
-      {
-        "id": "67398058-304e-4fbd-9b60-391fefb98a6f",
-        "source": "19d43213-3205-4d97-994b-6cc82a5a792e",
-        "target": "7ed3de41-03f6-4510-8b66-2cee8254e9f6"
-      },
-      {
-        "id": "reactflow__edge-b37efa23-23ef-42ca-960d-2f528a5ad4c0source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object-632c1623-8ee8-4b68-aec6-93776fc672a0target_632c1623-8ee8-4b68-aec6-93776fc672a0_object",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "632c1623-8ee8-4b68-aec6-93776fc672a0",
-        "sourceHandle": "source_b37efa23-23ef-42ca-960d-2f528a5ad4c0_object",
-        "targetHandle": "target_632c1623-8ee8-4b68-aec6-93776fc672a0_object"
-      },
-      {
-        "id": "b459064b-1ad7-40ed-abb0-6a7b02a874f5",
-        "source": "632c1623-8ee8-4b68-aec6-93776fc672a0",
-        "target": "5bbb05a0-abb3-4bb2-b930-04faaf66ece4"
-      },
-      {
-        "id": "b6ae998d-6922-4cfc-8299-050a4f746f06",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "7abdf118-6819-458c-8b55-6bc5af2bc6ec"
-      },
-      {
-        "id": "01c00d0a-dfc1-4b82-9058-6d3f74372b7c",
-        "source": "7abdf118-6819-458c-8b55-6bc5af2bc6ec",
-        "target": "be8ff213-3cf7-4878-9cc7-197b8307b335"
-      },
-      {
-        "id": "ff15e740-1663-404c-b0fc-73cff3372943",
-        "source": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "target": "b5fbbf4c-592a-4924-8594-ed5fd27e1f3a"
-      },
-      {
-        "id": "c835dcf2-60ba-4d87-8bac-a99254ebb5c8",
-        "source": "b5fbbf4c-592a-4924-8594-ed5fd27e1f3a",
-        "target": "fa2be361-e2cb-42d0-aaa4-2169133d8471"
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 520
       }
-    ],
-    "nodes": [
-      {
-        "id": "d1f322db-3f25-4f97-84c2-5d63dfa8c0e9",
-        "data": {
-          "file": "003_CARE_SITE.csv",
-          "name": "care_site_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node d1f322db"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 520
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 520
-        }
+    },
+    {
+      "id": "a23b4fd9-6252-42dd-bea3-f559b72e24d4",
+      "data": {
+        "file": "004_PROVIDER.csv",
+        "name": "provider_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node a23b4fd9"
       },
-      {
-        "id": "a23b4fd9-6252-42dd-bea3-f559b72e24d4",
-        "data": {
-          "file": "004_PROVIDER.csv",
-          "name": "provider_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node a23b4fd9"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 750
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 750
-        }
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 750
       },
-      {
-        "id": "1a1a17ff-683c-4aaf-bbc4-87d58d3f49db",
-        "data": {
-          "file": "005_COST.csv",
-          "name": "cost_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 1a1a17ff"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 1670
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 1670
-        }
-      },
-      {
-        "id": "10285cef-57df-4cf0-b6aa-8b817b72a5d6",
-        "data": {
-          "file": "006_PERSON.csv",
-          "name": "person_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 10285cef"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 1210
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 1210
-        }
-      },
-      {
-        "id": "3f2687a0-58df-49fa-81c4-1cac0145d9ae",
-        "data": {
-          "file": "007_DEATH.csv",
-          "name": "death_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 3f2687a0"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 1440
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 1440
-        }
-      },
-      {
-        "id": "f2c67a41-0fa8-49f5-af94-fc0a31a57b65",
-        "data": {
-          "file": "010_DEVICE_EXPOSURE.csv",
-          "name": "device_exposure_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node f2c67a41"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 3280
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 3280
-        }
-      },
-      {
-        "id": "97698c96-9f1d-464d-86ee-081c490d24ab",
-        "data": {
-          "file": "011_DRUG_EXPOSURE.csv",
-          "name": "drug_exposure_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 97698c96"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 3510
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 3510
-        }
-      },
-      {
-        "id": "8f7add49-8952-4016-8ae9-bfddcd501ca0",
-        "data": {
-          "file": "012_DRUG_ERA.csv",
-          "name": "drug_era_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 8f7add49"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 3740
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 3740
-        }
-      },
-      {
-        "id": "3b3d4405-bbc1-4c65-bfc2-65203e17375c",
-        "data": {
-          "file": "013_MEASUREMENT.csv",
-          "name": "measurement_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 3b3d4405"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 3050
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 3050
-        }
-      },
-      {
-        "id": "d8b5dce6-2d3a-45a7-9cb3-ee10958facb2",
-        "data": {
-          "file": "014_OBSERVATION.csv",
-          "name": "observation_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node d8b5dce6"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 980
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 980
-        }
-      },
-      {
-        "id": "0523a96c-3ad6-4ad8-b922-b7161552fb08",
-        "data": {
-          "file": "015_OBSERVATION_PERIOD.csv",
-          "name": "observation_period_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 0523a96c"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 3970
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 3970
-        }
-      },
-      {
-        "id": "a563f09c-4873-444f-b819-54652559471d",
-        "data": {
-          "file": "016_PAYER_PLAN_PERIOD.csv",
-          "name": "payer_plan_period_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node a563f09c"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 1900
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 1900
-        }
-      },
-      {
-        "id": "5c905d0e-3c53-4dbb-80a5-1a2dbc60582c",
-        "data": {
-          "file": "017_PROCEDURE_OCCURRENCE.csv",
-          "name": "procedure_occurrence_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 5c905d0e"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 2130
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 2130
-        }
-      },
-      {
-        "id": "312796fb-867a-4c67-9c95-c8d032bfe8e3",
-        "data": {
-          "file": "018_VISIT_OCCURRENCE.csv",
-          "name": "visit_occurrence_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 312796fb"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 2360
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 2360
-        }
-      },
-      {
-        "id": "fce01769-b65e-4f25-a864-fb307de41a69",
-        "data": {
-          "map": {
-            "py2table_node_0": [
-              "transform_df",
-              "location"
-            ]
-          },
-          "name": "transformed_location",
-          "uiMap": {
-            "path": "$.location",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node fce01769"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 360
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 360
-        }
-      },
-      {
-        "id": "c696f053-c661-4a43-b225-2a83614308b5",
-        "data": {
-          "map": {
-            "transformed_c": [
-              "transform_df",
-              "care_site"
-            ]
-          },
-          "name": "transformed_care_site",
-          "uiMap": {
-            "path": "$.care_site",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node c696f053"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 590
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 590
-        }
-      },
-      {
-        "id": "9ed84450-efc1-40cb-a940-05f8f4332dbf",
-        "data": {
-          "map": {
-            "transformed_provider": [
-              "transform_df",
-              "provider"
-            ]
-          },
-          "name": "transformed_provider",
-          "uiMap": {
-            "path": "provider",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node 9ed84450"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 820
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 820
-        }
-      },
-      {
-        "id": "3113c57f-2787-4584-9ecf-150c6a7a3a9d",
-        "data": {
-          "name": "write_to_provider",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_provider"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "provider",
-          "description": "Describe the task of node 3113c57f"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 820
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 820
-        }
-      },
-      {
-        "id": "2e9c9a23-f3ca-4818-9701-78aca5e32c1b",
-        "data": {
-          "name": "write_to_care_site",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_care_site"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "care_site",
-          "description": "Describe the task of node 2e9c9a23"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 590
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 590
-        }
-      },
-      {
-        "id": "38946cee-cf75-44cd-a9e8-df1ccd5d228a",
-        "data": {
-          "name": "write_to_location",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_location"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "location",
-          "description": "Describe the task of node 38946cee"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 360
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 360
-        }
-      },
-      {
-        "id": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
-        "data": {
-          "name": "transform_df",
-          "description": "Describe the task of node b37efa23",
-          "python_code": "import pandas as pd\nimport numpy as np\n\n\n\ncolumns_to_drop = {\n    \"location\": ['COUNTRY_CONCEPT_ID', 'COUNTRY_SOURCE_VALUE', 'LATITUDE', 'LONGITUDE'],\n    \"care_site\": [\"LOCATION_ID\"],\n    \"condition_occurrence\": ['CONDITION_END_DATETIME', 'PROVIDER_ID', 'VISIT_DETAIL_ID'],\n    \"cost\": ['TOTAL_CHARGE', 'TOTAL_COST', 'PAID_BY_PAYER', 'PAID_PATIENT_COPAY', 'PAID_PATIENT_DEDUCTIBLE', 'PAID_BY_PRIMARY', 'PAID_INGREDIENT_COST', 'PAID_DISPENSING_FEE', 'PAYER_PLAN_PERIOD_ID', 'AMOUNT_ALLOWED', 'REVENUE_CODE_CONCEPT_ID', 'REVENUE_CODE_SOURCE_VALUE', 'DRG_SOURCE_VALUE'],\n    \"death\": ['CAUSE_CONCEPT_ID', 'DEATH_DATETIME'],\n    \"device_exposure\": ['DEVICE_EXPOSURE_END_DATETIME', 'UNIQUE_DEVICE_ID', 'QUANTITY', 'PROVIDER_ID', 'VISIT_DETAIL_ID', 'UNIT_CONCEPT_ID', 'UNIT_SOURCE_VALUE', 'UNIT_SOURCE_CONCEPT_ID'],\n    \"drug_exposure\": ['DRUG_EXPOSURE_END_DATETIME', 'VERBATIM_END_DATE', 'REFILLS', 'QUANTITY', 'DAYS_SUPPLY', 'ROUTE_CONCEPT_ID', 'LOT_NUMBER', 'PROVIDER_ID', 'VISIT_OCCURRENCE_ID', 'VISIT_DETAIL_ID', 'ROUTE_SOURCE_VALUE', 'DOSE_UNIT_SOURCE_VALUE'],\n    \"measurement\": ['MEASUREMENT_DATETIME', 'MEASUREMENT_TIME', 'OPERATOR_CONCEPT_ID', 'VALUE_AS_NUMBER', 'UNIT_CONCEPT_ID', 'RANGE_LOW', 'RANGE_HIGH', 'PROVIDER_ID', 'VISIT_DETAIL_ID', 'MEASUREMENT_SOURCE_CONCEPT_ID', 'VALUE_SOURCE_VALUE', 'MEASUREMENT_EVENT_ID', 'MEAS_EVENT_FIELD_CONCEPT_ID', 'UNIT_SOURCE_CONCEPT_ID'],\n    \"observation\": ['OBSERVATION_DATETIME', 'OBSERVATION_EVENT_ID', 'VALUE_AS_NUMBER', 'VALUE_AS_STRING', 'QUALIFIER_CONCEPT_ID', 'UNIT_CONCEPT_ID', 'PROVIDER_ID', 'VISIT_DETAIL_ID', 'UNIT_SOURCE_VALUE', 'QUALIFIER_SOURCE_VALUE', 'OBS_EVENT_FIELD_CONCEPT_ID'],\n    \"payer_plan_period\": ['PAYER_CONCEPT_ID', 'PAYER_SOURCE_VALUE', 'PAYER_SOURCE_CONCEPT_ID', 'PLAN_CONCEPT_ID', 'PLAN_SOURCE_CONCEPT_ID', 'SPONSOR_CONCEPT_ID', 'SPONSOR_SOURCE_VALUE', 'SPONSOR_SOURCE_CONCEPT_ID', 'FAMILY_SOURCE_VALUE', 'STOP_REASON_CONCEPT_ID', 'STOP_REASON_SOURCE_VALUE', 'STOP_REASON_SOURCE_CONCEPT_ID'],\n    \"person\": ['BIRTH_DATETIME', 'PROVIDER_ID', 'CARE_SITE_ID', 'GENDER_SOURCE_CONCEPT_ID', 'RACE_SOURCE_CONCEPT_ID', 'ETHNICITY_SOURCE_CONCEPT_ID'],\n    \"procedure_occurrence\": ['PROCEDURE_END_DATE', 'PROCEDURE_END_DATETIME', 'MODIFIER_CONCEPT_ID', 'QUANTITY', 'PROVIDER_ID', 'VISIT_DETAIL_ID', 'MODIFIER_SOURCE_VALUE'],\n    \"provider\": ['YEAR_OF_BIRTH', 'SPECIALTY_SOURCE_VALUE', 'GENDER_SOURCE_VALUE'],\n    \"visit_occurrence\": ['VISIT_START_DATETIME', 'VISIT_END_DATETIME', 'PROVIDER_ID', 'CARE_SITE_ID', 'VISIT_SOURCE_CONCEPT_ID', 'PRECEDING_VISIT_OCCURRENCE_ID']\n}\n\n\ndef exec(myinput):\n  # input is a dict[node_name, result_obj]\n  transformed_dfs = {}\n\n  for node_name, result_obj in myinput.items():\n    table_name = node_name[:-4].lower()\n    df = result_obj.result\n\n    # drop columns\n    if table_name in columns_to_drop.keys():\n      df.drop(columns_to_drop.get(table_name), axis=1)\n\n    df = df.replace(\"nan\", np.nan)\n    df.dropna(axis=1, how='all', inplace=True)\n    df.columns = df.columns.str.lower()\n    print(df.head())\n    transformed_dfs[table_name] = df\n  return transformed_dfs"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -1750,
-          "y": 2590
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -1750,
-          "y": 2590
-        }
-      },
-      {
-        "id": "91f8290a-27b7-4423-824a-83b619e09c17",
-        "data": {
-          "file": "002_LOCATION.csv",
-          "name": "location_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 91f8290a"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 290
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 290
-        }
-      },
-      {
-        "id": "d9bfdbe6-f31f-4c79-b71c-76893b9c6a52",
-        "data": {
-          "map": {
-            "py2table_node_3": [
-              "transform_df",
-              "observation"
-            ]
-          },
-          "name": "transformed_observation",
-          "uiMap": {
-            "path": "$.observation",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node d9bfdbe6"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 1050
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 1050
-        }
-      },
-      {
-        "id": "43992393-822a-4759-a798-d4bd9ef55cc9",
-        "data": {
-          "name": "write_to_observation",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_observation"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "observation",
-          "description": "Describe the task of node 43992393"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 1050
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 1050
-        }
-      },
-      {
-        "id": "c3df5960-e0ba-4e08-863b-0a7b8504585f",
-        "data": {
-          "map": {
-            "write_to_person": [
-              "transform_df",
-              "person"
-            ]
-          },
-          "name": "transformed_person",
-          "uiMap": {
-            "path": "$.person",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node c3df5960"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 1280
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 1280
-        }
-      },
-      {
-        "id": "eac5fccf-c296-4b8e-b679-78663ee23204",
-        "data": {
-          "map": {
-            "py2table_node_5": [
-              "transform_df",
-              "death"
-            ]
-          },
-          "name": "transformed_death",
-          "uiMap": {
-            "path": "$.death",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node eac5fccf"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 1510
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 1510
-        }
-      },
-      {
-        "id": "070d554b-54e6-478d-bb2f-994e1fc8d47d",
-        "data": {
-          "name": "write_to_person",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_person"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "person",
-          "description": "Describe the task of node 070d554b"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 1280
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 1280
-        }
-      },
-      {
-        "id": "d7e8d904-4097-4ebf-bb76-deeb787e5f3a",
-        "data": {
-          "name": "write_to_death",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_death"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "death",
-          "description": "Describe the task of node d7e8d904"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 1510
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 1510
-        }
-      },
-      {
-        "id": "a730b7a5-0e63-411d-892e-834592978277",
-        "data": {
-          "map": {
-            "py2table_node_6": [
-              "transform_df",
-              "cost"
-            ]
-          },
-          "name": "transformed_cost",
-          "uiMap": {
-            "path": "$.cost",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node a730b7a5"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 1740
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 1740
-        }
-      },
-      {
-        "id": "ea22ad9f-d40d-477e-8d1c-504020af126c",
-        "data": {
-          "map": {
-            "py2table_node_7": [
-              "transform_df",
-              "payer_plan_period"
-            ]
-          },
-          "name": "transformed_payer_plan_period",
-          "uiMap": {
-            "path": "$.payer_plan_period",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node ea22ad9f"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 1970
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 1970
-        }
-      },
-      {
-        "id": "b0ddf7d9-3bc6-4729-800d-db7596adc94a",
-        "data": {
-          "name": "write_to_cost",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_cost"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "cost",
-          "description": "Describe the task of node b0ddf7d9"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 1740
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 1740
-        }
-      },
-      {
-        "id": "003a15bb-ed30-482f-b38a-6d69e6ffd2d6",
-        "data": {
-          "name": "write_to_payer_plan_period",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_payer_plan_period"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "payer_plan_period",
-          "description": "Describe the task of node 003a15bb"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 1970
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 1970
-        }
-      },
-      {
-        "id": "14a85f1e-70ea-4095-81c1-03e0db98846a",
-        "data": {
-          "file": "008_CONDITION_OCCURRENCE.csv",
-          "name": "condition_occurrence_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 14a85f1e"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 2590
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 2590
-        }
-      },
-      {
-        "id": "57197e42-7e5a-45a6-bdfb-842ab2f286fc",
-        "data": {
-          "file": "009_CONDITION_ERA.csv",
-          "name": "condition_era_csv",
-          "delimiter": ",",
-          "description": "Describe the task of node 57197e42"
-        },
-        "type": "csv_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -2490,
-          "y": 2820
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -2490,
-          "y": 2820
-        }
-      },
-      {
-        "id": "d6dd953c-7550-47f5-8437-243c582ca5da",
-        "data": {
-          "map": {
-            "py2table_node_8": [
-              "transform_df",
-              "procedure_occurrence"
-            ]
-          },
-          "name": "transformed_procedure_occurrence",
-          "uiMap": {
-            "path": "$.procedure_occurrence",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node d6dd953c"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 2200
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 2200
-        }
-      },
-      {
-        "id": "35e49adb-def7-4a8b-9ba1-fac64e7f4638",
-        "data": {
-          "map": {
-            "py2table_node_9": [
-              "transform_df",
-              "visit_occurrence"
-            ]
-          },
-          "name": "transformed_visit_occurrence",
-          "uiMap": {
-            "path": "$.visit_occurrence",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node 35e49adb"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 2430
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 2430
-        }
-      },
-      {
-        "id": "b9aca654-0570-428c-81c7-2ad2b654ec3f",
-        "data": {
-          "map": {
-            "py2table_node_11": [
-              "transform_df",
-              "condition_era"
-            ]
-          },
-          "name": "transformed_condition_era",
-          "uiMap": {
-            "path": "$.condition_era",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node b9aca654"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 2890
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 2890
-        }
-      },
-      {
-        "id": "c605347f-d95e-49e9-91f5-6c18ec99c49d",
-        "data": {
-          "map": {
-            "transformed_condition_occurrence": [
-              "transform_df",
-              "condition_occurrence"
-            ]
-          },
-          "name": "transformed_condition_occurrence",
-          "uiMap": {
-            "path": "$.condition_occurrence",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node c605347f"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 2660
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 2660
-        }
-      },
-      {
-        "id": "0f3c59f2-98ad-4f35-983e-558ce93972eb",
-        "data": {
-          "name": "write_to_procedure_occurrence",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_procedure_occurrence"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "procedure_occurrence",
-          "description": "Describe the task of node 0f3c59f2"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 2200
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 2200
-        }
-      },
-      {
-        "id": "ca74e9d1-803d-412b-bc75-1abcb04aa1ac",
-        "data": {
-          "name": "write_to_visit_occurrence",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_visit_occurrence"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "visit_occurrence",
-          "description": "Describe the task of node ca74e9d1"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 2430
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 2430
-        }
-      },
-      {
-        "id": "d0411333-7948-406d-8b72-dfb422c03570",
-        "data": {
-          "name": "write_to_condition_occurrence",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_condition_occurrence"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "condition_occurrence",
-          "description": "Describe the task of node d0411333"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 2660
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 2660
-        }
-      },
-      {
-        "id": "3b56f2eb-e627-4c10-a4a2-0f73f994eb22",
-        "data": {
-          "name": "write_to_condition_era",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_condition_era"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "condition_era",
-          "description": "Describe the task of node 3b56f2eb"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 2890
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 2890
-        }
-      },
-      {
-        "id": "3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6",
-        "data": {
-          "map": {
-            "py2table_node_12": [
-              "transform_df",
-              "measurement"
-            ]
-          },
-          "name": "transformed_measurement",
-          "uiMap": {
-            "path": "$.measurement",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node 3257ab34"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 3120
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 3120
-        }
-      },
-      {
-        "id": "00e3fef2-9057-47cf-89c8-3eb2743020de",
-        "data": {
-          "name": "write_to_measurement",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_measurement"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "measurement",
-          "description": "Describe the task of node 00e3fef2"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 3120
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 3120
-        }
-      },
-      {
-        "id": "19d43213-3205-4d97-994b-6cc82a5a792e",
-        "data": {
-          "map": {
-            "py2table_node_13": [
-              "transform_df",
-              "device_exposure"
-            ]
-          },
-          "name": "transformed_device_exposure",
-          "uiMap": {
-            "path": "$.device_exposure",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node 19d43213"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 3350
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 3350
-        }
-      },
-      {
-        "id": "7ed3de41-03f6-4510-8b66-2cee8254e9f6",
-        "data": {
-          "name": "write_to_device_exposure",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_device_exposure"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "device_exposure",
-          "description": "Describe the task of node 7ed3de41"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 3350
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 3350
-        }
-      },
-      {
-        "id": "632c1623-8ee8-4b68-aec6-93776fc672a0",
-        "data": {
-          "map": {
-            "py2table_node_14": [
-              "transform_df",
-              "drug_exposure"
-            ]
-          },
-          "name": "transformed_drug_exposure",
-          "uiMap": {
-            "path": "$.drug_exposure",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node 632c1623"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 3580
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 3580
-        }
-      },
-      {
-        "id": "5bbb05a0-abb3-4bb2-b930-04faaf66ece4",
-        "data": {
-          "name": "write_to_drug_exposure",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_drug_exposure"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "drug_exposure",
-          "description": "Describe the task of node 5bbb05a0"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 3580
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 3580
-        }
-      },
-      {
-        "id": "7abdf118-6819-458c-8b55-6bc5af2bc6ec",
-        "data": {
-          "map": {
-            "py2table_node_15": [
-              "transform_df",
-              "drug_era"
-            ]
-          },
-          "name": "transformed_drug_era",
-          "uiMap": {
-            "path": "$.drug_era",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node 7abdf118"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 3810
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 3810
-        }
-      },
-      {
-        "id": "be8ff213-3cf7-4878-9cc7-197b8307b335",
-        "data": {
-          "name": "write_to_drug_era",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_drug_era"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "drug_era",
-          "description": "Describe the task of node be8ff213"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 3810
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 3810
-        }
-      },
-      {
-        "id": "b5fbbf4c-592a-4924-8594-ed5fd27e1f3a",
-        "data": {
-          "map": {
-            "py2table_node_16": [
-              "transform_df",
-              "observation_period"
-            ]
-          },
-          "name": "transformed_observation_period",
-          "uiMap": {
-            "path": "$.observation_period",
-            "source": "transform_df.script_node"
-          },
-          "description": "Describe the task of node b5fbbf4c"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -530,
-          "y": 4040
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -530,
-          "y": 4040
-        }
-      },
-      {
-        "id": "fa2be361-e2cb-42d0-aaa4-2169133d8471",
-        "data": {
-          "name": "write_to_observation_period",
-          "database": "alpdev_pg",
-          "dataframe": [
-            "transformed_observation_period"
-          ],
-          "schemaname": "cdmdefault",
-          "dbtablename": "observation_period",
-          "description": "Describe the task of node fa2be361"
-        },
-        "type": "db_writer_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -80,
-          "y": 4040
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -80,
-          "y": 4040
-        }
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 750
       }
-    ]
-  },
-  "createdBy": "admin",
-  "createdDate": "1900-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "1a1a17ff-683c-4aaf-bbc4-87d58d3f49db",
+      "data": {
+        "file": "005_COST.csv",
+        "name": "cost_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 1a1a17ff"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 1670
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 1670
+      }
+    },
+    {
+      "id": "10285cef-57df-4cf0-b6aa-8b817b72a5d6",
+      "data": {
+        "file": "006_PERSON.csv",
+        "name": "person_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 10285cef"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 1210
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 1210
+      }
+    },
+    {
+      "id": "3f2687a0-58df-49fa-81c4-1cac0145d9ae",
+      "data": {
+        "file": "007_DEATH.csv",
+        "name": "death_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 3f2687a0"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 1440
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 1440
+      }
+    },
+    {
+      "id": "f2c67a41-0fa8-49f5-af94-fc0a31a57b65",
+      "data": {
+        "file": "010_DEVICE_EXPOSURE.csv",
+        "name": "device_exposure_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node f2c67a41"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 3280
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 3280
+      }
+    },
+    {
+      "id": "97698c96-9f1d-464d-86ee-081c490d24ab",
+      "data": {
+        "file": "011_DRUG_EXPOSURE.csv",
+        "name": "drug_exposure_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 97698c96"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 3510
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 3510
+      }
+    },
+    {
+      "id": "8f7add49-8952-4016-8ae9-bfddcd501ca0",
+      "data": {
+        "file": "012_DRUG_ERA.csv",
+        "name": "drug_era_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 8f7add49"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 3740
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 3740
+      }
+    },
+    {
+      "id": "3b3d4405-bbc1-4c65-bfc2-65203e17375c",
+      "data": {
+        "file": "013_MEASUREMENT.csv",
+        "name": "measurement_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 3b3d4405"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 3050
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 3050
+      }
+    },
+    {
+      "id": "d8b5dce6-2d3a-45a7-9cb3-ee10958facb2",
+      "data": {
+        "file": "014_OBSERVATION.csv",
+        "name": "observation_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node d8b5dce6"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 980
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 980
+      }
+    },
+    {
+      "id": "0523a96c-3ad6-4ad8-b922-b7161552fb08",
+      "data": {
+        "file": "015_OBSERVATION_PERIOD.csv",
+        "name": "observation_period_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 0523a96c"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 3970
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 3970
+      }
+    },
+    {
+      "id": "a563f09c-4873-444f-b819-54652559471d",
+      "data": {
+        "file": "016_PAYER_PLAN_PERIOD.csv",
+        "name": "payer_plan_period_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node a563f09c"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 1900
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 1900
+      }
+    },
+    {
+      "id": "5c905d0e-3c53-4dbb-80a5-1a2dbc60582c",
+      "data": {
+        "file": "017_PROCEDURE_OCCURRENCE.csv",
+        "name": "procedure_occurrence_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 5c905d0e"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 2130
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 2130
+      }
+    },
+    {
+      "id": "312796fb-867a-4c67-9c95-c8d032bfe8e3",
+      "data": {
+        "file": "018_VISIT_OCCURRENCE.csv",
+        "name": "visit_occurrence_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 312796fb"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 2360
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 2360
+      }
+    },
+    {
+      "id": "fce01769-b65e-4f25-a864-fb307de41a69",
+      "data": {
+        "map": {
+          "py2table_node_0": [
+            "transform_df",
+            "location"
+          ]
+        },
+        "name": "transformed_location",
+        "uiMap": {
+          "path": "$.location",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node fce01769"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 360
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 360
+      }
+    },
+    {
+      "id": "c696f053-c661-4a43-b225-2a83614308b5",
+      "data": {
+        "map": {
+          "transformed_c": [
+            "transform_df",
+            "care_site"
+          ]
+        },
+        "name": "transformed_care_site",
+        "uiMap": {
+          "path": "$.care_site",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node c696f053"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 590
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 590
+      }
+    },
+    {
+      "id": "9ed84450-efc1-40cb-a940-05f8f4332dbf",
+      "data": {
+        "map": {
+          "transformed_provider": [
+            "transform_df",
+            "provider"
+          ]
+        },
+        "name": "transformed_provider",
+        "uiMap": {
+          "path": "provider",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node 9ed84450"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 820
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 820
+      }
+    },
+    {
+      "id": "3113c57f-2787-4584-9ecf-150c6a7a3a9d",
+      "data": {
+        "name": "write_to_provider",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_provider"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "provider",
+        "description": "Describe the task of node 3113c57f"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 820
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 820
+      }
+    },
+    {
+      "id": "2e9c9a23-f3ca-4818-9701-78aca5e32c1b",
+      "data": {
+        "name": "write_to_care_site",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_care_site"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "care_site",
+        "description": "Describe the task of node 2e9c9a23"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 590
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 590
+      }
+    },
+    {
+      "id": "38946cee-cf75-44cd-a9e8-df1ccd5d228a",
+      "data": {
+        "name": "write_to_location",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_location"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "location",
+        "description": "Describe the task of node 38946cee"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 360
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 360
+      }
+    },
+    {
+      "id": "b37efa23-23ef-42ca-960d-2f528a5ad4c0",
+      "data": {
+        "name": "transform_df",
+        "description": "Describe the task of node b37efa23",
+        "python_code": "import pandas as pd\nimport numpy as np\n\n\n\ncolumns_to_drop = {\n    \"location\": ['COUNTRY_CONCEPT_ID', 'COUNTRY_SOURCE_VALUE', 'LATITUDE', 'LONGITUDE'],\n    \"care_site\": [\"LOCATION_ID\"],\n    \"condition_occurrence\": ['CONDITION_END_DATETIME', 'PROVIDER_ID', 'VISIT_DETAIL_ID'],\n    \"cost\": ['TOTAL_CHARGE', 'TOTAL_COST', 'PAID_BY_PAYER', 'PAID_PATIENT_COPAY', 'PAID_PATIENT_DEDUCTIBLE', 'PAID_BY_PRIMARY', 'PAID_INGREDIENT_COST', 'PAID_DISPENSING_FEE', 'PAYER_PLAN_PERIOD_ID', 'AMOUNT_ALLOWED', 'REVENUE_CODE_CONCEPT_ID', 'REVENUE_CODE_SOURCE_VALUE', 'DRG_SOURCE_VALUE'],\n    \"death\": ['CAUSE_CONCEPT_ID', 'DEATH_DATETIME'],\n    \"device_exposure\": ['DEVICE_EXPOSURE_END_DATETIME', 'UNIQUE_DEVICE_ID', 'QUANTITY', 'PROVIDER_ID', 'VISIT_DETAIL_ID', 'UNIT_CONCEPT_ID', 'UNIT_SOURCE_VALUE', 'UNIT_SOURCE_CONCEPT_ID'],\n    \"drug_exposure\": ['DRUG_EXPOSURE_END_DATETIME', 'VERBATIM_END_DATE', 'REFILLS', 'QUANTITY', 'DAYS_SUPPLY', 'ROUTE_CONCEPT_ID', 'LOT_NUMBER', 'PROVIDER_ID', 'VISIT_OCCURRENCE_ID', 'VISIT_DETAIL_ID', 'ROUTE_SOURCE_VALUE', 'DOSE_UNIT_SOURCE_VALUE'],\n    \"measurement\": ['MEASUREMENT_DATETIME', 'MEASUREMENT_TIME', 'OPERATOR_CONCEPT_ID', 'VALUE_AS_NUMBER', 'UNIT_CONCEPT_ID', 'RANGE_LOW', 'RANGE_HIGH', 'PROVIDER_ID', 'VISIT_DETAIL_ID', 'MEASUREMENT_SOURCE_CONCEPT_ID', 'VALUE_SOURCE_VALUE', 'MEASUREMENT_EVENT_ID', 'MEAS_EVENT_FIELD_CONCEPT_ID', 'UNIT_SOURCE_CONCEPT_ID'],\n    \"observation\": ['OBSERVATION_DATETIME', 'OBSERVATION_EVENT_ID', 'VALUE_AS_NUMBER', 'VALUE_AS_STRING', 'QUALIFIER_CONCEPT_ID', 'UNIT_CONCEPT_ID', 'PROVIDER_ID', 'VISIT_DETAIL_ID', 'UNIT_SOURCE_VALUE', 'QUALIFIER_SOURCE_VALUE', 'OBS_EVENT_FIELD_CONCEPT_ID'],\n    \"payer_plan_period\": ['PAYER_CONCEPT_ID', 'PAYER_SOURCE_VALUE', 'PAYER_SOURCE_CONCEPT_ID', 'PLAN_CONCEPT_ID', 'PLAN_SOURCE_CONCEPT_ID', 'SPONSOR_CONCEPT_ID', 'SPONSOR_SOURCE_VALUE', 'SPONSOR_SOURCE_CONCEPT_ID', 'FAMILY_SOURCE_VALUE', 'STOP_REASON_CONCEPT_ID', 'STOP_REASON_SOURCE_VALUE', 'STOP_REASON_SOURCE_CONCEPT_ID'],\n    \"person\": ['BIRTH_DATETIME', 'PROVIDER_ID', 'CARE_SITE_ID', 'GENDER_SOURCE_CONCEPT_ID', 'RACE_SOURCE_CONCEPT_ID', 'ETHNICITY_SOURCE_CONCEPT_ID'],\n    \"procedure_occurrence\": ['PROCEDURE_END_DATE', 'PROCEDURE_END_DATETIME', 'MODIFIER_CONCEPT_ID', 'QUANTITY', 'PROVIDER_ID', 'VISIT_DETAIL_ID', 'MODIFIER_SOURCE_VALUE'],\n    \"provider\": ['YEAR_OF_BIRTH', 'SPECIALTY_SOURCE_VALUE', 'GENDER_SOURCE_VALUE'],\n    \"visit_occurrence\": ['VISIT_START_DATETIME', 'VISIT_END_DATETIME', 'PROVIDER_ID', 'CARE_SITE_ID', 'VISIT_SOURCE_CONCEPT_ID', 'PRECEDING_VISIT_OCCURRENCE_ID']\n}\n\n\ndef exec(myinput):\n  # input is a dict[node_name, result_obj]\n  transformed_dfs = {}\n\n  for node_name, result_obj in myinput.items():\n    table_name = node_name[:-4].lower()\n    df = result_obj.result\n\n    # drop columns\n    if table_name in columns_to_drop.keys():\n      df.drop(columns_to_drop.get(table_name), axis=1)\n\n    df = df.replace(\"nan\", np.nan)\n    df.dropna(axis=1, how='all', inplace=True)\n    df.columns = df.columns.str.lower()\n    print(df.head())\n    transformed_dfs[table_name] = df\n  return transformed_dfs"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -1750,
+        "y": 2590
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -1750,
+        "y": 2590
+      }
+    },
+    {
+      "id": "91f8290a-27b7-4423-824a-83b619e09c17",
+      "data": {
+        "file": "002_LOCATION.csv",
+        "name": "location_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 91f8290a"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 290
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 290
+      }
+    },
+    {
+      "id": "d9bfdbe6-f31f-4c79-b71c-76893b9c6a52",
+      "data": {
+        "map": {
+          "py2table_node_3": [
+            "transform_df",
+            "observation"
+          ]
+        },
+        "name": "transformed_observation",
+        "uiMap": {
+          "path": "$.observation",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node d9bfdbe6"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 1050
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 1050
+      }
+    },
+    {
+      "id": "43992393-822a-4759-a798-d4bd9ef55cc9",
+      "data": {
+        "name": "write_to_observation",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_observation"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "observation",
+        "description": "Describe the task of node 43992393"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 1050
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 1050
+      }
+    },
+    {
+      "id": "c3df5960-e0ba-4e08-863b-0a7b8504585f",
+      "data": {
+        "map": {
+          "write_to_person": [
+            "transform_df",
+            "person"
+          ]
+        },
+        "name": "transformed_person",
+        "uiMap": {
+          "path": "$.person",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node c3df5960"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 1280
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 1280
+      }
+    },
+    {
+      "id": "eac5fccf-c296-4b8e-b679-78663ee23204",
+      "data": {
+        "map": {
+          "py2table_node_5": [
+            "transform_df",
+            "death"
+          ]
+        },
+        "name": "transformed_death",
+        "uiMap": {
+          "path": "$.death",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node eac5fccf"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 1510
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 1510
+      }
+    },
+    {
+      "id": "070d554b-54e6-478d-bb2f-994e1fc8d47d",
+      "data": {
+        "name": "write_to_person",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_person"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "person",
+        "description": "Describe the task of node 070d554b"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 1280
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 1280
+      }
+    },
+    {
+      "id": "d7e8d904-4097-4ebf-bb76-deeb787e5f3a",
+      "data": {
+        "name": "write_to_death",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_death"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "death",
+        "description": "Describe the task of node d7e8d904"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 1510
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 1510
+      }
+    },
+    {
+      "id": "a730b7a5-0e63-411d-892e-834592978277",
+      "data": {
+        "map": {
+          "py2table_node_6": [
+            "transform_df",
+            "cost"
+          ]
+        },
+        "name": "transformed_cost",
+        "uiMap": {
+          "path": "$.cost",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node a730b7a5"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 1740
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 1740
+      }
+    },
+    {
+      "id": "ea22ad9f-d40d-477e-8d1c-504020af126c",
+      "data": {
+        "map": {
+          "py2table_node_7": [
+            "transform_df",
+            "payer_plan_period"
+          ]
+        },
+        "name": "transformed_payer_plan_period",
+        "uiMap": {
+          "path": "$.payer_plan_period",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node ea22ad9f"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 1970
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 1970
+      }
+    },
+    {
+      "id": "b0ddf7d9-3bc6-4729-800d-db7596adc94a",
+      "data": {
+        "name": "write_to_cost",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_cost"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "cost",
+        "description": "Describe the task of node b0ddf7d9"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 1740
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 1740
+      }
+    },
+    {
+      "id": "003a15bb-ed30-482f-b38a-6d69e6ffd2d6",
+      "data": {
+        "name": "write_to_payer_plan_period",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_payer_plan_period"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "payer_plan_period",
+        "description": "Describe the task of node 003a15bb"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 1970
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 1970
+      }
+    },
+    {
+      "id": "14a85f1e-70ea-4095-81c1-03e0db98846a",
+      "data": {
+        "file": "008_CONDITION_OCCURRENCE.csv",
+        "name": "condition_occurrence_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 14a85f1e"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 2590
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 2590
+      }
+    },
+    {
+      "id": "57197e42-7e5a-45a6-bdfb-842ab2f286fc",
+      "data": {
+        "file": "009_CONDITION_ERA.csv",
+        "name": "condition_era_csv",
+        "delimiter": ",",
+        "description": "Describe the task of node 57197e42"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -2490,
+        "y": 2820
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -2490,
+        "y": 2820
+      }
+    },
+    {
+      "id": "d6dd953c-7550-47f5-8437-243c582ca5da",
+      "data": {
+        "map": {
+          "py2table_node_8": [
+            "transform_df",
+            "procedure_occurrence"
+          ]
+        },
+        "name": "transformed_procedure_occurrence",
+        "uiMap": {
+          "path": "$.procedure_occurrence",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node d6dd953c"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 2200
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 2200
+      }
+    },
+    {
+      "id": "35e49adb-def7-4a8b-9ba1-fac64e7f4638",
+      "data": {
+        "map": {
+          "py2table_node_9": [
+            "transform_df",
+            "visit_occurrence"
+          ]
+        },
+        "name": "transformed_visit_occurrence",
+        "uiMap": {
+          "path": "$.visit_occurrence",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node 35e49adb"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 2430
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 2430
+      }
+    },
+    {
+      "id": "b9aca654-0570-428c-81c7-2ad2b654ec3f",
+      "data": {
+        "map": {
+          "py2table_node_11": [
+            "transform_df",
+            "condition_era"
+          ]
+        },
+        "name": "transformed_condition_era",
+        "uiMap": {
+          "path": "$.condition_era",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node b9aca654"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 2890
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 2890
+      }
+    },
+    {
+      "id": "c605347f-d95e-49e9-91f5-6c18ec99c49d",
+      "data": {
+        "map": {
+          "transformed_condition_occurrence": [
+            "transform_df",
+            "condition_occurrence"
+          ]
+        },
+        "name": "transformed_condition_occurrence",
+        "uiMap": {
+          "path": "$.condition_occurrence",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node c605347f"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 2660
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 2660
+      }
+    },
+    {
+      "id": "0f3c59f2-98ad-4f35-983e-558ce93972eb",
+      "data": {
+        "name": "write_to_procedure_occurrence",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_procedure_occurrence"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "procedure_occurrence",
+        "description": "Describe the task of node 0f3c59f2"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 2200
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 2200
+      }
+    },
+    {
+      "id": "ca74e9d1-803d-412b-bc75-1abcb04aa1ac",
+      "data": {
+        "name": "write_to_visit_occurrence",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_visit_occurrence"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "visit_occurrence",
+        "description": "Describe the task of node ca74e9d1"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 2430
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 2430
+      }
+    },
+    {
+      "id": "d0411333-7948-406d-8b72-dfb422c03570",
+      "data": {
+        "name": "write_to_condition_occurrence",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_condition_occurrence"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "condition_occurrence",
+        "description": "Describe the task of node d0411333"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 2660
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 2660
+      }
+    },
+    {
+      "id": "3b56f2eb-e627-4c10-a4a2-0f73f994eb22",
+      "data": {
+        "name": "write_to_condition_era",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_condition_era"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "condition_era",
+        "description": "Describe the task of node 3b56f2eb"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 2890
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 2890
+      }
+    },
+    {
+      "id": "3257ab34-d4f0-4c98-a8e7-5b9b0c4f38c6",
+      "data": {
+        "map": {
+          "py2table_node_12": [
+            "transform_df",
+            "measurement"
+          ]
+        },
+        "name": "transformed_measurement",
+        "uiMap": {
+          "path": "$.measurement",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node 3257ab34"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 3120
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 3120
+      }
+    },
+    {
+      "id": "00e3fef2-9057-47cf-89c8-3eb2743020de",
+      "data": {
+        "name": "write_to_measurement",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_measurement"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "measurement",
+        "description": "Describe the task of node 00e3fef2"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 3120
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 3120
+      }
+    },
+    {
+      "id": "19d43213-3205-4d97-994b-6cc82a5a792e",
+      "data": {
+        "map": {
+          "py2table_node_13": [
+            "transform_df",
+            "device_exposure"
+          ]
+        },
+        "name": "transformed_device_exposure",
+        "uiMap": {
+          "path": "$.device_exposure",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node 19d43213"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 3350
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 3350
+      }
+    },
+    {
+      "id": "7ed3de41-03f6-4510-8b66-2cee8254e9f6",
+      "data": {
+        "name": "write_to_device_exposure",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_device_exposure"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "device_exposure",
+        "description": "Describe the task of node 7ed3de41"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 3350
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 3350
+      }
+    },
+    {
+      "id": "632c1623-8ee8-4b68-aec6-93776fc672a0",
+      "data": {
+        "map": {
+          "py2table_node_14": [
+            "transform_df",
+            "drug_exposure"
+          ]
+        },
+        "name": "transformed_drug_exposure",
+        "uiMap": {
+          "path": "$.drug_exposure",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node 632c1623"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 3580
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 3580
+      }
+    },
+    {
+      "id": "5bbb05a0-abb3-4bb2-b930-04faaf66ece4",
+      "data": {
+        "name": "write_to_drug_exposure",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_drug_exposure"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "drug_exposure",
+        "description": "Describe the task of node 5bbb05a0"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 3580
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 3580
+      }
+    },
+    {
+      "id": "7abdf118-6819-458c-8b55-6bc5af2bc6ec",
+      "data": {
+        "map": {
+          "py2table_node_15": [
+            "transform_df",
+            "drug_era"
+          ]
+        },
+        "name": "transformed_drug_era",
+        "uiMap": {
+          "path": "$.drug_era",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node 7abdf118"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 3810
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 3810
+      }
+    },
+    {
+      "id": "be8ff213-3cf7-4878-9cc7-197b8307b335",
+      "data": {
+        "name": "write_to_drug_era",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_drug_era"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "drug_era",
+        "description": "Describe the task of node be8ff213"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 3810
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 3810
+      }
+    },
+    {
+      "id": "b5fbbf4c-592a-4924-8594-ed5fd27e1f3a",
+      "data": {
+        "map": {
+          "py2table_node_16": [
+            "transform_df",
+            "observation_period"
+          ]
+        },
+        "name": "transformed_observation_period",
+        "uiMap": {
+          "path": "$.observation_period",
+          "source": "transform_df.script_node"
+        },
+        "description": "Describe the task of node b5fbbf4c"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -530,
+        "y": 4040
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -530,
+        "y": 4040
+      }
+    },
+    {
+      "id": "fa2be361-e2cb-42d0-aaa4-2169133d8471",
+      "data": {
+        "name": "write_to_observation_period",
+        "database": "alpdev_pg",
+        "dataframe": [
+          "transformed_observation_period"
+        ],
+        "schemaname": "cdmdefault",
+        "dbtablename": "observation_period",
+        "description": "Describe the task of node fa2be361"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -80,
+        "y": 4040
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -80,
+        "y": 4040
+      }
+    }
+  ]
 }

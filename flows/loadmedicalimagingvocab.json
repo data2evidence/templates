@@ -1,584 +1,580 @@
 {
-    "id": "7635c23a-fa7c-4990-b822-b64a1d5d2dbf",
     "name": "LoadMedicalImagingVocab",
-    "flow": {
-        "edges": [
-            {
-                "id": "9af67da1-d45d-4d17-a69c-e4f34cf81417",
-                "source": "ba7291a9-dcb6-47df-90d3-c8c5c8fa468d",
-                "target": "80f6a837-6125-4ab2-8b60-ab7f2fac2731",
-                "selected": false
+    "description": "Load medical imaging vocabulary into the database",
+    "edges": [
+        {
+            "id": "9af67da1-d45d-4d17-a69c-e4f34cf81417",
+            "source": "ba7291a9-dcb6-47df-90d3-c8c5c8fa468d",
+            "target": "80f6a837-6125-4ab2-8b60-ab7f2fac2731",
+            "selected": false
+        },
+        {
+            "id": "reactflow__edge-d4066246-51ed-40be-a036-e041d796fa7csource_d4066246-51ed-40be-a036-e041d796fa7c_dataframe-12d22e50-14aa-45c0-9d74-70c002b3fdbctarget_12d22e50-14aa-45c0-9d74-70c002b3fdbc_dataframe",
+            "source": "d4066246-51ed-40be-a036-e041d796fa7c",
+            "target": "12d22e50-14aa-45c0-9d74-70c002b3fdbc",
+            "sourceHandle": "source_d4066246-51ed-40be-a036-e041d796fa7c_dataframe",
+            "targetHandle": "target_12d22e50-14aa-45c0-9d74-70c002b3fdbc_dataframe"
+        },
+        {
+            "id": "ff521332-ca2a-4279-9d29-85a927e16371",
+            "source": "27393b23-6429-4144-96b3-36fdf252802b",
+            "target": "1aa8de3e-d66c-496e-bcf3-b183ddd82f9c"
+        },
+        {
+            "id": "9d7fe130-f86f-4cd1-857f-cfa00d01be8a",
+            "source": "1aa8de3e-d66c-496e-bcf3-b183ddd82f9c",
+            "target": "45c20162-1bbd-4c23-94df-1aab8eaa5181"
+        },
+        {
+            "id": "bb5abb0e-04c6-433c-86fa-4776b832b865",
+            "source": "45c20162-1bbd-4c23-94df-1aab8eaa5181",
+            "target": "de1a7740-824f-445f-8825-cb5d58fc17a5"
+        },
+        {
+            "id": "reactflow__edge-f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81source_f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81_any-b84ca941-eb38-4105-8ccf-8ca269eb57fftarget_b84ca941-eb38-4105-8ccf-8ca269eb57ff_any",
+            "source": "f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81",
+            "target": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
+            "selected": false,
+            "sourceHandle": "source_f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81_any",
+            "targetHandle": "target_b84ca941-eb38-4105-8ccf-8ca269eb57ff_any"
+        },
+        {
+            "id": "reactflow__edge-b84ca941-eb38-4105-8ccf-8ca269eb57ffsource_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object-8b5de6a8-08c3-42a8-8a76-3a809e77bfddtarget_8b5de6a8-08c3-42a8-8a76-3a809e77bfdd_object",
+            "source": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
+            "target": "8b5de6a8-08c3-42a8-8a76-3a809e77bfdd",
+            "selected": false,
+            "sourceHandle": "source_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object",
+            "targetHandle": "target_8b5de6a8-08c3-42a8-8a76-3a809e77bfdd_object"
+        },
+        {
+            "id": "reactflow__edge-b84ca941-eb38-4105-8ccf-8ca269eb57ffsource_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object-339fabc0-643d-46ff-acf0-989617ff5edctarget_339fabc0-643d-46ff-acf0-989617ff5edc_object",
+            "source": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
+            "target": "339fabc0-643d-46ff-acf0-989617ff5edc",
+            "selected": false,
+            "sourceHandle": "source_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object",
+            "targetHandle": "target_339fabc0-643d-46ff-acf0-989617ff5edc_object"
+        },
+        {
+            "id": "reactflow__edge-b84ca941-eb38-4105-8ccf-8ca269eb57ffsource_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object-f73d4adc-30c6-438d-8790-ae8b151fe2fftarget_f73d4adc-30c6-438d-8790-ae8b151fe2ff_object",
+            "source": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
+            "target": "f73d4adc-30c6-438d-8790-ae8b151fe2ff",
+            "selected": false,
+            "sourceHandle": "source_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object",
+            "targetHandle": "target_f73d4adc-30c6-438d-8790-ae8b151fe2ff_object"
+        },
+        {
+            "id": "reactflow__edge-339fabc0-643d-46ff-acf0-989617ff5edcsource_339fabc0-643d-46ff-acf0-989617ff5edc_dataframe-08ec5f7d-c5ac-444a-99ba-296d8fde47f5target_08ec5f7d-c5ac-444a-99ba-296d8fde47f5_dataframe",
+            "source": "339fabc0-643d-46ff-acf0-989617ff5edc",
+            "target": "08ec5f7d-c5ac-444a-99ba-296d8fde47f5",
+            "sourceHandle": "source_339fabc0-643d-46ff-acf0-989617ff5edc_dataframe",
+            "targetHandle": "target_08ec5f7d-c5ac-444a-99ba-296d8fde47f5_dataframe"
+        },
+        {
+            "id": "reactflow__edge-8b5de6a8-08c3-42a8-8a76-3a809e77bfddsource_8b5de6a8-08c3-42a8-8a76-3a809e77bfdd_dataframe-ff33980b-091b-42fa-b901-f67adb9db534target_ff33980b-091b-42fa-b901-f67adb9db534_dataframe",
+            "source": "8b5de6a8-08c3-42a8-8a76-3a809e77bfdd",
+            "target": "ff33980b-091b-42fa-b901-f67adb9db534",
+            "sourceHandle": "source_8b5de6a8-08c3-42a8-8a76-3a809e77bfdd_dataframe",
+            "targetHandle": "target_ff33980b-091b-42fa-b901-f67adb9db534_dataframe"
+        },
+        {
+            "id": "reactflow__edge-f73d4adc-30c6-438d-8790-ae8b151fe2ffsource_f73d4adc-30c6-438d-8790-ae8b151fe2ff_dataframe-84c7d691-c5a8-4bea-8397-05bb30fa164btarget_84c7d691-c5a8-4bea-8397-05bb30fa164b_dataframe",
+            "source": "f73d4adc-30c6-438d-8790-ae8b151fe2ff",
+            "target": "84c7d691-c5a8-4bea-8397-05bb30fa164b",
+            "sourceHandle": "source_f73d4adc-30c6-438d-8790-ae8b151fe2ff_dataframe",
+            "targetHandle": "target_84c7d691-c5a8-4bea-8397-05bb30fa164b_dataframe"
+        },
+        {
+            "id": "reactflow__edge-a5ed43cd-6ad8-45c2-b131-6e3853244af3source_a5ed43cd-6ad8-45c2-b131-6e3853244af3_any-b84ca941-eb38-4105-8ccf-8ca269eb57fftarget_b84ca941-eb38-4105-8ccf-8ca269eb57ff_any",
+            "source": "a5ed43cd-6ad8-45c2-b131-6e3853244af3",
+            "target": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
+            "sourceHandle": "source_a5ed43cd-6ad8-45c2-b131-6e3853244af3_any",
+            "targetHandle": "target_b84ca941-eb38-4105-8ccf-8ca269eb57ff_any"
+        }
+    ],
+    "nodes": [
+        {
+            "id": "ba7291a9-dcb6-47df-90d3-c8c5c8fa468d",
+            "data": {
+                "sql": "SELECT \n    'DICOM' AS vocabulary_id,\n    'Digital Imaging and Communications in Medicine (National Electrical Manufacturers Association)' AS vocabulary_name,\n    'https://www.dicomstandard.org/current' AS vocabulary_reference,\n    'NEMA Standard PS3' AS vocabulary_version,\n    2128000000 AS vocabulary_concept_id;",
+                "name": "CreateVocabEntry",
+                "error": null,
+                "result": null,
+                "description": "Describe the task of node sql_node_0",
+                "errorMessage": null
             },
-            {
-                "id": "reactflow__edge-d4066246-51ed-40be-a036-e041d796fa7csource_d4066246-51ed-40be-a036-e041d796fa7c_dataframe-12d22e50-14aa-45c0-9d74-70c002b3fdbctarget_12d22e50-14aa-45c0-9d74-70c002b3fdbc_dataframe",
-                "source": "d4066246-51ed-40be-a036-e041d796fa7c",
-                "target": "12d22e50-14aa-45c0-9d74-70c002b3fdbc",
-                "sourceHandle": "source_d4066246-51ed-40be-a036-e041d796fa7c_dataframe",
-                "targetHandle": "target_12d22e50-14aa-45c0-9d74-70c002b3fdbc_dataframe"
+            "type": "sql_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -1070,
+                "y": -270
             },
-            {
-                "id": "ff521332-ca2a-4279-9d29-85a927e16371",
-                "source": "27393b23-6429-4144-96b3-36fdf252802b",
-                "target": "1aa8de3e-d66c-496e-bcf3-b183ddd82f9c"
-            },
-            {
-                "id": "9d7fe130-f86f-4cd1-857f-cfa00d01be8a",
-                "source": "1aa8de3e-d66c-496e-bcf3-b183ddd82f9c",
-                "target": "45c20162-1bbd-4c23-94df-1aab8eaa5181"
-            },
-            {
-                "id": "bb5abb0e-04c6-433c-86fa-4776b832b865",
-                "source": "45c20162-1bbd-4c23-94df-1aab8eaa5181",
-                "target": "de1a7740-824f-445f-8825-cb5d58fc17a5"
-            },
-            {
-                "id": "reactflow__edge-f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81source_f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81_any-b84ca941-eb38-4105-8ccf-8ca269eb57fftarget_b84ca941-eb38-4105-8ccf-8ca269eb57ff_any",
-                "source": "f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81",
-                "target": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
-                "selected": false,
-                "sourceHandle": "source_f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81_any",
-                "targetHandle": "target_b84ca941-eb38-4105-8ccf-8ca269eb57ff_any"
-            },
-            {
-                "id": "reactflow__edge-b84ca941-eb38-4105-8ccf-8ca269eb57ffsource_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object-8b5de6a8-08c3-42a8-8a76-3a809e77bfddtarget_8b5de6a8-08c3-42a8-8a76-3a809e77bfdd_object",
-                "source": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
-                "target": "8b5de6a8-08c3-42a8-8a76-3a809e77bfdd",
-                "selected": false,
-                "sourceHandle": "source_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object",
-                "targetHandle": "target_8b5de6a8-08c3-42a8-8a76-3a809e77bfdd_object"
-            },
-            {
-                "id": "reactflow__edge-b84ca941-eb38-4105-8ccf-8ca269eb57ffsource_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object-339fabc0-643d-46ff-acf0-989617ff5edctarget_339fabc0-643d-46ff-acf0-989617ff5edc_object",
-                "source": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
-                "target": "339fabc0-643d-46ff-acf0-989617ff5edc",
-                "selected": false,
-                "sourceHandle": "source_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object",
-                "targetHandle": "target_339fabc0-643d-46ff-acf0-989617ff5edc_object"
-            },
-            {
-                "id": "reactflow__edge-b84ca941-eb38-4105-8ccf-8ca269eb57ffsource_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object-f73d4adc-30c6-438d-8790-ae8b151fe2fftarget_f73d4adc-30c6-438d-8790-ae8b151fe2ff_object",
-                "source": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
-                "target": "f73d4adc-30c6-438d-8790-ae8b151fe2ff",
-                "selected": false,
-                "sourceHandle": "source_b84ca941-eb38-4105-8ccf-8ca269eb57ff_object",
-                "targetHandle": "target_f73d4adc-30c6-438d-8790-ae8b151fe2ff_object"
-            },
-            {
-                "id": "reactflow__edge-339fabc0-643d-46ff-acf0-989617ff5edcsource_339fabc0-643d-46ff-acf0-989617ff5edc_dataframe-08ec5f7d-c5ac-444a-99ba-296d8fde47f5target_08ec5f7d-c5ac-444a-99ba-296d8fde47f5_dataframe",
-                "source": "339fabc0-643d-46ff-acf0-989617ff5edc",
-                "target": "08ec5f7d-c5ac-444a-99ba-296d8fde47f5",
-                "sourceHandle": "source_339fabc0-643d-46ff-acf0-989617ff5edc_dataframe",
-                "targetHandle": "target_08ec5f7d-c5ac-444a-99ba-296d8fde47f5_dataframe"
-            },
-            {
-                "id": "reactflow__edge-8b5de6a8-08c3-42a8-8a76-3a809e77bfddsource_8b5de6a8-08c3-42a8-8a76-3a809e77bfdd_dataframe-ff33980b-091b-42fa-b901-f67adb9db534target_ff33980b-091b-42fa-b901-f67adb9db534_dataframe",
-                "source": "8b5de6a8-08c3-42a8-8a76-3a809e77bfdd",
-                "target": "ff33980b-091b-42fa-b901-f67adb9db534",
-                "sourceHandle": "source_8b5de6a8-08c3-42a8-8a76-3a809e77bfdd_dataframe",
-                "targetHandle": "target_ff33980b-091b-42fa-b901-f67adb9db534_dataframe"
-            },
-            {
-                "id": "reactflow__edge-f73d4adc-30c6-438d-8790-ae8b151fe2ffsource_f73d4adc-30c6-438d-8790-ae8b151fe2ff_dataframe-84c7d691-c5a8-4bea-8397-05bb30fa164btarget_84c7d691-c5a8-4bea-8397-05bb30fa164b_dataframe",
-                "source": "f73d4adc-30c6-438d-8790-ae8b151fe2ff",
-                "target": "84c7d691-c5a8-4bea-8397-05bb30fa164b",
-                "sourceHandle": "source_f73d4adc-30c6-438d-8790-ae8b151fe2ff_dataframe",
-                "targetHandle": "target_84c7d691-c5a8-4bea-8397-05bb30fa164b_dataframe"
-            },
-            {
-                "id": "reactflow__edge-a5ed43cd-6ad8-45c2-b131-6e3853244af3source_a5ed43cd-6ad8-45c2-b131-6e3853244af3_any-b84ca941-eb38-4105-8ccf-8ca269eb57fftarget_b84ca941-eb38-4105-8ccf-8ca269eb57ff_any",
-                "source": "a5ed43cd-6ad8-45c2-b131-6e3853244af3",
-                "target": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
-                "sourceHandle": "source_a5ed43cd-6ad8-45c2-b131-6e3853244af3_any",
-                "targetHandle": "target_b84ca941-eb38-4105-8ccf-8ca269eb57ff_any"
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -1070,
+                "y": -270
             }
-        ],
-        "nodes": [
-            {
-                "id": "ba7291a9-dcb6-47df-90d3-c8c5c8fa468d",
-                "data": {
-                    "sql": "SELECT \n    'DICOM' AS vocabulary_id,\n    'Digital Imaging and Communications in Medicine (National Electrical Manufacturers Association)' AS vocabulary_name,\n    'https://www.dicomstandard.org/current' AS vocabulary_reference,\n    'NEMA Standard PS3' AS vocabulary_version,\n    2128000000 AS vocabulary_concept_id;",
-                    "name": "CreateVocabEntry",
-                    "error": null,
-                    "result": null,
-                    "description": "Describe the task of node sql_node_0",
-                    "errorMessage": null
-                },
-                "type": "sql_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -1070,
-                    "y": -270
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -1070,
-                    "y": -270
-                }
+        },
+        {
+            "id": "80f6a837-6125-4ab2-8b60-ab7f2fac2731",
+            "data": {
+                "name": "IngestVocabTable",
+                "database": "alpdev_pg",
+                "dataframe": "CreateVocabEntry",
+                "schemaname": "medicalimagingvocab",
+                "dbtablename": "vocabulary",
+                "description": "Describe the task of node db_writer_node_0"
             },
-            {
-                "id": "80f6a837-6125-4ab2-8b60-ab7f2fac2731",
-                "data": {
-                    "name": "IngestVocabTable",
-                    "database": "alpdev_pg",
-                    "dataframe": "CreateVocabEntry",
-                    "schemaname": "medicalimagingvocab",
-                    "dbtablename": "vocabulary",
-                    "description": "Describe the task of node db_writer_node_0"
-                },
-                "type": "db_writer_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -500,
-                    "y": -270
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -500,
-                    "y": -270
-                }
+            "type": "db_writer_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -500,
+                "y": -270
             },
-            {
-                "id": "d4066246-51ed-40be-a036-e041d796fa7c",
-                "data": {
-                    "sql": "SELECT \n    'DICOM Attributes' AS concept_class_id,\n    'DICOM Attributes' AS concept_class_name,\n    2128000001 AS concept_class_concept_id\n\nUNION ALL\n\nSELECT \n    'DICOM Value Sets' AS concept_class_id,\n    'DICOM Value Sets' AS concept_class_name,\n    2128000002 AS concept_class_concept_id\n;",
-                    "name": "CreateConceptClassEntry",
-                    "error": null,
-                    "result": null,
-                    "description": "Describe the task of node sql_node_1",
-                    "errorMessage": null
-                },
-                "type": "sql_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -1070,
-                    "y": 40
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -1070,
-                    "y": 40
-                }
-            },
-            {
-                "id": "12d22e50-14aa-45c0-9d74-70c002b3fdbc",
-                "data": {
-                    "name": "IngestConceptClassTable",
-                    "database": "alpdev_pg",
-                    "dataframe": "CreateConceptClassEntry",
-                    "schemaname": "medicalimagingvocab",
-                    "dbtablename": "concept_class",
-                    "description": "Describe the task of node db_writer_node_1"
-                },
-                "type": "db_writer_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -500,
-                    "y": 40
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -500,
-                    "y": 40
-                }
-            },
-            {
-                "id": "27393b23-6429-4144-96b3-36fdf252802b",
-                "data": {
-                    "file": "omop_table_staging_v3.csv",
-                    "name": "UploadConceptCSV",
-                    "error": null,
-                    "result": null,
-                    "columns": [],
-                    "encoding": "utf-8",
-                    "delimiter": ",",
-                    "hasheader": true,
-                    "description": "Describe the task of node csv_node_0",
-                    "errorMessage": null
-                },
-                "type": "csv_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -1060,
-                    "y": 340
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -1060,
-                    "y": 340
-                }
-            },
-            {
-                "id": "1aa8de3e-d66c-496e-bcf3-b183ddd82f9c",
-                "data": {
-                    "name": "TransformConceptDf",
-                    "error": null,
-                    "result": null,
-                    "description": "Describe the task of node python_node_0",
-                    "python_code": "import pandas as pd\n\ndef exec(myinput):\n  concept_df = myinput[\"UploadConceptCSV\"].result\n  \n  # Adjust its data types\n  concept_df['valid_start_date'] = pd.to_datetime('1993-01-01')\n  concept_df['valid_end_date'] = pd.to_datetime('2099-12-31')\n  concept_df['standard_concept'] = ' '\n  concept_df['invalid_reason'] = ' '\n\n  # make sure string values have datatype of str\n  varchar_columns = ['concept_name', 'domain_id', 'vocabulary_id', 'concept_class_id', 'standard_concept', 'concept_code', 'invalid_reason']\n  for col in varchar_columns:\n      concept_df[col] = concept_df[col].astype(str)\n\n  # handle NULLs for SQL \n  concept_df = concept_df.where(pd.notnull(concept_df), None)\n\n  return concept_df",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -500,
-                    "y": 340
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -500,
-                    "y": 340
-                }
-            },
-            {
-                "id": "45c20162-1bbd-4c23-94df-1aab8eaa5181",
-                "data": {
-                    "map": {},
-                    "name": "GetConceptDf",
-                    "error": null,
-                    "uiMap": {
-                        "path": "$",
-                        "source": "TransformConceptDf"
-                    },
-                    "result": null,
-                    "description": "Describe the task of node py2table_node_0",
-                    "errorMessage": null
-                },
-                "type": "py2table_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -20,
-                    "y": 340
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -20,
-                    "y": 340
-                }
-            },
-            {
-                "id": "de1a7740-824f-445f-8825-cb5d58fc17a5",
-                "data": {
-                    "name": "IngestConceptTable",
-                    "database": "alpdev_pg",
-                    "dataframe": "GetConceptDf",
-                    "schemaname": "medicalimagingvocab",
-                    "dbtablename": "concept",
-                    "description": "Describe the task of node db_writer_node_2"
-                },
-                "type": "db_writer_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": 510,
-                    "y": 340
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": 510,
-                    "y": 340
-                }
-            },
-            {
-                "id": "f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81",
-                "data": {
-                    "file": "cs_values_maps_to_value.csv",
-                    "name": "UploadCSValueMapstoValue",
-                    "error": null,
-                    "result": null,
-                    "columns": [],
-                    "encoding": "utf-8",
-                    "delimiter": ",",
-                    "hasheader": true,
-                    "description": "Describe the task of node csv_node_2",
-                    "errorMessage": null
-                },
-                "type": "csv_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -1070,
-                    "y": 740
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -1070,
-                    "y": 740
-                }
-            },
-            {
-                "id": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
-                "data": {
-                    "name": "TransformConceptRelationshipDfs",
-                    "error": null,
-                    "result": null,
-                    "description": "Describe the task of node python_node_1",
-                    "python_code": "import pandas as pd\n\ndef exec(myinput):\n  columns_to_use = [\"concept_id_1\", \"concept_id_2\", \"relationship_id\"]\n  PATH_TO_EXTERNAL_FILES = \"/app/externalfiles\"\n\n  concept_relationship_staging_df = pd.read_pickle(f'{PATH_TO_EXTERNAL_FILES}/part3_to_part16_relationship_via_CID.pkl')\n  cs_values_maps_to_value_df = myinput[\"UploadCSValueMapstoValue\"].result\n  cs_values_maps_to_df = myinput[\"UploadCSValueMapsto\"].result\n\n  concept_relationship_staging_df[\"valid_start_date\"] = pd.to_datetime(concept_relationship_staging_df[\"valid_start_date\"].astype(str), format='%Y%m%d').dt.strftime('%Y%m%d')\n  concept_relationship_staging_df[\"valid_end_date\"] = pd.to_datetime(concept_relationship_staging_df[\"valid_end_date\"].astype(str), format='%Y%m%d').dt.strftime('%Y%m%d')\n\n  cs_values_maps_to_value_df[\"valid_start_date\"] = pd.to_datetime('1993-01-01')\n  cs_values_maps_to_value_df[\"valid_end_date\"] = pd.to_datetime('2099-12-31')\n\n  cs_values_maps_to_df[\"valid_start_date\"] = pd.to_datetime('1993-01-01')\n  cs_values_maps_to_df[\"valid_end_date\"] = pd.to_datetime('2099-12-31')\n\n  return {\n    \"concept_relationship_staging\": concept_relationship_staging_df,\n    \"cs_values_maps_to_value\": cs_values_maps_to_value_df,\n    \"cs_values_maps_to\": cs_values_maps_to_df\n  }",
-                    "errorMessage": null
-                },
-                "type": "python_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -500,
-                    "y": 860
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -500,
-                    "y": 860
-                }
-            },
-            {
-                "id": "339fabc0-643d-46ff-acf0-989617ff5edc",
-                "data": {
-                    "map": {},
-                    "name": "Get_concept_relationship_staging",
-                    "error": null,
-                    "uiMap": {
-                        "path": "$.concept_relationship_staging",
-                        "source": "TransformConceptRelationshipDfs"
-                    },
-                    "result": null,
-                    "description": "Describe the task of node py2table_node_1",
-                    "errorMessage": null
-                },
-                "type": "py2table_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -20,
-                    "y": 600
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -20,
-                    "y": 600
-                }
-            },
-            {
-                "id": "8b5de6a8-08c3-42a8-8a76-3a809e77bfdd",
-                "data": {
-                    "map": {},
-                    "name": "Get_cs_values_maps_to_value",
-                    "error": null,
-                    "uiMap": {
-                        "path": "$.cs_values_maps_to_value",
-                        "source": "TransformConceptRelationshipDfs"
-                    },
-                    "result": null,
-                    "description": "Describe the task of node py2table_node_2",
-                    "errorMessage": null
-                },
-                "type": "py2table_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -20,
-                    "y": 860
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -20,
-                    "y": 860
-                }
-            },
-            {
-                "id": "f73d4adc-30c6-438d-8790-ae8b151fe2ff",
-                "data": {
-                    "map": {},
-                    "name": "Get_cs_values_maps_to",
-                    "error": null,
-                    "uiMap": {
-                        "path": "$.cs_values_maps_to",
-                        "source": "TransformConceptRelationshipDfs"
-                    },
-                    "result": null,
-                    "description": "Describe the task of node py2table_node_3",
-                    "errorMessage": null
-                },
-                "type": "py2table_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": -20,
-                    "y": 1120
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -20,
-                    "y": 1120
-                }
-            },
-            {
-                "id": "ff33980b-091b-42fa-b901-f67adb9db534",
-                "data": {
-                    "name": "IngestConceptRelationship2",
-                    "database": "alpdev_pg",
-                    "dataframe": "Get_cs_values_maps_to_value",
-                    "schemaname": "medicalimagingvocab",
-                    "dbtablename": "concept_relationship",
-                    "description": "Describe the task of node db_writer_node_3"
-                },
-                "type": "db_writer_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": 510,
-                    "y": 860
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": 510,
-                    "y": 860
-                }
-            },
-            {
-                "id": "08ec5f7d-c5ac-444a-99ba-296d8fde47f5",
-                "data": {
-                    "name": "IngestConceptRelationship1",
-                    "database": "alpdev_pg",
-                    "dataframe": "Get_concept_relationship_staging",
-                    "schemaname": "medicalimagingvocab",
-                    "dbtablename": "concept_relationship",
-                    "description": "Describe the task of node db_writer_node_4"
-                },
-                "type": "db_writer_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": 510,
-                    "y": 600
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": 510,
-                    "y": 600
-                }
-            },
-            {
-                "id": "84c7d691-c5a8-4bea-8397-05bb30fa164b",
-                "data": {
-                    "name": "IngestConceptRelationship3",
-                    "database": "alpdev_pg",
-                    "dataframe": "Get_cs_values_maps_to",
-                    "schemaname": "medicalimagingvocab",
-                    "dbtablename": "concept_relationship",
-                    "description": "Describe the task of node db_writer_node_5"
-                },
-                "type": "db_writer_node",
-                "width": 350,
-                "height": 210,
-                "dragging": false,
-                "position": {
-                    "x": 510,
-                    "y": 1120
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": 510,
-                    "y": 1120
-                }
-            },
-            {
-                "id": "a5ed43cd-6ad8-45c2-b131-6e3853244af3",
-                "data": {
-                    "file": "cs_values_maps_to.csv",
-                    "name": "UploadCSValueMapsto",
-                    "columns": [],
-                    "encoding": "utf-8",
-                    "delimiter": ",",
-                    "hasheader": true,
-                    "description": "Describe the task of node csv_node_2"
-                },
-                "type": "csv_node",
-                "width": 354,
-                "height": 214,
-                "dragging": false,
-                "position": {
-                    "x": -1080,
-                    "y": 1080
-                },
-                "selected": false,
-                "dragHandle": "",
-                "sourcePosition": "right",
-                "targetPosition": "left",
-                "positionAbsolute": {
-                    "x": -1080,
-                    "y": 1080
-                }
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -500,
+                "y": -270
             }
-        ]
-    },
-    "createdBy": "admin",
-    "createdDate": "1900-01-01T00:00:00.000Z"
+        },
+        {
+            "id": "d4066246-51ed-40be-a036-e041d796fa7c",
+            "data": {
+                "sql": "SELECT \n    'DICOM Attributes' AS concept_class_id,\n    'DICOM Attributes' AS concept_class_name,\n    2128000001 AS concept_class_concept_id\n\nUNION ALL\n\nSELECT \n    'DICOM Value Sets' AS concept_class_id,\n    'DICOM Value Sets' AS concept_class_name,\n    2128000002 AS concept_class_concept_id\n;",
+                "name": "CreateConceptClassEntry",
+                "error": null,
+                "result": null,
+                "description": "Describe the task of node sql_node_1",
+                "errorMessage": null
+            },
+            "type": "sql_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -1070,
+                "y": 40
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -1070,
+                "y": 40
+            }
+        },
+        {
+            "id": "12d22e50-14aa-45c0-9d74-70c002b3fdbc",
+            "data": {
+                "name": "IngestConceptClassTable",
+                "database": "alpdev_pg",
+                "dataframe": "CreateConceptClassEntry",
+                "schemaname": "medicalimagingvocab",
+                "dbtablename": "concept_class",
+                "description": "Describe the task of node db_writer_node_1"
+            },
+            "type": "db_writer_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -500,
+                "y": 40
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -500,
+                "y": 40
+            }
+        },
+        {
+            "id": "27393b23-6429-4144-96b3-36fdf252802b",
+            "data": {
+                "file": "omop_table_staging_v3.csv",
+                "name": "UploadConceptCSV",
+                "error": null,
+                "result": null,
+                "columns": [],
+                "encoding": "utf-8",
+                "delimiter": ",",
+                "hasheader": true,
+                "description": "Describe the task of node csv_node_0",
+                "errorMessage": null
+            },
+            "type": "csv_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -1060,
+                "y": 340
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -1060,
+                "y": 340
+            }
+        },
+        {
+            "id": "1aa8de3e-d66c-496e-bcf3-b183ddd82f9c",
+            "data": {
+                "name": "TransformConceptDf",
+                "error": null,
+                "result": null,
+                "description": "Describe the task of node python_node_0",
+                "python_code": "import pandas as pd\n\ndef exec(myinput):\n  concept_df = myinput[\"UploadConceptCSV\"].result\n  \n  # Adjust its data types\n  concept_df['valid_start_date'] = pd.to_datetime('1993-01-01')\n  concept_df['valid_end_date'] = pd.to_datetime('2099-12-31')\n  concept_df['standard_concept'] = ' '\n  concept_df['invalid_reason'] = ' '\n\n  # make sure string values have datatype of str\n  varchar_columns = ['concept_name', 'domain_id', 'vocabulary_id', 'concept_class_id', 'standard_concept', 'concept_code', 'invalid_reason']\n  for col in varchar_columns:\n      concept_df[col] = concept_df[col].astype(str)\n\n  # handle NULLs for SQL \n  concept_df = concept_df.where(pd.notnull(concept_df), None)\n\n  return concept_df",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -500,
+                "y": 340
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -500,
+                "y": 340
+            }
+        },
+        {
+            "id": "45c20162-1bbd-4c23-94df-1aab8eaa5181",
+            "data": {
+                "map": {},
+                "name": "GetConceptDf",
+                "error": null,
+                "uiMap": {
+                    "path": "$",
+                    "source": "TransformConceptDf"
+                },
+                "result": null,
+                "description": "Describe the task of node py2table_node_0",
+                "errorMessage": null
+            },
+            "type": "py2table_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -20,
+                "y": 340
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -20,
+                "y": 340
+            }
+        },
+        {
+            "id": "de1a7740-824f-445f-8825-cb5d58fc17a5",
+            "data": {
+                "name": "IngestConceptTable",
+                "database": "alpdev_pg",
+                "dataframe": "GetConceptDf",
+                "schemaname": "medicalimagingvocab",
+                "dbtablename": "concept",
+                "description": "Describe the task of node db_writer_node_2"
+            },
+            "type": "db_writer_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 510,
+                "y": 340
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 510,
+                "y": 340
+            }
+        },
+        {
+            "id": "f0b6d8e7-ce5b-41a8-baef-5ac0c2ff2d81",
+            "data": {
+                "file": "cs_values_maps_to_value.csv",
+                "name": "UploadCSValueMapstoValue",
+                "error": null,
+                "result": null,
+                "columns": [],
+                "encoding": "utf-8",
+                "delimiter": ",",
+                "hasheader": true,
+                "description": "Describe the task of node csv_node_2",
+                "errorMessage": null
+            },
+            "type": "csv_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -1070,
+                "y": 740
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -1070,
+                "y": 740
+            }
+        },
+        {
+            "id": "b84ca941-eb38-4105-8ccf-8ca269eb57ff",
+            "data": {
+                "name": "TransformConceptRelationshipDfs",
+                "error": null,
+                "result": null,
+                "description": "Describe the task of node python_node_1",
+                "python_code": "import pandas as pd\n\ndef exec(myinput):\n  columns_to_use = [\"concept_id_1\", \"concept_id_2\", \"relationship_id\"]\n  PATH_TO_EXTERNAL_FILES = \"/app/externalfiles\"\n\n  concept_relationship_staging_df = pd.read_pickle(f'{PATH_TO_EXTERNAL_FILES}/part3_to_part16_relationship_via_CID.pkl')\n  cs_values_maps_to_value_df = myinput[\"UploadCSValueMapstoValue\"].result\n  cs_values_maps_to_df = myinput[\"UploadCSValueMapsto\"].result\n\n  concept_relationship_staging_df[\"valid_start_date\"] = pd.to_datetime(concept_relationship_staging_df[\"valid_start_date\"].astype(str), format='%Y%m%d').dt.strftime('%Y%m%d')\n  concept_relationship_staging_df[\"valid_end_date\"] = pd.to_datetime(concept_relationship_staging_df[\"valid_end_date\"].astype(str), format='%Y%m%d').dt.strftime('%Y%m%d')\n\n  cs_values_maps_to_value_df[\"valid_start_date\"] = pd.to_datetime('1993-01-01')\n  cs_values_maps_to_value_df[\"valid_end_date\"] = pd.to_datetime('2099-12-31')\n\n  cs_values_maps_to_df[\"valid_start_date\"] = pd.to_datetime('1993-01-01')\n  cs_values_maps_to_df[\"valid_end_date\"] = pd.to_datetime('2099-12-31')\n\n  return {\n    \"concept_relationship_staging\": concept_relationship_staging_df,\n    \"cs_values_maps_to_value\": cs_values_maps_to_value_df,\n    \"cs_values_maps_to\": cs_values_maps_to_df\n  }",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -500,
+                "y": 860
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -500,
+                "y": 860
+            }
+        },
+        {
+            "id": "339fabc0-643d-46ff-acf0-989617ff5edc",
+            "data": {
+                "map": {},
+                "name": "Get_concept_relationship_staging",
+                "error": null,
+                "uiMap": {
+                    "path": "$.concept_relationship_staging",
+                    "source": "TransformConceptRelationshipDfs"
+                },
+                "result": null,
+                "description": "Describe the task of node py2table_node_1",
+                "errorMessage": null
+            },
+            "type": "py2table_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -20,
+                "y": 600
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -20,
+                "y": 600
+            }
+        },
+        {
+            "id": "8b5de6a8-08c3-42a8-8a76-3a809e77bfdd",
+            "data": {
+                "map": {},
+                "name": "Get_cs_values_maps_to_value",
+                "error": null,
+                "uiMap": {
+                    "path": "$.cs_values_maps_to_value",
+                    "source": "TransformConceptRelationshipDfs"
+                },
+                "result": null,
+                "description": "Describe the task of node py2table_node_2",
+                "errorMessage": null
+            },
+            "type": "py2table_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -20,
+                "y": 860
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -20,
+                "y": 860
+            }
+        },
+        {
+            "id": "f73d4adc-30c6-438d-8790-ae8b151fe2ff",
+            "data": {
+                "map": {},
+                "name": "Get_cs_values_maps_to",
+                "error": null,
+                "uiMap": {
+                    "path": "$.cs_values_maps_to",
+                    "source": "TransformConceptRelationshipDfs"
+                },
+                "result": null,
+                "description": "Describe the task of node py2table_node_3",
+                "errorMessage": null
+            },
+            "type": "py2table_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -20,
+                "y": 1120
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -20,
+                "y": 1120
+            }
+        },
+        {
+            "id": "ff33980b-091b-42fa-b901-f67adb9db534",
+            "data": {
+                "name": "IngestConceptRelationship2",
+                "database": "alpdev_pg",
+                "dataframe": "Get_cs_values_maps_to_value",
+                "schemaname": "medicalimagingvocab",
+                "dbtablename": "concept_relationship",
+                "description": "Describe the task of node db_writer_node_3"
+            },
+            "type": "db_writer_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 510,
+                "y": 860
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 510,
+                "y": 860
+            }
+        },
+        {
+            "id": "08ec5f7d-c5ac-444a-99ba-296d8fde47f5",
+            "data": {
+                "name": "IngestConceptRelationship1",
+                "database": "alpdev_pg",
+                "dataframe": "Get_concept_relationship_staging",
+                "schemaname": "medicalimagingvocab",
+                "dbtablename": "concept_relationship",
+                "description": "Describe the task of node db_writer_node_4"
+            },
+            "type": "db_writer_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 510,
+                "y": 600
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 510,
+                "y": 600
+            }
+        },
+        {
+            "id": "84c7d691-c5a8-4bea-8397-05bb30fa164b",
+            "data": {
+                "name": "IngestConceptRelationship3",
+                "database": "alpdev_pg",
+                "dataframe": "Get_cs_values_maps_to",
+                "schemaname": "medicalimagingvocab",
+                "dbtablename": "concept_relationship",
+                "description": "Describe the task of node db_writer_node_5"
+            },
+            "type": "db_writer_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 510,
+                "y": 1120
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 510,
+                "y": 1120
+            }
+        },
+        {
+            "id": "a5ed43cd-6ad8-45c2-b131-6e3853244af3",
+            "data": {
+                "file": "cs_values_maps_to.csv",
+                "name": "UploadCSValueMapsto",
+                "columns": [],
+                "encoding": "utf-8",
+                "delimiter": ",",
+                "hasheader": true,
+                "description": "Describe the task of node csv_node_2"
+            },
+            "type": "csv_node",
+            "width": 354,
+            "height": 214,
+            "dragging": false,
+            "position": {
+                "x": -1080,
+                "y": 1080
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -1080,
+                "y": 1080
+            }
+        }
+    ]
 }

@@ -1,7 +1,5 @@
-{
-  "id": "accd4149-a742-4b55-9336-70c8afe50273",
-  "name": "ETLDicomMetadata",
-  "flow": {
+ {  "name": "ETL DICOM Metadata",
+    "description": "Extract metadata from DICOM files and store in database",
     "edges": [
       {
         "id": "reactflow__edge-ff326890-4169-44e9-92e7-eb4125ff84f0source_ff326890-4169-44e9-92e7-eb4125ff84f0_object-bd9ab103-03c8-4c74-9ff7-273c6f85d11ftarget_bd9ab103-03c8-4c74-9ff7-273c6f85d11f_any",
@@ -524,7 +522,4 @@
         }
       }
     ]
-  },
-  "createdBy": "admin",
-  "createdDate": "1900-01-01T00:00:00.000Z"
-}
+  }
