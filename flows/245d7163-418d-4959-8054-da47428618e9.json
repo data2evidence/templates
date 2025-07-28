@@ -1,0 +1,38 @@
+{
+  "nodes": [
+    {
+      "id": "a0645439-5569-4f1b-a41b-4a48deca5e77",
+      "data": {
+        "name": "constant_node",
+        "description": "Describe the task of node python_node_0",
+        "python_code": "def exec(myinput):\n  params = {\n    \"database_code\": \"alpdev_pg\",\n    \"schema_name\": \"cdmdefault\",\n    \"note_table\": \"note\",\n    \"note_nlp_table\": \"note_npl\",\n    \"use_cache_db\": False\n  }\n  return params\n"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -540,
+        "y": -540
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -540,
+        "y": -540
+      }
+    }
+  ],
+  "edges": [],
+  "variables": [
+    {
+      "key": "a",
+      "value": "1"
+    }
+  ],
+  "importLibs": [
+    "pandas"
+  ]
+}
