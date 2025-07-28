@@ -34,6 +34,7 @@
       "type": "python_node",
       "width": 350,
       "height": 210,
+      "dragging": false,
       "position": {
         "x": -530,
         "y": -280
@@ -45,19 +46,19 @@
       "positionAbsolute": {
         "x": -530,
         "y": -280
-      },
-      "dragging": false
+      }
     },
     {
       "id": "c0639286-a0c3-4212-9fe5-8ac2df909c31",
       "data": {
         "name": "umls2omop_node",
         "description": "Describe the task of node python_node_2",
-        "python_code": "import pandas as pd\nfrom typing import List, Union\n\nCUItoOHDSI_CSV=f\"flows/nlp/ner_extract_plugin/external/CUItoOHDSIv1.csv\"\n\nclass CIO2OMOP(object):\n    def __init__(self, mapping_csv: str) -> None:\n        with open(mapping_csv, 'r') as in_mappings:\n            self.mappings_df = pd.read_csv(in_mappings, index_col=0)\n            self.coding_systems = list(self.mappings_df[\"vocabulary_id\"].unique())\n\n    def get_supported_vocabulaires(self) -> List[str]:\n        return self.coding_systems\n\n    def get_codes(self, CUI:str):\n        try:\n            results = self.mappings_df.loc[[CUI]]\n        except KeyError:\n            # CUI code not found\n            return dict()\n        \n        return dict([(vocabulary_id, (results.loc[results[\"vocabulary_id\"]==vocabulary_id][\"concept_id\"]).squeeze()) \n                     for vocabulary_id in results[\"vocabulary_id\"]])\n\n    def get_mappings(self, CUI:Union[str,List[str]]):\n        return self.mappings_df.loc[CUI]\n\ndef exec(myinput):\n  mapper = CIO2OMOP(mapping_csv=CUItoOHDSI_CSV)\n  return mapper"
+        "python_code": "import pandas as pd\nfrom typing import List, Union\n\nCUItoOHDSI_CSV=f\"flows/ner_extract_plugin/external/CUItoOHDSIv1.csv\"\n\nclass CIO2OMOP(object):\n    def __init__(self, mapping_csv: str) -> None:\n        with open(mapping_csv, 'r') as in_mappings:\n            self.mappings_df = pd.read_csv(in_mappings, index_col=0)\n            self.coding_systems = list(self.mappings_df[\"vocabulary_id\"].unique())\n\n    def get_supported_vocabulaires(self) -> List[str]:\n        return self.coding_systems\n\n    def get_codes(self, CUI:str):\n        try:\n            results = self.mappings_df.loc[[CUI]]\n        except KeyError:\n            # CUI code not found\n            return dict()\n        \n        return dict([(vocabulary_id, (results.loc[results[\"vocabulary_id\"]==vocabulary_id][\"concept_id\"]).squeeze()) \n                     for vocabulary_id in results[\"vocabulary_id\"]])\n\n    def get_mappings(self, CUI:Union[str,List[str]]):\n        return self.mappings_df.loc[CUI]\n\ndef exec(myinput):\n  mapper = CIO2OMOP(mapping_csv=CUItoOHDSI_CSV)\n  return mapper"
       },
       "type": "python_node",
       "width": 350,
       "height": 210,
+      "dragging": false,
       "position": {
         "x": -530,
         "y": -20
@@ -69,8 +70,7 @@
       "positionAbsolute": {
         "x": -530,
         "y": -20
-      },
-      "dragging": false
+      }
     },
     {
       "id": "72977ab6-aa83-47ab-8596-4d1aa431fe15",
@@ -80,8 +80,9 @@
         "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\nimport pandas as pd\nimport spacy\nfrom datetime import datetime\nimport os\nfrom prefect import flow\nfrom prefect.logging import get_run_logger\n\n@flow(log_prints=True)\ndef exec(myinput):\n  logger = get_run_logger()\n  model_info = spacy.info()['pipelines']\n  logger.info(f\"The following spacy models are available: {model_info}\")\n  logger.info(\"Start the connection to database\")\n  params = myinput.get(\"constant_node\").result\n  database_code = params[\"database_code\"]\n  schema_name = params[\"schema_name\"]\n  note_table = params[\"note_table\"]\n  note_nlp_table = params[\"note_nlp_table\"]\n  use_cache_db = params[\"use_cache_db\"]\n  dbdao = DBDao(use_cache_db=use_cache_db, database_code=database_code)\n  entity_extractor_linker = myinput.get(\"nel_node\").result\n  mapper = myinput.get(\"umls2omop_node\").result\n\n  with dbdao.ibis_connect() as conn:\n    logger.info(\"Loading Notes\")\n    note = conn.table(note_table, database=schema_name)\n    note_nlp = conn.table(note_nlp_table, database=schema_name)\n    record = note.select(['note_id','note_text']).execute()\n    count = note_nlp.count().execute()\n    rst_df = pd.DataFrame()\n\n    for note_id, note_text in record.values:\n      # Two steps of add_pipeline and extract\n      logger.info(f\"Start to analyze note {note_id}\")\n      medical_ner_nel = entity_extractor_linker(mapper)\n      medical_ner_nel.add_pipeline(model_name=\"en_ner_bc5cdr_md\", linker_name=\"umls\")\n      df1 = medical_ner_nel.extract_entities(text=note_text, confidence_threshold=0.8)\n\n      medical_ner_nel = entity_extractor_linker(mapper)\n      medical_ner_nel.add_pipeline(model_name=\"en_core_med7_trf\", linker_name=\"rxnorm\")\n      df2 = medical_ner_nel.extract_entities(text=note_text, confidence_threshold=0.8)\n      note_df = pd.concat([df1,df2]).reset_index(drop=True)\n\n      # logger.info(f\"Complete the analysis of note {note_id}\")\n      # map note_df to note_nlp table\n      note_df['note_id'] = note_id\n      note_df['section_concept_id'] = -1\n      note_df['snippet'] = note_df.apply(lambda x: note_text[x['start']-10:x['end']+10], axis=1)\n      note_df['note_nlp_source_concept_id'] = -1\n      note_df['nlp_system'] = note_df.apply(lambda x: '-'.join(x[['model','linker']]+[f'-{model_info[x.model]}']), axis=1)\n      note_df['nlp_date'] = datetime.now().strftime(\"%Y-%m-%d\")\n      note_df['nlp_datetime'] = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n      note_df['term_exists'] = 'U'\n      note_df['term_temporal'] ='N/A'\n      note_df['term_modifiers'] ='N/A'\n      note_df = note_df.rename(columns={'start':'offset',\n                                      'raw_text':'lexical_variant',\n                                      'concept_id':'note_nlp_concept_id',\n                                  })\n      note_df['note_nlp_id'] = note_df.index.values + 1 + count\n      \n      rst_df = pd.concat([rst_df,note_df]).reset_index(drop=True)\n      count += len(note_df)\n      logger.info(f\"Results of note_id: {note_id} for confidence_threshold=0.8 done\")\n  \n      cols = ['note_nlp_id',\n              'note_id',\n              'section_concept_id',\n              'snippet',\n              'offset',\n              'lexical_variant',\n              'note_nlp_concept_id',\n              'note_nlp_source_concept_id',\n              'nlp_system',\n              'nlp_date',\n              'nlp_datetime',\n              'term_exists',\n              'term_temporal',\n              'term_modifiers']\n  with dbdao.engine.connect() as conn:\n    rst_df[cols].to_sql(name = note_nlp_table,\n                        con = conn,\n                        schema = schema_name,\n                        if_exists = 'append',\n                        index = False,\n                        chunksize = 32,\n                )"
       },
       "type": "python_node",
-      "width": 354,
-      "height": 214,
+      "width": 350,
+      "height": 210,
+      "dragging": false,
       "position": {
         "x": 60,
         "y": -280
@@ -93,31 +94,30 @@
       "positionAbsolute": {
         "x": 60,
         "y": -280
-      },
-      "dragging": false
+      }
     }
   ],
   "edges": [
     {
+      "id": "reactflow__edge-a0645439-5569-4f1b-a41b-4a48deca5e77source_a0645439-5569-4f1b-a41b-4a48deca5e77_object-72977ab6-aa83-47ab-8596-4d1aa431fe15target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any",
       "source": "a0645439-5569-4f1b-a41b-4a48deca5e77",
+      "target": "72977ab6-aa83-47ab-8596-4d1aa431fe15",
       "sourceHandle": "source_a0645439-5569-4f1b-a41b-4a48deca5e77_object",
-      "target": "72977ab6-aa83-47ab-8596-4d1aa431fe15",
-      "targetHandle": "target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any",
-      "id": "reactflow__edge-a0645439-5569-4f1b-a41b-4a48deca5e77source_a0645439-5569-4f1b-a41b-4a48deca5e77_object-72977ab6-aa83-47ab-8596-4d1aa431fe15target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any"
+      "targetHandle": "target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any"
     },
     {
+      "id": "reactflow__edge-d6784351-b931-40a3-ab5e-9663b7a156fdsource_d6784351-b931-40a3-ab5e-9663b7a156fd_object-72977ab6-aa83-47ab-8596-4d1aa431fe15target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any",
       "source": "d6784351-b931-40a3-ab5e-9663b7a156fd",
-      "sourceHandle": "source_d6784351-b931-40a3-ab5e-9663b7a156fd_object",
       "target": "72977ab6-aa83-47ab-8596-4d1aa431fe15",
-      "targetHandle": "target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any",
-      "id": "reactflow__edge-d6784351-b931-40a3-ab5e-9663b7a156fdsource_d6784351-b931-40a3-ab5e-9663b7a156fd_object-72977ab6-aa83-47ab-8596-4d1aa431fe15target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any"
+      "sourceHandle": "source_d6784351-b931-40a3-ab5e-9663b7a156fd_object",
+      "targetHandle": "target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any"
     },
     {
+      "id": "reactflow__edge-c0639286-a0c3-4212-9fe5-8ac2df909c31source_c0639286-a0c3-4212-9fe5-8ac2df909c31_object-72977ab6-aa83-47ab-8596-4d1aa431fe15target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any",
       "source": "c0639286-a0c3-4212-9fe5-8ac2df909c31",
-      "sourceHandle": "source_c0639286-a0c3-4212-9fe5-8ac2df909c31_object",
       "target": "72977ab6-aa83-47ab-8596-4d1aa431fe15",
-      "targetHandle": "target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any",
-      "id": "reactflow__edge-c0639286-a0c3-4212-9fe5-8ac2df909c31source_c0639286-a0c3-4212-9fe5-8ac2df909c31_object-72977ab6-aa83-47ab-8596-4d1aa431fe15target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any"
+      "sourceHandle": "source_c0639286-a0c3-4212-9fe5-8ac2df909c31_object",
+      "targetHandle": "target_72977ab6-aa83-47ab-8596-4d1aa431fe15_any"
     }
   ],
   "variables": [
