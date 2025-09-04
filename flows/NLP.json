@@ -4,13 +4,6 @@
   "flow": {
     "edges": [
       {
-        "id": "reactflow__edge-a0645439-5569-4f1b-a41b-4a48deca5e77source_a0645439-5569-4f1b-a41b-4a48deca5e77_object-2a7d0684-3e92-48cb-afda-99d8a48cbc28target_2a7d0684-3e92-48cb-afda-99d8a48cbc28_any",
-        "source": "a0645439-5569-4f1b-a41b-4a48deca5e77",
-        "target": "2a7d0684-3e92-48cb-afda-99d8a48cbc28",
-        "sourceHandle": "source_a0645439-5569-4f1b-a41b-4a48deca5e77_object",
-        "targetHandle": "target_2a7d0684-3e92-48cb-afda-99d8a48cbc28_any"
-      },
-      {
         "id": "reactflow__edge-d6784351-b931-40a3-ab5e-9663b7a156fdsource_d6784351-b931-40a3-ab5e-9663b7a156fd_object-2a7d0684-3e92-48cb-afda-99d8a48cbc28target_2a7d0684-3e92-48cb-afda-99d8a48cbc28_any",
         "source": "d6784351-b931-40a3-ab5e-9663b7a156fd",
         "target": "2a7d0684-3e92-48cb-afda-99d8a48cbc28",
@@ -27,24 +20,6 @@
     ],
     "nodes": [
       {
-        "id": "a0645439-5569-4f1b-a41b-4a48deca5e77",
-        "data": {
-          "name": "constant_node",
-          "description": "Describe the task of node python_node_0",
-          "python_code": "def exec(myinput):\n  params = {\n    \"database_code\": \"alpdev_pg\",\n    \"schema_name\": \"cdmdefault\",\n    \"note_table\": \"note\",\n    \"note_nlp_table\": \"note_nlp\",\n    \"use_cache_db\": False\n  }\n  return params\n"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": { "x": -530, "y": -550 },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": { "x": -530, "y": -550 }
-      },
-      {
         "id": "d6784351-b931-40a3-ab5e-9663b7a156fd",
         "data": {
           "name": "nel_node",
@@ -55,12 +30,12 @@
         "width": 350,
         "height": 210,
         "dragging": false,
-        "position": { "x": -530, "y": -280 },
+        "position": { "x": -540, "y": -510 },
         "selected": false,
         "dragHandle": "",
         "sourcePosition": "right",
         "targetPosition": "left",
-        "positionAbsolute": { "x": -530, "y": -280 }
+        "positionAbsolute": { "x": -540, "y": -510 }
       },
       {
         "id": "c0639286-a0c3-4212-9fe5-8ac2df909c31",
@@ -92,7 +67,7 @@
         "height": 210,
         "dragging": false,
         "position": { "x": -10, "y": -280 },
-        "selected": true,
+        "selected": false,
         "dragHandle": "",
         "sourcePosition": "right",
         "targetPosition": "left",
