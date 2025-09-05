@@ -2,524 +2,593 @@
     "description": "Extract metadata from DICOM files and store in database",
     "edges": [
       {
-        "id": "reactflow__edge-ff326890-4169-44e9-92e7-eb4125ff84f0source_ff326890-4169-44e9-92e7-eb4125ff84f0_object-bd9ab103-03c8-4c74-9ff7-273c6f85d11ftarget_bd9ab103-03c8-4c74-9ff7-273c6f85d11f_any",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "bd9ab103-03c8-4c74-9ff7-273c6f85d11f",
+        "id": "reactflow__edge-c44ca9da-0777-42fd-8ae4-a382e4e37a11source_c44ca9da-0777-42fd-8ae4-a382e4e37a11_object-99d6f743-9018-4166-aa34-43e197be525atarget_99d6f743-9018-4166-aa34-43e197be525a_any",
+        "source": "c44ca9da-0777-42fd-8ae4-a382e4e37a11",
+        "target": "99d6f743-9018-4166-aa34-43e197be525a",
         "selected": false,
-        "sourceHandle": "source_ff326890-4169-44e9-92e7-eb4125ff84f0_object",
-        "targetHandle": "target_bd9ab103-03c8-4c74-9ff7-273c6f85d11f_any"
+        "sourceHandle": "source_c44ca9da-0777-42fd-8ae4-a382e4e37a11_object",
+        "targetHandle": "target_99d6f743-9018-4166-aa34-43e197be525a_any"
       },
       {
-        "id": "535a957e-3426-4410-b773-0271cf06316d",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "e59f8249-86e0-4e3c-bef4-4a819e7279ba",
-        "selected": false
-      },
-      {
-        "id": "reactflow__edge-bd9ab103-03c8-4c74-9ff7-273c6f85d11fsource_bd9ab103-03c8-4c74-9ff7-273c6f85d11f_object-73159b59-4500-495a-9243-c039a528def7target_73159b59-4500-495a-9243-c039a528def7_any",
-        "source": "bd9ab103-03c8-4c74-9ff7-273c6f85d11f",
-        "target": "73159b59-4500-495a-9243-c039a528def7",
+        "id": "reactflow__edge-99d6f743-9018-4166-aa34-43e197be525asource_99d6f743-9018-4166-aa34-43e197be525a_object-9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9target_9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9_object",
+        "source": "99d6f743-9018-4166-aa34-43e197be525a",
+        "target": "9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9",
         "selected": false,
-        "sourceHandle": "source_bd9ab103-03c8-4c74-9ff7-273c6f85d11f_object",
-        "targetHandle": "target_73159b59-4500-495a-9243-c039a528def7_any"
+        "sourceHandle": "source_99d6f743-9018-4166-aa34-43e197be525a_object",
+        "targetHandle": "target_9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9_object"
       },
       {
-        "id": "3a2c45df-ae42-4a1b-a4e0-732be857dc65",
-        "source": "73159b59-4500-495a-9243-c039a528def7",
-        "target": "9e5f6c91-444c-4b40-8bbe-edc8b804a787"
+        "id": "reactflow__edge-9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9source_9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9_dataframe-9f720300-b943-4691-895a-8476c0d67e5ftarget_9f720300-b943-4691-895a-8476c0d67e5f_dataframe",
+        "source": "9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9",
+        "target": "9f720300-b943-4691-895a-8476c0d67e5f",
+        "selected": false,
+        "sourceHandle": "source_9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9_dataframe",
+        "targetHandle": "target_9f720300-b943-4691-895a-8476c0d67e5f_dataframe"
       },
       {
-        "id": "reactflow__edge-9e5f6c91-444c-4b40-8bbe-edc8b804a787source_9e5f6c91-444c-4b40-8bbe-edc8b804a787_dataframe-cbf81fbc-2376-4364-baf5-0cbbb12606b4target_cbf81fbc-2376-4364-baf5-0cbbb12606b4_dataframe",
-        "source": "9e5f6c91-444c-4b40-8bbe-edc8b804a787",
-        "target": "cbf81fbc-2376-4364-baf5-0cbbb12606b4",
-        "sourceHandle": "source_9e5f6c91-444c-4b40-8bbe-edc8b804a787_dataframe",
-        "targetHandle": "target_cbf81fbc-2376-4364-baf5-0cbbb12606b4_dataframe"
+        "id": "reactflow__edge-2a72ca99-93d4-4619-b368-f0cde5e1164esource_2a72ca99-93d4-4619-b368-f0cde5e1164e_dataframe-9f720300-b943-4691-895a-8476c0d67e5ftarget_9f720300-b943-4691-895a-8476c0d67e5f_dataframe",
+        "source": "2a72ca99-93d4-4619-b368-f0cde5e1164e",
+        "target": "9f720300-b943-4691-895a-8476c0d67e5f",
+        "selected": false,
+        "sourceHandle": "source_2a72ca99-93d4-4619-b368-f0cde5e1164e_dataframe",
+        "targetHandle": "target_9f720300-b943-4691-895a-8476c0d67e5f_dataframe"
       },
       {
-        "id": "reactflow__edge-47689970-4f35-4a81-aae6-711b54ae471dsource_47689970-4f35-4a81-aae6-711b54ae471d_dataframe-cbf81fbc-2376-4364-baf5-0cbbb12606b4target_cbf81fbc-2376-4364-baf5-0cbbb12606b4_dataframe",
-        "source": "47689970-4f35-4a81-aae6-711b54ae471d",
-        "target": "cbf81fbc-2376-4364-baf5-0cbbb12606b4",
-        "sourceHandle": "source_47689970-4f35-4a81-aae6-711b54ae471d_dataframe",
-        "targetHandle": "target_cbf81fbc-2376-4364-baf5-0cbbb12606b4_dataframe"
+        "id": "reactflow__edge-9f720300-b943-4691-895a-8476c0d67e5fsource_9f720300-b943-4691-895a-8476c0d67e5f_dataframe-2da73f42-dde3-4a55-b7c3-bcb98126153btarget_2da73f42-dde3-4a55-b7c3-bcb98126153b_any",
+        "source": "9f720300-b943-4691-895a-8476c0d67e5f",
+        "target": "2da73f42-dde3-4a55-b7c3-bcb98126153b",
+        "selected": false,
+        "sourceHandle": "source_9f720300-b943-4691-895a-8476c0d67e5f_dataframe",
+        "targetHandle": "target_2da73f42-dde3-4a55-b7c3-bcb98126153b_any"
       },
       {
-        "id": "4ba91f88-284c-4d88-bca9-620f2195ba5a",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "b2f7572b-c967-4e6f-b7e9-42f8591f759f"
+        "id": "reactflow__edge-2a72ca99-93d4-4619-b368-f0cde5e1164esource_2a72ca99-93d4-4619-b368-f0cde5e1164e_dataframe-2da73f42-dde3-4a55-b7c3-bcb98126153btarget_2da73f42-dde3-4a55-b7c3-bcb98126153b_any",
+        "source": "2a72ca99-93d4-4619-b368-f0cde5e1164e",
+        "target": "2da73f42-dde3-4a55-b7c3-bcb98126153b",
+        "sourceHandle": "source_2a72ca99-93d4-4619-b368-f0cde5e1164e_dataframe",
+        "targetHandle": "target_2da73f42-dde3-4a55-b7c3-bcb98126153b_any"
       },
       {
-        "id": "a69e4e08-247b-429a-b8ca-019b84a47647",
-        "source": "cbf81fbc-2376-4364-baf5-0cbbb12606b4",
-        "target": "a357e655-3e9a-450b-bf91-264c585b0a65"
+        "id": "reactflow__edge-d1107318-2965-455c-8d68-354979b54ce7source_d1107318-2965-455c-8d68-354979b54ce7_object-2da73f42-dde3-4a55-b7c3-bcb98126153btarget_2da73f42-dde3-4a55-b7c3-bcb98126153b_any",
+        "source": "d1107318-2965-455c-8d68-354979b54ce7",
+        "target": "2da73f42-dde3-4a55-b7c3-bcb98126153b",
+        "sourceHandle": "source_d1107318-2965-455c-8d68-354979b54ce7_object",
+        "targetHandle": "target_2da73f42-dde3-4a55-b7c3-bcb98126153b_any"
       },
       {
-        "id": "reactflow__edge-47689970-4f35-4a81-aae6-711b54ae471dsource_47689970-4f35-4a81-aae6-711b54ae471d_dataframe-a357e655-3e9a-450b-bf91-264c585b0a65target_a357e655-3e9a-450b-bf91-264c585b0a65_any",
-        "source": "47689970-4f35-4a81-aae6-711b54ae471d",
-        "target": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "sourceHandle": "source_47689970-4f35-4a81-aae6-711b54ae471d_dataframe",
-        "targetHandle": "target_a357e655-3e9a-450b-bf91-264c585b0a65_any"
+        "id": "reactflow__edge-2da73f42-dde3-4a55-b7c3-bcb98126153bsource_2da73f42-dde3-4a55-b7c3-bcb98126153b_object-fb210d34-2400-4875-bc36-40f54701f60ftarget_fb210d34-2400-4875-bc36-40f54701f60f_object",
+        "source": "2da73f42-dde3-4a55-b7c3-bcb98126153b",
+        "target": "fb210d34-2400-4875-bc36-40f54701f60f",
+        "sourceHandle": "source_2da73f42-dde3-4a55-b7c3-bcb98126153b_object",
+        "targetHandle": "target_fb210d34-2400-4875-bc36-40f54701f60f_object"
       },
       {
-        "id": "reactflow__edge-ff326890-4169-44e9-92e7-eb4125ff84f0source_ff326890-4169-44e9-92e7-eb4125ff84f0_object-a357e655-3e9a-450b-bf91-264c585b0a65target_a357e655-3e9a-450b-bf91-264c585b0a65_any",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "sourceHandle": "source_ff326890-4169-44e9-92e7-eb4125ff84f0_object",
-        "targetHandle": "target_a357e655-3e9a-450b-bf91-264c585b0a65_any"
+        "id": "reactflow__edge-fb210d34-2400-4875-bc36-40f54701f60fsource_fb210d34-2400-4875-bc36-40f54701f60f_dataframe-a0032a81-4e6e-4672-96c3-d812665b50c1target_a0032a81-4e6e-4672-96c3-d812665b50c1_dataframe",
+        "source": "fb210d34-2400-4875-bc36-40f54701f60f",
+        "target": "a0032a81-4e6e-4672-96c3-d812665b50c1",
+        "sourceHandle": "source_fb210d34-2400-4875-bc36-40f54701f60f_dataframe",
+        "targetHandle": "target_a0032a81-4e6e-4672-96c3-d812665b50c1_dataframe"
       },
       {
-        "id": "691345ec-2541-4dbd-ae41-5e7c3ead496d",
-        "source": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "target": "78a4d19c-4c74-4f21-8d26-97beaae858ff"
+        "id": "reactflow__edge-2da73f42-dde3-4a55-b7c3-bcb98126153bsource_2da73f42-dde3-4a55-b7c3-bcb98126153b_object-ede96fb2-0730-440f-848b-36caa5a911c8target_ede96fb2-0730-440f-848b-36caa5a911c8_object",
+        "source": "2da73f42-dde3-4a55-b7c3-bcb98126153b",
+        "target": "ede96fb2-0730-440f-848b-36caa5a911c8",
+        "sourceHandle": "source_2da73f42-dde3-4a55-b7c3-bcb98126153b_object",
+        "targetHandle": "target_ede96fb2-0730-440f-848b-36caa5a911c8_object"
       },
       {
-        "id": "reactflow__edge-ff326890-4169-44e9-92e7-eb4125ff84f0source_ff326890-4169-44e9-92e7-eb4125ff84f0_object-78a4d19c-4c74-4f21-8d26-97beaae858fftarget_78a4d19c-4c74-4f21-8d26-97beaae858ff_any",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "78a4d19c-4c74-4f21-8d26-97beaae858ff",
-        "sourceHandle": "source_ff326890-4169-44e9-92e7-eb4125ff84f0_object",
-        "targetHandle": "target_78a4d19c-4c74-4f21-8d26-97beaae858ff_any"
+        "id": "reactflow__edge-ede96fb2-0730-440f-848b-36caa5a911c8source_ede96fb2-0730-440f-848b-36caa5a911c8_dataframe-65a62ab1-fc8f-4198-a33d-ac9fcf83d16atarget_65a62ab1-fc8f-4198-a33d-ac9fcf83d16a_dataframe",
+        "source": "ede96fb2-0730-440f-848b-36caa5a911c8",
+        "target": "65a62ab1-fc8f-4198-a33d-ac9fcf83d16a",
+        "sourceHandle": "source_ede96fb2-0730-440f-848b-36caa5a911c8_dataframe",
+        "targetHandle": "target_65a62ab1-fc8f-4198-a33d-ac9fcf83d16a_dataframe"
       },
       {
-        "id": "9cbb5b4b-c06a-44cb-a3b2-f335752b1254",
-        "source": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "target": "191a116b-31bb-4105-a5c0-830df6ff934a"
+        "id": "reactflow__edge-2da73f42-dde3-4a55-b7c3-bcb98126153bsource_2da73f42-dde3-4a55-b7c3-bcb98126153b_object-601c256a-fce8-4e0b-89c9-a0b3b18d7dectarget_601c256a-fce8-4e0b-89c9-a0b3b18d7dec_object",
+        "source": "2da73f42-dde3-4a55-b7c3-bcb98126153b",
+        "target": "601c256a-fce8-4e0b-89c9-a0b3b18d7dec",
+        "sourceHandle": "source_2da73f42-dde3-4a55-b7c3-bcb98126153b_object",
+        "targetHandle": "target_601c256a-fce8-4e0b-89c9-a0b3b18d7dec_object"
       },
       {
-        "id": "reactflow__edge-b2f7572b-c967-4e6f-b7e9-42f8591f759fsource_b2f7572b-c967-4e6f-b7e9-42f8591f759f_object-a357e655-3e9a-450b-bf91-264c585b0a65target_a357e655-3e9a-450b-bf91-264c585b0a65_any",
-        "source": "b2f7572b-c967-4e6f-b7e9-42f8591f759f",
-        "target": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "sourceHandle": "source_b2f7572b-c967-4e6f-b7e9-42f8591f759f_object",
-        "targetHandle": "target_a357e655-3e9a-450b-bf91-264c585b0a65_any"
+        "id": "reactflow__edge-601c256a-fce8-4e0b-89c9-a0b3b18d7decsource_601c256a-fce8-4e0b-89c9-a0b3b18d7dec_dataframe-f3a0e6f5-41cd-4f10-b162-f071ce3e72a9target_f3a0e6f5-41cd-4f10-b162-f071ce3e72a9_dataframe",
+        "source": "601c256a-fce8-4e0b-89c9-a0b3b18d7dec",
+        "target": "f3a0e6f5-41cd-4f10-b162-f071ce3e72a9",
+        "sourceHandle": "source_601c256a-fce8-4e0b-89c9-a0b3b18d7dec_dataframe",
+        "targetHandle": "target_f3a0e6f5-41cd-4f10-b162-f071ce3e72a9_dataframe"
       },
       {
-        "id": "reactflow__edge-ff326890-4169-44e9-92e7-eb4125ff84f0source_ff326890-4169-44e9-92e7-eb4125ff84f0_object-191a116b-31bb-4105-a5c0-830df6ff934atarget_191a116b-31bb-4105-a5c0-830df6ff934a_any",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "191a116b-31bb-4105-a5c0-830df6ff934a",
-        "sourceHandle": "source_ff326890-4169-44e9-92e7-eb4125ff84f0_object",
-        "targetHandle": "target_191a116b-31bb-4105-a5c0-830df6ff934a_any"
+        "id": "reactflow__edge-750a1f77-acb1-4233-bd75-f47548f69dc1source_750a1f77-acb1-4233-bd75-f47548f69dc1_object-d1107318-2965-455c-8d68-354979b54ce7target_d1107318-2965-455c-8d68-354979b54ce7_any",
+        "source": "750a1f77-acb1-4233-bd75-f47548f69dc1",
+        "target": "d1107318-2965-455c-8d68-354979b54ce7",
+        "sourceHandle": "source_750a1f77-acb1-4233-bd75-f47548f69dc1_object",
+        "targetHandle": "target_d1107318-2965-455c-8d68-354979b54ce7_any"
       },
       {
-        "id": "e3e765e9-fcaf-4350-bbb0-cdd53c06ab03",
-        "source": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "target": "c115344b-35db-4408-ae3f-e6b059d5af74"
+        "id": "reactflow__edge-2da73f42-dde3-4a55-b7c3-bcb98126153bsource_2da73f42-dde3-4a55-b7c3-bcb98126153b_object-86104475-df24-4d7d-bfe4-7436ea0fd314target_86104475-df24-4d7d-bfe4-7436ea0fd314_any",
+        "source": "2da73f42-dde3-4a55-b7c3-bcb98126153b",
+        "target": "86104475-df24-4d7d-bfe4-7436ea0fd314",
+        "sourceHandle": "source_2da73f42-dde3-4a55-b7c3-bcb98126153b_object",
+        "targetHandle": "target_86104475-df24-4d7d-bfe4-7436ea0fd314_any"
       },
       {
-        "id": "reactflow__edge-ff326890-4169-44e9-92e7-eb4125ff84f0source_ff326890-4169-44e9-92e7-eb4125ff84f0_object-c115344b-35db-4408-ae3f-e6b059d5af74target_c115344b-35db-4408-ae3f-e6b059d5af74_any",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "c115344b-35db-4408-ae3f-e6b059d5af74",
-        "sourceHandle": "source_ff326890-4169-44e9-92e7-eb4125ff84f0_object",
-        "targetHandle": "target_c115344b-35db-4408-ae3f-e6b059d5af74_any"
+        "id": "reactflow__edge-9f720300-b943-4691-895a-8476c0d67e5fsource_9f720300-b943-4691-895a-8476c0d67e5f_dataframe-86104475-df24-4d7d-bfe4-7436ea0fd314target_86104475-df24-4d7d-bfe4-7436ea0fd314_any",
+        "source": "9f720300-b943-4691-895a-8476c0d67e5f",
+        "target": "86104475-df24-4d7d-bfe4-7436ea0fd314",
+        "sourceHandle": "source_9f720300-b943-4691-895a-8476c0d67e5f_dataframe",
+        "targetHandle": "target_86104475-df24-4d7d-bfe4-7436ea0fd314_any"
       },
       {
-        "id": "reactflow__edge-e59f8249-86e0-4e3c-bef4-4a819e7279basource_e59f8249-86e0-4e3c-bef4-4a819e7279ba_object-73159b59-4500-495a-9243-c039a528def7target_73159b59-4500-495a-9243-c039a528def7_any",
-        "source": "e59f8249-86e0-4e3c-bef4-4a819e7279ba",
-        "target": "73159b59-4500-495a-9243-c039a528def7",
-        "sourceHandle": "source_e59f8249-86e0-4e3c-bef4-4a819e7279ba_object",
-        "targetHandle": "target_73159b59-4500-495a-9243-c039a528def7_any"
+        "id": "reactflow__edge-86104475-df24-4d7d-bfe4-7436ea0fd314source_86104475-df24-4d7d-bfe4-7436ea0fd314_object-dab2f165-f0b1-48ac-be21-e5a7a466ae3btarget_dab2f165-f0b1-48ac-be21-e5a7a466ae3b_object",
+        "source": "86104475-df24-4d7d-bfe4-7436ea0fd314",
+        "target": "dab2f165-f0b1-48ac-be21-e5a7a466ae3b",
+        "sourceHandle": "source_86104475-df24-4d7d-bfe4-7436ea0fd314_object",
+        "targetHandle": "target_dab2f165-f0b1-48ac-be21-e5a7a466ae3b_object"
       },
       {
-        "id": "73c6f7ad-9bc9-4ba7-b06c-054a16ecd61b",
-        "source": "cbf81fbc-2376-4364-baf5-0cbbb12606b4",
-        "target": "18467be8-5a75-4bc2-a72e-5bf8ce5b9d60"
+        "id": "reactflow__edge-86104475-df24-4d7d-bfe4-7436ea0fd314source_86104475-df24-4d7d-bfe4-7436ea0fd314_object-f31990a0-c798-48e4-bd05-e931e2d700d3target_f31990a0-c798-48e4-bd05-e931e2d700d3_object",
+        "source": "86104475-df24-4d7d-bfe4-7436ea0fd314",
+        "target": "f31990a0-c798-48e4-bd05-e931e2d700d3",
+        "sourceHandle": "source_86104475-df24-4d7d-bfe4-7436ea0fd314_object",
+        "targetHandle": "target_f31990a0-c798-48e4-bd05-e931e2d700d3_object"
       },
       {
-        "id": "reactflow__edge-ff326890-4169-44e9-92e7-eb4125ff84f0source_ff326890-4169-44e9-92e7-eb4125ff84f0_object-18467be8-5a75-4bc2-a72e-5bf8ce5b9d60target_18467be8-5a75-4bc2-a72e-5bf8ce5b9d60_any",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "18467be8-5a75-4bc2-a72e-5bf8ce5b9d60",
-        "sourceHandle": "source_ff326890-4169-44e9-92e7-eb4125ff84f0_object",
-        "targetHandle": "target_18467be8-5a75-4bc2-a72e-5bf8ce5b9d60_any"
+        "id": "reactflow__edge-dab2f165-f0b1-48ac-be21-e5a7a466ae3bsource_dab2f165-f0b1-48ac-be21-e5a7a466ae3b_dataframe-4ab717c8-8367-4cd3-902b-404b40d96a93target_4ab717c8-8367-4cd3-902b-404b40d96a93_dataframe",
+        "source": "dab2f165-f0b1-48ac-be21-e5a7a466ae3b",
+        "target": "4ab717c8-8367-4cd3-902b-404b40d96a93",
+        "sourceHandle": "source_dab2f165-f0b1-48ac-be21-e5a7a466ae3b_dataframe",
+        "targetHandle": "target_4ab717c8-8367-4cd3-902b-404b40d96a93_dataframe"
       },
       {
-        "id": "reactflow__edge-47689970-4f35-4a81-aae6-711b54ae471dsource_47689970-4f35-4a81-aae6-711b54ae471d_dataframe-18467be8-5a75-4bc2-a72e-5bf8ce5b9d60target_18467be8-5a75-4bc2-a72e-5bf8ce5b9d60_any",
-        "source": "47689970-4f35-4a81-aae6-711b54ae471d",
-        "target": "18467be8-5a75-4bc2-a72e-5bf8ce5b9d60",
-        "sourceHandle": "source_47689970-4f35-4a81-aae6-711b54ae471d_dataframe",
-        "targetHandle": "target_18467be8-5a75-4bc2-a72e-5bf8ce5b9d60_any"
+        "id": "reactflow__edge-f31990a0-c798-48e4-bd05-e931e2d700d3source_f31990a0-c798-48e4-bd05-e931e2d700d3_dataframe-db8ecda6-1327-4d04-9004-4dd48f19f811target_db8ecda6-1327-4d04-9004-4dd48f19f811_dataframe",
+        "source": "f31990a0-c798-48e4-bd05-e931e2d700d3",
+        "target": "db8ecda6-1327-4d04-9004-4dd48f19f811",
+        "sourceHandle": "source_f31990a0-c798-48e4-bd05-e931e2d700d3_dataframe",
+        "targetHandle": "target_db8ecda6-1327-4d04-9004-4dd48f19f811_dataframe"
       },
       {
-        "id": "reactflow__edge-a357e655-3e9a-450b-bf91-264c585b0a65source_a357e655-3e9a-450b-bf91-264c585b0a65_object-18467be8-5a75-4bc2-a72e-5bf8ce5b9d60target_18467be8-5a75-4bc2-a72e-5bf8ce5b9d60_any",
-        "source": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "target": "18467be8-5a75-4bc2-a72e-5bf8ce5b9d60",
-        "sourceHandle": "source_a357e655-3e9a-450b-bf91-264c585b0a65_object",
-        "targetHandle": "target_18467be8-5a75-4bc2-a72e-5bf8ce5b9d60_any"
-      },
-      {
-        "id": "reactflow__edge-b2f7572b-c967-4e6f-b7e9-42f8591f759fsource_b2f7572b-c967-4e6f-b7e9-42f8591f759f_object-18467be8-5a75-4bc2-a72e-5bf8ce5b9d60target_18467be8-5a75-4bc2-a72e-5bf8ce5b9d60_any",
-        "source": "b2f7572b-c967-4e6f-b7e9-42f8591f759f",
-        "target": "18467be8-5a75-4bc2-a72e-5bf8ce5b9d60",
-        "sourceHandle": "source_b2f7572b-c967-4e6f-b7e9-42f8591f759f_object",
-        "targetHandle": "target_18467be8-5a75-4bc2-a72e-5bf8ce5b9d60_any"
-      },
-      {
-        "id": "a4c6f456-08f3-490f-9ef0-d0eadfe9b276",
-        "source": "18467be8-5a75-4bc2-a72e-5bf8ce5b9d60",
-        "target": "47d11682-e3aa-4d94-8fcf-09391088e18d"
-      },
-      {
-        "id": "reactflow__edge-a357e655-3e9a-450b-bf91-264c585b0a65source_a357e655-3e9a-450b-bf91-264c585b0a65_object-47d11682-e3aa-4d94-8fcf-09391088e18dtarget_47d11682-e3aa-4d94-8fcf-09391088e18d_any",
-        "source": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "target": "47d11682-e3aa-4d94-8fcf-09391088e18d",
-        "sourceHandle": "source_a357e655-3e9a-450b-bf91-264c585b0a65_object",
-        "targetHandle": "target_47d11682-e3aa-4d94-8fcf-09391088e18d_any"
-      },
-      {
-        "id": "reactflow__edge-cbf81fbc-2376-4364-baf5-0cbbb12606b4source_cbf81fbc-2376-4364-baf5-0cbbb12606b4_dataframe-47d11682-e3aa-4d94-8fcf-09391088e18dtarget_47d11682-e3aa-4d94-8fcf-09391088e18d_any",
-        "source": "cbf81fbc-2376-4364-baf5-0cbbb12606b4",
-        "target": "47d11682-e3aa-4d94-8fcf-09391088e18d",
-        "sourceHandle": "source_cbf81fbc-2376-4364-baf5-0cbbb12606b4_dataframe",
-        "targetHandle": "target_47d11682-e3aa-4d94-8fcf-09391088e18d_any"
-      },
-      {
-        "id": "reactflow__edge-ff326890-4169-44e9-92e7-eb4125ff84f0source_ff326890-4169-44e9-92e7-eb4125ff84f0_object-47d11682-e3aa-4d94-8fcf-09391088e18dtarget_47d11682-e3aa-4d94-8fcf-09391088e18d_any",
-        "source": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "target": "47d11682-e3aa-4d94-8fcf-09391088e18d",
-        "sourceHandle": "source_ff326890-4169-44e9-92e7-eb4125ff84f0_object",
-        "targetHandle": "target_47d11682-e3aa-4d94-8fcf-09391088e18d_any"
+        "id": "reactflow__edge-d1107318-2965-455c-8d68-354979b54ce7source_d1107318-2965-455c-8d68-354979b54ce7_object-86104475-df24-4d7d-bfe4-7436ea0fd314target_86104475-df24-4d7d-bfe4-7436ea0fd314_any",
+        "source": "d1107318-2965-455c-8d68-354979b54ce7",
+        "target": "86104475-df24-4d7d-bfe4-7436ea0fd314",
+        "sourceHandle": "source_d1107318-2965-455c-8d68-354979b54ce7_object",
+        "targetHandle": "target_86104475-df24-4d7d-bfe4-7436ea0fd314_any"
       }
     ],
     "nodes": [
       {
-        "id": "ff326890-4169-44e9-92e7-eb4125ff84f0",
-        "data": {
-          "name": "SetVariables",
-          "description": "Describe the task of node python_node_0",
-          "python_code": "def exec(myinput):\n  return {\n    \"truncate_tables\": True,\n    \"database_code\": \"alpdev_pg\",\n    \"ingest_eav_table\": True,\n    \"medical_imaging_schema\": \"medicalimaging\",\n    \"vocab_schema\": \"testvocab\",\n    \"cdm_schema\": \"cdmtest\",\n    \"person_mapping_schema\": \"testvocab\",\n    \"dicom_files_abs_path\": \"/app/externalfiles/dicom-images-test\"\n  }"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -750,
-          "y": 520
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -750,
-          "y": 520
-        }
-      },
-      {
-        "id": "bd9ab103-03c8-4c74-9ff7-273c6f85d11f",
-        "data": {
-          "name": "GetDICOMFileList",
-          "description": "Describe the task of node python_node_1",
-          "python_code": "from pathlib import Path\n\n\ndef exec(myinput) -> list:\n  dicom_files_abs_path = myinput[\"SetVariables\"].result.get(\"dicom_files_abs_path\")\n\n  root_dir = Path(dicom_files_abs_path)\n  dcm_files = [str(path) for path in root_dir.rglob('*.dcm')] + [str(path) for path in root_dir.rglob('*.DCM')]\n  print(f\"Found {len(dcm_files)} DICOM files for processing!\")\n\n  return dcm_files"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -270,
-          "y": 60
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -270,
-          "y": 60
-        }
-      },
-      {
-        "id": "e59f8249-86e0-4e3c-bef4-4a819e7279ba",
+        "id": "750a1f77-acb1-4233-bd75-f47548f69dc1",
         "data": {
           "name": "TruncateTables",
-          "description": "Describe the task of node python_node_2",
-          "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\n\ndef exec(myinput):\n  truncate_tables = myinput[\"SetVariables\"].result.get(\"truncate_tables\")\n  database_code = myinput[\"SetVariables\"].result.get(\"database_code\")\n  medical_imaging_schema = myinput[\"SetVariables\"].result.get(\"medical_imaging_schema\")\n  vocab_schema = myinput[\"SetVariables\"].result.get(\"vocab_schema\")\n  cdm_schema = myinput[\"SetVariables\"].result.get(\"cdm_schema\")\n  person_mapping_schema = myinput[\"SetVariables\"].result.get(\"person_mapping_schema\")\n  ingest_eav_table = myinput[\"SetVariables\"].result.get(\"ingest_eav_table\")\n  \n  if truncate_tables:\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"procedure_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"visit_occurrence\")\n    dbdao.truncate_table(medical_imaging_schema,\"image_occurrence\")\n\n    if ingest_eav_table == True:\n        dbdao.truncate_table(medical_imaging_schema, \"dicom_file_metadata\")\n    else:\n        dbdao.truncate_table(medical_imaging_schema, \"image_feature\")\n        dbdao.truncate_table(cdm_schema, \"measurement\")\n    \n  return None"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -270,
-          "y": 370
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -270,
-          "y": 370
-        }
-      },
-      {
-        "id": "73159b59-4500-495a-9243-c039a528def7",
-        "data": {
-          "name": "ExtractMetadata",
-          "description": "Extract all data elements into a single df",
-          "python_code": "import pandas as pd\nfrom pydicom import dcmread\n\ndef exec(myinput):\n  dcm_files = myinput[\"GetDICOMFileList\"].result\n\n  extracted_data_df = extract_data_elements(dcm_files)\n  \n  return extracted_data_df\n\ndef extract_data_elements(dicom_files: list):\n    extracted_metadata = []\n    error_elements = []\n    generator_fn = incrementer()\n\n    print(f\"Extracting metadata from {len(dicom_files)} files..\")\n\n    for filepath in dicom_files:\n        with dcmread(filepath, stop_before_pixels=True, force=True) as dicom_f:\n\n            study_instance_uid = dicom_f.get(\"StudyInstanceUID\")  # [0x0020, 0x000D]\n            series_instance_uid = dicom_f.get(\"SeriesInstanceUID\")  # [0x0020, 0x000E]\n            sop_instance_uid = dicom_f.get(\"SOPInstanceUID\")  # [0x0008,0x0018]\n            instance_number = dicom_f.get(\"InstanceNumber\", None)  # [0x0020,0x0013]\n\n            record = {\n                \"image_study_uid\": study_instance_uid,\n                \"image_series_uid\": series_instance_uid,\n                \"sop_instance_id\": sop_instance_uid,\n                \"instance_number\": instance_number,\n                \"filepath\": str(filepath)\n            }\n\n\n\n            for data_elem in dicom_f:\n                # Filter out values that are too large to store in db\n                if data_elem.VR == \"UN\":\n                    continue  # skip\n                else:\n                    try:\n                        extracted_metadata.extend(data_elem_to_dict(\n                            data_elem, record, generator_fn))\n                    except Exception as e:\n                        error_msg = f\"Failed to process {data_elem.name}: {e}\"\n                        error_elements.append(\n                            {\n                                \"filepath\": str(filepath),\n                                \"data_element_name\": data_elem.name,\n                                \"data_element_tag\": data_elem.tag,\n                                \"data_element_vr\": data_elem.VR\n                            }\n                        )\n                        print(error_msg)\n\n    print(f\"Successfully extracted metadata for {len(extracted_metadata)} data elements\")\n\n    if len(error_elements) > 0:\n        processing_error_msg = f\"Failed to extract metadata for {len(error_elements)} data elements\"\n        print(processing_error_msg)\n        raise Exception(processing_error_msg)\n\n    extracted_metadata_df = pd.DataFrame(extracted_metadata)\n\n    assert extracted_metadata_df[\"sop_instance_id\"].nunique() == len(\n        dicom_files)\n    assert extracted_metadata_df[\"id\"].nunique() == len(extracted_metadata)\n\n    return extracted_metadata_df\n\n\n\ndef incrementer():\n    n = 1\n    while True:\n        yield n\n        n += 1\n\n\ndef convert_tag_to_string(tag) -> str:\n    tag_str =  f\"{tag.group:04X}{tag.element:04X}\"\n    return tag_str\n\n\ndef data_elem_to_dict(data_element, record: dict, generator_fn, \n                      parent_seq_id: int = None) -> list:\n    \n    id = next(generator_fn)\n\n    result = [extract_metadata(data_element, record, id, parent_seq_id)]\n    \n    if data_element.VR == \"SQ\": # Include nested data elements in sequences\n        sq_dataset = data_element.value\n\n        if len(sq_dataset) > 0: # non-empty sequence\n            for sq_data_elem in sq_dataset[0]: # Use the 0 idx to access data elements in the dataset in the sequence\n                result.extend(data_elem_to_dict(data_element=sq_data_elem, record=record,\n                                                generator_fn=generator_fn, parent_seq_id=id))\n    return result\n\n\ndef extract_metadata(data_element, record: dict, id: int, parent_sequence_id: int = None):\n    sequence_length = get_sequence_length(data_element) if data_element.VR == \"SQ\" else None\n    metadata = {\n        \"id\": id,\n        \"metadata_source_name\": data_element.name,\n        \"metadata_source_keyword\": data_element.keyword,\n        \"tag\": convert_tag_to_string(data_element.tag),\n        \"tag_tuple\": convert_tag_to_tuple(data_element.tag),\n        \"VR\": data_element.VR,\n        \"value\": None if data_element.VR == \"SQ\" else extract_data_element_value(data_element),\n        \"is_sequence\": True if data_element.VR == \"SQ\" else False,\n        \"sequence_length\": sequence_length,\n        \"parent_sequence_id\": parent_sequence_id if parent_sequence_id else None,\n        \"is_private\": data_element.is_private,\n        \"private_creator\": data_element.private_creator,\n    }\n    metadata.update(record)\n    return metadata\n\n\ndef get_sequence_length(data_element) -> int:\n    # Gets the number of elements stored in the first level\n    if data_element.value:\n        sq_dataset = data_element.value # Access the sequence \n        return len(sq_dataset[0])\n    else:\n        # Empty sequences don't have a .value\n        return 0\n\ndef convert_tag_to_tuple(tag) -> str:\n    tag_tuple=  f\"({tag.group:04X},{tag.element:04X})\"\n    return tag_tuple\n\ndef extract_data_element_value(data_element):\n    if data_element.value: \n        return str(data_element.value)\n    return None\n"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 200,
-          "y": 60
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 200,
-          "y": 60
-        }
-      },
-      {
-        "id": "47689970-4f35-4a81-aae6-711b54ae471d",
-        "data": {
-          "name": "ConceptIDforDICOMTags",
-          "database": "alpdev_pg",
-          "sqlquery": "select \n    concept_id,\n    concept_name,\n    concept_code \nfrom testvocab.concept where\nvocabulary_id = 'DICOM'\n",
-          "testdata": [
-            []
-          ],
-          "description": "Describe the task of node db_reader_node_0"
-        },
-        "type": "db_reader_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 200,
-          "y": 360
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 200,
-          "y": 360
-        }
-      },
-      {
-        "id": "cbf81fbc-2376-4364-baf5-0cbbb12606b4",
-        "data": {
-          "sql": "SELECT \n    MetadataDf.*,\n    CAST(ConceptIDforDICOMTags.concept_id AS INT) AS concept_id,\n    ConceptIDforDICOMTags.concept_code,\n    ConceptIDforDICOMTags.concept_name\nFROM MetadataDf\nLEFT JOIN ConceptIDforDICOMTags\nON MetadataDf.tag = ConceptIDforDICOMTags.concept_code",
-          "name": "MappedConceptsDf",
-          "description": "Describe the task of node sql_node_0"
-        },
-        "type": "sql_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 1200,
-          "y": 280
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 1200,
-          "y": 280
-        }
-      },
-      {
-        "id": "9e5f6c91-444c-4b40-8bbe-edc8b804a787",
-        "data": {
-          "map": {},
-          "name": "MetadataDf",
-          "uiMap": {
-            "path": "$",
-            "source": "ExtractMetadata"
-          },
-          "description": "Describe the task of node py2table_node_0"
-        },
-        "type": "py2table_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 680,
-          "y": 60
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 680,
-          "y": 60
-        }
-      },
-      {
-        "id": "b2f7572b-c967-4e6f-b7e9-42f8591f759f",
-        "data": {
-          "name": "GetNextRecordIDs",
-          "description": "Describe the task of node python_node_4",
-          "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\n\ndef exec(myinput):\n  database_code = myinput[\"SetVariables\"].result.get(\"database_code\")\n  medical_imaging_schema = myinput[\"SetVariables\"].result.get(\"medical_imaging_schema\")\n  vocab_schema = myinput[\"SetVariables\"].result.get(\"vocab_schema\")\n  cdm_schema = myinput[\"SetVariables\"].result.get(\"cdm_schema\")\n\n  dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n  return {\n    \"image_occurrence\": dbdao.get_next_record_id(medical_imaging_schema, \"image_occurrence\", \"image_occurrence_id\"),\n    \"procedure_occurrence\": dbdao.get_next_record_id(cdm_schema, \"procedure_occurrence\", \"procedure_occurrence_id\"),\n    \"visit_occurrence\": dbdao.get_next_record_id(cdm_schema, \"visit_occurrence\", \"visit_occurrence_id\"),\n    \"measurement\": dbdao.get_next_record_id(cdm_schema, \"measurement\", \"measurement_id\"),\n    \"image_feature\": dbdao.get_next_record_id(medical_imaging_schema, \"image_feature\", \"image_feature_id\")\n  }"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": -260,
-          "y": 710
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": -260,
-          "y": 710
-        }
-      },
-      {
-        "id": "a357e655-3e9a-450b-bf91-264c585b0a65",
-        "data": {
-          "name": "TransformImageOccurrenceDf",
-          "description": "Describe the task of node python_node_5",
-          "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\nimport pandas as pd\nimport numpy as np\nfrom datetime import datetime\n\ndef exec(myinput):\n    mapped_concepts_df = myinput[\"MappedConceptsDf\"].result\n    concept_df = myinput[\"ConceptIDforDICOMTags\"].result\n    database_code = myinput[\"SetVariables\"].result.get(\"database_code\")\n    person_mapping_schema = myinput[\"SetVariables\"].result.get(\"person_mapping_schema\")\n    cdm_schema = myinput[\"SetVariables\"].result.get(\"cdm_schema\")\n    next_po_id = myinput[\"GetNextRecordIDs\"].result.get(\"procedure_occurrence\")\n    next_vo_id = myinput[\"GetNextRecordIDs\"].result.get(\"visit_occurrence\")\n    next_io_id = myinput[\"GetNextRecordIDs\"].result.get(\"image_occurrence\")\n    \n    # Tags used for image_occurrence, procedure_occurrence, visit_occurrence\n    # 00080020: Study Date, 00100020: Patient ID, 00080060: Modality\n    # 00180015: Body Part Examined (Optional in Image Occurrence table)\n    tags_for_columns = [\"00080020\", \"00100020\", \"00080060\", \"00180015\"]\n\n    # Select only rows with the above tags\n    df_subset = mapped_concepts_df[mapped_concepts_df[\"tag\"].isin(tags_for_columns)][[\"image_study_uid\",\n                                                                                      \"image_series_uid\",\n                                                                                      \"tag\",\n                                                                                      \"value\"]]\n    \n    # Pivot to wide format and select only keep unique series uids\n    df_subset_pivoted = df_subset.pivot_table(\n        index=[\"image_study_uid\", \"image_series_uid\"], columns=\"tag\", values=\"value\", aggfunc=\"first\")\n    df_subset_pivoted.reset_index(inplace=True)\n    df_subset_pivoted = df_subset_pivoted.drop_duplicates(\n        subset=[\"image_study_uid\", \"image_series_uid\"])\n\n    # Create \"00180015\" BodyPartExamined column if it doesn't exist and fill with NaN\n    if '00180015' not in df_subset_pivoted.columns:\n        df_subset_pivoted['00180015'] = np.nan\n        df_subset_pivoted['00180015'] = df_subset_pivoted['00180015'].astype('object')\n\n    # Create \"00080020\" StudyDate column if it doesn't exist and fill with 19930101 i.e. earliest vocab valid date\n    if '00080020' not in df_subset_pivoted.columns:\n        df_subset_pivoted['00080020'] = \"19930101\"\n\n\n    # Map Person ID\n    person_id_col = \"person_id\"\n    patient_id_col = \"person_source_value\"\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    with dbdao.ibis_connect() as conn:\n        mapping_table = conn.table(\"person\",\n                                   database=person_mapping_schema)\n\n        mapping_df = mapping_table[[person_id_col, patient_id_col]].execute()\n\n    image_occurrence_df = df_subset_pivoted.merge(mapping_df[[person_id_col, patient_id_col]],\n                                                  how=\"left\", left_on=\"00100020\", right_on=patient_id_col)\n    image_occurrence_df.rename(\n        columns={person_id_col: 'person_id'}, inplace=True)\n\n    # Use person_id = 0 for unmatched patient_ids\n    image_occurrence_df['person_id'] = image_occurrence_df['person_id'].fillna(\n        0)\n    image_occurrence_df['person_id'] = image_occurrence_df['person_id'].astype(\n        'Int64')\n\n    # Get concept id for modality and body part\n    concept_df['concept_code'] = concept_df['concept_code'].astype(str)\n    concept_df['concept_code'] = concept_df['concept_code'].str.upper()\n\n    # Todo: Update with standard concept ids\n    # Get concept id for BodyPartExamined -> anatomic_site_concept_id\n    print(\"Mapping BodyPartExamined tag to concept_id..\")\n    image_occurrence_df = image_occurrence_df.merge(concept_df[[\"concept_id\", \"concept_code\"]],\n                                                    how=\"left\", left_on=\"00180015\", right_on=\"concept_code\")\n    image_occurrence_df.rename(\n        columns={\"concept_id\": \"anatomic_site_concept_id\"}, inplace=True)\n\n    # Use anatomic_site_concept_id = 0 for unmatched patient_ids\n    image_occurrence_df['anatomic_site_concept_id'] = image_occurrence_df['anatomic_site_concept_id'].fillna(\n        0)\n    image_occurrence_df['anatomic_site_concept_id'] = image_occurrence_df['anatomic_site_concept_id'].astype(\n        'Int64')\n\n    # Todo: Update with standard concept id\n    # Get concept id for Modality -> modality_concept_id\n    print(\"Mapping Modality tag to concept_id..\")\n    image_occurrence_df = image_occurrence_df.merge(concept_df[[\"concept_id\", \"concept_code\"]],\n                                                    how=\"left\", left_on=\"00080060\", right_on=\"concept_code\")\n    image_occurrence_df.rename(\n        columns={\"concept_id\": \"modality_concept_id\"}, inplace=True)\n\n    # Use modality_concept_id = 0 for unmatched patient_ids\n    image_occurrence_df['modality_concept_id'] = image_occurrence_df['modality_concept_id'].fillna(\n        0)\n    image_occurrence_df['modality_concept_id'] = image_occurrence_df['modality_concept_id'].astype(\n        'Int64')\n\n    # Todo: Update wadors_uri, local_path, visit_type_concept_id & visit_concept_id\n    image_occurrence_df['image_occurrence_date'] = pd.to_datetime(\n        image_occurrence_df['00080020'])\n    image_occurrence_df['image_occurrence_date'] = image_occurrence_df['image_occurrence_date'].fillna(\n        pd.to_datetime(\"1993-01-01\"))\n\n    image_occurrence_df['visit_type_concept_id'] = 32817  # EHR\n    image_occurrence_df['visit_concept_id'] = 9202  # Outpatient visit\n\n    image_occurrence_df['image_occurrence_id'] = pd.Series(range(next_io_id,\n                                                                 next_io_id + len(image_occurrence_df)))\n    image_occurrence_df['procedure_occurrence_id'] = pd.Series(range(next_po_id,\n                                                                     next_po_id + len(image_occurrence_df)))\n    image_occurrence_df['visit_occurrence_id'] = pd.Series(range(next_vo_id,\n                                                                 next_vo_id + len(image_occurrence_df)))\n\n    print(\"Successfully created records for image occurrence, procedure occurrence and visit occurrence tables!\")\n    return image_occurrence_df"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 1760,
-          "y": 530
-        },
-        "selected": true,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 1760,
-          "y": 530
-        }
-      },
-      {
-        "id": "78a4d19c-4c74-4f21-8d26-97beaae858ff",
-        "data": {
-          "name": "IngestProcedureOccurrence",
-          "description": "Describe the task of node python_node_6",
-          "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\nimport pandas as pd\n\ndef exec(myinput):\n    database_code = myinput[\"SetVariables\"].result.get(\"database_code\")\n    cdm_schema = myinput[\"SetVariables\"].result.get(\"cdm_schema\")\n    image_occurrence_df = myinput[\"TransformImageOccurrenceDf\"].result\n\n    ingestion_columns = [\n        \"procedure_occurrence_id\",\n        \"person_id\",\n        \"procedure_concept_id\",  # Todo: Using non-standard concept_id\n        \"procedure_date\",\n        \"procedure_type_concept_id\"  # Todo: Using hardcoded value\n    ]\n\n    procedure_occurrence_df = image_occurrence_df.rename(columns={\n        \"modality_concept_id\": \"procedure_concept_id\",\n        \"image_occurrence_date\": \"procedure_date\",\n        \"visit_type_concept_id\": \"procedure_type_concept_id\",\n    })\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    print(f\"Ingesting {len(procedure_occurrence_df)} records into '{cdm_schema}.procedure_occurrence' table..\")\n    procedure_occurrence_df[ingestion_columns].to_sql(\n        \"procedure_occurrence\", dbdao.engine, if_exists='append', index=False, schema=cdm_schema, chunksize=50000)\n    print(f\"Successfully ingested {len(procedure_occurrence_df)} records into '{cdm_schema}.procedure_occurrence' table!\")"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 2250,
-          "y": 430
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 2250,
-          "y": 430
-        }
-      },
-      {
-        "id": "191a116b-31bb-4105-a5c0-830df6ff934a",
-        "data": {
-          "name": "IngestVisitOccurrence",
-          "description": "Describe the task of node python_node_7",
-          "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\nimport pandas as pd\n\ndef exec(myinput):\n    database_code = myinput[\"SetVariables\"].result.get(\"database_code\")\n    cdm_schema = myinput[\"SetVariables\"].result.get(\"cdm_schema\")\n    image_occurrence_df = myinput[\"TransformImageOccurrenceDf\"].result\n\n    ingestion_columns = [\n        \"visit_occurrence_id\",\n        \"person_id\",\n        \"visit_concept_id\",  # Todo: Using hardcoded value\n        \"visit_start_date\",\n        \"visit_end_date\",\n        \"visit_type_concept_id\"  # Todo: Using hardcoded value\n    ]\n\n    visit_occurrence_df = image_occurrence_df.rename(columns={\n        \"image_occurrence_date\": \"visit_start_date\",\n    })\n    visit_occurrence_df[\"visit_end_date\"] = visit_occurrence_df[\"visit_start_date\"]\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    print(f\"Ingesting {len(visit_occurrence_df)} records into '{cdm_schema}.visit_occurrence' table..\")\n    visit_occurrence_df[ingestion_columns].to_sql(\n        \"visit_occurrence\", dbdao.engine, if_exists='append', index=False, schema=cdm_schema, chunksize=50000)\n    print(f\"Successfully ingested {len(visit_occurrence_df)} records into '{cdm_schema}.visit_occurrence' table!\")"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 2250,
-          "y": 690
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 2250,
-          "y": 690
-        }
-      },
-      {
-        "id": "c115344b-35db-4408-ae3f-e6b059d5af74",
-        "data": {
-          "name": "IngestImageOccurrence",
-          "description": "Describe the task of node python_node_8",
-          "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\nimport pandas as pd\n\ndef exec(myinput):\n    database_code = myinput[\"SetVariables\"].result.get(\"database_code\")\n    medical_imaging_schema = myinput[\"SetVariables\"].result.get(\"medical_imaging_schema\")\n    image_occurrence_df = myinput[\"TransformImageOccurrenceDf\"].result\n\n    ingestion_columns = [\n        \"image_occurrence_id\",\n        \"person_id\",\n        \"procedure_occurrence_id\",\n        \"visit_occurrence_id\",\n        \"anatomic_site_concept_id\",  # Todo: Using non-standard concept_id\n        \"image_occurrence_date\",\n        \"image_study_uid\",\n        \"image_series_uid\",\n        \"modality_concept_id\"  # Todo: Using non-standard concept_id\n    ]\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    print(\n        f\"Ingesting {len(image_occurrence_df)} records into '{medical_imaging_schema}.image_occurrence' table..\")\n    image_occurrence_df[ingestion_columns].to_sql(\n        \"image_occurrence\", dbdao.engine, if_exists='append', index=False, schema=medical_imaging_schema, chunksize=50000)\n    print(\n        f\"Successfully ingested {len(image_occurrence_df)} records into '{medical_imaging_schema}.image_occurrence' table!\")\n"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 2250,
-          "y": 180
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 2250,
-          "y": 180
-        }
-      },
-      {
-        "id": "18467be8-5a75-4bc2-a72e-5bf8ce5b9d60",
-        "data": {
-          "name": "TransformImageFeature",
-          "description": "Describe the task of node python_node_9",
-          "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\nimport pandas as pd\n\nVR_FILTER = [\"AT\", \"CS\", \"DA\", \"DT\", \"DS\", \"FL\", \"FD\",\n             \"IS\", \"SL\", \"SS\", \"SV\", \"TM\", \"UL\", \"US\", \"UV\"]\n\ndef coerce_to_string(val: any) -> str:\n    return str(val)\n\n\ndef exec(myinput):\n    mapped_concepts_df = myinput[\"MappedConceptsDf\"].result\n    # concept_df = myinput[\"ConceptIDforDICOMTags\"].result\n    database_code = myinput[\"SetVariables\"].result.get(\"database_code\")\n    vocab_schema_name = myinput[\"SetVariables\"].result.get(\"vocab_schema\")\n    new_image_feature_id = myinput[\"GetNextRecordIDs\"].result.get(\"image_feature\")\n    new_measurement_id = myinput[\"GetNextRecordIDs\"].result.get(\"measurement\")\n    image_occurrence_df = myinput[\"TransformImageOccurrenceDf\"].result\n    \n    # Filter dicom data elements by VR to ingest:\n    # 1. Concept id cannot be null\n    # 2. Value cannot be null\n    # 3. VR must be in VR_FILTER_LIST or the tag 00080070 (Manufacturer) which is of VR LO\n    # 4. If the concept_id is not null and in the VR_FILTER_LIST, len(value) cannot be > 50 char\n\n    # This gets the tags for criteria 4\n    excluded_list = mapped_concepts_df[\n        (~mapped_concepts_df[\"concept_id\"].isna()) &\n        (mapped_concepts_df[\"VR\"].isin(VR_FILTER)) &\n        (mapped_concepts_df[\"value\"].str.len() > 50) &\n        (mapped_concepts_df[\"value\"] != \"{}\")\n    ]\n\n    print(\"Number of data elements excluded by tags:\")\n    grouped__excluded_list = excluded_list.groupby(\n        \"tag\").size().reset_index(name=\"count\")\n    print(grouped__excluded_list.sort_values(\n        by=\"count\", ascending=False))\n\n    selected_data_elements = mapped_concepts_df[\n        (~mapped_concepts_df[\"concept_id\"].isna()) &\n        (~mapped_concepts_df[\"value\"].isna()) &\n        (~mapped_concepts_df[\"tag\"].isin(excluded_list)) &\n        ((mapped_concepts_df[\"VR\"].isin(VR_FILTER)) | (mapped_concepts_df['tag'].isin(\n            [\"00080070\"])))  # always include manufacturer tag\n    ]\n\n    # Coerce all values to string\n    selected_data_elements[\"value\"] = selected_data_elements[\"value\"].apply(\n        coerce_to_string)\n\n    print(\n        \"Number of data elements selected for ingestion into image_feature and measurement tables by VR:\")\n    grouped__selected_data_elements = selected_data_elements.groupby(\n        \"VR\").size().reset_index(name=\"count\")\n    print(grouped__selected_data_elements.sort_values(\n        by=\"count\", ascending=False))\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    # Attempt to map concept_ids for CS values\n    with dbdao.ibis_connect() as conn:\n        concept_table = conn.table(\"concept\", database=vocab_schema_name)\n        concept_df = concept_table[[\"concept_id\",\n                                    \"concept_code\", \"concept_name\"]].execute()\n        concept_df['concept_code'] = concept_df['concept_code'].astype(str)\n        concept_df['concept_code'] = concept_df['concept_code'].str.upper()\n\n        concept_relationship_table = conn.table(\"concept_relationship\", database=vocab_schema_name)\n        concept_relationship_df = concept_relationship_table.filter(concept_relationship_table.relationship_id == \"Maps to value\")[\n            [\"concept_id_1\", \"concept_id_2\"]].execute()\n\n    print(\"Mapping concept table to concept_relationship table..\")\n    att_to_value = concept_relationship_df[[\"concept_id_1\", \"concept_id_2\"]].merge(\n        concept_df[[\"concept_id\", \"concept_code\", \"concept_name\"]], left_on=\"concept_id_2\", right_on=\"concept_id\")\n    att_to_value[[\"concept_id_1\", \"concept_id_2\", \"concept_id\"]] = att_to_value[[\n        \"concept_id_1\", \"concept_id_2\", \"concept_id\"]].astype('int64')\n\n    print(\"Mapping concept ids for CS data elements..\")\n\n    new_image_features_cs = selected_data_elements[selected_data_elements[\"VR\"] == \"CS\"].merge(\n        att_to_value, how=\"inner\", left_on=[\"concept_id\", \"value\"], right_on=[\"concept_id_1\", \"concept_code\"]\n    )\n\n    print(\"Mapping concept ids for CS values..\")\n    new_image_features_cs_no_duplicates = new_image_features_cs[[\n        \"tag\", \"concept_name_x\", \"value\"]].drop_duplicates()\n    print(\"List of mappable CS values with tags:\")\n    print(new_image_features_cs_no_duplicates)\n\n    # Handle unmappable CS values and non-CS values\n    mapped_cs_attributes = new_image_features_cs_no_duplicates[\"value\"].unique(\n    ).tolist()\n    new_image_features_non_cs = selected_data_elements[~selected_data_elements['value'].isin(\n        mapped_cs_attributes)]\n    new_image_features_non_cs = new_image_features_non_cs.rename(columns={\n        'concept_id': 'concept_id_x',  # left df concept_id col renamed after merge\n        'concept_name': 'concept_name_x',  # left df concept_name col renamed after merge\n        'concept_code': 'concept_code_x'  # left df concept_name col renamed after merge\n    })\n\n    new_image_features = pd.concat(\n        [new_image_features_cs, new_image_features_non_cs])\n    new_image_features['concept_id_y'] = new_image_features['concept_id_y'].astype(\n        'Int64')  # right df concept_id col renamed after merge\n    new_image_features['concept_id_y'] = new_image_features['concept_id_y'].fillna(\n        0)  # For unmappable values, concept_id is set to 0\n\n    # Get image_occurrence values used for image_feature table\n    new_image_features = new_image_features.merge(image_occurrence_df[\n        ['image_occurrence_id', 'person_id', 'image_series_uid',\n            'image_occurrence_date', 'anatomic_site_concept_id']\n    ], how='left', on='image_series_uid')\n\n    # Todo: Update hardcoded values\n    new_image_features['image_feature_event_field_id'] = 1147330  # measurement\n    new_image_features['image_feature_event_type_id'] = 32817  # EHR\n    new_image_features[\"image_feature_id\"] = range(\n        new_image_feature_id, len(new_image_features)+new_image_feature_id)\n    new_image_features['image_feature_event_id'] = range(\n        new_measurement_id, len(new_image_features)+new_measurement_id)\n\n    new_image_features['value_as_number'] = new_image_features.apply(\n        # measurement table value as number col\n        lambda row: row['value'] if row['VR'] not in ['CS', 'LO'] else None, axis=1)\n    new_image_features['measurement_source_value'] = new_image_features['value'].astype(\n        str).str[:50]  # measurement table source value col is varchar(50)\n    new_image_features = new_image_features.where(\n        pd.notnull(new_image_features), None)\n\n    new_image_features['value_as_number'] = pd.to_numeric(\n        new_image_features['value'], errors='coerce')\n\n    return new_image_features"
-        },
-        "type": "python_node",
-        "width": 350,
-        "height": 210,
-        "dragging": false,
-        "position": {
-          "x": 2260,
-          "y": 1020
-        },
-        "selected": false,
-        "dragHandle": "",
-        "sourcePosition": "right",
-        "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 2260,
-          "y": 1020
-        }
-      },
-      {
-        "id": "47d11682-e3aa-4d94-8fcf-09391088e18d",
-        "data": {
-          "name": "IngestEAV",
-          "description": "Describe the task of node python_node_10",
-          "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\nimport pandas as pd\n\ndef exec(myinput):\n    table_name = \"dicom_file_metadata\"\n    \n    database_code = myinput[\"SetVariables\"].result.get(\"database_code\")\n    mapped_concepts_df = myinput[\"MappedConceptsDf\"].result\n    image_occurrence_df = myinput[\"TransformImageOccurrenceDf\"].result\n    image_feature_df = myinput[\"TransformImageFeature\"].result\n    medical_imaging_schema = myinput[\"SetVariables\"].result.get(\"medical_imaging_schema\")\n\n    \n    ingestion_columns = [\n        \"metadata_id\",\n        \"data_element_concept_id\",  # Todo: Using non-standard concept_id\n        \"person_id\",\n        \"value_as_number\",\n        \"value_as_concept_id\",  # Todo: Using non-standard concept_id\n        \"measurement_source_value\",\n        \"metadata_source_name\",\n        \"metadata_source_keyword\",\n        \"metadata_source_tag\",\n        \"metadata_source_group_number\",\n        \"metadata_source_value_representation\",\n        \"metadata_source_value\",\n        \"is_sequence\",\n        \"sequence_length\",\n        \"parent_sequence_id\",\n        \"is_private\",\n        \"private_creator\",\n        \"sop_instance_id\",\n        \"instance_number\",\n        \"image_occurrence_id\",\n        \"etl_created_datetime\",\n        \"etl_modified_datetime\",\n    ]\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    for transformed_chunk in process_df_in_chunks(mapped_concepts_df, image_occurrence_df, image_feature_df):\n        # Add new columns\n        eav_table_id = dbdao.get_next_record_id(medical_imaging_schema, table_name, \"metadata_id\")\n        transformed_chunk[\"metadata_id\"] = transformed_chunk[\"id\"] + eav_table_id - 1\n        transformed_chunk[\"metadata_source_group_number\"] = transformed_chunk[\"metadata_source_tag\"].str[:4]\n        transformed_chunk[\"is_sequence\"] = transformed_chunk[\"metadata_source_value_representation\"].apply(\n            lambda x: x == \"SQ\")\n        transformed_chunk[\"etl_created_datetime\"] = pd.Timestamp.now()\n        transformed_chunk[\"etl_modified_datetime\"] = transformed_chunk[\"etl_created_datetime\"]\n\n        # Fix data types\n        transformed_chunk[\"metadata_source_value\"] = transformed_chunk[\"metadata_source_value\"].apply(\n            coerce_to_string)\n        transformed_chunk[\"parent_sequence_id\"] = transformed_chunk[\"parent_sequence_id\"] .astype(\n            'Int64')\n        transformed_chunk[\"sequence_length\"] = transformed_chunk[\"sequence_length\"] .astype('Int64')\n        transformed_chunk[\"instance_number\"] = transformed_chunk[\"instance_number\"] .astype('Int64')\n\n        transformed_chunk_numeric = transformed_chunk[~transformed_chunk['value_as_number'].isna()]\n\n        # Insert numeric records\n        transformed_chunk_numeric[ingestion_columns].to_sql(table_name, dbdao.engine, if_exists='append', index=False, schema=schema_name,\n                                                chunksize=50000, method=psql_insert_copy)\n        print(\n            f\"Successfully ingested {len(transformed_chunk_numeric)} numeric records into '{schema_name}.{table_name}' table!\")\n\n        # Insert non-numeric records\n        non_numeric_columns = [x for x in ingestion_columns if x != \"value_as_number\"]\n        transformed_chunk_non_numeric = transformed_chunk[transformed_chunk['value_as_number'].isna()]\n        transformed_chunk_non_numeric[non_numeric_columns].to_sql(table_name, dbdao.engine, if_exists='append', index=False, schema=schema_name,\n                                        chunksize=50000, method=psql_insert_copy)\n        print(\n        f\"Successfully ingested {len(transformed_chunk_non_numeric)} non-numeric records into '{schema_name}.{table_name}' table!\")\n\n\ndef psql_insert_copy(table, conn, keys, data_iter):\n    dbapi_conn = conn.connection\n    with dbapi_conn.cursor() as cur:\n        s_buf = StringIO()\n        writer = csv.writer(s_buf)\n        writer.writerows(data_iter)\n        s_buf.seek(0)\n\n        columns = ', '.join('\"{}\"'.format(k) for k in keys)\n        if table.schema:\n            table_name = '{}.{}'.format(table.schema, table.name)\n        else:\n            table_name = table.name\n\n        sql = 'COPY {} ({}) FROM STDIN WITH CSV'.format(\n            table_name, columns)\n        cur.copy_expert(sql=sql, file=s_buf)\n\ndef chunker(df, chunksize):\n    \"\"\"Yield chunks of a DataFrame\"\"\"\n    for start in range(0, len(df), chunksize):\n        yield df.iloc[start:start + chunksize]\n\ndef transform_chunk(chunk, image_occurrence_df, image_feature_df):\n    # Example: transform data\n\n\n    # Get person_id and image_occurrence_id from image_occurrence dataset\n    eav_df = chunk.merge(\n        image_occurrence_df[[\"person_id\",\n                             \"image_occurrence_id\", \"image_series_uid\"]],\n        how=\"left\", left_on=\"image_series_uid\", right_on=\"image_series_uid\"\n    )\n\n    # Get value_as_number, value_as_concept_id from image_feature dataset\n    eav_df = eav_df.merge(\n        image_feature_df[[\"value_as_number\", \"concept_id_y\",\n                          \"measurement_source_value\", \"id\"]],\n        how=\"left\", left_on=\"id\", right_on=\"id\"\n    )\n\n    eav_df = eav_df.rename(columns={\n        \"concept_id\": \"data_element_concept_id\",\n        \"VR\": \"metadata_source_value_representation\",\n        \"tag\": \"metadata_source_tag\",\n        \"value\": \"metadata_source_value\",\n        \"concept_id_y\": \"value_as_concept_id\"\n    })\n\n    return eav_df\n\n\n\ndef process_df_in_chunks(df, image_occurrence_df, image_feature_df, chunksize=50000):\n    for chunk in chunker(df, chunksize):\n        yield transform_chunk(chunk, image_occurrence_df, image_feature_df) \n\ndef coerce_to_string(val: any) -> str:\n    return str(val)\n"
+          "error": false,
+          "description": "Truncate tables before ingestion",
+          "python_code": "def exec(myinput):\n\n  if truncate_tables == \"True\":\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"procedure_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"visit_occurrence\")\n    dbdao.truncate_table(medical_imaging_schema,\"image_occurrence\")\n\n    if ingest_eav_table == \"True\":\n        dbdao.truncate_table(medical_imaging_schema, \"dicom_file_metadata\")\n    else:\n        dbdao.truncate_table(medical_imaging_schema, \"image_feature\")\n        dbdao.truncate_table(cdm_schema, \"measurement\")\n    \n  return True",
+          "errorMessage": null
         },
         "type": "python_node",
         "width": 354,
         "height": 214,
         "dragging": false,
-        "position": {
-          "x": 3050,
-          "y": 620
-        },
+        "position": { "x": -1900, "y": 130 },
         "selected": false,
         "dragHandle": "",
         "sourcePosition": "right",
         "targetPosition": "left",
-        "positionAbsolute": {
-          "x": 3050,
-          "y": 620
-        }
+        "positionAbsolute": { "x": -1900, "y": 130 }
+      },
+      {
+        "id": "c44ca9da-0777-42fd-8ae4-a382e4e37a11",
+        "data": {
+          "name": "GetDICOMFileList",
+          "error": false,
+          "description": "Retrieve DICOM files to ingest",
+          "python_code": "from pathlib import Path\n\ndef exec(myinput) -> list:\n  root_dir = Path(dicom_files_abs_path)\n  dcm_files = [str(path) for path in root_dir.rglob('*.dcm')] + [str(path) for path in root_dir.rglob('*.DCM')]\n  print(f\"Found {len(dcm_files)} DICOM files for processing!\")\n\n  return dcm_files",
+          "errorMessage": null
+        },
+        "type": "python_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": -1900, "y": -170 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": -1900, "y": -170 }
+      },
+      {
+        "id": "d1107318-2965-455c-8d68-354979b54ce7",
+        "data": {
+          "name": "GetNextRecordIDs",
+          "error": false,
+          "description": "Get next record ids for ingestion tables ",
+          "python_code": "def exec(myinput):\n  dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n  return {\n    \"image_occurrence\": dbdao.get_next_record_id(medical_imaging_schema, \"image_occurrence\", \"image_occurrence_id\"),\n    \"procedure_occurrence\": dbdao.get_next_record_id(cdm_schema, \"procedure_occurrence\", \"procedure_occurrence_id\"),\n    \"visit_occurrence\": dbdao.get_next_record_id(cdm_schema, \"visit_occurrence\", \"visit_occurrence_id\"),\n    \"measurement\": dbdao.get_next_record_id(cdm_schema, \"measurement\", \"measurement_id\"),\n    \"image_feature\": dbdao.get_next_record_id(medical_imaging_schema, \"image_feature\", \"image_feature_id\"),\n    \"dicom_file_metadata\": dbdao.get_next_record_id(medical_imaging_schema, \"dicom_file_metadata\", \"metadata_id\")\n  }",
+          "errorMessage": null
+        },
+        "type": "python_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": -980, "y": 130 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": -980, "y": 130 }
+      },
+      {
+        "id": "99d6f743-9018-4166-aa34-43e197be525a",
+        "data": {
+          "name": "ExtractMetadata",
+          "error": false,
+          "description": "Extract tag metadata from dicom files",
+          "python_code": "from pydicom import dcmread\n\ndef exec(myinput):\n  dcm_files = myinput[\"GetDICOMFileList\"].result\n\n  extracted_data_df = extract_data_elements(dcm_files)\n  \n  return extracted_data_df\n\ndef extract_data_elements(dicom_files: list):\n    extracted_metadata = []\n    error_elements = []\n    generator_fn = incrementer()\n\n    print(f\"Extracting metadata from {len(dicom_files)} files..\")\n\n    for filepath in dicom_files:\n        with dcmread(filepath, stop_before_pixels=True, force=True) as dicom_f:\n\n            study_instance_uid = dicom_f.get(\"StudyInstanceUID\")  # [0x0020, 0x000D]\n            series_instance_uid = dicom_f.get(\"SeriesInstanceUID\")  # [0x0020, 0x000E]\n            sop_instance_uid = dicom_f.get(\"SOPInstanceUID\")  # [0x0008,0x0018]\n            instance_number = dicom_f.get(\"InstanceNumber\", None)  # [0x0020,0x0013]\n\n            record = {\n                \"image_study_uid\": study_instance_uid,\n                \"image_series_uid\": series_instance_uid,\n                \"sop_instance_id\": sop_instance_uid,\n                \"instance_number\": instance_number,\n                \"filepath\": str(filepath)\n            }\n\n\n\n            for data_elem in dicom_f:\n                # Filter out values that are too large to store in db\n                if data_elem.VR == \"UN\":\n                    continue  # skip\n                else:\n                    try:\n                        extracted_metadata.extend(data_elem_to_dict(\n                            data_elem, record, generator_fn))\n                    except Exception as e:\n                        error_msg = f\"Failed to process {data_elem.name}: {e}\"\n                        error_elements.append(\n                            {\n                                \"filepath\": str(filepath),\n                                \"data_element_name\": data_elem.name,\n                                \"data_element_tag\": data_elem.tag,\n                                \"data_element_vr\": data_elem.VR\n                            }\n                        )\n                        print(error_msg)\n\n    print(f\"Successfully extracted metadata for {len(extracted_metadata)} data elements\")\n\n    if len(error_elements) > 0:\n        processing_error_msg = f\"Failed to extract metadata for {len(error_elements)} data elements\"\n        print(processing_error_msg)\n        raise Exception(processing_error_msg)\n\n    extracted_metadata_df = pd.DataFrame(extracted_metadata)\n\n    assert extracted_metadata_df[\"sop_instance_id\"].nunique() == len(\n        dicom_files)\n    assert extracted_metadata_df[\"id\"].nunique() == len(extracted_metadata)\n\n    return extracted_metadata_df\n\n\n\ndef incrementer():\n    n = 1\n    while True:\n        yield n\n        n += 1\n\n\ndef convert_tag_to_string(tag) -> str:\n    tag_str =  f\"{tag.group:04X}{tag.element:04X}\"\n    return tag_str\n\n\ndef data_elem_to_dict(data_element, record: dict, generator_fn, \n                      parent_seq_id: int = None) -> list:\n    \n    id = next(generator_fn)\n\n    result = [extract_metadata(data_element, record, id, parent_seq_id)]\n    \n    if data_element.VR == \"SQ\": # Include nested data elements in sequences\n        sq_dataset = data_element.value\n\n        if len(sq_dataset) > 0: # non-empty sequence\n            for sq_data_elem in sq_dataset[0]: # Use the 0 idx to access data elements in the dataset in the sequence\n                result.extend(data_elem_to_dict(data_element=sq_data_elem, record=record,\n                                                generator_fn=generator_fn, parent_seq_id=id))\n    return result\n\n\ndef extract_metadata(data_element, record: dict, id: int, parent_sequence_id: int = None):\n    sequence_length = get_sequence_length(data_element) if data_element.VR == \"SQ\" else None\n    metadata = {\n        \"id\": id,\n        \"metadata_source_name\": data_element.name,\n        \"metadata_source_keyword\": data_element.keyword,\n        \"tag\": convert_tag_to_string(data_element.tag),\n        \"tag_tuple\": convert_tag_to_tuple(data_element.tag),\n        \"VR\": data_element.VR,\n        \"value\": None if data_element.VR == \"SQ\" else extract_data_element_value(data_element),\n        \"is_sequence\": True if data_element.VR == \"SQ\" else False,\n        \"sequence_length\": sequence_length,\n        \"parent_sequence_id\": parent_sequence_id if parent_sequence_id else None,\n        \"is_private\": data_element.is_private,\n        \"private_creator\": data_element.private_creator,\n    }\n    metadata.update(record)\n    return metadata\n\n\ndef get_sequence_length(data_element) -> int:\n    # Gets the number of elements stored in the first level\n    if data_element.value:\n        sq_dataset = data_element.value # Access the sequence \n        return len(sq_dataset[0])\n    else:\n        # Empty sequences don't have a .value\n        return 0\n\ndef convert_tag_to_tuple(tag) -> str:\n    tag_tuple=  f\"({tag.group:04X},{tag.element:04X})\"\n    return tag_tuple\n\ndef extract_data_element_value(data_element):\n    if data_element.value: \n        return str(data_element.value)\n    return None\n",
+          "errorMessage": null
+        },
+        "type": "python_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": -1440, "y": -320 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": -1440, "y": -320 }
+      },
+      {
+        "id": "2a72ca99-93d4-4619-b368-f0cde5e1164e",
+        "data": {
+          "name": "ConceptIDTagsDf",
+          "error": false,
+          "database": "alp_demo_pg_stg_1",
+          "sqlquery": "select \n    concept_id,\n    concept_name,\n    concept_code \nfrom cdmdicom.concept where\nvocabulary_id = 'DICOM'\n",
+          "testdata": [[]],
+          "description": "Fetch Concept IDs for DICOM tags",
+          "errorMessage": null
+        },
+        "type": "db_reader_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": -980, "y": -140 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": -980, "y": -140 }
+      },
+      {
+        "id": "9f7cc5f1-dce9-485b-983f-dea8e7b5f8c9",
+        "data": {
+          "map": {},
+          "name": "MetadataDf",
+          "error": false,
+          "uiMap": { "path": "$", "source": "ExtractMetadata" },
+          "description": "Convert metadata to table",
+          "errorMessage": null
+        },
+        "type": "py2table_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": -980, "y": -470 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": -980, "y": -470 }
+      },
+      {
+        "id": "9f720300-b943-4691-895a-8476c0d67e5f",
+        "data": {
+          "sql": "SELECT \n    MetadataDf.*,\n    CAST(ConceptIDTagsDf.concept_id AS INT) AS concept_id,\n    ConceptIDTagsDf.concept_code,\n    ConceptIDTagsDf.concept_name\nFROM MetadataDf\nLEFT JOIN ConceptIDTagsDf\nON MetadataDf.tag = ConceptIDTagsDf.concept_code",
+          "name": "MappedConceptsDf",
+          "error": false,
+          "description": "Map Concept ID to metadata",
+          "errorMessage": null
+        },
+        "type": "sql_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": -500, "y": -320 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": -500, "y": -320 }
+      },
+      {
+        "id": "2da73f42-dde3-4a55-b7c3-bcb98126153b",
+        "data": {
+          "name": "TransformForIngestion",
+          "error": false,
+          "description": "Transform for ingestion",
+          "python_code": "import numpy as np\nfrom datetime import datetime\n\ndef exec(myinput):\n    mapped_concepts_df = myinput[\"MappedConceptsDf\"].result\n    concept_df = myinput[\"ConceptIDTagsDf\"].result\n\n    next_po_id = myinput[\"GetNextRecordIDs\"].result.get(\"procedure_occurrence\")\n    next_vo_id = myinput[\"GetNextRecordIDs\"].result.get(\"visit_occurrence\")\n    next_io_id = myinput[\"GetNextRecordIDs\"].result.get(\"image_occurrence\")\n    \n    # Tags used for image_occurrence, procedure_occurrence, visit_occurrence\n    # 00080020: Study Date, 00100020: Patient ID, 00080060: Modality\n    # 00180015: Body Part Examined (Optional in Image Occurrence table)\n    tags_for_columns = [\"00080020\", \"00100020\", \"00080060\", \"00180015\"]\n\n    # Select only rows with the above tags\n    df_subset = mapped_concepts_df[mapped_concepts_df[\"tag\"].isin(tags_for_columns)][[\"image_study_uid\",\n                                                                                      \"image_series_uid\",\n                                                                                      \"tag\",\n                                                                                      \"value\"]]\n    \n    # Pivot to wide format and select only keep unique series uids\n    df_subset_pivoted = df_subset.pivot_table(\n        index=[\"image_study_uid\", \"image_series_uid\"], columns=\"tag\", values=\"value\", aggfunc=\"first\")\n    df_subset_pivoted.reset_index(inplace=True)\n    df_subset_pivoted = df_subset_pivoted.drop_duplicates(\n        subset=[\"image_study_uid\", \"image_series_uid\"])\n\n    # Create \"00180015\" BodyPartExamined column if it doesn't exist and fill with NaN\n    if '00180015' not in df_subset_pivoted.columns:\n        df_subset_pivoted['00180015'] = np.nan\n        df_subset_pivoted['00180015'] = df_subset_pivoted['00180015'].astype('object')\n\n    # Create \"00080020\" StudyDate column if it doesn't exist and fill with 19930101 i.e. earliest vocab valid date\n    if '00080020' not in df_subset_pivoted.columns:\n        df_subset_pivoted['00080020'] = \"19930101\"\n\n\n    # Map Person ID\n    person_id_col = \"person_id\"\n    patient_id_col = \"person_source_value\"\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    with dbdao.ibis_connect() as conn:\n        mapping_table = conn.table(\"person\",\n                                   database=person_mapping_schema)\n\n        mapping_df = mapping_table[[person_id_col, patient_id_col]].execute()\n\n    transformed_df = df_subset_pivoted.merge(mapping_df[[person_id_col, patient_id_col]],\n                                                  how=\"left\", left_on=\"00100020\", right_on=patient_id_col)\n    transformed_df.rename(\n        columns={person_id_col: 'person_id'}, inplace=True)\n\n    # Use person_id = 0 for unmatched patient_ids\n    transformed_df['person_id'] = transformed_df['person_id'].fillna(\n        0)\n    transformed_df['person_id'] = transformed_df['person_id'].astype(\n        'Int64')\n\n    # Get concept id for modality and body part\n    concept_df['concept_code'] = concept_df['concept_code'].astype(str)\n    concept_df['concept_code'] = concept_df['concept_code'].str.upper()\n\n    # Todo: Update with standard concept ids\n    # Get concept id for BodyPartExamined -> anatomic_site_concept_id\n    print(\"Mapping BodyPartExamined tag to concept_id..\")\n    transformed_df = transformed_df.merge(concept_df[[\"concept_id\", \"concept_code\"]],\n                                                    how=\"left\", left_on=\"00180015\", right_on=\"concept_code\")\n    transformed_df.rename(\n        columns={\"concept_id\": \"anatomic_site_concept_id\"}, inplace=True)\n\n    # Use anatomic_site_concept_id = 0 for unmatched patient_ids\n    transformed_df['anatomic_site_concept_id'] = transformed_df['anatomic_site_concept_id'].fillna(\n        0)\n    transformed_df['anatomic_site_concept_id'] = transformed_df['anatomic_site_concept_id'].astype(\n        'Int64')\n\n    # Todo: Update with standard concept id\n    # Get concept id for Modality -> modality_concept_id\n    print(\"Mapping Modality tag to concept_id..\")\n    transformed_df = transformed_df.merge(concept_df[[\"concept_id\", \"concept_code\"]],\n                                                    how=\"left\", left_on=\"00080060\", right_on=\"concept_code\")\n    transformed_df.rename(\n        columns={\"concept_id\": \"modality_concept_id\"}, inplace=True)\n\n    # Use modality_concept_id = 0 for unmatched patient_ids\n    transformed_df['modality_concept_id'] = transformed_df['modality_concept_id'].fillna(\n        0)\n    transformed_df['modality_concept_id'] = transformed_df['modality_concept_id'].astype(\n        'Int64')\n\n    # Todo: Update wadors_uri, local_path, visit_type_concept_id & visit_concept_id\n    transformed_df['image_occurrence_date'] = pd.to_datetime(\n        transformed_df['00080020'])\n    transformed_df['image_occurrence_date'] = transformed_df['image_occurrence_date'].fillna(\n        pd.to_datetime(\"1993-01-01\"))\n\n    transformed_df['visit_type_concept_id'] = 32817  # EHR\n    transformed_df['visit_concept_id'] = 9202  # Outpatient visit\n\n    transformed_df['image_occurrence_id'] = pd.Series(range(next_io_id,\n                                                                 next_io_id + len(transformed_df)))\n    transformed_df['procedure_occurrence_id'] = pd.Series(range(next_po_id,\n                                                                     next_po_id + len(transformed_df)))\n    transformed_df['visit_occurrence_id'] = pd.Series(range(next_vo_id,\n                                                                 next_vo_id + len(transformed_df)))\n\n    print(\"Successfully created records for image occurrence, procedure occurrence and visit occurrence tables!\")\n        \n    # return transformed_df\n\n    return {\n        \"image_occurrence\": image_occurrence(transformed_df),\n        \"procedure_occurrence\": procedure_occurrence(transformed_df),\n        \"visit_occurrence\": visit_occurrence(transformed_df),\n        \"transformed_df\": transformed_df\n    }\n\n\ndef image_occurrence(df):\n    image_occurrence_columns = [\n        \"image_occurrence_id\",\n        \"person_id\",\n        \"procedure_occurrence_id\",\n        \"visit_occurrence_id\",\n        \"anatomic_site_concept_id\",\n        \"image_occurrence_date\",\n        \"image_study_uid\",\n        \"image_series_uid\",\n        \"modality_concept_id\"\n    ]\n    return df[image_occurrence_columns]\n\n\ndef procedure_occurrence(df):\n    procedure_occurrence_columns = [\n        \"procedure_occurrence_id\",\n        \"person_id\",\n        \"modality_concept_id\",\n        \"image_occurrence_date\",\n        \"visit_type_concept_id\"\n    ]\n\n    df_po = df[procedure_occurrence_columns].rename(\n        columns={\n            \"modality_concept_id\": \"procedure_concept_id\",\n            \"image_occurrence_date\": \"procedure_date\",\n            \"visit_type_concept_id\": \"procedure_type_concept_id\"\n        }\n    )\n    return df_po\n\ndef visit_occurrence(df):\n    visit_occurrence_columns = [\n        \"visit_occurrence_id\",\n        \"person_id\",\n        \"visit_concept_id\",\n        \"image_occurrence_date\",\n        \"visit_type_concept_id\"\n    ]\n\n    df_vo = df[visit_occurrence_columns].rename(\n        columns={\n            \"image_occurrence_date\": \"visit_start_date\"\n        }\n    )\n\n    df_vo[\"visit_end_date\"] = df_vo[\"visit_start_date\"]\n\n    return df_vo",
+          "errorMessage": null
+        },
+        "type": "python_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": -80, "y": -140 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": -80, "y": -140 }
+      },
+      {
+        "id": "a0032a81-4e6e-4672-96c3-d812665b50c1",
+        "data": {
+          "name": "IngestImageOccurrence",
+          "error": false,
+          "database": "alp_demo_pg_stg_1",
+          "dataframe": "GetImageOccurrence",
+          "schemaname": "testdicomingestmi",
+          "dbtablename": "image_occurrence",
+          "description": "Write to image occurrence table",
+          "errorMessage": null
+        },
+        "type": "db_writer_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 870, "y": 60 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 870, "y": 60 }
+      },
+      {
+        "id": "fb210d34-2400-4875-bc36-40f54701f60f",
+        "data": {
+          "map": {},
+          "name": "GetImageOccurrence",
+          "error": false,
+          "uiMap": {
+            "path": "$.image_occurrence",
+            "source": "TransformForIngestion"
+          },
+          "description": "Get image occurrence dataframe",
+          "errorMessage": null
+        },
+        "type": "py2table_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 400, "y": 60 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 400, "y": 60 }
+      },
+      {
+        "id": "ede96fb2-0730-440f-848b-36caa5a911c8",
+        "data": {
+          "map": {},
+          "name": "GetProcedureOccurrence",
+          "error": false,
+          "uiMap": {
+            "path": "$.procedure_occurrence",
+            "source": "TransformForIngestion"
+          },
+          "description": "Get procedure occurrence dataframe",
+          "errorMessage": null
+        },
+        "type": "py2table_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 400, "y": 300 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 400, "y": 300 }
+      },
+      {
+        "id": "65a62ab1-fc8f-4198-a33d-ac9fcf83d16a",
+        "data": {
+          "name": "IngestProcedureOccurrence",
+          "error": false,
+          "database": "alp_demo_pg_stg_1",
+          "dataframe": "GetProcedureOccurrence",
+          "schemaname": "testdicomingestcdm",
+          "dbtablename": "procedure_occurrence",
+          "description": "Write to procedure occurrence table",
+          "errorMessage": null
+        },
+        "type": "db_writer_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 870, "y": 300 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 870, "y": 300 }
+      },
+      {
+        "id": "601c256a-fce8-4e0b-89c9-a0b3b18d7dec",
+        "data": {
+          "map": {},
+          "name": "GetVisitOccurrence",
+          "error": false,
+          "uiMap": {
+            "path": "$.visit_occurrence",
+            "source": "TransformForIngestion"
+          },
+          "description": "Get visit occurrence dataframe",
+          "errorMessage": null
+        },
+        "type": "py2table_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 400, "y": 540 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 400, "y": 540 }
+      },
+      {
+        "id": "f3a0e6f5-41cd-4f10-b162-f071ce3e72a9",
+        "data": {
+          "name": "IngestVisitOccurrence",
+          "error": false,
+          "database": "alp_demo_pg_stg_1",
+          "dataframe": "GetVisitOccurrence",
+          "schemaname": "testdicomingestcdm",
+          "dbtablename": "visit_occurrence",
+          "description": "Write to visit occurrence table",
+          "errorMessage": null
+        },
+        "type": "db_writer_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 870, "y": 540 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 870, "y": 540 }
+      },
+      {
+        "id": "86104475-df24-4d7d-bfe4-7436ea0fd314",
+        "data": {
+          "name": "TransformForEAVTable",
+          "error": false,
+          "description": "Transform for ingestion into EAV table",
+          "python_code": "def exec(myinput):\n    mapped_concepts_df = myinput[\"MappedConceptsDf\"].result\n    image_occurrence_df = myinput[\"TransformForIngestion\"].result.get(\"transformed_df\")\n    # concept_df = myinput[\"ConceptIDforDICOMTags\"].result\n    new_image_feature_id = myinput[\"GetNextRecordIDs\"].result.get(\"image_feature\")\n    new_measurement_id = myinput[\"GetNextRecordIDs\"].result.get(\"measurement\")\n    eav_table_id = myinput[\"GetNextRecordIDs\"].result.get(\"dicom_file_metadata\")\n\n    \n    # Filter dicom data elements by VR to ingest:\n    # 1. Concept id cannot be null\n    # 2. Value cannot be null\n    # 3. VR must be in VR_FILTER_LIST or the tag 00080070 (Manufacturer) which is of VR LO\n    # 4. If the concept_id is not null and in the VR_FILTER_LIST, len(value) cannot be > 50 char\n\n    # This gets the tags for criteria 4\n    excluded_list = mapped_concepts_df[\n        (~mapped_concepts_df[\"concept_id\"].isna()) &\n        (mapped_concepts_df[\"VR\"].isin(VR_FILTER)) &\n        (mapped_concepts_df[\"value\"].str.len() > 50) &\n        (mapped_concepts_df[\"value\"] != \"{}\")\n    ]\n\n    print(\"Number of data elements excluded by tags:\")\n    grouped__excluded_list = excluded_list.groupby(\n        \"tag\").size().reset_index(name=\"count\")\n    print(grouped__excluded_list.sort_values(\n        by=\"count\", ascending=False))\n\n    selected_data_elements = mapped_concepts_df[\n        (~mapped_concepts_df[\"concept_id\"].isna()) &\n        (~mapped_concepts_df[\"value\"].isna()) &\n        (~mapped_concepts_df[\"tag\"].isin(excluded_list)) &\n        ((mapped_concepts_df[\"VR\"].isin(VR_FILTER)) | (mapped_concepts_df['tag'].isin(\n            [\"00080070\"])))  # always include manufacturer tag\n    ]\n\n    # Coerce all values to string\n    selected_data_elements[\"value\"] = selected_data_elements[\"value\"].apply(\n        coerce_to_string)\n\n    print(\n        \"Number of data elements selected for ingestion into image_feature and measurement tables by VR:\")\n    grouped__selected_data_elements = selected_data_elements.groupby(\n        \"VR\").size().reset_index(name=\"count\")\n    print(grouped__selected_data_elements.sort_values(\n        by=\"count\", ascending=False))\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n\n    # Attempt to map concept_ids for CS values\n    with dbdao.ibis_connect() as conn:\n        concept_table = conn.table(\"concept\", database=vocab_schema)\n        concept_df = concept_table[[\"concept_id\",\n                                    \"concept_code\", \"concept_name\"]].execute()\n        concept_df['concept_code'] = concept_df['concept_code'].astype(str)\n        concept_df['concept_code'] = concept_df['concept_code'].str.upper()\n\n        concept_relationship_table = conn.table(\"concept_relationship\", database=vocab_schema)\n        concept_relationship_df = concept_relationship_table.filter(concept_relationship_table.relationship_id == \"Maps to value\")[\n            [\"concept_id_1\", \"concept_id_2\"]].execute()\n\n    print(\"Mapping concept table to concept_relationship table..\")\n    att_to_value = concept_relationship_df[[\"concept_id_1\", \"concept_id_2\"]].merge(\n        concept_df[[\"concept_id\", \"concept_code\", \"concept_name\"]], left_on=\"concept_id_2\", right_on=\"concept_id\")\n    att_to_value[[\"concept_id_1\", \"concept_id_2\", \"concept_id\"]] = att_to_value[[\n        \"concept_id_1\", \"concept_id_2\", \"concept_id\"]].astype('int64')\n\n    print(\"Mapping concept ids for CS data elements..\")\n\n    new_image_features_cs = selected_data_elements[selected_data_elements[\"VR\"] == \"CS\"].merge(\n        att_to_value, how=\"inner\", left_on=[\"concept_id\", \"value\"], right_on=[\"concept_id_1\", \"concept_code\"]\n    )\n\n    print(\"Mapping concept ids for CS values..\")\n    new_image_features_cs_no_duplicates = new_image_features_cs[[\n        \"tag\", \"concept_name_x\", \"value\"]].drop_duplicates()\n    print(\"List of mappable CS values with tags:\")\n    print(new_image_features_cs_no_duplicates)\n\n    # Handle unmappable CS values and non-CS values\n    mapped_cs_attributes = new_image_features_cs_no_duplicates[\"value\"].unique(\n    ).tolist()\n    new_image_features_non_cs = selected_data_elements[~selected_data_elements['value'].isin(\n        mapped_cs_attributes)]\n    new_image_features_non_cs = new_image_features_non_cs.rename(columns={\n        'concept_id': 'concept_id_x',  # left df concept_id col renamed after merge\n        'concept_name': 'concept_name_x',  # left df concept_name col renamed after merge\n        'concept_code': 'concept_code_x'  # left df concept_name col renamed after merge\n    })\n\n    new_image_features = pd.concat(\n        [new_image_features_cs, new_image_features_non_cs])\n    new_image_features['concept_id_y'] = new_image_features['concept_id_y'].astype(\n        'Int64')  # right df concept_id col renamed after merge\n    new_image_features['concept_id_y'] = new_image_features['concept_id_y'].fillna(\n        0)  # For unmappable values, concept_id is set to 0\n\n    # Get image_occurrence values used for image_feature table\n    new_image_features = new_image_features.merge(image_occurrence_df[\n        ['image_occurrence_id', 'person_id', 'image_series_uid',\n            'image_occurrence_date', 'anatomic_site_concept_id']\n    ], how='left', on='image_series_uid')\n\n    # Todo: Update hardcoded values\n    new_image_features['image_feature_event_field_id'] = 1147330  # measurement\n    new_image_features['image_feature_event_type_id'] = 32817  # EHR\n    new_image_features[\"image_feature_id\"] = range(\n        new_image_feature_id, len(new_image_features)+new_image_feature_id)\n    new_image_features['image_feature_event_id'] = range(\n        new_measurement_id, len(new_image_features)+new_measurement_id)\n\n    new_image_features['value_as_number'] = new_image_features.apply(\n        # measurement table value as number col\n        lambda row: row['value'] if row['VR'] not in ['CS', 'LO'] else None, axis=1)\n    new_image_features['measurement_source_value'] = new_image_features['value'].astype(\n        str).str[:50]  # measurement table source value col is varchar(50)\n    new_image_features = new_image_features.where(\n        pd.notnull(new_image_features), None)\n\n    new_image_features['value_as_number'] = pd.to_numeric(\n        new_image_features['value'], errors='coerce')\n\n    # return new_image_features\n\n\n    transformed_df = transform_chunk(mapped_concepts_df, image_occurrence_df, new_image_features)\n\n    \n    transformed_df[\"metadata_id\"] = transformed_df[\"id\"] + eav_table_id - 1\n    transformed_df[\"metadata_source_group_number\"] = transformed_df[\"metadata_source_tag\"].str[:4]\n    transformed_df[\"is_sequence\"] = transformed_df[\"metadata_source_value_representation\"].apply(\n        lambda x: x == \"SQ\")\n    transformed_df[\"etl_created_datetime\"] = pd.Timestamp.now()\n    transformed_df[\"etl_modified_datetime\"] = transformed_df[\"etl_created_datetime\"]\n\n    # Fix data types\n    transformed_df[\"metadata_source_value\"] = transformed_df[\"metadata_source_value\"].apply(\n        coerce_to_string)\n    transformed_df[\"parent_sequence_id\"] = transformed_df[\"parent_sequence_id\"] .astype(\n        'Int64')\n    transformed_df[\"sequence_length\"] = transformed_df[\"sequence_length\"] .astype('Int64')\n    transformed_df[\"instance_number\"] = transformed_df[\"instance_number\"] .astype('Int64')\n\n    #transformed_df_numeric = transformed_df[~transformed_df['value_as_number'].isna()]\n    transformed_df_numeric = transformed_df[~transformed_df['value_as_number'].isna()].copy()\n\n\n    non_numeric_columns = [x for x in ingestion_columns if x != \"value_as_number\"]\n    # transformed_df_non_numeric = transformed_df[transformed_df['value_as_number'].isna()]\n    transformed_df_non_numeric = transformed_df[transformed_df['value_as_number'].isna()].copy()\n\n    return {\n        \"numeric_records\": transformed_df_numeric[ingestion_columns],\n        \"non_numeric_records\": transformed_df_non_numeric[non_numeric_columns]\n    }\n\n    # # Insert numeric records\n    # transformed_chunk_numeric[ingestion_columns].to_sql(table_name, dbdao.engine, if_exists='append', index=False, schema=schema_name,\n    #                                         chunksize=50000, method=psql_insert_copy)\n    # logger.info(\n    #     f\"Successfully ingested {len(transformed_chunk_numeric)} numeric records into '{schema_name}.{table_name}' table!\")\n\n    # Insert non-numeric records\n    # non_numeric_columns = [x for x in ingestion_columns if x != \"value_as_number\"]\n    # transformed_chunk_non_numeric = transformed_chunk[transformed_chunk['value_as_number'].isna()]\n    # transformed_chunk_non_numeric[non_numeric_columns].to_sql(table_name, dbdao.engine, if_exists='append', index=False, schema=schema_name,\n    #                                 chunksize=50000, method=psql_insert_copy)\n    # logger.info(\n    # f\"Successfully ingested {len(transformed_chunk_non_numeric)} non-numeric records into '{schema_name}.{table_name}' table!\")\n\n\n\n\nVR_FILTER = [\"AT\", \"CS\", \"DA\", \"DT\", \"DS\", \"FL\", \"FD\",\n             \"IS\", \"SL\", \"SS\", \"SV\", \"TM\", \"UL\", \"US\", \"UV\"]\n\n\ningestion_columns = [\n    \"metadata_id\",\n    \"data_element_concept_id\",  # Todo: Using non-standard concept_id\n    \"person_id\",\n    \"value_as_number\",\n    \"value_as_concept_id\",  # Todo: Using non-standard concept_id\n    \"measurement_source_value\",\n    \"metadata_source_name\",\n    \"metadata_source_keyword\",\n    \"metadata_source_tag\",\n    \"metadata_source_group_number\",\n    \"metadata_source_value_representation\",\n    \"metadata_source_value\",\n    \"is_sequence\",\n    \"sequence_length\",\n    \"parent_sequence_id\",\n    \"is_private\",\n    \"private_creator\",\n    \"sop_instance_id\",\n    \"instance_number\",\n    \"image_occurrence_id\",\n    \"etl_created_datetime\",\n    \"etl_modified_datetime\",\n]\n\n\ndef transform_chunk(mapped_concepts_df, image_occurrence_df, image_feature_df):\n    # Example: transform data\n\n\n    # Get person_id and image_occurrence_id from image_occurrence dataset\n    eav_df = mapped_concepts_df.merge(\n        image_occurrence_df[[\"person_id\",\n                             \"image_occurrence_id\", \"image_series_uid\"]],\n        how=\"left\", left_on=\"image_series_uid\", right_on=\"image_series_uid\"\n    )\n\n    # Get value_as_number, value_as_concept_id from image_feature dataset\n    eav_df = eav_df.merge(\n        image_feature_df[[\"value_as_number\", \"concept_id_y\",\n                          \"measurement_source_value\", \"id\"]],\n        how=\"left\", left_on=\"id\", right_on=\"id\"\n    )\n\n    eav_df = eav_df.rename(columns={\n        \"concept_id\": \"data_element_concept_id\",\n        \"VR\": \"metadata_source_value_representation\",\n        \"tag\": \"metadata_source_tag\",\n        \"value\": \"metadata_source_value\",\n        \"concept_id_y\": \"value_as_concept_id\"\n    })\n\n    return eav_df\n\n\ndef coerce_to_string(val: any) -> str:\n    return str(val)\n",
+          "errorMessage": null
+        },
+        "type": "python_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 410, "y": -320 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 410, "y": -320 }
+      },
+      {
+        "id": "dab2f165-f0b1-48ac-be21-e5a7a466ae3b",
+        "data": {
+          "map": {},
+          "name": "GetNumericRecords",
+          "error": false,
+          "uiMap": {
+            "path": "$.numeric_records",
+            "source": "TransformForEAVTable"
+          },
+          "description": "Get numeric records dataframe",
+          "errorMessage": null
+        },
+        "type": "py2table_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 870, "y": -430 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 870, "y": -430 }
+      },
+      {
+        "id": "f31990a0-c798-48e4-bd05-e931e2d700d3",
+        "data": {
+          "map": {},
+          "name": "GetNonNumericRecords",
+          "error": false,
+          "uiMap": {
+            "path": "$.non_numeric_records",
+            "source": "TransformForEAVTable"
+          },
+          "description": "Get non-numeric records dataframe",
+          "errorMessage": null
+        },
+        "type": "py2table_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 870, "y": -190 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 870, "y": -190 }
+      },
+      {
+        "id": "db8ecda6-1327-4d04-9004-4dd48f19f811",
+        "data": {
+          "name": "IngestNonNumericEAVRecords",
+          "error": false,
+          "database": "alp_demo_pg_stg_1",
+          "dataframe": "GetNonNumericRecords",
+          "schemaname": "testdicomingestmi",
+          "dbtablename": "dicom_file_metadata",
+          "description": "Write non-numeric records to EAV table",
+          "errorMessage": null
+        },
+        "type": "db_writer_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 1360, "y": -190 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 1360, "y": -190 }
+      },
+      {
+        "id": "4ab717c8-8367-4cd3-902b-404b40d96a93",
+        "data": {
+          "name": "IngestNumericEAVRecords",
+          "error": false,
+          "database": "alp_demo_pg_stg_1",
+          "dataframe": "GetNumericRecords",
+          "schemaname": "testdicomingestmi",
+          "dbtablename": "dicom_file_metadata",
+          "description": "Write numeric records to EAV table",
+          "errorMessage": null
+        },
+        "type": "db_writer_node",
+        "width": 350,
+        "height": 210,
+        "dragging": false,
+        "position": { "x": 1360, "y": -430 },
+        "selected": false,
+        "dragHandle": "",
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "positionAbsolute": { "x": 1360, "y": -430 }
       }
+    ],
+    "variables": [
+      { "key": "cdm_schema", "value": "testdicomingestcdm" },
+      { "key": "vocab_schema", "value": "cdmdicom" },
+      { "key": "medical_imaging_schema", "value": "testdicomingestmi" },
+      { "key": "truncate_tables", "value": "True" },
+      { "key": "ingest_eav_table", "value": "True" },
+      {
+        "key": "dicom_files_abs_path",
+        "value": "/app/externalfiles/dicom-images-test"
+      },
+      { "key": "person_mapping_schema", "value": "testdicomingestcdm" },
+      { "key": "database_code", "value": "alp_demo_pg_stg_1" }
+    ],
+    "importLibs": [
+      "from _shared_flow_utils.dao.DBDao import DBDao",
+      "import pandas as pd"
     ]
   }
