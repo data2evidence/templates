@@ -1,0 +1,174 @@
+{
+  "nodes": [
+    {
+      "id": "d6784351-b931-40a3-ab5e-9663b7a156fd",
+      "data": {
+        "name": "user_info",
+        "error": false,
+        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"user_info\",\n  \"length\": null,\n  \"type\": \"<class 'pydantic._internal._model_construction.ModelMetaclass'>\"\n}",
+        "description": "Define the category of name entities",
+        "python_code": "class UserInfo(BaseModel):\n    \"\"\"Schema for extracting user information.\"\"\"\n    Medication: List[str] = Field(description=\"Names of medications mentioned.\")\n    Condition: List[str] = Field(description=\"Medical conditions, diagnoses, or symptoms.\")\n    SubstanceUse: List[str] = Field(description=\"Substances used, such as alcohol or tobacco.\")\n    Procedure: List[str] = Field(description=\"Medical procedures or interventions.\")\n    Formulation: List[str] = Field(description=\"Medication formulations, e.g., powder, solution, injection.\")\n    Frequency: List[str] = Field(description=\"Frequency of medication administration, e.g., BID, TID.\")\n    Dosage: List[str] = Field(description=\"Dosages of medications, e.g., 500 mg, 5,000 unit/mL.\")\n    Route: List[str] = Field(description=\"Routes of medication administration, e.g., oral, topical, injection.\")\n    Duration: List[str] = Field(description=\"Duration of medication use or treatment.\")\n\ndef exec(myinput):\n    return UserInfo",
+        "errorMessage": null
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -540,
+        "y": -410
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -540,
+        "y": -410
+      }
+    },
+    {
+      "id": "c0639286-a0c3-4212-9fe5-8ac2df909c31",
+      "data": {
+        "name": "LLM_config",
+        "error": false,
+        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"LLM_config\",\n  \"length\": null,\n  \"type\": \"<class 'py_name_entity_recognition.models.config.ModelConfig'>\",\n  \"schema\": [\n    {\n      \"length\": 2,\n      \"type\": \"<class 'tuple'>\",\n      \"schema\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"string\"\n        }\n      }\n    },\n    {\n      \"length\": 2,\n      \"type\": \"<class 'tuple'>\",\n      \"schema\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"string\"\n        }\n      }\n    },\n    {\n      \"length\": 2,\n      \"type\": \"<class 'tuple'>\",\n      \"schema\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": [\n            \"number\",\n            \"string\"\n          ]\n        }\n      }\n    },\n    {\n      \"length\": 2,\n      \"type\": \"<class 'tuple'>\",\n      \"schema\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": [\n            \"integer\",\n            \"string\"\n          ]\n        }\n      }\n    },\n    {\n      \"length\": 2,\n      \"type\": \"<class 'tuple'>\",\n      \"schema\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": [\n            \"number\",\n            \"string\"\n          ]\n        }\n      }\n    },\n    {\n      \"length\": 2,\n      \"type\": \"<class 'tuple'>\",\n      \"schema\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"string\"\n        }\n      }\n    },\n    {\n      \"length\": 2,\n      \"type\": \"<class 'tuple'>\",\n      \"schema\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"string\"\n        }\n      }\n    },\n    {\n      \"length\": 2,\n      \"type\": \"<class 'tuple'>\",\n      \"schema\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+        "description": "Setup the LLM parameter",
+        "python_code": "def exec(myinput):\n    azure_config = ModelConfig(\n        provider = 'azure',\n        model_name = 'gpt-4o',\n        azure_deployment = Variable.get('azure_openai_api_deployment_name'),\n        azure_endpoint = Variable.get('azure_openai_api_endpoint'),\n        azure_api_version = Variable.get('azure_openai_api_version'),\n        max_tokens=200,\n        top_p=0.8\n    )\n    return azure_config",
+        "errorMessage": null
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -540,
+        "y": -130
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -540,
+        "y": -130
+      }
+    },
+    {
+      "id": "2a7d0684-3e92-48cb-afda-99d8a48cbc28",
+      "data": {
+        "name": "main",
+        "description": "Main flow to apply py_name_entity_extraction",
+        "python_code": "async def main(myinput):\n    LLM_config = myinput.get(\"LLM_config\").result\n    user_info = myinput.get(\"user_info\").result\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n    os.environ[\"AZURE_OPENAI_API_KEY\"] = Secret.load(\"azure-openai-api-key\").get()\n\n    with dbdao.ibis_connect() as conn:\n        note = conn.table(note_table, database=schema_name)\n        record = note.select(['note_id','note_text']).execute()\n        rst = dict()\n        for note_id, note_text in record.values:\n            output = await extract_entities(\n                input_data=note_text,\n                schema=user_info,\n                model_config=LLM_config,\n                output_format=output_format,\n                mode = mode\n                )\n            rst[str(note_id)] = output\n        return rst\n\ndef exec(myinput):\n    return asyncio.run(main(myinput))\n\n    "
+      },
+      "type": "python_node",
+      "width": 354,
+      "height": 214,
+      "dragging": false,
+      "position": {
+        "x": -10,
+        "y": -280
+      },
+      "selected": true,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -10,
+        "y": -280
+      }
+    },
+    {
+      "id": "af60c8e4-a893-4b4c-aa37-df0651b90788",
+      "data": {
+        "map": {},
+        "name": "py2table",
+        "error": false,
+        "uiMap": {
+          "path": "$.1",
+          "source": "main"
+        },
+        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"py2table\",\n  \"length\": 43,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"entities\": \"object\"\n  }\n}",
+        "description": "Convert the dict result to dataframe",
+        "errorMessage": null
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": 470,
+        "y": -280
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": 470,
+        "y": -280
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-d6784351-b931-40a3-ab5e-9663b7a156fdsource_d6784351-b931-40a3-ab5e-9663b7a156fd_object-2a7d0684-3e92-48cb-afda-99d8a48cbc28target_2a7d0684-3e92-48cb-afda-99d8a48cbc28_any",
+      "source": "d6784351-b931-40a3-ab5e-9663b7a156fd",
+      "target": "2a7d0684-3e92-48cb-afda-99d8a48cbc28",
+      "selected": false,
+      "sourceHandle": "source_d6784351-b931-40a3-ab5e-9663b7a156fd_object",
+      "targetHandle": "target_2a7d0684-3e92-48cb-afda-99d8a48cbc28_any"
+    },
+    {
+      "id": "reactflow__edge-c0639286-a0c3-4212-9fe5-8ac2df909c31source_c0639286-a0c3-4212-9fe5-8ac2df909c31_object-2a7d0684-3e92-48cb-afda-99d8a48cbc28target_2a7d0684-3e92-48cb-afda-99d8a48cbc28_any",
+      "source": "c0639286-a0c3-4212-9fe5-8ac2df909c31",
+      "target": "2a7d0684-3e92-48cb-afda-99d8a48cbc28",
+      "selected": false,
+      "sourceHandle": "source_c0639286-a0c3-4212-9fe5-8ac2df909c31_object",
+      "targetHandle": "target_2a7d0684-3e92-48cb-afda-99d8a48cbc28_any"
+    },
+    {
+      "id": "reactflow__edge-2a7d0684-3e92-48cb-afda-99d8a48cbc28source_2a7d0684-3e92-48cb-afda-99d8a48cbc28_object-af60c8e4-a893-4b4c-aa37-df0651b90788target_af60c8e4-a893-4b4c-aa37-df0651b90788_object",
+      "source": "2a7d0684-3e92-48cb-afda-99d8a48cbc28",
+      "target": "af60c8e4-a893-4b4c-aa37-df0651b90788",
+      "sourceHandle": "source_2a7d0684-3e92-48cb-afda-99d8a48cbc28_object",
+      "targetHandle": "target_af60c8e4-a893-4b4c-aa37-df0651b90788_object"
+    }
+  ],
+  "variables": [
+    {
+      "key": "database_code",
+      "value": "alpdev_pg"
+    },
+    {
+      "key": "schema_name",
+      "value": "cdmdefault"
+    },
+    {
+      "key": "note_table",
+      "value": "note"
+    },
+    {
+      "key": "model_name",
+      "value": "en_core_web_sm"
+    },
+    {
+      "key": "mode",
+      "value": "agentic"
+    },
+    {
+      "key": "output_format",
+      "value": "json"
+    }
+  ],
+  "importLibs": [
+    "from pydantic import BaseModel, Field",
+    "from typing import List",
+    "from py_name_entity_recognition.models.config import ModelConfig",
+    "from prefect.variables import Variable",
+    "from _shared_flow_utils.dao.DBDao import DBDao",
+    "from py_name_entity_recognition import extract_entities",
+    "from prefect.blocks.system import Secret",
+    "import asyncio, os"
+  ]
+}
