@@ -1,6 +1,30 @@
 {
-  "nodes": [],
   "edges": [],
+  "nodes": [
+    {
+      "id": "c9ac65ce-daa2-424a-9a30-390926530300",
+      "type": "csv_node",
+      "data": {
+        "name": "csv_node_0",
+        "description": "Describe the task of node csv_node_0",
+        "file": "person.csv",
+        "delimiter": ",",
+        "hasheader": true,
+        "columns": [],
+        "encoding": "utf-8"
+      },
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "width": 354,
+      "height": 214,
+      "selected": true,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "dragHandle": ""
+    }
+  ],
   "variables": [],
   "importLibs": []
 }
