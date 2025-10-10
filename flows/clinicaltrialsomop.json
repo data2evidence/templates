@@ -1,0 +1,532 @@
+{
+  "name": "ClinicalTrialsOmop",
+  "description": "Convert clinical trials in sdtm format to omop 5.4 format",
+  "edges": [
+    {
+      "id": "reactflow__edge-8e707161-6558-4df6-8249-8fdaa6eeae85source_8e707161-6558-4df6-8249-8fdaa6eeae85_object-326f88c3-e78c-4d7b-81f7-baba15068f73target_326f88c3-e78c-4d7b-81f7-baba15068f73_any",
+      "source": "8e707161-6558-4df6-8249-8fdaa6eeae85",
+      "target": "326f88c3-e78c-4d7b-81f7-baba15068f73",
+      "sourceHandle": "source_8e707161-6558-4df6-8249-8fdaa6eeae85_object",
+      "targetHandle": "target_326f88c3-e78c-4d7b-81f7-baba15068f73_any"
+    },
+    {
+      "id": "reactflow__edge-326f88c3-e78c-4d7b-81f7-baba15068f73source_326f88c3-e78c-4d7b-81f7-baba15068f73_object-ec580a65-309b-4442-871b-c0fa1dc2afadtarget_ec580a65-309b-4442-871b-c0fa1dc2afad_object",
+      "source": "326f88c3-e78c-4d7b-81f7-baba15068f73",
+      "target": "ec580a65-309b-4442-871b-c0fa1dc2afad",
+      "sourceHandle": "source_326f88c3-e78c-4d7b-81f7-baba15068f73_object",
+      "targetHandle": "target_ec580a65-309b-4442-871b-c0fa1dc2afad_object"
+    },
+    {
+      "id": "reactflow__edge-ec580a65-309b-4442-871b-c0fa1dc2afadsource_ec580a65-309b-4442-871b-c0fa1dc2afad_dataframe-43179637-ad6e-4fa4-9b31-c9d15093b8e4target_43179637-ad6e-4fa4-9b31-c9d15093b8e4_dataframe",
+      "source": "ec580a65-309b-4442-871b-c0fa1dc2afad",
+      "target": "43179637-ad6e-4fa4-9b31-c9d15093b8e4",
+      "sourceHandle": "source_ec580a65-309b-4442-871b-c0fa1dc2afad_dataframe",
+      "targetHandle": "target_43179637-ad6e-4fa4-9b31-c9d15093b8e4_dataframe"
+    },
+    {
+      "id": "reactflow__edge-43179637-ad6e-4fa4-9b31-c9d15093b8e4source_43179637-ad6e-4fa4-9b31-c9d15093b8e4_dataframe-bddd0512-b9d0-43d7-99cb-3b8661be512ctarget_bddd0512-b9d0-43d7-99cb-3b8661be512c_dataframe",
+      "source": "43179637-ad6e-4fa4-9b31-c9d15093b8e4",
+      "target": "bddd0512-b9d0-43d7-99cb-3b8661be512c",
+      "selected": false,
+      "sourceHandle": "source_43179637-ad6e-4fa4-9b31-c9d15093b8e4_dataframe",
+      "targetHandle": "target_bddd0512-b9d0-43d7-99cb-3b8661be512c_dataframe"
+    },
+    {
+      "id": "reactflow__edge-ec580a65-309b-4442-871b-c0fa1dc2afadsource_ec580a65-309b-4442-871b-c0fa1dc2afad_dataframe-bddd0512-b9d0-43d7-99cb-3b8661be512ctarget_bddd0512-b9d0-43d7-99cb-3b8661be512c_dataframe",
+      "source": "ec580a65-309b-4442-871b-c0fa1dc2afad",
+      "target": "bddd0512-b9d0-43d7-99cb-3b8661be512c",
+      "selected": false,
+      "sourceHandle": "source_ec580a65-309b-4442-871b-c0fa1dc2afad_dataframe",
+      "targetHandle": "target_bddd0512-b9d0-43d7-99cb-3b8661be512c_dataframe"
+    },
+    {
+      "id": "reactflow__edge-43179637-ad6e-4fa4-9b31-c9d15093b8e4source_43179637-ad6e-4fa4-9b31-c9d15093b8e4_dataframe-188689ba-285f-4453-ac8b-13753dfb8fd3target_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe",
+      "source": "43179637-ad6e-4fa4-9b31-c9d15093b8e4",
+      "target": "188689ba-285f-4453-ac8b-13753dfb8fd3",
+      "selected": false,
+      "sourceHandle": "source_43179637-ad6e-4fa4-9b31-c9d15093b8e4_dataframe",
+      "targetHandle": "target_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe"
+    },
+    {
+      "id": "reactflow__edge-bddd0512-b9d0-43d7-99cb-3b8661be512csource_bddd0512-b9d0-43d7-99cb-3b8661be512c_dataframe-188689ba-285f-4453-ac8b-13753dfb8fd3target_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe",
+      "source": "bddd0512-b9d0-43d7-99cb-3b8661be512c",
+      "target": "188689ba-285f-4453-ac8b-13753dfb8fd3",
+      "selected": false,
+      "sourceHandle": "source_bddd0512-b9d0-43d7-99cb-3b8661be512c_dataframe",
+      "targetHandle": "target_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe"
+    },
+    {
+      "id": "reactflow__edge-ec580a65-309b-4442-871b-c0fa1dc2afadsource_ec580a65-309b-4442-871b-c0fa1dc2afad_dataframe-188689ba-285f-4453-ac8b-13753dfb8fd3target_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe",
+      "source": "ec580a65-309b-4442-871b-c0fa1dc2afad",
+      "target": "188689ba-285f-4453-ac8b-13753dfb8fd3",
+      "selected": false,
+      "sourceHandle": "source_ec580a65-309b-4442-871b-c0fa1dc2afad_dataframe",
+      "targetHandle": "target_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe"
+    },
+    {
+      "id": "reactflow__edge-188689ba-285f-4453-ac8b-13753dfb8fd3source_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe-b54fd66f-6ad5-475d-b363-4e535d65c134target_b54fd66f-6ad5-475d-b363-4e535d65c134_dataframe",
+      "source": "188689ba-285f-4453-ac8b-13753dfb8fd3",
+      "target": "b54fd66f-6ad5-475d-b363-4e535d65c134",
+      "sourceHandle": "source_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe",
+      "targetHandle": "target_b54fd66f-6ad5-475d-b363-4e535d65c134_dataframe"
+    },
+    {
+      "id": "reactflow__edge-326f88c3-e78c-4d7b-81f7-baba15068f73source_326f88c3-e78c-4d7b-81f7-baba15068f73_object-6e05355b-f6c7-4854-821b-a66d0c70e90etarget_6e05355b-f6c7-4854-821b-a66d0c70e90e_object",
+      "source": "326f88c3-e78c-4d7b-81f7-baba15068f73",
+      "target": "6e05355b-f6c7-4854-821b-a66d0c70e90e",
+      "sourceHandle": "source_326f88c3-e78c-4d7b-81f7-baba15068f73_object",
+      "targetHandle": "target_6e05355b-f6c7-4854-821b-a66d0c70e90e_object"
+    },
+    {
+      "id": "reactflow__edge-6e05355b-f6c7-4854-821b-a66d0c70e90esource_6e05355b-f6c7-4854-821b-a66d0c70e90e_dataframe-b54fd66f-6ad5-475d-b363-4e535d65c134target_b54fd66f-6ad5-475d-b363-4e535d65c134_dataframe",
+      "source": "6e05355b-f6c7-4854-821b-a66d0c70e90e",
+      "target": "b54fd66f-6ad5-475d-b363-4e535d65c134",
+      "sourceHandle": "source_6e05355b-f6c7-4854-821b-a66d0c70e90e_dataframe",
+      "targetHandle": "target_b54fd66f-6ad5-475d-b363-4e535d65c134_dataframe"
+    },
+    {
+      "id": "reactflow__edge-326f88c3-e78c-4d7b-81f7-baba15068f73source_326f88c3-e78c-4d7b-81f7-baba15068f73_object-af19738a-6236-44a3-9371-8ba0c2b03499target_af19738a-6236-44a3-9371-8ba0c2b03499_object",
+      "source": "326f88c3-e78c-4d7b-81f7-baba15068f73",
+      "target": "af19738a-6236-44a3-9371-8ba0c2b03499",
+      "sourceHandle": "source_326f88c3-e78c-4d7b-81f7-baba15068f73_object",
+      "targetHandle": "target_af19738a-6236-44a3-9371-8ba0c2b03499_object"
+    },
+    {
+      "id": "reactflow__edge-b54fd66f-6ad5-475d-b363-4e535d65c134source_b54fd66f-6ad5-475d-b363-4e535d65c134_dataframe-2344688a-f0a9-4f08-8469-cd3c389a0e48target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe",
+      "source": "b54fd66f-6ad5-475d-b363-4e535d65c134",
+      "target": "2344688a-f0a9-4f08-8469-cd3c389a0e48",
+      "sourceHandle": "source_b54fd66f-6ad5-475d-b363-4e535d65c134_dataframe",
+      "targetHandle": "target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe"
+    },
+    {
+      "id": "reactflow__edge-af19738a-6236-44a3-9371-8ba0c2b03499source_af19738a-6236-44a3-9371-8ba0c2b03499_dataframe-2344688a-f0a9-4f08-8469-cd3c389a0e48target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe",
+      "source": "af19738a-6236-44a3-9371-8ba0c2b03499",
+      "target": "2344688a-f0a9-4f08-8469-cd3c389a0e48",
+      "sourceHandle": "source_af19738a-6236-44a3-9371-8ba0c2b03499_dataframe",
+      "targetHandle": "target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe"
+    },
+    {
+      "id": "reactflow__edge-ccc9781e-66c7-4fb3-b210-94db69b2a5d9source_ccc9781e-66c7-4fb3-b210-94db69b2a5d9_object-84c767f3-0bd4-4eab-ae55-03dfe0612ecftarget_84c767f3-0bd4-4eab-ae55-03dfe0612ecf_object",
+      "source": "ccc9781e-66c7-4fb3-b210-94db69b2a5d9",
+      "target": "84c767f3-0bd4-4eab-ae55-03dfe0612ecf",
+      "sourceHandle": "source_ccc9781e-66c7-4fb3-b210-94db69b2a5d9_object",
+      "targetHandle": "target_84c767f3-0bd4-4eab-ae55-03dfe0612ecf_object"
+    },
+    {
+      "id": "reactflow__edge-ccc9781e-66c7-4fb3-b210-94db69b2a5d9source_ccc9781e-66c7-4fb3-b210-94db69b2a5d9_object-4cab0c28-c8e3-4f63-88f0-cfcd3436548ftarget_4cab0c28-c8e3-4f63-88f0-cfcd3436548f_object",
+      "source": "ccc9781e-66c7-4fb3-b210-94db69b2a5d9",
+      "target": "4cab0c28-c8e3-4f63-88f0-cfcd3436548f",
+      "sourceHandle": "source_ccc9781e-66c7-4fb3-b210-94db69b2a5d9_object",
+      "targetHandle": "target_4cab0c28-c8e3-4f63-88f0-cfcd3436548f_object"
+    },
+    {
+      "id": "reactflow__edge-84c767f3-0bd4-4eab-ae55-03dfe0612ecfsource_84c767f3-0bd4-4eab-ae55-03dfe0612ecf_dataframe-2344688a-f0a9-4f08-8469-cd3c389a0e48target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe",
+      "source": "84c767f3-0bd4-4eab-ae55-03dfe0612ecf",
+      "target": "2344688a-f0a9-4f08-8469-cd3c389a0e48",
+      "sourceHandle": "source_84c767f3-0bd4-4eab-ae55-03dfe0612ecf_dataframe",
+      "targetHandle": "target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe"
+    },
+    {
+      "id": "reactflow__edge-4cab0c28-c8e3-4f63-88f0-cfcd3436548fsource_4cab0c28-c8e3-4f63-88f0-cfcd3436548f_dataframe-2344688a-f0a9-4f08-8469-cd3c389a0e48target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe",
+      "source": "4cab0c28-c8e3-4f63-88f0-cfcd3436548f",
+      "target": "2344688a-f0a9-4f08-8469-cd3c389a0e48",
+      "sourceHandle": "source_4cab0c28-c8e3-4f63-88f0-cfcd3436548f_dataframe",
+      "targetHandle": "target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe"
+    },
+    {
+      "id": "reactflow__edge-43179637-ad6e-4fa4-9b31-c9d15093b8e4source_43179637-ad6e-4fa4-9b31-c9d15093b8e4_dataframe-692fd894-bf41-4cdc-8472-8d6175f562f8target_692fd894-bf41-4cdc-8472-8d6175f562f8_dataframe",
+      "source": "43179637-ad6e-4fa4-9b31-c9d15093b8e4",
+      "target": "692fd894-bf41-4cdc-8472-8d6175f562f8",
+      "sourceHandle": "source_43179637-ad6e-4fa4-9b31-c9d15093b8e4_dataframe",
+      "targetHandle": "target_692fd894-bf41-4cdc-8472-8d6175f562f8_dataframe"
+    },
+    {
+      "id": "reactflow__edge-188689ba-285f-4453-ac8b-13753dfb8fd3source_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe-d6f01d61-e8a3-44d2-8932-04445d41cf1etarget_d6f01d61-e8a3-44d2-8932-04445d41cf1e_dataframe",
+      "source": "188689ba-285f-4453-ac8b-13753dfb8fd3",
+      "target": "d6f01d61-e8a3-44d2-8932-04445d41cf1e",
+      "sourceHandle": "source_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe",
+      "targetHandle": "target_d6f01d61-e8a3-44d2-8932-04445d41cf1e_dataframe"
+    },
+    {
+      "id": "reactflow__edge-bddd0512-b9d0-43d7-99cb-3b8661be512csource_bddd0512-b9d0-43d7-99cb-3b8661be512c_dataframe-c0b9e1a5-b0b6-4e86-95cd-b561e39477eetarget_c0b9e1a5-b0b6-4e86-95cd-b561e39477ee_dataframe",
+      "source": "bddd0512-b9d0-43d7-99cb-3b8661be512c",
+      "target": "c0b9e1a5-b0b6-4e86-95cd-b561e39477ee",
+      "sourceHandle": "source_bddd0512-b9d0-43d7-99cb-3b8661be512c_dataframe",
+      "targetHandle": "target_c0b9e1a5-b0b6-4e86-95cd-b561e39477ee_dataframe"
+    },
+    {
+      "id": "reactflow__edge-b54fd66f-6ad5-475d-b363-4e535d65c134source_b54fd66f-6ad5-475d-b363-4e535d65c134_dataframe-9fa52bdd-3b3d-4ce4-911b-7f4bfbcfe44ftarget_9fa52bdd-3b3d-4ce4-911b-7f4bfbcfe44f_dataframe",
+      "source": "b54fd66f-6ad5-475d-b363-4e535d65c134",
+      "target": "9fa52bdd-3b3d-4ce4-911b-7f4bfbcfe44f",
+      "sourceHandle": "source_b54fd66f-6ad5-475d-b363-4e535d65c134_dataframe",
+      "targetHandle": "target_9fa52bdd-3b3d-4ce4-911b-7f4bfbcfe44f_dataframe"
+    },
+    {
+      "id": "reactflow__edge-2344688a-f0a9-4f08-8469-cd3c389a0e48source_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe-c18e0a68-cb27-4ea8-ae8c-9bf9118230betarget_c18e0a68-cb27-4ea8-ae8c-9bf9118230be_dataframe",
+      "source": "2344688a-f0a9-4f08-8469-cd3c389a0e48",
+      "target": "c18e0a68-cb27-4ea8-ae8c-9bf9118230be",
+      "sourceHandle": "source_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe",
+      "targetHandle": "target_c18e0a68-cb27-4ea8-ae8c-9bf9118230be_dataframe"
+    },
+    {
+      "id": "reactflow__edge-188689ba-285f-4453-ac8b-13753dfb8fd3source_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe-2344688a-f0a9-4f08-8469-cd3c389a0e48target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe",
+      "source": "188689ba-285f-4453-ac8b-13753dfb8fd3",
+      "target": "2344688a-f0a9-4f08-8469-cd3c389a0e48",
+      "sourceHandle": "source_188689ba-285f-4453-ac8b-13753dfb8fd3_dataframe",
+      "targetHandle": "target_2344688a-f0a9-4f08-8469-cd3c389a0e48_dataframe"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "8e707161-6558-4df6-8249-8fdaa6eeae85",
+      "data": {
+        "name": "GetFiles",
+        "description": "Describe the task of node python_node_0",
+        "python_code": "from pathlib import Path\n\ndef exec(myinput):\n  csv_folder = Path(source_csv_folder)\n\n  # Get only CSV files in the folder\n  csv_files = list(csv_folder.glob(\"*.csv\"))\n  \n  absolute_paths = [csv_file.absolute() for csv_file in sorted(csv_files)]\n\n  return absolute_paths"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1860, "y": -250 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1860, "y": -250 }
+    },
+    {
+      "id": "326f88c3-e78c-4d7b-81f7-baba15068f73",
+      "data": {
+        "name": "Staging_SDTM",
+        "description": "Describe the task of node python_node_1",
+        "python_code": "def exec(myinput):\n  file_list = myinput[\"GetFiles\"].result\n\n  processed = {}\n\n  for file in file_list:\n    domain = file.stem.lower()\n\n    # Process based on domain\n    if domain in [\"dm\", \"ds\", \"sv\", \"cm\"]:\n\n      source_df = pd.read_csv(file)\n\n      # Convert columns to lowercase for consistent handling\n\n      source_df.columns = [col.lower() for col in source_df.columns]\n\n      # Special case handling\n      match domain:\n        case \"cm\": # Concomitant Medications\n          convert_col_to_integer('visitnum', source_df)\n          convert_col_to_integer('cmstdy', source_df)\n          convert_col_to_integer('cmendy', source_df)\n\n          source_df['cm_concat'] = source_df['cmtrt'].astype(str) + '|' + source_df['cmdose'].astype(str) + '|' + source_df['cmdosu'].astype(str) + '|' + source_df['cmroute'].astype(str)\n          \n        case \"ds\": # Disposition\n          convert_col_to_integer('visitnum', source_df)\n          convert_col_to_integer('dsstdy', source_df)\n          # Todo: Uncomment\n          # convert_col_to_integer('livedy', source_df)\n          # convert_col_to_integer('totcldur', source_df)\n\n\n        case \"sv\":\n          convert_col_to_integer('svstdy', source_df)\n          convert_col_to_integer('svendy', source_df)\n\n      processed[domain] = source_df\n\n  return processed\n\ndef convert_col_to_integer(col, df):\n    df[col] = df[col].apply(lambda x: None if pd.isna(x) else int(x))\n\n\n\n    "
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1410, "y": -250 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1410, "y": -250 }
+    },
+    {
+      "id": "ccc9781e-66c7-4fb3-b210-94db69b2a5d9",
+      "data": {
+        "name": "DownloadSTCMSeedCSVs",
+        "description": "Describe the task of node python_node_2",
+        "python_code": "def exec(myinput):\n\n    base_url = \"https://raw.githubusercontent.com/OHDSI/ClinicalTrialsWG-TB/refs/heads/main/seeds/stcm/\"\n\n    seed_data = {}\n    for name in [\"drug_route\", \"source_to_concept_map\"]:\n        csv_url = base_url + name + \".csv\"\n        df = pd.read_csv(csv_url)\n        df.columns = [col.lower() for col in df.columns]\n        seed_data[name] = df\n\n    return seed_data"
+      },
+      "type": "python_node",
+      "width": 354,
+      "height": 214,
+      "dragging": false,
+      "position": { "x": 380, "y": 30 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 380, "y": 30 }
+    },
+    {
+      "id": "ec580a65-309b-4442-871b-c0fa1dc2afad",
+      "data": {
+        "map": {},
+        "name": "DemographicsData",
+        "uiMap": { "path": "$.dm", "source": "Staging_SDTM" },
+        "description": "Get Demographics dataframe"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -970, "y": -480 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -970, "y": -480 }
+    },
+    {
+      "id": "43179637-ad6e-4fa4-9b31-c9d15093b8e4",
+      "data": {
+        "sql": "WITH countries AS (\n    SELECT DISTINCT country\n    FROM DemographicsData\n)\n\nSELECT\n    ROW_NUMBER() OVER (ORDER BY country) AS location_id\n    , country AS location_source_value\n    , CASE\n        WHEN country = 'ZAF' THEN 4073743\n        WHEN country = 'TZA' THEN 4072112\n        WHEN country = 'UGA' THEN 4071840\n        ELSE 0\n    END AS country_concept_id\n    , CASE\n        WHEN country = 'ZAF' THEN 'South Africa'\n        WHEN country = 'TZA' THEN 'Tanzania'\n        WHEN country = 'UGA' THEN 'Uganda'\n    END AS country_source_value\n    , CASE\n        WHEN country = 'ZAF' THEN 30.5595\n        WHEN country = 'TZA' THEN 6.3690\n        WHEN country = 'UGA' THEN 1.3733\n    END AS latitude\n    , CASE\n        WHEN country = 'ZAF' THEN 22.9375\n        WHEN country = 'TZA' THEN 34.8888\n        WHEN country = 'UGA' THEN 32.2903\n    END AS longitude\nFROM countries",
+        "name": "CreateLocationRecords",
+        "description": "Convert country column to location data"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -440, "y": -730 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -440, "y": -730 }
+    },
+    {
+      "id": "bddd0512-b9d0-43d7-99cb-3b8661be512c",
+      "data": {
+        "sql": "WITH sites AS (\n    SELECT DISTINCT\n        siteid\n        , country\n    FROM DemographicsData\n)\n\nSELECT\n    ROW_NUMBER() OVER (ORDER BY sites.siteid) AS care_site_id\n    , loc.location_id\n    , sites.siteid AS care_site_source_value\nFROM sites\nLEFT JOIN CreateLocationRecords AS loc\n    ON sites.country = loc.location_source_value\n",
+        "name": "CreateCareSiteRecords",
+        "description": "Describe the task of node sql_node_1"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 80, "y": -460 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 80, "y": -460 }
+    },
+    {
+      "id": "188689ba-285f-4453-ac8b-13753dfb8fd3",
+      "data": {
+        "sql": "SELECT\n    ROW_NUMBER() OVER (ORDER BY dm.usubjid) AS person_id\n    , CASE\n        WHEN dm.sex = 'M' THEN 8507\n        WHEN dm.sex = 'F' THEN 8532\n        ELSE 0\n    END AS gender_concept_id\n    , 2014 - dm.age::int AS year_of_birth\n    , CASE\n        WHEN dm.race = 'BLACK OR AFRICAN AMERICAN' THEN 8516\n        WHEN dm.race = 'WHITE' THEN 8527\n        WHEN dm.race = 'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' THEN 8557\n        ELSE 0\n    END AS race_concept_id\n    , CASE\n        WHEN dm.ethnic = 'NOT HISPANIC OR LATINO' THEN 38003564\n        ELSE 0\n    END AS ethnicity_concept_id\n    , loc.location_id\n    , cs.care_site_id\n    , dm.usubjid AS person_source_value\n    , dm.sex AS gender_source_value\n    , dm.race AS race_source_value\n    , dm.ethnic AS ethnicity_source_value\nFROM DemographicsData AS dm\nLEFT JOIN CreateLocationRecords AS loc\n    ON dm.country = loc.location_source_value\nLEFT JOIN CreateCareSiteRecords AS cs\n    ON dm.siteid = cs.care_site_source_value\nWHERE\n    dm.usubjid IS NOT NULL\n    AND dm.age IS NOT NULL",
+        "name": "CreatePersonRecords",
+        "description": "Describe the task of node sql_node_2"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 680, "y": -770 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 680, "y": -770 }
+    },
+    {
+      "id": "b54fd66f-6ad5-475d-b363-4e535d65c134",
+      "data": {
+        "sql": "SELECT\n    ROW_NUMBER() OVER (ORDER BY per.person_id, sv.visitnum) AS visit_occurrence_id\n    , per.person_id\n    , 581477 AS visit_concept_id  -- 'Office visit'\n    , DATE '2014-10-23' + sv.svstdy * INTERVAL 1 DAY AS visit_start_date\n    , DATE '2014-10-23' + sv.svendy * INTERVAL 1 DAY AS visit_end_date\n    , 32809 AS visit_type_concept_id -- 'Case Report Form'\n    , sv.visitnum AS visit_source_value\nFROM SubjectVisitsData AS sv\nLEFT JOIN CreatePersonRecords AS per\n    ON sv.usubjid = per.person_source_value\nWHERE\n    sv.svstdy IS NOT NULL\n    AND sv.svendy IS NOT NULL\n",
+        "name": "CreateVisitOccurrenceRecords",
+        "description": "Describe the task of node sql_node_3"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1190, "y": -560 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1190, "y": -560 }
+    },
+    {
+      "id": "6e05355b-f6c7-4854-821b-a66d0c70e90e",
+      "data": {
+        "map": {},
+        "name": "SubjectVisitsData",
+        "uiMap": { "path": "$.sv", "source": "Staging_SDTM" },
+        "description": "Describe the task of node py2table_node_1"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -550, "y": -250 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -550, "y": -250 }
+    },
+    {
+      "id": "af19738a-6236-44a3-9371-8ba0c2b03499",
+      "data": {
+        "map": {},
+        "name": "ConcomitantMedicationsData",
+        "uiMap": { "path": "$.cm", "source": "Staging_SDTM" },
+        "description": "Describe the task of node py2table_node_2"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -970, "y": 20 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -970, "y": 20 }
+    },
+    {
+      "id": "2344688a-f0a9-4f08-8469-cd3c389a0e48",
+      "data": {
+        "sql": "SELECT\n    ROW_NUMBER() OVER (ORDER BY per.person_id, cm.cmstdy) AS drug_exposure_id\n    , per.person_id\n    , DATE '2014-10-23' + cm.cmstdy * INTERVAL 1 DAY AS drug_exposure_start_date\n    , CASE\n        WHEN cm.cmendy IS NOT NULL THEN DATE '2014-10-23' + cm.cmendy * INTERVAL 1 DAY\n        -- TODO add proper THEMIS imputation rules\n        ELSE DATE '2014-10-23' + cm.cmstdy * INTERVAL 1 DAY\n    END AS drug_exposure_end_date\n    , cm.cm_concat AS drug_source_value\n    , stcm.target_concept_id AS drug_concept_id\n    , 32809 AS drug_type_concept_id  -- 'Case Report Form'\n    , cm.cmendy - cm.cmstdy + 1 AS days_supply\n    , dr.concept_id AS route_concept_id\n    , cm.cmroute AS route_source_value\n    , vo.visit_occurrence_id\nFROM ConcomitantMedicationsData AS cm\nLEFT JOIN CreatePersonRecords AS per\n    ON cm.usubjid = per.person_source_value\nLEFT JOIN CreateVisitOccurrenceRecords AS vo\n    ON\n        cm.visitnum = vo.visit_source_value\n        AND per.person_id = vo.person_id\nLEFT JOIN SourceToConceptMapData AS stcm\n    ON\n        cm.cm_concat = stcm.source_code\n        AND stcm.source_vocabulary_id = 'TB1015_CM'\nLEFT JOIN DrugRouteData AS dr\n    ON UPPER(TRIM(cm.cmroute)) = dr.route",
+        "name": "CreateDrugExposureRecords",
+        "description": "Describe the task of node sql_node_4"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1770, "y": -380 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1770, "y": -380 }
+    },
+    {
+      "id": "84c767f3-0bd4-4eab-ae55-03dfe0612ecf",
+      "data": {
+        "map": {},
+        "name": "SourceToConceptMapData",
+        "uiMap": {
+          "path": "$.source_to_concept_map",
+          "source": "DownloadSTCMSeedCSVs"
+        },
+        "description": "Describe the task of node py2table_node_3"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1110, "y": -140 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1110, "y": -140 }
+    },
+    {
+      "id": "4cab0c28-c8e3-4f63-88f0-cfcd3436548f",
+      "data": {
+        "map": {},
+        "name": "DrugRouteData",
+        "uiMap": { "path": "$.drug_route", "source": "DownloadSTCMSeedCSVs" },
+        "description": "Describe the task of node py2table_node_4"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1110, "y": 200 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1110, "y": 200 }
+    },
+    {
+      "id": "692fd894-bf41-4cdc-8472-8d6175f562f8",
+      "data": {
+        "name": "IngestLocationTable",
+        "database": "demo_database",
+        "dataframe": "CreateLocationRecords",
+        "schemaname": "clinicaltrialsomop",
+        "dbtablename": "location",
+        "description": "IngestLocationRecords"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 50, "y": -1020 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 50, "y": -1020 }
+    },
+    {
+      "id": "d6f01d61-e8a3-44d2-8932-04445d41cf1e",
+      "data": {
+        "name": "IngestPersonTable",
+        "database": "demo_database",
+        "dataframe": "CreatePersonRecords",
+        "schemaname": "clinicaltrialsomop",
+        "dbtablename": "person",
+        "description": "Describe the task of node db_writer_node_1"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1190, "y": -940 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1190, "y": -940 }
+    },
+    {
+      "id": "c0b9e1a5-b0b6-4e86-95cd-b561e39477ee",
+      "data": {
+        "name": "IngestCareSiteTable",
+        "database": "demo_database",
+        "dataframe": "CreateCareSiteRecords",
+        "schemaname": "clinicaltrialsomop",
+        "dbtablename": "care_site",
+        "description": "Describe the task of node db_writer_node_2"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 680, "y": -470 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 680, "y": -470 }
+    },
+    {
+      "id": "9fa52bdd-3b3d-4ce4-911b-7f4bfbcfe44f",
+      "data": {
+        "name": "IngestVisitOccurrenceTable",
+        "database": "demo_database",
+        "dataframe": "CreateVisitOccurrenceRecords",
+        "schemaname": "clinicaltrialsomop",
+        "dbtablename": "visit_occurrence",
+        "description": "Describe the task of node db_writer_node_3"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1750, "y": -730 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1750, "y": -730 }
+    },
+    {
+      "id": "c18e0a68-cb27-4ea8-ae8c-9bf9118230be",
+      "data": {
+        "name": "IngestDrugExposureTable",
+        "database": "demo_database",
+        "dataframe": "CreateDrugExposureRecords",
+        "schemaname": "clinicaltrialsomop",
+        "dbtablename": "drug_exposure",
+        "description": "Describe the task of node db_writer_node_4"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 2330, "y": -380 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 2330, "y": -380 }
+    }
+  ],
+  "variables": [
+    { "key": "source_csv_folder", "value": "/app/clinicaltrialstb" }
+  ],
+  "importLibs": ["import pandas as pd"]
+}
