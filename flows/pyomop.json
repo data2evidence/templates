@@ -30,7 +30,7 @@
       "data": {
         "name": "InsertPersonRecords",
         "description": "Insert person table records",
-        "python_code": "from pyomop import CdmEngineFactory, CdmVocabulary, CdmVector\n# cdm6 and cdm54 are supported\nfrom pyomop.cdm54 import Person, Cohort, Vocabulary, Base\nfrom sqlalchemy.future import select\nimport datetime\nimport asyncio\n\n\nasync def exec(myinput):\n  tenant_configs = myinput[\"GetDBCredentials\"].result\n  \n  cdm = CdmEngineFactory(\n    db='pgsql', \n    host=tenant_configs.host, \n    port=tenant_configs.port,\n    user=tenant_configs.adminUser,\n    pw=tenant_configs.adminPassword.get_secret_value(),\n    name=tenant_configs.databaseName, \n    schema='demo_cdm'\n  )\n  \n  engine = cdm.engine\n\n  async with cdm.session() as session:\n    async with session.begin():\n      session.add(\n          Person(\n              person_id=100,\n              gender_concept_id=8532,\n              gender_source_concept_id=8512,\n              year_of_birth=1980,\n              month_of_birth=1,\n              day_of_birth=1,\n              birth_datetime=datetime.datetime(1980, 1, 1),\n              race_concept_id=8552,\n              race_source_concept_id=8552,\n              ethnicity_concept_id=38003564,\n              ethnicity_source_concept_id=38003564,\n          )\n      )\n\n      session.add(\n          Person(\n              person_id=101,\n              gender_concept_id=8532,\n              gender_source_concept_id=8512,\n              year_of_birth=1980,\n              month_of_birth=1,\n              day_of_birth=1,\n              birth_datetime=datetime.datetime(1980, 1, 1),\n              race_concept_id=8552,\n              race_source_concept_id=8552,\n              ethnicity_concept_id=38003564,\n              ethnicity_source_concept_id=38003564,\n          )\n      )\n    await session.commit()\n\n    await session.close()\n  await engine.dispose()\n    \n  return cdm"
+        "python_code": "async def exec(myinput):\n  tenant_configs = myinput[\"GetDBCredentials\"].result\n  \n  cdm = CdmEngineFactory(\n    db='pgsql', \n    host=tenant_configs.host, \n    port=tenant_configs.port,\n    user=tenant_configs.adminUser,\n    pw=tenant_configs.adminPassword.get_secret_value(),\n    name=tenant_configs.databaseName, \n    schema='demo_cdm'\n  )\n  \n  engine = cdm.engine\n\n  async with cdm.session() as session:\n    async with session.begin():\n      session.add(\n          Person(\n              person_id=100,\n              gender_concept_id=8532,\n              gender_source_concept_id=8512,\n              year_of_birth=1980,\n              month_of_birth=1,\n              day_of_birth=1,\n              birth_datetime=datetime.datetime(1980, 1, 1),\n              race_concept_id=8552,\n              race_source_concept_id=8552,\n              ethnicity_concept_id=38003564,\n              ethnicity_source_concept_id=38003564,\n          )\n      )\n\n      session.add(\n          Person(\n              person_id=101,\n              gender_concept_id=8532,\n              gender_source_concept_id=8512,\n              year_of_birth=1980,\n              month_of_birth=1,\n              day_of_birth=1,\n              birth_datetime=datetime.datetime(1980, 1, 1),\n              race_concept_id=8552,\n              race_source_concept_id=8552,\n              ethnicity_concept_id=38003564,\n              ethnicity_source_concept_id=38003564,\n          )\n      )\n    await session.commit()\n\n    await session.close()\n  await engine.dispose()\n    \n  return cdm"
       },
       "type": "python_node",
       "width": 350,
@@ -66,14 +66,14 @@
       "data": {
         "name": "QueryPersonRecords",
         "description": "Execute query from QueryLibrary",
-        "python_code": "from pyomop import CdmEngineFactory, CdmVocabulary, CdmVector\n# cdm6 and cdm54 are supported\nfrom pyomop.cdm54 import Person, Cohort, Vocabulary, Base\nfrom sqlalchemy.future import select\nimport datetime\nimport asyncio\n\n\nasync def exec(myinput):\n  cdm = myinput[\"InsertPersonRecords\"].result\n  \n  engine = cdm.engine\n\n  vec = CdmVector()\n\n  # https://github.com/OHDSI/QueryLibrary/blob/master/inst/shinyApps/QueryLibrary/queries/person/PE02.md\n  async with cdm.session() as session:\n    result = await vec.query_library(cdm, resource='person', query_name='PE02')\n    df = vec.result_to_df(result)\n\n    await session.close()\n  await engine.dispose()\n    \n  return df"
+        "python_code": "async def exec(myinput):\n  cdm = myinput[\"InsertPersonRecords\"].result\n  \n  engine = cdm.engine\n\n  vec = CdmVector()\n\n  # https://github.com/OHDSI/QueryLibrary/blob/master/inst/shinyApps/QueryLibrary/queries/person/PE02.md\n  async with cdm.session() as session:\n    result = await vec.query_library(cdm, resource='person', query_name='PE02')\n    df = vec.result_to_df(result)\n\n    await session.close()\n  await engine.dispose()\n    \n  return df"
       },
       "type": "python_node",
       "width": 354,
       "height": 214,
       "dragging": false,
       "position": { "x": -1180, "y": -280 },
-      "selected": true,
+      "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
@@ -84,7 +84,7 @@
       "data": {
         "name": "SelectFromPersonTable",
         "description": "Get gender concept id for person_id=100",
-        "python_code": "from pyomop import CdmEngineFactory, CdmVocabulary, CdmVector\nfrom pyomop.cdm54 import Person, Cohort, Vocabulary, Base\nfrom sqlalchemy.future import select\nimport datetime\nimport asyncio\n\n\nasync def exec(myinput):\n  cdm = myinput[\"InsertPersonRecords\"].result\n  engine = cdm.engine\n  async with cdm.session() as session:\n    stmt = select(Person).where(Person.person_id == 100)\n    result = await session.execute(stmt)\n    person_obj = result.scalars().all()[0]\n\n    await session.close()\n  await engine.dispose()\n    \n  return person_obj.gender_concept_id"
+        "python_code": "async def exec(myinput):\n  cdm = myinput[\"InsertPersonRecords\"].result\n  engine = cdm.engine\n  async with cdm.session() as session:\n    stmt = select(Person).where(Person.person_id == 100)\n    result = await session.execute(stmt)\n    person_obj = result.scalars().all()[0]\n\n    await session.close()\n  await engine.dispose()\n    \n  return person_obj.gender_concept_id"
       },
       "type": "python_node",
       "width": 350,
@@ -99,5 +99,12 @@
     }
   ],
   "variables": [],
-  "importLibs": ["from _shared_flow_utils.dao.DBDao import DBDao"]
+  "importLibs": [
+    "from _shared_flow_utils.dao.DBDao import DBDao",
+    "import asyncio",
+    "import datetime",
+    "from sqlalchemy.future import select",
+    "from pyomop import CdmEngineFactory, CdmVocabulary, CdmVector",
+    "from pyomop.cdm54 import Person, Cohort, Vocabulary, Base"
+  ]
 }
