@@ -1,0 +1,237 @@
+{
+  "resourceType" : "StructureMap",
+  "id" : "AllergyMap",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: StructureMap AllergyMap</b></p><a name=\"AllergyMap\"> </a><a name=\"hcAllergyMap\"> </a><pre class=\"fml\">\r\n<span style=\"color: #cc00cc\">/// <b>url</b> = </span><span style=\"color: blue\">'http://hl7.org/fhir/uv/omop/StructureMap/AllergyMap'</span>\r\n<span style=\"color: #cc00cc\">/// <b>name</b> = </span><span style=\"color: blue\">'AllergyMap'</span>\r\n<span style=\"color: #cc00cc\">/// <b>title</b> = </span><span style=\"color: blue\">'Mapping Allergy resource to Observation OMOP Domain'</span>\r\n<span style=\"color: #cc00cc\">/// <b>status</b> = </span><span style=\"color: blue\">'draft'</span>\r\n\r\n<b>uses</b><span style=\"color: navy\"> &quot;</span><a href=\"http://hl7.org/fhir/R5/allergyintolerance.html\" title=\"AllergyIntolerance\">http://hl7.org/fhir/StructureDefinition/AllergyIntolerance</a><span style=\"color: navy\">&quot; </span><b>alias </b>Allergy <b>as </b><b>source</b>\r\n<b>uses</b><span style=\"color: navy\"> &quot;</span><a href=\"StructureDefinition-Observation.html\" title=\"Observation OMOP Table\">http://hl7.org/fhir/uv/omop/StructureDefinition/Observation</a><span style=\"color: navy\">&quot; </span><b>alias </b>ObservationTable <b>as </b><b>target</b>\r\n\r\n<b>group </b>Observation<span style=\"color: navy\">(</span><b>source</b> <span style=\"color: maroon\">src</span><span style=\"color: navy\"> : </span>Allergy, <b>target</b> <span style=\"color: maroon\">tgt</span><span style=\"color: navy\"> : </span>ObservationTable<span style=\"color: navy\">)</span><span style=\"color: navy\"> {\r\n</span>  src.code<b> as </b><span style=\"color: maroon\">s</span><span style=\"color: navy\"><b> -&gt; </b></span><span style=\"color: maroon\">tgt</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    s.coding<b> as </b><span style=\"color: maroon\">sc</span><span style=\"color: navy\"><b> -&gt; </b></span><span style=\"color: maroon\">tgt</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      sc.code<span style=\"color: navy\"><b> -&gt; </b></span> tgt.observation_concept_id<span style=\"color: navy\">, </span> tgt.observation_source_value<span style=\"color: navy\">, </span> tgt.observation_source_concept_id<span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span><span style=\"color: navy\">;</span> <span style=\"color: navy\">// </span><span style=\"color: green\">src.id as id -&gt; tgt.observation_id = cast(id, &quot;integer&quot;);</span>\r\n  src.onset<span style=\"color: navy\"> : </span>dateTime<b> as </b><span style=\"color: maroon\">osd</span><span style=\"color: navy\"><b> -&gt; </b></span> tgt.observation_date = <b>cast</b><span style=\"color: navy\">(</span><span style=\"color: maroon\">osd</span><span style=\"color: navy\">, </span><span style=\"color: blue\">'date'</span><span style=\"color: navy\">)</span><span style=\"color: navy\">, </span> tgt.observation_datetime = <span style=\"color: maroon\">osd</span><span style=\"color: navy\">;</span> <span style=\"color: navy\">// </span><span style=\"color: green\">src.patient as s -&gt; tgt then {</span>\r\n  src.reaction<b> as </b><span style=\"color: maroon\">s</span><span style=\"color: navy\"><b> -&gt; </b></span><span style=\"color: maroon\">tgt</span><b> then</b><span style=\"color: navy\"> {\r\n</span>    s.manifestation<b> as </b><span style=\"color: maroon\">sman</span><span style=\"color: navy\"><b> -&gt; </b></span><span style=\"color: maroon\">tgt</span><b> then</b><span style=\"color: navy\"> {\r\n</span>      sman.concept<b> as </b><span style=\"color: maroon\">smanc</span><span style=\"color: navy\"><b> -&gt; </b></span><span style=\"color: maroon\">tgt</span><b> then</b><span style=\"color: navy\"> {\r\n</span>        smanc.coding<b> as </b><span style=\"color: maroon\">sc</span><span style=\"color: navy\"><b> -&gt; </b></span><span style=\"color: maroon\">tgt</span><b> then</b><span style=\"color: navy\"> {\r\n</span>          sc.code<span style=\"color: navy\"><b> -&gt; </b></span> tgt.value_as_concept_id<span style=\"color: navy\">, </span> tgt.value_source_value<span style=\"color: navy\">;</span>\r\n        <span style=\"color: navy\">}</span><span style=\"color: navy\">;</span>\r\n      <span style=\"color: navy\">}</span><span style=\"color: navy\">;</span>\r\n    <span style=\"color: navy\">}</span><span style=\"color: navy\">;</span>\r\n  <span style=\"color: navy\">}</span><span style=\"color: navy\">;</span>\r\n<span style=\"color: navy\">}\r\n\r\n</span></pre></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "brr"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 1,
+    "_valueInteger" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-conformance-derivedFrom",
+        "valueCanonical" : "http://hl7.org/fhir/uv/omop/ImplementationGuide/hl7.fhir.uv.omop"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "informative",
+    "_valueCode" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-conformance-derivedFrom",
+        "valueCanonical" : "http://hl7.org/fhir/uv/omop/ImplementationGuide/hl7.fhir.uv.omop"
+      }]
+    }
+  }],
+  "url" : "http://hl7.org/fhir/uv/omop/StructureMap/AllergyMap",
+  "version" : "1.0.0-ballot",
+  "name" : "AllergyMap",
+  "title" : "Mapping Allergy resource to Observation OMOP Domain",
+  "status" : "draft",
+  "date" : "2025-07-29T17:40:15+00:00",
+  "publisher" : "HL7 International / Biomedical Research and Regulation",
+  "contact" : [{
+    "name" : "HL7 International / Biomedical Research and Regulation",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://www.hl7.org/Special/committees/rcrim"
+    }]
+  }],
+  "description" : "This mapping maps FHIR AllergyIntolerance instances to OMOP Observation Table objects.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "structure" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
+    "mode" : "source",
+    "alias" : "Allergy"
+  },
+  {
+    "url" : "http://hl7.org/fhir/uv/omop/StructureDefinition/Observation",
+    "mode" : "target",
+    "alias" : "ObservationTable"
+  }],
+  "group" : [{
+    "name" : "Observation",
+    "input" : [{
+      "name" : "src",
+      "type" : "Allergy",
+      "mode" : "source"
+    },
+    {
+      "name" : "tgt",
+      "type" : "ObservationTable",
+      "mode" : "target"
+    }],
+    "rule" : [{
+      "name" : "code",
+      "source" : [{
+        "context" : "src",
+        "element" : "code",
+        "variable" : "s"
+      }],
+      "target" : [{
+        "transform" : "copy",
+        "parameter" : [{
+          "valueId" : "tgt"
+        }]
+      }],
+      "rule" : [{
+        "name" : "coding",
+        "source" : [{
+          "context" : "s",
+          "element" : "coding",
+          "variable" : "sc"
+        }],
+        "target" : [{
+          "transform" : "copy",
+          "context" : "tgt",
+          "parameter" : [{
+            "valueId" : "sc"
+          }]
+        }],
+        "rule" : [{
+          "name" : "code",
+          "source" : [{
+            "context" : "sc",
+            "element" : "code",
+            "variable" : "sc_code"
+          }],
+          "target" : [{
+            "context" : "tgt",
+            "element" : "observation_concept_id",
+            "transform" : "copy",
+            "parameter" : [{
+                "valueId" : "sc_code"
+              }]
+          },
+          {
+            "context" : "tgt",
+            "element" : "observation_source_value",
+            "transform" : "copy",
+            "parameter" : [{
+                "valueId" : "sc_code"
+              }]
+          },
+          {
+            "context" : "tgt",
+            "element" : "observation_source_concept_id",
+            "transform" : "copy",
+            "parameter" : [{
+                "valueId" : "sc_code"
+              }]
+          }]
+        }]
+      }],
+      "documentation" : "src.id as id -> tgt.observation_id = cast(id, \"integer\");"
+    },
+    {
+      "name" : "onsetDateTime",
+      "source" : [{
+        "context" : "src",
+        "type" : "dateTime",
+        "element" : "onset",
+        "variable" : "osd"
+      }],
+      "target" : [{
+        "context" : "tgt",
+        "element" : "observation_date",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueId" : "osd"
+        },
+        {
+          "valueString" : "date"
+        }]
+      },
+      {
+        "context" : "tgt",
+        "element" : "observation_datetime",
+        "transform" : "copy",
+        "parameter" : [{
+          "valueId" : "osd"
+        }]
+      }],
+      "documentation" : "src.patient as s -> tgt then {"
+    },
+    {
+      "name" : "reaction",
+      "source" : [{
+        "context" : "src",
+        "element" : "reaction",
+        "variable" : "s"
+      }],
+      "target" : [{
+        "transform" : "copy",
+         "context" : "tgt",
+        "parameter" : [{
+          "valueId" : "tgt"
+        }]
+      }],
+      "rule" : [{
+        "name" : "manifestation",
+        "source" : [{
+          "context" : "s",
+          "element" : "manifestation",
+          "variable" : "sman"
+        }],
+        "target" : [{
+          "transform" : "copy",
+          "context" : "tgt",
+          "parameter" : [{
+            "valueId" : "tgt"
+          }]
+        }],
+        "rule" : [{
+            "name" : "coding",
+            "source" : [{
+              "context" : "sman",
+              "element" : "coding",
+              "variable" : "sc"
+            }],
+            "target" : [{
+              "transform" : "copy",
+               "context" : "tgt",
+              "parameter" : [{
+                "valueId" : "tgt"
+              }]
+            }],
+            "rule" : [{
+              "name" : "code",
+              "source" : [{
+                "context" : "sc",
+                "element" : "code",
+                "variable" : "mf_code"
+              }],
+              "target" : [{
+                "context" : "tgt",
+                "element" : "value_as_concept_id",
+                "transform" : "copy",
+                "parameter" : [{
+                    "valueId" : "mf_code"
+                  }]
+              },
+              {
+                "context" : "tgt",
+                "element" : "value_source_value",
+                "transform" : "copy",
+                "parameter" : [{
+                    "valueId" : "mf_code"
+                  }]
+              }]
+            }]
+          }]
+        }]
+    }]
+  }]
+};
