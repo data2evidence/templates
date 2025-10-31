@@ -139,6 +139,29 @@
           ]
         },
         {
+          "name": "mapObservationTypeConceptId",
+          "documentation": "Derive OMOP observation_type_concept_id based on FHIR AllergyIntolerance provenance.",
+          "source": [
+            {
+              "context": "src",
+              "element": "id",
+              "variable": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "element": "observation_type_concept_id",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "id"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "name": "OnlyObs",
           "source": [
             {
