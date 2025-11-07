@@ -94,6 +94,72 @@
             ],
             "rule": [
                 {
+                    "name": "id",
+                    "source": [
+                        {
+                            "context": "src",
+                            "element": "id",
+                            "variable": "cid"
+                        }
+                    ],
+                    "target": [
+                        {
+                            "context": "tgt",
+                            "element": "condition_occurrence_id",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "cid"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "mapPatientId",
+                    "source": [
+                        {
+                            "context": "src",
+                            "element": "subject.reference",
+                            "variable": "patientRefId"
+                        }
+                    ],
+                    "target": [
+                        {
+                            "context": "tgt",
+                            "element": "person_id",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "patientRefId"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "conditionTypeConceptId",
+                    "source": [
+                        {
+                            "context": "src",
+                            "element": "id",
+                            "variable": "ctci"
+                        }
+                    ],
+                    "target": [
+                        {
+                            "context": "tgt",
+                            "element": "condition_type_concept_id",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueInteger": "ctci"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "code",
                     "source": [
                         {
@@ -262,74 +328,6 @@
                                 },
                                 {
                                     "valueString": "date"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "category",
-                    "source": [
-                        {
-                            "context": "src",
-                            "element": "category",
-                            "variable": "s"
-                        }
-                    ],
-                    "target": [
-                        {
-                            "context": "tgt",
-                            "transform": "copy",
-                            "parameter": [
-                                {
-                                    "valueId": "tgt"
-                                }
-                            ]
-                        }
-                    ],
-                    "rule": [
-                        {
-                            "name": "coding",
-                            "source": [
-                                {
-                                    "context": "s",
-                                    "element": "coding",
-                                    "variable": "sc"
-                                }
-                            ],
-                            "target": [
-                                {
-                                    "context": "tgt",
-                                    "transform": "copy",
-                                    "parameter": [
-                                        {
-                                            "valueId": "tgt"
-                                        }
-                                    ]
-                                }
-                            ],
-                            "rule": [
-                                {
-                                    "name": "code",
-                                    "source": [
-                                        {
-                                            "context": "sc",
-                                            "element": "code",
-                                            "variable": "a"
-                                        }
-                                    ],
-                                    "target": [
-                                        {
-                                            "context": "tgt",
-                                            "element": "condition_type_concept_id",
-                                            "transform": "copy",
-                                            "parameter": [
-                                                {
-                                                    "valueId": "a"
-                                                }
-                                            ]
-                                        }
-                                    ]
                                 }
                             ]
                         }
