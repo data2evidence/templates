@@ -97,20 +97,22 @@
                     "name": "mapObservationId",
                     "documentation": "Generate a unique OMOP observation_id.",
                     "source": [
-                        { 
+                        {
                             "context": "src",
-                            "element": "id", 
-                            "variable": "fhirId" 
+                            "element": "id",
+                            "variable": "fhirId"
                         }
                     ],
                     "target": [
                         {
-                        "context": "tgt",
-                        "element": "observation_id",
-                        "transform": "copy",
-                        "parameter": [
-                            { "valueId": "fhirId" }
-                        ]
+                            "context": "tgt",
+                            "element": "observation_id",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "fhirId"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -118,19 +120,21 @@
                     "name": "mapPatientId",
                     "source": [
                         {
-                        "context": "src",
-                        "element": "patient.reference",
-                        "variable": "patRef"
+                            "context": "src",
+                            "element": "patient.reference",
+                            "variable": "patRef"
                         }
                     ],
                     "target": [
                         {
-                        "context": "tgt",
-                        "element": "person_id",
-                        "transform": "copy",
-                        "parameter": [
-                            { "valueId": "patRef" }
-                        ]
+                            "context": "tgt",
+                            "element": "person_id",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "patRef"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -263,20 +267,22 @@
                     "name": "mapObservationTypeConceptId",
                     "documentation": "Derive OMOP observation_type_concept_id based on FHIR AllergyIntolerance provenance.",
                     "source": [
-                        { "context": "src", "element": "recorder", "variable": "rec" },
-                        { "context": "src", "element": "asserter", "variable": "asserter" },
-                        { "context": "src", "element": "meta.source", "variable": "srcSys" }
+                        {
+                            "context": "src",
+                            "element": "id",
+                            "variable": "conceptId"
+                        }
                     ],
                     "target": [
                         {
-                        "context": "tgt",
-                        "element": "observation_type_concept_id",
-                        "transform": "copy",
-                        "parameter": [
-                            { "valueId": "rec" },
-                            { "valueId": "asserter" },
-                            { "valueId": "srcSys" }
-                        ]
+                            "context": "tgt",
+                            "element": "observation_type_concept_id",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "conceptId"
+                                }
+                            ]
                         }
                     ]
                 }
