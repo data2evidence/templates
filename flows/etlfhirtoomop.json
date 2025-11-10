@@ -277,7 +277,6 @@
             "data": {
                 "name": "AllergyIntolerance",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"AllergyIntolerance\",\n  \"length\": 2,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "database": "alp_fhir",
                 "sqlquery": "select content from \"fhir\".\"AllergyIntolerance\"",
                 "testdata": [
@@ -307,14 +306,13 @@
             "id": "5f6d6ed6-01e1-4186-89cc-6574cd046d40",
             "data": {
                 "name": "insert_into_omop_observation",
-                "error": true,
-                "result": "{\n  \"error\": true,\n  \"errorMessage\": \"Traceback (most recent call last):\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 2115, in _exec_insertmany_context\\n    dialect.do_execute(\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py\\\", line 942, in do_execute\\n    cursor.execute(statement, parameters)\\npsycopg2.errors.NotNullViolation: null value in column \\\"observation_type_concept_id\\\" of relation \\\"observation\\\" violates not-null constraint\\nDETAIL:  Failing row contains (3, 1234, 38000280, 2014-10-09, 2014-10-09 14:58:00, null, null, null, null, null, null, null, null, null, 227493005, 227493005, null, null, null, null, null).\\n\\n\\nThe above exception was the direct cause of the following exception:\\n\\nTraceback (most recent call last):\\n  File \\\"/app/flows/dataflow_ui_plugin/nodes.py\\\", line 485, in task\\n    result = df_to_write.to_sql(self.table_name,\\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/util/_decorators.py\\\", line 333, in wrapper\\n    return func(*args, **kwargs)\\n           ^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/core/generic.py\\\", line 3087, in to_sql\\n    return sql.to_sql(\\n           ^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 842, in to_sql\\n    return pandas_sql.to_sql(\\n           ^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 2018, in to_sql\\n    total_inserted = sql_engine.insert_records(\\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 1567, in insert_records\\n    raise err\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 1558, in insert_records\\n    return table.insert(chunksize=chunksize, method=method)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 1119, in insert\\n    num_inserted = exec_insert(conn, keys, chunk_iter)\\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 1010, in _execute_insert\\n    result = conn.execute(self.table.insert(), data)\\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1416, in execute\\n    return meth(\\n           ^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py\\\", line 516, in _execute_on_connection\\n    return connection._execute_clauseelement(\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1638, in _execute_clauseelement\\n    ret = self._execute_context(\\n          ^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1841, in _execute_context\\n    return self._exec_insertmany_context(dialect, context)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 2123, in _exec_insertmany_context\\n    self._handle_dbapi_exception(\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 2352, in _handle_dbapi_exception\\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 2115, in _exec_insertmany_context\\n    dialect.do_execute(\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py\\\", line 942, in do_execute\\n    cursor.execute(statement, parameters)\\nsqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column \\\"observation_type_concept_id\\\" of relation \\\"observation\\\" violates not-null constraint\\nDETAIL:  Failing row contains (3, 1234, 38000280, 2014-10-09, 2014-10-09 14:58:00, null, null, null, null, null, null, null, null, null, 227493005, 227493005, null, null, null, null, null).\\n\\n[SQL: INSERT INTO cdm_ds1_1761010593.observation (observation_id, person_id, observation_concept_id, observation_source_value, observation_source_concept_id, observation_date, observation_datetime) VALUES (%(observation_id__0)s, %(person_id__0)s, %(observa ... 245 characters truncated ... ue__1)s, %(observation_source_concept_id__1)s, %(observation_date__1)s, %(observation_datetime__1)s)]\\n[parameters: {'person_id__0': '1234', 'observation_source_concept_id__0': '227493005', 'observation_date__0': datetime.date(2014, 10, 9), 'observation_datetime__0': '2014-10-09T14:58:00+11:00', 'observation_id__0': 3, 'observation_concept_id__0': 38000280, 'observation_source_value__0': '227493005', 'person_id__1': '1234', 'observation_source_concept_id__1': '227493005', 'observation_date__1': datetime.date(2014, 10, 9), 'observation_datetime__1': '2014-10-09T14:58:00+11:00', 'observation_id__1': 2046, 'observation_concept_id__1': 38000280, 'observation_source_value__1': '227493005'}]\\n(Background on this error at: https://sqlalche.me/e/20/gkpj)\\n\",\n  \"nodeName\": \"insert_into_omop_observation\"\n}",
+                "error": false,
                 "database": "alpdev_pg",
                 "dataframe": "transform_to_Observation",
                 "schemaname": "cdm_ds1_1761010593",
                 "dbtablename": "observation",
                 "description": "Insert into omop cdm database table",
-                "errorMessage": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 2115, in _exec_insertmany_context\n    dialect.do_execute(\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py\", line 942, in do_execute\n    cursor.execute(statement, parameters)\npsycopg2.errors.NotNullViolation: null value in column \"observation_type_concept_id\" of relation \"observation\" violates not-null constraint\nDETAIL:  Failing row contains (3, 1234, 38000280, 2014-10-09, 2014-10-09 14:58:00, null, null, null, null, null, null, null, null, null, 227493005, 227493005, null, null, null, null, null).\n\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/flows/dataflow_ui_plugin/nodes.py\", line 485, in task\n    result = df_to_write.to_sql(self.table_name,\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/util/_decorators.py\", line 333, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/core/generic.py\", line 3087, in to_sql\n    return sql.to_sql(\n           ^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 842, in to_sql\n    return pandas_sql.to_sql(\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 2018, in to_sql\n    total_inserted = sql_engine.insert_records(\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 1567, in insert_records\n    raise err\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 1558, in insert_records\n    return table.insert(chunksize=chunksize, method=method)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 1119, in insert\n    num_inserted = exec_insert(conn, keys, chunk_iter)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 1010, in _execute_insert\n    result = conn.execute(self.table.insert(), data)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1416, in execute\n    return meth(\n           ^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py\", line 516, in _execute_on_connection\n    return connection._execute_clauseelement(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1638, in _execute_clauseelement\n    ret = self._execute_context(\n          ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1841, in _execute_context\n    return self._exec_insertmany_context(dialect, context)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 2123, in _exec_insertmany_context\n    self._handle_dbapi_exception(\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 2352, in _handle_dbapi_exception\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 2115, in _exec_insertmany_context\n    dialect.do_execute(\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py\", line 942, in do_execute\n    cursor.execute(statement, parameters)\nsqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column \"observation_type_concept_id\" of relation \"observation\" violates not-null constraint\nDETAIL:  Failing row contains (3, 1234, 38000280, 2014-10-09, 2014-10-09 14:58:00, null, null, null, null, null, null, null, null, null, 227493005, 227493005, null, null, null, null, null).\n\n[SQL: INSERT INTO cdm_ds1_1761010593.observation (observation_id, person_id, observation_concept_id, observation_source_value, observation_source_concept_id, observation_date, observation_datetime) VALUES (%(observation_id__0)s, %(person_id__0)s, %(observa ... 245 characters truncated ... ue__1)s, %(observation_source_concept_id__1)s, %(observation_date__1)s, %(observation_datetime__1)s)]\n[parameters: {'person_id__0': '1234', 'observation_source_concept_id__0': '227493005', 'observation_date__0': datetime.date(2014, 10, 9), 'observation_datetime__0': '2014-10-09T14:58:00+11:00', 'observation_id__0': 3, 'observation_concept_id__0': 38000280, 'observation_source_value__0': '227493005', 'person_id__1': '1234', 'observation_source_concept_id__1': '227493005', 'observation_date__1': datetime.date(2014, 10, 9), 'observation_datetime__1': '2014-10-09T14:58:00+11:00', 'observation_id__1': 2046, 'observation_concept_id__1': 38000280, 'observation_source_value__1': '227493005'}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)\n"
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -338,7 +336,6 @@
             "data": {
                 "name": "Patient",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Patient\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "database": "alp_fhir",
                 "sqlquery": "select content from \"fhir\".\"Patient\"",
                 "testdata": [
@@ -369,7 +366,6 @@
             "data": {
                 "name": "Insert_into_omop_person",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Insert_into_omop_person\",\n  \"length\": null,\n  \"type\": \"<class 'int'>\"\n}",
                 "database": "alpdev_pg",
                 "dataframe": "transform_to_person",
                 "schemaname": "cdm_ds1_1761010593",
@@ -399,7 +395,6 @@
             "data": {
                 "name": "Condition",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Condition\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "database": "alp_fhir",
                 "sqlquery": "select content from \"fhir\".\"Condition\"",
                 "testdata": [
@@ -429,14 +424,13 @@
             "id": "5b177aca-870c-4745-95e1-6305ee390261",
             "data": {
                 "name": "Insert_into_omop_condition_occurrence",
-                "error": true,
-                "result": "{\n  \"error\": true,\n  \"errorMessage\": \"Traceback (most recent call last):\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1964, in _exec_single_context\\n    self.dialect.do_execute(\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py\\\", line 942, in do_execute\\n    cursor.execute(statement, parameters)\\npsycopg2.errors.DatatypeMismatch: column \\\"condition_type_concept_id\\\" is of type integer but expression is of type text[]\\nLINE 1: ...) VALUES ('39065001', '2012-05-24', '2012-05-24', ARRAY['enc...\\n                                                             ^\\nHINT:  You will need to rewrite or cast the expression.\\n\\n\\nThe above exception was the direct cause of the following exception:\\n\\nTraceback (most recent call last):\\n  File \\\"/app/flows/dataflow_ui_plugin/nodes.py\\\", line 485, in task\\n    result = df_to_write.to_sql(self.table_name,\\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/util/_decorators.py\\\", line 333, in wrapper\\n    return func(*args, **kwargs)\\n           ^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/core/generic.py\\\", line 3087, in to_sql\\n    return sql.to_sql(\\n           ^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 842, in to_sql\\n    return pandas_sql.to_sql(\\n           ^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 2018, in to_sql\\n    total_inserted = sql_engine.insert_records(\\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 1567, in insert_records\\n    raise err\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 1558, in insert_records\\n    return table.insert(chunksize=chunksize, method=method)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 1119, in insert\\n    num_inserted = exec_insert(conn, keys, chunk_iter)\\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\\\", line 1010, in _execute_insert\\n    result = conn.execute(self.table.insert(), data)\\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1416, in execute\\n    return meth(\\n           ^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py\\\", line 516, in _execute_on_connection\\n    return connection._execute_clauseelement(\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1638, in _execute_clauseelement\\n    ret = self._execute_context(\\n          ^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1843, in _execute_context\\n    return self._exec_single_context(\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1983, in _exec_single_context\\n    self._handle_dbapi_exception(\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 2352, in _handle_dbapi_exception\\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\\\", line 1964, in _exec_single_context\\n    self.dialect.do_execute(\\n  File \\\"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py\\\", line 942, in do_execute\\n    cursor.execute(statement, parameters)\\nsqlalchemy.exc.ProgrammingError: (psycopg2.errors.DatatypeMismatch) column \\\"condition_type_concept_id\\\" is of type integer but expression is of type text[]\\nLINE 1: ...) VALUES ('39065001', '2012-05-24', '2012-05-24', ARRAY['enc...\\n                                                             ^\\nHINT:  You will need to rewrite or cast the expression.\\n\\n[SQL: INSERT INTO cdm_ds1_1761010593.condition_occurrence (condition_concept_id, condition_start_datetime, condition_start_date, condition_type_concept_id, condition_status_concept_id) VALUES (%(condition_concept_id)s, %(condition_start_datetime)s, %(condition_start_date)s, %(condition_type_concept_id)s, %(condition_status_concept_id)s)]\\n[parameters: {'condition_concept_id': '39065001', 'condition_start_datetime': '2012-05-24', 'condition_start_date': '2012-05-24', 'condition_type_concept_id': ['encounter-diagnosis', '439401001'], 'condition_status_concept_id': 'active'}]\\n(Background on this error at: https://sqlalche.me/e/20/f405)\\n\",\n  \"nodeName\": \"Insert_into_omop_condition_occurrence\"\n}",
+                "error": false,
                 "database": "alpdev_pg",
                 "dataframe": "transform_to_condition_occurrence",
                 "schemaname": "cdm_ds1_1761010593",
                 "dbtablename": "condition_occurrence",
                 "description": "Insert into omop cdm database",
-                "errorMessage": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1964, in _exec_single_context\n    self.dialect.do_execute(\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py\", line 942, in do_execute\n    cursor.execute(statement, parameters)\npsycopg2.errors.DatatypeMismatch: column \"condition_type_concept_id\" is of type integer but expression is of type text[]\nLINE 1: ...) VALUES ('39065001', '2012-05-24', '2012-05-24', ARRAY['enc...\n                                                             ^\nHINT:  You will need to rewrite or cast the expression.\n\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/flows/dataflow_ui_plugin/nodes.py\", line 485, in task\n    result = df_to_write.to_sql(self.table_name,\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/util/_decorators.py\", line 333, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/core/generic.py\", line 3087, in to_sql\n    return sql.to_sql(\n           ^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 842, in to_sql\n    return pandas_sql.to_sql(\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 2018, in to_sql\n    total_inserted = sql_engine.insert_records(\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 1567, in insert_records\n    raise err\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 1558, in insert_records\n    return table.insert(chunksize=chunksize, method=method)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 1119, in insert\n    num_inserted = exec_insert(conn, keys, chunk_iter)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/pandas/io/sql.py\", line 1010, in _execute_insert\n    result = conn.execute(self.table.insert(), data)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1416, in execute\n    return meth(\n           ^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py\", line 516, in _execute_on_connection\n    return connection._execute_clauseelement(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1638, in _execute_clauseelement\n    ret = self._execute_context(\n          ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1843, in _execute_context\n    return self._exec_single_context(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1983, in _exec_single_context\n    self._handle_dbapi_exception(\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 2352, in _handle_dbapi_exception\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py\", line 1964, in _exec_single_context\n    self.dialect.do_execute(\n  File \"/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py\", line 942, in do_execute\n    cursor.execute(statement, parameters)\nsqlalchemy.exc.ProgrammingError: (psycopg2.errors.DatatypeMismatch) column \"condition_type_concept_id\" is of type integer but expression is of type text[]\nLINE 1: ...) VALUES ('39065001', '2012-05-24', '2012-05-24', ARRAY['enc...\n                                                             ^\nHINT:  You will need to rewrite or cast the expression.\n\n[SQL: INSERT INTO cdm_ds1_1761010593.condition_occurrence (condition_concept_id, condition_start_datetime, condition_start_date, condition_type_concept_id, condition_status_concept_id) VALUES (%(condition_concept_id)s, %(condition_start_datetime)s, %(condition_start_date)s, %(condition_type_concept_id)s, %(condition_status_concept_id)s)]\n[parameters: {'condition_concept_id': '39065001', 'condition_start_datetime': '2012-05-24', 'condition_start_date': '2012-05-24', 'condition_type_concept_id': ['encounter-diagnosis', '439401001'], 'condition_status_concept_id': 'active'}]\n(Background on this error at: https://sqlalche.me/e/20/f405)\n"
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -460,7 +454,6 @@
             "data": {
                 "name": "Encounter",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Encounter\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "database": "alp_fhir",
                 "sqlquery": "select content from \"fhir\".\"Encounter\"",
                 "testdata": [
@@ -491,7 +484,6 @@
             "data": {
                 "name": "Insert_into_omop_visit_occurrence",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Insert_into_omop_visit_occurrence\",\n  \"length\": null,\n  \"type\": \"<class 'int'>\"\n}",
                 "database": "alpdev_pg",
                 "dataframe": "transform_to_visit_occurrence",
                 "schemaname": "cdm_ds1_1761010593",
@@ -521,7 +513,6 @@
             "data": {
                 "name": "Immunization",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Immunization\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "database": "alp_fhir",
                 "sqlquery": "select content from \"fhir\".\"Immunization\"",
                 "testdata": [
@@ -552,7 +543,6 @@
             "data": {
                 "name": "Insert_into_omop_drug_exposure",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Insert_into_omop_drug_exposure\",\n  \"length\": null,\n  \"type\": \"<class 'int'>\"\n}",
                 "database": "alpdev_pg",
                 "dataframe": "transform_to_drug_exposure",
                 "schemaname": "cdm_ds1_1761010593",
@@ -582,7 +572,6 @@
             "data": {
                 "name": "Observation",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Observation\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "database": "alp_fhir",
                 "sqlquery": "select content from \"fhir\".\"Observation\"",
                 "testdata": [
@@ -613,7 +602,6 @@
             "data": {
                 "name": "Insert_into_omop_measurement",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Insert_into_omop_measurement\",\n  \"length\": null,\n  \"type\": \"<class 'int'>\"\n}",
                 "database": "alpdev_pg",
                 "dataframe": "transform_to_measurement",
                 "schemaname": "cdm_ds1_1761010593",
@@ -643,7 +631,6 @@
             "data": {
                 "name": "MedicationStatement",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"MedicationStatement\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "database": "alp_fhir",
                 "sqlquery": "select content from \"fhir\".\"MedicationStatement\"",
                 "testdata": [
@@ -729,7 +716,6 @@
             "data": {
                 "name": "Insert_into_omop_observation",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Insert_into_omop_observation\",\n  \"length\": null,\n  \"type\": \"<class 'int'>\"\n}",
                 "database": "alpdev_pg",
                 "dataframe": "transform_to_observation",
                 "schemaname": "cdm_ds1_1761010593",
@@ -759,7 +745,6 @@
             "data": {
                 "name": "Procedure",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Procedure\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "database": "alp_fhir",
                 "sqlquery": "select content from \"fhir\".\"Procedure\"",
                 "testdata": [
@@ -790,7 +775,6 @@
             "data": {
                 "name": "Insert_into_omop_procedure_occurrence",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Insert_into_omop_procedure_occurrence\",\n  \"length\": null,\n  \"type\": \"<class 'int'>\"\n}",
                 "database": "alpdev_pg",
                 "dataframe": "transform_to_procedure_occurrence",
                 "schemaname": "cdm_ds1_1761010593",
@@ -820,7 +804,6 @@
             "data": {
                 "name": "python_node",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"python_node\",\n  \"length\": 8,\n  \"type\": \"<class 'dict'>\",\n  \"schema\": {\n    \"AllergyIntolerance\": {\n      \"length\": 2,\n      \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n      \"schema\": {\n        \"content\": \"object\"\n      }\n    },\n    \"Patient\": {\n      \"length\": 1,\n      \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n      \"schema\": {\n        \"content\": \"object\"\n      }\n    },\n    \"Condition\": {\n      \"length\": 1,\n      \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n      \"schema\": {\n        \"content\": \"object\"\n      }\n    },\n    \"Encounter\": {\n      \"length\": 1,\n      \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n      \"schema\": {\n        \"content\": \"object\"\n      }\n    },\n    \"Immunization\": {\n      \"length\": 1,\n      \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n      \"schema\": {\n        \"content\": \"object\"\n      }\n    },\n    \"Observation\": {\n      \"length\": 1,\n      \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n      \"schema\": {\n        \"content\": \"object\"\n      }\n    },\n    \"MedicationStatement\": {\n      \"length\": 1,\n      \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n      \"schema\": {\n        \"content\": \"object\"\n      }\n    },\n    \"Procedure\": {\n      \"length\": 1,\n      \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n      \"schema\": {\n        \"content\": \"object\"\n      }\n    }\n  }\n}",
                 "description": "Describe the task of node python_node_0",
                 "python_code": "def exec(myinput):\n  transformed = {}\n  for key, result_obj in myinput.items():\n    transformed[key] = result_obj.result\n  return transformed\ndef test_exec(myinput):\n  return \"This is test_exec function\"",
                 "errorMessage": null
@@ -848,11 +831,10 @@
                 "map": {},
                 "name": "AllergyIntolerance_df",
                 "error": false,
-                "uiMap": {
+                "uiMap": {"result"
                     "path": "$.AllergyIntolerance",
                     "source": "python_node"
                 },
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"AllergyIntolerance_df\",\n  \"length\": 2,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "description": "Describe the task of node py2table_node_0",
                 "errorMessage": null
             },
@@ -883,7 +865,6 @@
                     "path": "$.Patient",
                     "source": "python_node"
                 },
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Patient_df\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "description": "Describe the task of node py2table_node_1",
                 "errorMessage": null
             },
@@ -914,7 +895,6 @@
                     "path": "$.Condition",
                     "source": "python_node"
                 },
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Condition_df\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "description": "Describe the task of node py2table_node_2",
                 "errorMessage": null
             },
@@ -945,7 +925,6 @@
                     "path": "$.Encounter",
                     "source": "python_node"
                 },
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Encounter_df\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "description": "Describe the task of node py2table_node_3",
                 "errorMessage": null
             },
@@ -976,7 +955,6 @@
                     "path": "$.Immunization",
                     "source": "python_node"
                 },
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Immunization_df\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "description": "Describe the task of node py2table_node_4",
                 "errorMessage": null
             },
@@ -1007,7 +985,6 @@
                     "path": "$.Observation",
                     "source": "python_node"
                 },
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Observation_df\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "description": "Describe the task of node py2table_node_5",
                 "errorMessage": null
             },
@@ -1038,7 +1015,6 @@
                     "path": "$.MedicationStatement",
                     "source": "python_node"
                 },
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"MedicationStatement_df\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "description": "Describe the task of node py2table_node_6",
                 "errorMessage": null
             },
@@ -1097,7 +1073,6 @@
                     "path": "$.Procedure",
                     "source": "python_node"
                 },
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"Procedure_df\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
                 "description": "Describe the task of node py2table_node_8",
                 "errorMessage": null
             },
@@ -1124,7 +1099,6 @@
                 "id": "AllergeMap",
                 "name": "transform_to_Observation",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_Observation\",\n  \"length\": 2,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"observation_id\": \"int64\",\n    \"person_id\": \"object\",\n    \"observation_concept_id\": \"int64\",\n    \"observation_source_value\": \"object\",\n    \"observation_source_concept_id\": \"object\",\n    \"observation_date\": \"object\",\n    \"observation_datetime\": \"object\"\n  }\n}",
                 "dataframe": "AllergyIntolerance_df",
                 "description": "Describe the task of node transform_fhir_data_node_0",
                 "errorMessage": null,
@@ -1154,7 +1128,6 @@
                 "id": "ProcedureMap",
                 "name": "transform_to_procedure_occurrence",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_procedure_occurrence\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"procedure_occurrence_id\": \"int64\",\n    \"procedure_type_concept_id\": \"int64\",\n    \"person_id\": \"object\",\n    \"procedure_concept_id\": \"int64\",\n    \"procedure_source_value\": \"object\",\n    \"procedure_source_concept_id\": \"object\",\n    \"procedure_datetime\": \"object\",\n    \"procedure_date\": \"object\"\n  }\n}",
                 "dataframe": "Procedure_df",
                 "description": "Describe the task of node transform_fhir_data_node_1",
                 "errorMessage": null,
@@ -1184,7 +1157,6 @@
                 "id": "ObservationMap",
                 "name": "transform_to_observation",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_observation\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"observation_id\": \"int64\",\n    \"person_id\": \"object\",\n    \"observation_type_concept_id\": \"int64\",\n    \"observation_concept_id\": \"int64\",\n    \"observation_datetime\": \"object\",\n    \"observation_date\": \"object\",\n    \"value_as_number\": \"int64\",\n    \"unit_concept_id\": \"int64\"\n  }\n}",
                 "dataframe": "Observation_df",
                 "description": "Describe the task of node transform_fhir_data_node_2",
                 "errorMessage": null,
@@ -1214,7 +1186,6 @@
                 "id": "MedicationMap",
                 "name": "transform_to_drug_exposure",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_drug_exposure\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"drug_exposure_id\": \"int64\",\n    \"person_id\": \"object\",\n    \"drug_type_concept_id\": \"int64\",\n    \"drug_concept_id\": \"int64\",\n    \"drug_source_value\": \"object\",\n    \"drug_source_concept_id\": \"int64\",\n    \"quantity\": \"int64\",\n    \"dose_unit_source_value\": \"object\",\n    \"route_source_value\": \"object\",\n    \"drug_exposure_start_date\": \"object\",\n    \"drug_exposure_start_datetime\": \"object\",\n    \"drug_exposure_end_date\": \"object\",\n    \"drug_exposure_end_datetime\": \"object\",\n    \"lot_number\": \"object\"\n  }\n}",
                 "dataframe": "MedicationStatement_df",
                 "description": "Describe the task of node transform_fhir_data_node_3",
                 "errorMessage": null,
@@ -1244,7 +1215,6 @@
                 "id": "MeasurementMap",
                 "name": "transform_to_measurement",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_measurement\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"measurement_id\": \"int64\",\n    \"person_id\": \"object\",\n    \"measurement_concept_id\": \"int64\",\n    \"measurement_datetime\": \"datetime64[ns, UTC+01:00]\",\n    \"measurement_date\": \"object\",\n    \"value_as_number\": \"int64\",\n    \"unit_concept_id\": \"int64\",\n    \"measurement_type_concept_id\": \"int64\",\n    \"value_as_concept_id\": \"int64\"\n  }\n}",
                 "dataframe": "Observation_df",
                 "description": "Describe the task of node transform_fhir_data_node_4",
                 "errorMessage": null,
@@ -1301,7 +1271,6 @@
                 "id": "EncounterVisitMap",
                 "name": "transform_to_visit_occurrence",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_visit_occurrence\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"visit_occurrence_id\": \"int64\",\n    \"visit_type_concept_id\": \"int64\",\n    \"person_id\": \"object\",\n    \"visit_concept_id\": \"int64\",\n    \"visit_source_value\": \"object\",\n    \"visit_source_concept_id\": \"int64\",\n    \"visit_start_date\": \"object\",\n    \"visit_start_datetime\": \"object\",\n    \"visit_end_date\": \"object\",\n    \"visit_end_datetime\": \"object\"\n  }\n}",
                 "dataframe": "Encounter_df",
                 "description": "Describe the task of node transform_fhir_data_node_6",
                 "errorMessage": null,
@@ -1331,7 +1300,6 @@
                 "id": "ConditionMap",
                 "name": "transform_to_condition_occurrence",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_condition_occurrence\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"condition_concept_id\": \"object\",\n    \"condition_start_datetime\": \"object\",\n    \"condition_start_date\": \"object\",\n    \"condition_type_concept_id\": \"object\",\n    \"condition_status_concept_id\": \"object\"\n  }\n}",
                 "dataframe": "Condition_df",
                 "description": "Describe the task of node transform_fhir_data_node_7",
                 "errorMessage": null,
@@ -1361,7 +1329,6 @@
                 "id": "PersonMap",
                 "name": "transform_to_person",
                 "error": false,
-                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_person\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"int64\",\n    \"gender_concept_id\": \"int64\",\n    \"gender_source_value\": \"object\",\n    \"birth_datetime\": \"object\",\n    \"year_of_birth\": \"object\",\n    \"month_of_birth\": \"object\",\n    \"day_of_birth\": \"object\",\n    \"race_concept_id\": \"int64\",\n    \"ethnicity_concept_id\": \"int64\"\n  }\n}",
                 "dataframe": "Patient_df",
                 "description": "Describe the task of node transform_fhir_data_node_8",
                 "errorMessage": null,
