@@ -831,7 +831,7 @@
                 "map": {},
                 "name": "AllergyIntolerance_df",
                 "error": false,
-                "uiMap": {"result"
+                "uiMap": {
                     "path": "$.AllergyIntolerance",
                     "source": "python_node"
                 },
