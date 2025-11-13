@@ -48,7 +48,7 @@
                     { "context": "m", "element": "person_id", "transform": "copy", "parameter": [{ "value": "idOf(src.subject.reference)" }] },
                     { "context": "m", "element": "measurement_datetime", "transform": "copy", "parameter": [{ "value": "src.authored" }] },
                     { "context": "m", "element": "measurement_type_concept_id", "transform": "copy", "parameter": [{ "valueInteger": 45754907 }] },
-                    { "context": "m", "element": "measurement_source_value", "transform": "copy", "parameter": [{ "value": "qitem.linkId" }] }
+                    { "context": "m", "element": "measurement_source_value", "transform": "copy", "parameter": [{ "value": "src.id" }] }
                   ]
                 },
                 {
