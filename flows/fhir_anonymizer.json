@@ -1,7 +1,5 @@
-{
-  "id": "c48b4827-0626-450b-96ae-ee22243fbc4c",
-  "name": "Fhir Anonymizer Template",
-  "flow": {
+{   "name": "Fhir Anonymizer Template",
+    "description": "Anonymize FHIR data using Microsoft FHIR Anonymizer tool",
     "edges": [
       {
         "id": "reactflow__edge-fde165da-0723-43c8-8dff-963c49181a76source_fde165da-0723-43c8-8dff-963c49181a76_object-1a256c27-e86e-41d5-bd6d-338f2fe2ee7atarget_1a256c27-e86e-41d5-bd6d-338f2fe2ee7a_any",
@@ -45,8 +43,7 @@
         "target": "fde165da-0723-43c8-8dff-963c49181a76",
         "sourceHandle": "source_ced70aef-4591-4987-9887-99547808ceb1_object",
         "targetHandle": "target_fde165da-0723-43c8-8dff-963c49181a76_any"
-      }
-    ],
+      }],
     "nodes": [
       {
         "id": "fde165da-0723-43c8-8dff-963c49181a76",
@@ -321,4 +318,3 @@
       "import zipfile"
     ]
   }
-}
