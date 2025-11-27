@@ -50,6 +50,10 @@
                 {
                   "context": "qitem",
                   "variable": "qitem"
+                },
+                {
+                  "context": "src",
+                  "variable": "src"
                 }
               ],
               "target": [
@@ -64,65 +68,138 @@
                 }
               ],
               "rule": [
+                 {
+                    "name": "mapMeasurementId",
+                    "documentation": "Generate a unique OMOP measurement_id.",
+                    "source": [
+                        {
+                            "context": "src",
+                            "element": "id",
+                            "variable": "measurement_id"
+                        }
+                    ],
+                    "target": [
+                        {
+                            "context": "tgt",
+                            "element": "measurement_id",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "measurement_id"
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
-                  "name": "commonFields",
-                  "source": [
-                    {
-                      "context": "qitem",
-                      "variable": "qitem"
-                    },
-                    {
-                      "context": "src",
-                      "variable": "src"
-                    }
-                  ],
-                  "target": [
-                    {
-                      "context": "tgt",
-                      "element": "measurement_id",
-                      "transform": "copy"
-                    },
-                    {
-                      "context": "tgt",
-                      "element": "person_id",
-                      "transform": "copy",
-                      "parameter": [
+                    "name": "mapPatientId",
+                    "source": [
                         {
-                          "value": "src.subject.reference"
+                            "context": "src",
+                            "element": "subject",
+                            "variable": "patRef"
                         }
-                      ]
-                    },
-                    {
-                      "context": "tgt",
-                      "element": "measurement_datetime",
-                      "transform": "copy",
-                      "parameter": [
+                    ],
+                    "target": [
                         {
-                          "value": "src.authored"
+                            "context": "tgt",
+                            "element": "person_id",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "patRef"
+                                }
+                            ]
                         }
-                      ]
-                    },
-                    {
-                      "context": "tgt",
-                      "element": "measurement_type_concept_id",
-                      "transform": "copy",
-                      "parameter": [
+                    ]
+                },
+                {
+                    "name": "measurement_datetime",
+                    "source": [
                         {
-                          "valueInteger": 45754907
+                            "context": "src",
+                            "element": "authored",
+                            "variable": "measurement_datetime"
                         }
-                      ]
-                    },
-                    {
-                      "context": "tgt",
-                      "element": "measurement_source_value",
-                      "transform": "copy",
-                      "parameter": [
+                    ],
+                    "target": [
                         {
-                          "value": "src.id"
+                            "context": "tgt",
+                            "element": "measurement_datetime",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "measurement_datetime"
+                                }
+                            ]
                         }
-                      ]
-                    }
-                  ]
+                    ]
+                },
+                {
+                    "name": "measurement_date",
+                    "source": [
+                        {
+                            "context": "src",
+                            "element": "authored",
+                            "variable": "measurement_date"
+                        }
+                    ],
+                    "target": [
+                        {
+                            "context": "tgt",
+                            "element": "measurement_date",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "measurement_date"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "measurement_type_concept_id",
+                    "source": [
+                      {
+                          "context": "src",
+                          "element": "id",
+                          "variable": "measurement_type_concept_id"
+                      }
+                    ],
+                    "target": [
+                      {
+                          "context": "tgt",
+                          "element": "measurement_type_concept_id",
+                          "transform": "copy",
+                          "parameter": [
+                              {
+                                  "valueInteger": 45754907
+                              }
+                          ]
+                      }
+                    ]
+                },
+                {
+                    "name": "measurement_source_value",
+                    "source": [
+                      {
+                          "context": "src",
+                          "element": "id",
+                          "variable": "measurement_source_value"
+                      }
+                    ],
+                    "target": [
+                        {
+                            "context": "tgt",
+                            "element": "measurement_source_value",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "measurement_source_value"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                   "name": "mapMeasurementConceptId",
@@ -841,14 +918,25 @@
                           "condition": "linkId = 'eq_vas'"
                         }
                       ],
-                      "target": [
+                      "rule": [
                         {
-                          "context": "tgt",
-                          "element": "value_as_number",
-                          "transform": "copy",
-                          "parameter": [
+                          "source": [
                             {
-                              "value": "qitem.answer.valueInteger"
+                              "context": "qitem",
+                              "element": "answer[0].valueInteger",
+                              "variable": "vasValue"
+                            }
+                          ],
+                          "target": [
+                            {
+                              "context": "tgt",
+                              "element": "value_as_number",
+                              "transform": "copy",
+                              "parameter": [
+                                {
+                                  "valueId": "vasValue"
+                                }
+                              ]
                             }
                           ]
                         }
