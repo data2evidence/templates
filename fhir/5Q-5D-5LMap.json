@@ -3,10 +3,10 @@
   "id": "EQ5D5L-to-OMOP-Measurement",
   "url": "http://example.org/StructureMap/EQ5D5L-to-OMOP-Measurement",
   "version": "1.0.0",
-  "name": "EQ5D5L_to_OMOP_Measurement",
+  "name": "EQ5D5L to OMOP Measurement",
   "status": "active",
-  "date": "2025-11-13",
-  "publisher": "Example Health Analytics",
+  "date": "2025-11-28",
+  "publisher": "D4L",
   "structure": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
