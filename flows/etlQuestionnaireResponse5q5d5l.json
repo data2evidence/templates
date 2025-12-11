@@ -67,7 +67,7 @@
             "data": {
                 "id": "5Q-5D-5LMap",
                 "name": "transform_fhir_to_omop",
-                "error": true,
+                "error": false,
                 "dataframe": "get_fhir_data",
                 "description": "Transforms fhir data to omop measurement using structure map",
                 "errorMessage": null,
@@ -95,7 +95,7 @@
             "id": "cacfa438-5766-4a57-bad2-71b3801bc1b8",
             "data": {
                 "name": "insert_into_omop_table",
-                "error": true,
+                "error": false,
                 "database": "alpdev_pg",
                 "dataframe": "py2table",
                 "schemaname": "cdm_ds1_1761010593",
@@ -125,7 +125,7 @@
             "data": {
                 "map": {},
                 "name": "py2table",
-                "error": true,
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "convert_to_tabular_dataframe"
