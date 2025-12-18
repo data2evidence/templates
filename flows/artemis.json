@@ -73,6 +73,10 @@
       { "key": "verbose", "value": 0 },
       { "key": "regimenCombine", "value": 28 }
     ],
-    "importLibs": []
+    "importLibs": [
+      "library(ARTEMIS)",
+      "library(DatabaseConnector)",
+      "library(dplyr)"
+    ]
   }
 }
