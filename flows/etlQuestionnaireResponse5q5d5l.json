@@ -37,7 +37,7 @@
             "data": {
                 "name": "get_fhir_data",
                 "error": false,
-                "database": "alp_fhir",
+                "database": "d2e_fhir",
                 "sqlquery": "select content from \"fhir\".\"QuestionnaireResponse\"",
                 "testdata": [
                     []
