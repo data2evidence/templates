@@ -96,9 +96,9 @@
             "data": {
                 "name": "insert_into_omop_table",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "py2table",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "measurement",
                 "description": "Insert the records into omop measurement table",
                 "errorMessage": null
