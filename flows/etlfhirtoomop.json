@@ -307,9 +307,9 @@
             "data": {
                 "name": "insert_into_omop_observation",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_Observation",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "observation",
                 "description": "Insert into omop cdm database table",
                 "errorMessage": null
@@ -366,9 +366,9 @@
             "data": {
                 "name": "Insert_into_omop_person",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_person",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "person",
                 "description": "Insert into cdm omop database",
                 "errorMessage": null
@@ -425,9 +425,9 @@
             "data": {
                 "name": "Insert_into_omop_condition_occurrence",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_condition_occurrence",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "condition_occurrence",
                 "description": "Insert into omop cdm database",
                 "errorMessage": null
@@ -484,9 +484,9 @@
             "data": {
                 "name": "Insert_into_omop_visit_occurrence",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_visit_occurrence",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "visit_occurrence",
                 "description": "Insert into omop cdm database",
                 "errorMessage": null
@@ -543,9 +543,9 @@
             "data": {
                 "name": "Insert_into_omop_drug_exposure",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_drug_exposure",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "drug_exposure",
                 "description": "Insert into omop cdm database",
                 "errorMessage": null
@@ -602,9 +602,9 @@
             "data": {
                 "name": "Insert_into_omop_measurement",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_measurement",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "measurement",
                 "description": "Insert into omop cdm database",
                 "errorMessage": null
@@ -660,9 +660,9 @@
             "id": "345c3710-002f-4c6d-843b-94e873927548",
             "data": {
                 "name": "Insert_into_omop_drug_exposure",
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_drug_exposure",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "drug_exposure",
                 "description": "Insert into omop cdm database"
             },
@@ -716,9 +716,9 @@
             "data": {
                 "name": "Insert_into_omop_observation",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_observation",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "observation",
                 "description": "Insert into omop cdm database",
                 "errorMessage": null
@@ -775,9 +775,9 @@
             "data": {
                 "name": "Insert_into_omop_procedure_occurrence",
                 "error": false,
-                "database": "alpdev_pg",
+                "database": "demo_database",
                 "dataframe": "transform_to_procedure_occurrence",
-                "schemaname": "cdm_ds1_1761010593",
+                "schemaname": "demo_cdm",
                 "dbtablename": "procedure_occurrence",
                 "description": "Insert into omop cdm database",
                 "errorMessage": null
