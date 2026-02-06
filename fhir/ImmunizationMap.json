@@ -142,7 +142,7 @@
           "source": [
             {
               "context": "src",
-              "element": "id",
+              "element": "vaccineCode",
               "variable": "dtci"
             }
           ],
