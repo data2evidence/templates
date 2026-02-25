@@ -38,7 +38,7 @@
                 "name": "get_fhir_data",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"QuestionnaireResponse\"",
+                "sqlquery": "select qr.content\nfrom \nfhir.\"QuestionnaireResponse\" qr \njoin fhir.\"Project\" p \non qr.\"projectId\" = p.\"projectId\" \nwhere p.\"name\" = '2a05eaa3-9c7b-4705-b1c8-905eb1d246a7'",
                 "testdata": [
                     []
                 ],
