@@ -1982,7 +1982,38 @@
                 "x": 1380,
                 "y": 710
             }
-        }
+        },
+        {
+                "id": "fd097736-f352-4d9a-98f7-1d378e7aa9a0",
+                "data": {
+                    "name": "Truncate OMOP CDM Tables",
+                    "error": false,
+                    "database": "demo_database",
+                    "sqlquery": "delete from demo_cdm.observation;\ndelete from demo_cdm.person;\ndelete from demo_cdm.visit_occurrence;\ndelete from demo_cdm.procedure_occurrence;\ndelete from demo_cdm.measurement;\ndelete from demo_cdm.drug_exposure;\ndelete from demo_cdm.condition_occurrence;\nselect count(*) from demo_cdm.person",
+                    "testdata": [
+                        []
+                    ],
+                    "description": "Truncate OMOP CDM Tables",
+                    "errorMessage": null
+                },
+                "type": "db_reader_node",
+                "width": 350,
+                "height": 210,
+                "dragging": false,
+                "position": {
+                    "x": -920,
+                    "y": -510
+                },
+                "selected": false,
+                "dragHandle": "",
+                "parentNode": null,
+                "sourcePosition": "right",
+                "targetPosition": "left",
+                "positionAbsolute": {
+                    "x": -920,
+                    "y": -510
+                }
+            }
     ],
     "variables": [],
     "importLibs": []
