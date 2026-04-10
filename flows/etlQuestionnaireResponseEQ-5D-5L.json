@@ -105,13 +105,11 @@
             "id": "cacfa438-5766-4a57-bad2-71b3801bc1b8",
             "data": {
                 "name": "insert_into_omop_table",
-                "error": false,
                 "database": "demo_database",
                 "dataframe": "py2table",
                 "schemaname": "demo_cdm",
                 "dbtablename": "measurement",
-                "description": "Insert the records into omop measurement table",
-                "errorMessage": null
+                "description": "Insert the records into omop measurement table"
             },
             "type": "db_writer_node",
             "width": 350,
@@ -151,7 +149,7 @@
                 "x": 820,
                 "y": -190
             },
-            "selected": true,
+            "selected": false,
             "dragHandle": "",
             "sourcePosition": "right",
             "targetPosition": "left",
@@ -164,8 +162,10 @@
             "id": "4a0790fd-2758-470a-8fda-f3e8fdae71f3",
             "data": {
                 "name": "convert_to_tabular_dataframe",
+                "error": false,
                 "description": "Convert column wise data to tabular",
-                "python_code": "import numpy as np\nimport pandas as pd\n\n\n# Concept ID for eq_vas — only this dimension uses value_as_number\nEQ_VAS_CONCEPT_ID = 42537274\n\n\ndef flatten_measurements(df):\n    \"\"\"\n    Flatten a DataFrame where some columns contain lists.\n\n    Args:\n      df: pandas.DataFrame produced from the mapping stage (may contain list-valued columns).\n\n    Behavior:\n      - For each row, expand any list-valued columns into multiple rows (aligned by index).\n      - Skip any flattened row where `measurement_concept_id` is empty (None/NaN/non-convertible).\n      - Set `value_as_number` only when `measurement_concept_id == 42537274` (eq_vas).\n      - Assign a unique sequential measurement_id to every output row.\n    \"\"\"\n    all_rows = []\n\n    for idx, row in df.iterrows():\n        # Capture row-level scalar value_as_number before list expansion\n        row_vas = row.get(\"value_as_number\", None)\n        if isinstance(row_vas, list):\n            # If it somehow arrives as a list, take the first non-None value\n            row_vas = next((v for v in row_vas if v is not None), None)\n\n        # Determine maximum list length in this row\n        max_len = max(\n            (len(val) for val in row if isinstance(val, list)),\n            default=1\n        )\n\n        for i in range(max_len):\n            entry = {}\n            for col, val in row.items():\n                if col == \"measurement_id\":\n                    # Skip — we assign measurement_id globally after flattening\n                    continue\n                if isinstance(val, list):\n                    entry[col] = val[i] if i < len(val) else None\n                else:\n                    entry[col] = val\n\n            # ── Normalize measurement_concept_id ──────────────────────────\n            meas = entry.get(\"measurement_concept_id\", None)\n\n            if isinstance(meas, float) and np.isnan(meas):\n                meas = None\n\n            if isinstance(meas, (float, np.floating)):\n                try:\n                    meas = int(meas)\n                except Exception:\n                    meas = None\n\n            # Skip rows with no concept ID (unmapped items)\n            if meas is None:\n                continue\n\n            entry[\"measurement_concept_id\"] = int(meas)\n\n            # ── value_as_number: only for eq_vas ──────────────────────────\n            entry[\"value_as_number\"] = (\n                row_vas if entry[\"measurement_concept_id\"] == EQ_VAS_CONCEPT_ID else None\n            )\n\n            all_rows.append(entry)\n\n    result_df = pd.DataFrame(all_rows)\n\n    # ── Assign unique sequential measurement_id ───────────────────────────\n    # Starting from 1; in production offset by a base value per patient/QR\n    result_df[\"measurement_id\"] = range(1, len(result_df) + 1)\n\n    # Ensure correct column order with measurement_id first\n    cols = [\"measurement_id\"] + [c for c in result_df.columns if c != \"measurement_id\"]\n    result_df = result_df[cols]\n\n    return result_df.reset_index(drop=True)\n\n\ndef exec(myinput):\n    data = myinput.get(\"transform_fhir_to_omop\").result\n    df = flatten_measurements(data)\n    return df"
+                "python_code": "import numpy as np\nimport pandas as pd\n\n\n# Concept ID for eq_vas — only this dimension uses value_as_number\nEQ_VAS_CONCEPT_ID = 42537274\n\n\ndef flatten_measurements(df):\n    \"\"\"\n    Flatten a DataFrame where some columns contain lists.\n\n    Args:\n      df: pandas.DataFrame produced from the mapping stage (may contain list-valued columns).\n\n    Behavior:\n      - For each row, expand any list-valued columns into multiple rows (aligned by index).\n      - Skip any flattened row where `measurement_concept_id` is empty (None/NaN/non-convertible).\n      - Set `value_as_number` only when `measurement_concept_id == 42537274` (eq_vas).\n      - Assign a unique sequential measurement_id to every output row.\n    \"\"\"\n    all_rows = []\n\n    for idx, row in df.iterrows():\n        # Capture row-level scalar value_as_number before list expansion\n        row_vas = row.get(\"value_as_number\", None)\n        if isinstance(row_vas, list):\n            # If it somehow arrives as a list, take the first non-None value\n            row_vas = next((v for v in row_vas if v is not None), None)\n\n        # Determine maximum list length in this row\n        max_len = max(\n            (len(val) for val in row if isinstance(val, list)),\n            default=1\n        )\n\n        for i in range(max_len):\n            entry = {}\n            for col, val in row.items():\n                if col == \"measurement_id\":\n                    # Skip — we assign measurement_id globally after flattening\n                    continue\n                if isinstance(val, list):\n                    entry[col] = val[i] if i < len(val) else None\n                else:\n                    entry[col] = val\n\n            # ── Normalize measurement_concept_id ──────────────────────────\n            meas = entry.get(\"measurement_concept_id\", None)\n\n            if isinstance(meas, float) and np.isnan(meas):\n                meas = None\n\n            if isinstance(meas, (float, np.floating)):\n                try:\n                    meas = int(meas)\n                except Exception:\n                    meas = None\n\n            # Skip rows with no concept ID (unmapped items)\n            if meas is None:\n                continue\n\n            entry[\"measurement_concept_id\"] = int(meas)\n\n            # ── value_as_number: only for eq_vas ──────────────────────────\n            entry[\"value_as_number\"] = (\n                row_vas if entry[\"measurement_concept_id\"] == EQ_VAS_CONCEPT_ID else None\n            )\n\n            all_rows.append(entry)\n\n    result_df = pd.DataFrame(all_rows)\n\n    # ── Assign unique sequential measurement_id ───────────────────────────\n    # Starting from 1; in production offset by a base value per patient/QR\n    result_df[\"measurement_id\"] = range(1, len(result_df) + 1)\n\n    # Ensure correct column order with measurement_id first\n    cols = [\"measurement_id\"] + [c for c in result_df.columns if c != \"measurement_id\"]\n    result_df = result_df[cols]\n\n    return result_df.reset_index(drop=True)\n\n\ndef exec(myinput):\n    data = myinput.get(\"transform_fhir_to_omop\").result\n    df = flatten_measurements(data)\n    return df",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -190,8 +190,7 @@
                 "name": "Truncate_OMOP_tables",
                 "error": false,
                 "description": "Clean the OMOP CDM tables",
-                "python_code": "def create_postgres_db_conn():\n    \"\"\"Create a raw psycopg2 connection.\"\"\"\n    conn = psycopg2.connect(\n        host=pg_db_host,\n        dbname=pg_database,\n        user=pg_user,\n        password=pg_password\n    )\n    conn.autocommit = False\n    return conn\n\n\ndef exec(myinput):\n    data   = myinput.get(\"convert_to_tabular_dataframe\").result\n    conn   = create_postgres_db_conn()\n\n    delete_statements = [\n        f\"DELETE FROM {pg_schema}.measurement;\",\n    ]\n\n    try:\n        cursor = conn.cursor()\n        for stmt in delete_statements:\n            cursor.execute(stmt)\n        conn.commit()\n        return data\n    except Exception as e:\n        conn.rollback()\n        raise e\n    finally:\n        cursor.close()\n        conn.close()",
-                "errorMessage": null
+                "python_code": "def exec(myinput):\n    data   = myinput.get(\"convert_to_tabular_dataframe\").result\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"measurement\")\n    return data",
             },
             "type": "python_node",
             "width": 350,
@@ -212,30 +211,16 @@
         }
     ],
     "variables": [
-            {
-                "key": "pg_password",
-                "value": "in6F4m"
-            },
-            {
-                "key": "pg_user",
-                "value": "postgres"
-            },
-            {
-                "key": "pg_db_host",
-                "value": "demodb"
-            },
-            {
-                "key": "pg_schema",
-                "value": "demo_cdm"
-            },
-            {
-                "key": "pg_database",
-                "value": "postgres"
-            }
-        ],
+        {
+            "key": "database_code",
+            "value": "demo_database"
+        },
+        {
+            "key": "cdm_schema",
+            "value": "demo_cdm"
+        }
+    ],
     "importLibs": [
-        "import psycopg2",
-        "from prefect.variables import Variable",
-        "from prefect.blocks.system import Secret"
+        "from _shared_flow_utils.dao.DBDao import DBDao"
     ]
 }
