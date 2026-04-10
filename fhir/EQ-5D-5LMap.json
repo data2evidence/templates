@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "name": "EQ5D5L to OMOP Measurement",
   "status": "active",
-  "date": "2025-11-28",
+  "date": "2026-04-10",
   "publisher": "D4L",
   "structure": [
     {
@@ -35,910 +35,1661 @@
       ],
       "rule": [
         {
-          "name": "mapEachItem",
+          "name": "mobility",
           "source": [
             {
               "context": "src",
               "element": "item",
-              "variable": "qitem"
+              "variable": "qitem",
+              "condition": "linkId = 'mobility'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "transform": "create",
+              "parameter": [
+                {
+                  "valueString": "Measurement"
+                }
+              ]
             }
           ],
           "rule": [
             {
-              "name": "createMeasurement",
+              "name": "setMeasurementId",
               "source": [
                 {
-                  "context": "qitem",
-                  "variable": "qitem"
-                },
-                {
                   "context": "src",
-                  "variable": "src"
+                  "element": "authored",
+                  "variable": "authored"
                 }
               ],
               "target": [
                 {
                   "context": "tgt",
-                  "transform": "create",
+                  "element": "measurement_id",
+                  "transform": "copy",
                   "parameter": [
                     {
-                      "value": "Measurement"
+                      "valueInteger": 0
                     }
                   ]
                 }
+              ]
+            },
+            {
+              "name": "setPersonId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "subject",
+                  "variable": "patRef"
+                }
               ],
-              "rule": [
-                 {
-                    "name": "mapMeasurementId",
-                    "documentation": "Generate a unique OMOP measurement_id.",
-                    "source": [
-                        {
-                            "context": "src",
-                            "element": "id",
-                            "variable": "measurement_id"
-                        }
-                    ],
-                    "target": [
-                        {
-                            "context": "tgt",
-                            "element": "measurement_id",
-                            "transform": "copy",
-                            "parameter": [
-                                {
-                                    "valueId": "measurement_id"
-                                }
-                            ]
-                        }
-                    ]
-                },
+              "target": [
                 {
-                    "name": "mapPatientId",
-                    "source": [
-                        {
-                            "context": "src",
-                            "element": "subject",
-                            "variable": "patRef"
-                        }
-                    ],
-                    "target": [
-                        {
-                            "context": "tgt",
-                            "element": "person_id",
-                            "transform": "copy",
-                            "parameter": [
-                                {
-                                    "valueId": "patRef"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "measurement_datetime",
-                    "source": [
-                        {
-                            "context": "src",
-                            "element": "authored",
-                            "variable": "measurement_datetime"
-                        }
-                    ],
-                    "target": [
-                        {
-                            "context": "tgt",
-                            "element": "measurement_datetime",
-                            "transform": "copy",
-                            "parameter": [
-                                {
-                                    "valueId": "measurement_datetime"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "measurement_date",
-                    "source": [
-                        {
-                            "context": "src",
-                            "element": "authored",
-                            "variable": "measurement_date"
-                        }
-                    ],
-                    "target": [
-                        {
-                            "context": "tgt",
-                            "element": "measurement_date",
-                            "transform": "copy",
-                            "parameter": [
-                                {
-                                    "valueId": "measurement_date"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "measurement_type_concept_id",
-                    "source": [
-                      {
-                          "context": "src",
-                          "element": "id",
-                          "variable": "measurement_type_concept_id"
-                      }
-                    ],
-                    "target": [
-                      {
-                          "context": "tgt",
-                          "element": "measurement_type_concept_id",
-                          "transform": "copy",
-                          "parameter": [
-                              {
-                                  "valueInteger": 45754907
-                              }
-                          ]
-                      }
-                    ]
-                },
-                {
-                    "name": "measurement_source_value",
-                    "source": [
-                      {
-                          "context": "src",
-                          "element": "id",
-                          "variable": "measurement_source_value"
-                      }
-                    ],
-                    "target": [
-                        {
-                            "context": "tgt",
-                            "element": "measurement_source_value",
-                            "transform": "copy",
-                            "parameter": [
-                                {
-                                    "valueId": "measurement_source_value"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                  "name": "mapMeasurementConceptId",
-                  "source":[{
-                      "context": "qitem",
-                      "variable": "qitem"
-                  }],
-                  "rule": [
+                  "context": "tgt",
+                  "element": "person_id",
+                  "transform": "copy",
+                  "parameter": [
                     {
-                      "name": "mobility",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "mobility",
-                          "condition": "linkId = 'mobility'"
-                        }
-                      ],
-                      "target": [
-                        {
-                          "context": "tgt",
-                          "element": "measurement_concept_id",
-                          "transform": "copy",
-                          "parameter": [
-                            {
-                              "valueInteger": 44806412
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "selfCare",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "selfCare",
-                          "condition": "linkId = 'self_care'"
-                        }
-                      ],
-                      "target": [
-                        {
-                          "context": "tgt",
-                          "element": "measurement_concept_id",
-                          "transform": "copy",
-                          "parameter": [
-                            {
-                              "valueInteger": 44806413
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "usualActivities",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "usualActivities",
-                          "condition": "linkId = 'usual_activities'"
-                        }
-                      ],
-                      "target": [
-                        {
-                          "context": "tgt",
-                          "element": "measurement_concept_id",
-                          "transform": "copy",
-                          "parameter": [
-                            {
-                              "valueInteger": 44813555
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "painDiscomfort",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "painDiscomfort",
-                          "condition": "linkId = 'pain_discomfort'"
-                        }
-                      ],
-                      "target": [
-                        {
-                          "context": "tgt",
-                          "element": "measurement_concept_id",
-                          "transform": "copy",
-                          "parameter": [
-                            {
-                              "valueInteger": 44806414
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "anxietyDepression",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "anxietyDepression",
-                          "condition": "linkId = 'anxietyDepression'"
-                        }
-                      ],
-                      "target": [
-                        {
-                          "context": "tgt",
-                          "element": "measurement_concept_id",
-                          "transform": "copy",
-                          "parameter": [
-                            {
-                              "valueInteger": 44813556
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "eqVAS",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "eqVAS",
-                          "condition": "linkId = 'eq_vas'"
-                        }
-                      ],
-                      "target": [
-                        {
-                          "context": "tgt",
-                          "element": "measurement_concept_id",
-                          "transform": "copy",
-                          "parameter": [
-                            {
-                              "valueInteger": 42537274
-                            }
-                          ]
-                        }
-                      ]
+                      "valueId": "patRef"
                     }
                   ]
-                },
+                }
+              ]
+            },
+            {
+              "name": "setDatetime",
+              "source": [
                 {
-                  "name": "mapValue",
-                  "source":[{
-                      "context": "qitem",
-                      "variable": "qitem"
-                  }],
-                  "rule": [
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "dt"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_datetime",
+                  "transform": "copy",
+                  "parameter": [
                     {
-                      "name": "mobility",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "mobility",
-                          "condition": "linkId = 'mobility'"
-                        }
-                      ],
-                      "rule": [
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '1'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742346
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '2'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742347
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '3'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742348
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '4'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742349
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '5'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742350
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
+                      "valueId": "dt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDate",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "d"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_date",
+                  "transform": "copy",
+                  "parameter": [
                     {
-                      "name": "self_care",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "self_care",
-                          "condition": "linkId = 'self_care'"
-                        }
-                      ],
-                      "rule": [
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '1'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742351
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '2'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742352
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '3'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742353
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '4'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742354
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '5'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742355
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
+                      "valueId": "d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setSourceValue",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "id",
+                  "variable": "qrId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_source_value",
+                  "transform": "copy",
+                  "parameter": [
                     {
-                      "name": "usual_activities",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "usual_activities",
-                          "condition": "linkId = 'usual_activities'"
-                        }
-                      ],
-                      "rule": [
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '1'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742356
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '2'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742357
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '3'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742358
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '4'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742359
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '5'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742360
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
+                      "valueId": "qrId"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setTypeConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_type_concept_id",
+                  "transform": "copy",
+                  "parameter": [
                     {
-                      "name": "pain_discomfort",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "pain_discomfort",
-                          "condition": "linkId = 'pain_discomfort'"
-                        }
-                      ],
-                      "rule": [
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '1'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742361
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '2'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742362
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '3'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742363
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '4'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742364
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '5'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742365
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
+                      "valueInteger": 45754907
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_concept_id",
+                  "transform": "copy",
+                  "parameter": [
                     {
-                      "name": "anxiety_depression",
-                      "source": [
-                        {
-                          "context": "qitem",
-                          "variable": "anxiety_depression",
-                          "condition": "linkId = 'anxietyDepression'"
-                        }
-                      ],
-                      "rule": [
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '1'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742366
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '2'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742367
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '3'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742368
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '4'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742369
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "condition": "answer.valueCoding.code = '5'"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_concept_id",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueInteger": 742370
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
+                      "valueInteger": 44806412
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val1",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '1'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
                     {
-                      "name": "eq_vas",
-                      "source": [
+                      "valueInteger": 742346
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val2",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '2'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742347
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val3",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '3'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742348
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val4",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '4'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742349
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val5",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '5'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742350
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "self_care",
+          "source": [
+            {
+              "context": "src",
+              "element": "item",
+              "variable": "qitem",
+              "condition": "linkId = 'self_care' or linkId = 'selfCare'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "transform": "create",
+              "parameter": [
+                {
+                  "valueString": "Measurement"
+                }
+              ]
+            }
+          ],
+          "rule": [
+            {
+              "name": "setMeasurementId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "authored"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setPersonId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "subject",
+                  "variable": "patRef"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "person_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "patRef"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDatetime",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "dt"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_datetime",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "dt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDate",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "d"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_date",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setSourceValue",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "id",
+                  "variable": "qrId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_source_value",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "qrId"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setTypeConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_type_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 45754907
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 44806413
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val1",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '1'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742351
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val2",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '2'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742352
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val3",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '3'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742353
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val4",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '4'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742354
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val5",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '5'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742355
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "usual_activities",
+          "source": [
+            {
+              "context": "src",
+              "element": "item",
+              "variable": "qitem",
+              "condition": "linkId = 'usual_activities' or linkId = 'usualActivities'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "transform": "create",
+              "parameter": [
+                {
+                  "valueString": "Measurement"
+                }
+              ]
+            }
+          ],
+          "rule": [
+            {
+              "name": "setMeasurementId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "authored"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 2
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setPersonId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "subject",
+                  "variable": "patRef"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "person_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "patRef"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDatetime",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "dt"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_datetime",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "dt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDate",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "d"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_date",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setSourceValue",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "id",
+                  "variable": "qrId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_source_value",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "qrId"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setTypeConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_type_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 45754907
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 44813555
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val1",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '1'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742356
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val2",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '2'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742357
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val3",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '3'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742358
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val4",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '4'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742359
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val5",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '5'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742360
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "pain_discomfort",
+          "source": [
+            {
+              "context": "src",
+              "element": "item",
+              "variable": "qitem",
+              "condition": "linkId = 'pain_discomfort' or linkId = 'painDiscomfort'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "transform": "create",
+              "parameter": [
+                {
+                  "valueString": "Measurement"
+                }
+              ]
+            }
+          ],
+          "rule": [
+            {
+              "name": "setMeasurementId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "authored"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setPersonId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "subject",
+                  "variable": "patRef"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "person_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "patRef"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDatetime",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "dt"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_datetime",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "dt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDate",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "d"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_date",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setSourceValue",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "id",
+                  "variable": "qrId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_source_value",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "qrId"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setTypeConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_type_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 45754907
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 44806414
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val1",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '1'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742361
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val2",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '2'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742362
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val3",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '3'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742363
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val4",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '4'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742364
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val5",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '5'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742365
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "anxiety_depression",
+          "source": [
+            {
+              "context": "src",
+              "element": "item",
+              "variable": "qitem",
+              "condition": "linkId = 'anxietyDepression' or linkId = 'anxiety_depression'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "transform": "create",
+              "parameter": [
+                {
+                  "valueString": "Measurement"
+                }
+              ]
+            }
+          ],
+          "rule": [
+            {
+              "name": "setMeasurementId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "authored"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 4
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setPersonId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "subject",
+                  "variable": "patRef"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "person_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "patRef"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDatetime",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "dt"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_datetime",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "dt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDate",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "d"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_date",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setSourceValue",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "id",
+                  "variable": "qrId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_source_value",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "qrId"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setTypeConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_type_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 45754907
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 44813556
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val1",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '1'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742366
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val2",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '2'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742367
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val3",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '3'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742368
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val4",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '4'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742369
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "val5",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans",
+                  "condition": "valueCoding.code = '5'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 742370
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "eq_vas",
+          "source": [
+            {
+              "context": "src",
+              "element": "item",
+              "variable": "qitem",
+              "condition": "linkId = 'eq_vas' or linkId = 'euroqol-eq5d5l-vas'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "transform": "create",
+              "parameter": [
+                {
+                  "valueString": "Measurement"
+                }
+              ]
+            }
+          ],
+          "rule": [
+            {
+              "name": "setMeasurementId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "authored"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setPersonId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "subject",
+                  "variable": "patRef"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "person_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "patRef"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDatetime",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "dt"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_datetime",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "dt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDate",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "d"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_date",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setSourceValue",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "id",
+                  "variable": "qrId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_source_value",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "qrId"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setTypeConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_type_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 45754907
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 42537274
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setVasValue",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans"
+                }
+              ],
+              "rule": [
+                {
+                  "name": "extractVasInt",
+                  "source": [
+                    {
+                      "context": "ans",
+                      "element": "valueInteger",
+                      "variable": "vasValue"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "value_as_number",
+                      "transform": "copy",
+                      "parameter": [
                         {
-                          "context": "qitem",
-                          "variable": "eq_vas",
-                          "condition": "linkId = 'eq_vas'"
-                        }
-                      ],
-                      "rule": [
-                        {
-                          "source": [
-                            {
-                              "context": "qitem",
-                              "element": "answer[0].valueInteger",
-                              "variable": "vasValue"
-                            }
-                          ],
-                          "target": [
-                            {
-                              "context": "tgt",
-                              "element": "value_as_number",
-                              "transform": "copy",
-                              "parameter": [
-                                {
-                                  "valueId": "vasValue"
-                                }
-                              ]
-                            }
-                          ]
+                          "valueId": "vasValue"
                         }
                       ]
                     }
