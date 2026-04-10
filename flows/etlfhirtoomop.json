@@ -1984,37 +1984,43 @@
             }
         },
         {
-                "id": "fd097736-f352-4d9a-98f7-1d378e7aa9a0",
+                "id": "f217a843-35d9-4fbb-8f08-ee9be931dc68",
                 "data": {
                     "name": "Truncate OMOP CDM Tables",
                     "error": false,
-                    "database": "demo_database",
-                    "sqlquery": "delete from demo_cdm.observation;\ndelete from demo_cdm.person;\ndelete from demo_cdm.visit_occurrence;\ndelete from demo_cdm.procedure_occurrence;\ndelete from demo_cdm.measurement;\ndelete from demo_cdm.drug_exposure;\ndelete from demo_cdm.condition_occurrence;\nselect count(*) from demo_cdm.person",
-                    "testdata": [
-                        []
-                    ],
-                    "description": "Truncate OMOP CDM Tables",
+                    "description": "Describe the task of node python_node_10",
+                    "python_code": "def exec(myinput):\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"observation\")\n    dbdao.truncate_table(cdm_schema, \"measurement\")\n    dbdao.truncate_table(cdm_schema, \"person\")\n    dbdao.truncate_table(cdm_schema, \"visit_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"procedure_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"drug_exposure\")\n    dbdao.truncate_table(cdm_schema, \"condition_occurrence\")\n    return \"true\" ",
                     "errorMessage": null
                 },
-                "type": "db_reader_node",
-                "width": 350,
-                "height": 210,
+                "type": "python_node",
+                "width": 354,
+                "height": 214,
                 "dragging": false,
                 "position": {
-                    "x": -920,
-                    "y": -510
+                    "x": -400,
+                    "y": -550
                 },
-                "selected": false,
+                "selected": true,
                 "dragHandle": "",
-                "parentNode": null,
                 "sourcePosition": "right",
                 "targetPosition": "left",
                 "positionAbsolute": {
-                    "x": -920,
-                    "y": -510
+                    "x": -400,
+                    "y": -550
                 }
             }
     ],
-    "variables": [],
-    "importLibs": []
+    "variables": [
+            {
+                "key": "database_code",
+                "value": "demo_database"
+            },
+            {
+                "key": "cdm_schema",
+                "value": "demo_cdm"
+            }
+        ],
+        "importLibs": [
+            "from _shared_flow_utils.dao.DBDao import DBDao"
+        ]
 }
