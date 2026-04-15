@@ -142,8 +142,8 @@
                 "errorMessage": null
             },
             "type": "py2table_node",
-            "width": 354,
-            "height": 214,
+            "width": 350,
+            "height": 210,
             "dragging": false,
             "position": {
                 "x": 820,
@@ -188,13 +188,12 @@
             "id": "78d4b8a7-45ac-4139-87bb-fa3b8be3c0bd",
             "data": {
                 "name": "Truncate_OMOP_tables",
-                "error": false,
                 "description": "Clean the OMOP CDM tables",
-                "python_code": "def exec(myinput):\n    data   = myinput.get(\"convert_to_tabular_dataframe\").result\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"measurement\")\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"convert_to_tabular_dataframe\").result                                                                   \n                  \n    qr_ids = data[\"measurement_source_value\"].dropna().unique().tolist()\n    if qr_ids:                                                                                                \n        dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n        metadata_obj = sql.MetaData(schema=cdm_schema)                                                                          \n        table_obj = sql.Table(\"measurement\", metadata_obj, autoload_with=dao.engine)\n        delete_stmt = table_obj.delete().where(                                                                                 \n            table_obj.c.measurement_source_value.in_(qr_ids)\n        )                                                                                                                       \n        dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)                                                     \n  \n    return data"
             },
             "type": "python_node",
-            "width": 350,
-            "height": 210,
+            "width": 354,
+            "height": 214,
             "dragging": false,
             "position": {
                 "x": 380,
@@ -221,6 +220,8 @@
         }
     ],
     "importLibs": [
-        "from _shared_flow_utils.dao.DBDao import DBDao"
+        "from _shared_flow_utils.dao.DBDao import DBDao",
+        "from _shared_flow_utils.dao.sqlalchemydao import SqlAlchemyDao",
+        "import  sqlalchemy as sql"
     ]
 }
