@@ -190,7 +190,7 @@
                 "name": "Truncate_OMOP_tables",
                 "error": false,
                 "description": "Clean the OMOP CDM tables",
-                "python_code": "def exec(myinput):\n    data   = myinput.get(\"convert_to_tabular_dataframe\").result\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"measurement\")\n    return data",
+                "python_code": "def exec(myinput):\n    data   = myinput.get(\"convert_to_tabular_dataframe\").result\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"measurement\")\n    return data"
             },
             "type": "python_node",
             "width": 350,
