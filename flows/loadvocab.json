@@ -2,605 +2,679 @@
   "name": "dataload_vocab",
   "description": "Load vocabulary data into the database",
   "edges": [
-    {
-      "id": "d5191dc1-edb8-4664-a4a4-7ce06d2eff9b",
-      "source": "f88a9d25-2259-459b-ba7d-ccbca3b7ae67",
-      "target": "54eba542-c666-45ea-935f-253145baf7d3"
-    },
-    {
-      "id": "reactflow__edge-54eba542-c666-45ea-935f-253145baf7d3source_54eba542-c666-45ea-935f-253145baf7d3_any-b2687498-5be3-4edc-88cf-9ad41e600602target_b2687498-5be3-4edc-88cf-9ad41e600602_any",
-      "source": "54eba542-c666-45ea-935f-253145baf7d3",
-      "target": "b2687498-5be3-4edc-88cf-9ad41e600602",
-      "sourceHandle": "source_54eba542-c666-45ea-935f-253145baf7d3_any",
-      "targetHandle": "target_b2687498-5be3-4edc-88cf-9ad41e600602_any"
-    },
-    {
-      "id": "reactflow__edge-f88a9d25-2259-459b-ba7d-ccbca3b7ae67source_f88a9d25-2259-459b-ba7d-ccbca3b7ae67_any-b2687498-5be3-4edc-88cf-9ad41e600602target_b2687498-5be3-4edc-88cf-9ad41e600602_any",
-      "source": "f88a9d25-2259-459b-ba7d-ccbca3b7ae67",
-      "target": "b2687498-5be3-4edc-88cf-9ad41e600602",
-      "sourceHandle": "source_f88a9d25-2259-459b-ba7d-ccbca3b7ae67_any",
-      "targetHandle": "target_b2687498-5be3-4edc-88cf-9ad41e600602_any"
-    },
-    {
-      "id": "reactflow__edge-6d1c43a3-610d-4241-aa35-c5922667be65source_6d1c43a3-610d-4241-aa35-c5922667be65_any-b2687498-5be3-4edc-88cf-9ad41e600602target_b2687498-5be3-4edc-88cf-9ad41e600602_any",
-      "source": "6d1c43a3-610d-4241-aa35-c5922667be65",
-      "target": "b2687498-5be3-4edc-88cf-9ad41e600602",
-      "sourceHandle": "source_6d1c43a3-610d-4241-aa35-c5922667be65_any",
-      "targetHandle": "target_b2687498-5be3-4edc-88cf-9ad41e600602_any"
-    },
-    {
-      "id": "4345d58b-e9b7-45b7-b3df-6345e341fe56",
-      "source": "b2687498-5be3-4edc-88cf-9ad41e600602",
-      "target": "63ea4f7c-9165-4943-92c0-e6fc1eeb7951"
-    },
-    {
-      "id": "reactflow__edge-b2687498-5be3-4edc-88cf-9ad41e600602source_b2687498-5be3-4edc-88cf-9ad41e600602_object-72d2f629-6211-4650-bdc5-89567094108ctarget_72d2f629-6211-4650-bdc5-89567094108c_object",
-      "source": "b2687498-5be3-4edc-88cf-9ad41e600602",
-      "target": "72d2f629-6211-4650-bdc5-89567094108c",
-      "sourceHandle": "source_b2687498-5be3-4edc-88cf-9ad41e600602_object",
-      "targetHandle": "target_72d2f629-6211-4650-bdc5-89567094108c_object"
-    },
-    {
-      "id": "e44d95e0-9a25-4a18-b6c0-e1ff90ce533e",
-      "source": "b2687498-5be3-4edc-88cf-9ad41e600602",
-      "target": "d09c87d4-6299-465d-8b14-4c90a53d68de"
-    },
-    {
-      "id": "reactflow__edge-63ea4f7c-9165-4943-92c0-e6fc1eeb7951source_63ea4f7c-9165-4943-92c0-e6fc1eeb7951_dataframe-ece6447a-3e2b-47ab-a046-b4a42e0df72btarget_ece6447a-3e2b-47ab-a046-b4a42e0df72b_dataframe",
-      "source": "63ea4f7c-9165-4943-92c0-e6fc1eeb7951",
-      "target": "ece6447a-3e2b-47ab-a046-b4a42e0df72b",
-      "sourceHandle": "source_63ea4f7c-9165-4943-92c0-e6fc1eeb7951_dataframe",
-      "targetHandle": "target_ece6447a-3e2b-47ab-a046-b4a42e0df72b_dataframe"
-    },
-    {
-      "id": "reactflow__edge-72d2f629-6211-4650-bdc5-89567094108csource_72d2f629-6211-4650-bdc5-89567094108c_dataframe-dc16e130-4891-4ac9-884e-0256ffc75ed9target_dc16e130-4891-4ac9-884e-0256ffc75ed9_dataframe",
-      "source": "72d2f629-6211-4650-bdc5-89567094108c",
-      "target": "dc16e130-4891-4ac9-884e-0256ffc75ed9",
-      "sourceHandle": "source_72d2f629-6211-4650-bdc5-89567094108c_dataframe",
-      "targetHandle": "target_dc16e130-4891-4ac9-884e-0256ffc75ed9_dataframe"
-    },
-    {
-      "id": "reactflow__edge-d09c87d4-6299-465d-8b14-4c90a53d68desource_d09c87d4-6299-465d-8b14-4c90a53d68de_dataframe-56ad0e7c-d2dd-4db8-ad45-ee0efa654e6btarget_56ad0e7c-d2dd-4db8-ad45-ee0efa654e6b_dataframe",
-      "source": "d09c87d4-6299-465d-8b14-4c90a53d68de",
-      "target": "56ad0e7c-d2dd-4db8-ad45-ee0efa654e6b",
-      "sourceHandle": "source_d09c87d4-6299-465d-8b14-4c90a53d68de_dataframe",
-      "targetHandle": "target_56ad0e7c-d2dd-4db8-ad45-ee0efa654e6b_dataframe"
-    },
-    {
-      "id": "reactflow__edge-962eeb15-c355-4805-9c8e-7e64621be306source_962eeb15-c355-4805-9c8e-7e64621be306_any-bc5898f4-0a47-4d62-bdf6-754c6df6d242target_bc5898f4-0a47-4d62-bdf6-754c6df6d242_dataframe",
-      "source": "962eeb15-c355-4805-9c8e-7e64621be306",
-      "target": "bc5898f4-0a47-4d62-bdf6-754c6df6d242",
-      "sourceHandle": "source_962eeb15-c355-4805-9c8e-7e64621be306_any",
-      "targetHandle": "target_bc5898f4-0a47-4d62-bdf6-754c6df6d242_dataframe"
-    },
-    {
-      "id": "reactflow__edge-8615cd55-cdf7-40d9-ad6e-a3f520afdbbbsource_8615cd55-cdf7-40d9-ad6e-a3f520afdbbb_any-3f3a795d-4f4c-4e17-ab50-60b620e95643target_3f3a795d-4f4c-4e17-ab50-60b620e95643_dataframe",
-      "source": "8615cd55-cdf7-40d9-ad6e-a3f520afdbbb",
-      "target": "3f3a795d-4f4c-4e17-ab50-60b620e95643",
-      "sourceHandle": "source_8615cd55-cdf7-40d9-ad6e-a3f520afdbbb_any",
-      "targetHandle": "target_3f3a795d-4f4c-4e17-ab50-60b620e95643_dataframe"
-    },
-    {
-      "id": "reactflow__edge-bf69b569-78f3-48b5-82c7-2b0418d01dbcsource_bf69b569-78f3-48b5-82c7-2b0418d01dbc_any-1f883cf7-16aa-4e9f-a29e-763d2aaaf617target_1f883cf7-16aa-4e9f-a29e-763d2aaaf617_dataframe",
-      "source": "bf69b569-78f3-48b5-82c7-2b0418d01dbc",
-      "target": "1f883cf7-16aa-4e9f-a29e-763d2aaaf617",
-      "sourceHandle": "source_bf69b569-78f3-48b5-82c7-2b0418d01dbc_any",
-      "targetHandle": "target_1f883cf7-16aa-4e9f-a29e-763d2aaaf617_dataframe"
-    },
-    {
-      "id": "f8053a8c-a3e3-4075-8f42-c8bbbac8bcab",
-      "source": "bf69b569-78f3-48b5-82c7-2b0418d01dbc",
-      "target": "4cf26301-2c73-41b0-af71-285fb26211e5"
-    },
-    {
-      "id": "reactflow__edge-4cf26301-2c73-41b0-af71-285fb26211e5source_4cf26301-2c73-41b0-af71-285fb26211e5_any-9fe077a7-68a4-429d-a608-3ff1ab6e2df9target_9fe077a7-68a4-429d-a608-3ff1ab6e2df9_dataframe",
-      "source": "4cf26301-2c73-41b0-af71-285fb26211e5",
-      "target": "9fe077a7-68a4-429d-a608-3ff1ab6e2df9",
-      "sourceHandle": "source_4cf26301-2c73-41b0-af71-285fb26211e5_any",
-      "targetHandle": "target_9fe077a7-68a4-429d-a608-3ff1ab6e2df9_dataframe"
-    }
+      {
+        "id": "d5191dc1-edb8-4664-a4a4-7ce06d2eff9b",
+        "source": "f88a9d25-2259-459b-ba7d-ccbca3b7ae67",
+        "target": "54eba542-c666-45ea-935f-253145baf7d3"
+      },
+      {
+        "id": "reactflow__edge-54eba542-c666-45ea-935f-253145baf7d3source_54eba542-c666-45ea-935f-253145baf7d3_any-b2687498-5be3-4edc-88cf-9ad41e600602target_b2687498-5be3-4edc-88cf-9ad41e600602_any",
+        "source": "54eba542-c666-45ea-935f-253145baf7d3",
+        "target": "b2687498-5be3-4edc-88cf-9ad41e600602",
+        "sourceHandle": "source_54eba542-c666-45ea-935f-253145baf7d3_any",
+        "targetHandle": "target_b2687498-5be3-4edc-88cf-9ad41e600602_any"
+      },
+      {
+        "id": "reactflow__edge-f88a9d25-2259-459b-ba7d-ccbca3b7ae67source_f88a9d25-2259-459b-ba7d-ccbca3b7ae67_any-b2687498-5be3-4edc-88cf-9ad41e600602target_b2687498-5be3-4edc-88cf-9ad41e600602_any",
+        "source": "f88a9d25-2259-459b-ba7d-ccbca3b7ae67",
+        "target": "b2687498-5be3-4edc-88cf-9ad41e600602",
+        "sourceHandle": "source_f88a9d25-2259-459b-ba7d-ccbca3b7ae67_any",
+        "targetHandle": "target_b2687498-5be3-4edc-88cf-9ad41e600602_any"
+      },
+      {
+        "id": "reactflow__edge-6d1c43a3-610d-4241-aa35-c5922667be65source_6d1c43a3-610d-4241-aa35-c5922667be65_any-b2687498-5be3-4edc-88cf-9ad41e600602target_b2687498-5be3-4edc-88cf-9ad41e600602_any",
+        "source": "6d1c43a3-610d-4241-aa35-c5922667be65",
+        "target": "b2687498-5be3-4edc-88cf-9ad41e600602",
+        "sourceHandle": "source_6d1c43a3-610d-4241-aa35-c5922667be65_any",
+        "targetHandle": "target_b2687498-5be3-4edc-88cf-9ad41e600602_any"
+      },
+      {
+        "id": "4345d58b-e9b7-45b7-b3df-6345e341fe56",
+        "source": "b2687498-5be3-4edc-88cf-9ad41e600602",
+        "target": "63ea4f7c-9165-4943-92c0-e6fc1eeb7951"
+      },
+      {
+        "id": "reactflow__edge-b2687498-5be3-4edc-88cf-9ad41e600602source_b2687498-5be3-4edc-88cf-9ad41e600602_object-72d2f629-6211-4650-bdc5-89567094108ctarget_72d2f629-6211-4650-bdc5-89567094108c_object",
+        "source": "b2687498-5be3-4edc-88cf-9ad41e600602",
+        "target": "72d2f629-6211-4650-bdc5-89567094108c",
+        "sourceHandle": "source_b2687498-5be3-4edc-88cf-9ad41e600602_object",
+        "targetHandle": "target_72d2f629-6211-4650-bdc5-89567094108c_object"
+      },
+      {
+        "id": "e44d95e0-9a25-4a18-b6c0-e1ff90ce533e",
+        "source": "b2687498-5be3-4edc-88cf-9ad41e600602",
+        "target": "d09c87d4-6299-465d-8b14-4c90a53d68de"
+      },
+      {
+        "id": "reactflow__edge-63ea4f7c-9165-4943-92c0-e6fc1eeb7951source_63ea4f7c-9165-4943-92c0-e6fc1eeb7951_dataframe-ece6447a-3e2b-47ab-a046-b4a42e0df72btarget_ece6447a-3e2b-47ab-a046-b4a42e0df72b_dataframe",
+        "source": "63ea4f7c-9165-4943-92c0-e6fc1eeb7951",
+        "target": "ece6447a-3e2b-47ab-a046-b4a42e0df72b",
+        "sourceHandle": "source_63ea4f7c-9165-4943-92c0-e6fc1eeb7951_dataframe",
+        "targetHandle": "target_ece6447a-3e2b-47ab-a046-b4a42e0df72b_dataframe"
+      },
+      {
+        "id": "reactflow__edge-72d2f629-6211-4650-bdc5-89567094108csource_72d2f629-6211-4650-bdc5-89567094108c_dataframe-dc16e130-4891-4ac9-884e-0256ffc75ed9target_dc16e130-4891-4ac9-884e-0256ffc75ed9_dataframe",
+        "source": "72d2f629-6211-4650-bdc5-89567094108c",
+        "target": "dc16e130-4891-4ac9-884e-0256ffc75ed9",
+        "sourceHandle": "source_72d2f629-6211-4650-bdc5-89567094108c_dataframe",
+        "targetHandle": "target_dc16e130-4891-4ac9-884e-0256ffc75ed9_dataframe"
+      },
+      {
+        "id": "reactflow__edge-d09c87d4-6299-465d-8b14-4c90a53d68desource_d09c87d4-6299-465d-8b14-4c90a53d68de_dataframe-56ad0e7c-d2dd-4db8-ad45-ee0efa654e6btarget_56ad0e7c-d2dd-4db8-ad45-ee0efa654e6b_dataframe",
+        "source": "d09c87d4-6299-465d-8b14-4c90a53d68de",
+        "target": "56ad0e7c-d2dd-4db8-ad45-ee0efa654e6b",
+        "sourceHandle": "source_d09c87d4-6299-465d-8b14-4c90a53d68de_dataframe",
+        "targetHandle": "target_56ad0e7c-d2dd-4db8-ad45-ee0efa654e6b_dataframe"
+      },
+      {
+        "id": "reactflow__edge-962eeb15-c355-4805-9c8e-7e64621be306source_962eeb15-c355-4805-9c8e-7e64621be306_any-bc5898f4-0a47-4d62-bdf6-754c6df6d242target_bc5898f4-0a47-4d62-bdf6-754c6df6d242_dataframe",
+        "source": "962eeb15-c355-4805-9c8e-7e64621be306",
+        "target": "bc5898f4-0a47-4d62-bdf6-754c6df6d242",
+        "selected": false,
+        "sourceHandle": "source_962eeb15-c355-4805-9c8e-7e64621be306_any",
+        "targetHandle": "target_bc5898f4-0a47-4d62-bdf6-754c6df6d242_dataframe"
+      },
+      {
+        "id": "reactflow__edge-8615cd55-cdf7-40d9-ad6e-a3f520afdbbbsource_8615cd55-cdf7-40d9-ad6e-a3f520afdbbb_any-3f3a795d-4f4c-4e17-ab50-60b620e95643target_3f3a795d-4f4c-4e17-ab50-60b620e95643_dataframe",
+        "source": "8615cd55-cdf7-40d9-ad6e-a3f520afdbbb",
+        "target": "3f3a795d-4f4c-4e17-ab50-60b620e95643",
+        "selected": false,
+        "sourceHandle": "source_8615cd55-cdf7-40d9-ad6e-a3f520afdbbb_any",
+        "targetHandle": "target_3f3a795d-4f4c-4e17-ab50-60b620e95643_dataframe"
+      },
+      {
+        "id": "reactflow__edge-bf69b569-78f3-48b5-82c7-2b0418d01dbcsource_bf69b569-78f3-48b5-82c7-2b0418d01dbc_any-1f883cf7-16aa-4e9f-a29e-763d2aaaf617target_1f883cf7-16aa-4e9f-a29e-763d2aaaf617_dataframe",
+        "source": "bf69b569-78f3-48b5-82c7-2b0418d01dbc",
+        "target": "1f883cf7-16aa-4e9f-a29e-763d2aaaf617",
+        "selected": false,
+        "sourceHandle": "source_bf69b569-78f3-48b5-82c7-2b0418d01dbc_any",
+        "targetHandle": "target_1f883cf7-16aa-4e9f-a29e-763d2aaaf617_dataframe"
+      },
+      {
+        "id": "f8053a8c-a3e3-4075-8f42-c8bbbac8bcab",
+        "source": "bf69b569-78f3-48b5-82c7-2b0418d01dbc",
+        "target": "4cf26301-2c73-41b0-af71-285fb26211e5",
+        "selected": false
+      },
+      {
+        "id": "reactflow__edge-4cf26301-2c73-41b0-af71-285fb26211e5source_4cf26301-2c73-41b0-af71-285fb26211e5_any-9fe077a7-68a4-429d-a608-3ff1ab6e2df9target_9fe077a7-68a4-429d-a608-3ff1ab6e2df9_dataframe",
+        "source": "4cf26301-2c73-41b0-af71-285fb26211e5",
+        "target": "9fe077a7-68a4-429d-a608-3ff1ab6e2df9",
+        "selected": false,
+        "sourceHandle": "source_4cf26301-2c73-41b0-af71-285fb26211e5_any",
+        "targetHandle": "target_9fe077a7-68a4-429d-a608-3ff1ab6e2df9_dataframe"
+      },
+      {
+        "id": "reactflow__edge-1dcc8ce8-6479-475d-815b-8f479323b9cdsource_1dcc8ce8-6479-475d-815b-8f479323b9cd_any-df8b1247-2bee-4e51-9375-7d009e3528b9target_df8b1247-2bee-4e51-9375-7d009e3528b9_dataframe",
+        "source": "1dcc8ce8-6479-475d-815b-8f479323b9cd",
+        "target": "df8b1247-2bee-4e51-9375-7d009e3528b9",
+        "selected": false,
+        "sourceHandle": "source_1dcc8ce8-6479-475d-815b-8f479323b9cd_any",
+        "targetHandle": "target_df8b1247-2bee-4e51-9375-7d009e3528b9_dataframe"
+      },
+      {
+        "id": "reactflow__edge-3ec60606-63bd-404b-8c37-4111d30ebcedsource_3ec60606-63bd-404b-8c37-4111d30ebced_any-d452e8ff-e63e-42fa-a5e6-e7f910d494eetarget_d452e8ff-e63e-42fa-a5e6-e7f910d494ee_dataframe",
+        "source": "3ec60606-63bd-404b-8c37-4111d30ebced",
+        "target": "d452e8ff-e63e-42fa-a5e6-e7f910d494ee",
+        "selected": false,
+        "sourceHandle": "source_3ec60606-63bd-404b-8c37-4111d30ebced_any",
+        "targetHandle": "target_d452e8ff-e63e-42fa-a5e6-e7f910d494ee_dataframe"
+      },
+      {
+        "id": "reactflow__edge-87fb9729-7064-4d43-9e77-a4f4920d662bsource_87fb9729-7064-4d43-9e77-a4f4920d662b_any-78ec3542-018a-4bf3-a4d5-b35bbb588aeftarget_78ec3542-018a-4bf3-a4d5-b35bbb588aef_any",
+        "source": "87fb9729-7064-4d43-9e77-a4f4920d662b",
+        "target": "78ec3542-018a-4bf3-a4d5-b35bbb588aef",
+        "sourceHandle": "source_87fb9729-7064-4d43-9e77-a4f4920d662b_any",
+        "targetHandle": "target_78ec3542-018a-4bf3-a4d5-b35bbb588aef_any"
+      },
+      {
+        "id": "reactflow__edge-78ec3542-018a-4bf3-a4d5-b35bbb588aefsource_78ec3542-018a-4bf3-a4d5-b35bbb588aef_object-0f31bfde-a45d-4f81-b3d0-1b848bb9fa0etarget_0f31bfde-a45d-4f81-b3d0-1b848bb9fa0e_object",
+        "source": "78ec3542-018a-4bf3-a4d5-b35bbb588aef",
+        "target": "0f31bfde-a45d-4f81-b3d0-1b848bb9fa0e",
+        "sourceHandle": "source_78ec3542-018a-4bf3-a4d5-b35bbb588aef_object",
+        "targetHandle": "target_0f31bfde-a45d-4f81-b3d0-1b848bb9fa0e_object"
+      },
+      {
+        "id": "reactflow__edge-0f31bfde-a45d-4f81-b3d0-1b848bb9fa0esource_0f31bfde-a45d-4f81-b3d0-1b848bb9fa0e_dataframe-bb43b422-4f12-406e-a841-198949803f40target_bb43b422-4f12-406e-a841-198949803f40_dataframe",
+        "source": "0f31bfde-a45d-4f81-b3d0-1b848bb9fa0e",
+        "target": "bb43b422-4f12-406e-a841-198949803f40",
+        "sourceHandle": "source_0f31bfde-a45d-4f81-b3d0-1b848bb9fa0e_dataframe",
+        "targetHandle": "target_bb43b422-4f12-406e-a841-198949803f40_dataframe"
+      }
   ],
   "nodes": [
     {
       "id": "8615cd55-cdf7-40d9-ad6e-a3f520afdbbb",
       "data": {
-        "file": "CONCEPT_SYNONYM.csv",
+        "file": "",
         "name": "concept_synonym_csv",
+        "encoding": "utf-8",
         "delimiter": "/t",
-        "description": "Describe the task of node 8615cd55"
+        "description": "Upload concept_synonym csv to storage"
       },
       "type": "csv_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": -620,
-        "y": 30
-      },
+      "position": { "x": -630, "y": 250 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": -620,
-        "y": 30
-      }
+      "positionAbsolute": { "x": -630, "y": 250 }
     },
     {
       "id": "3f3a795d-4f4c-4e17-ab50-60b620e95643",
       "data": {
         "name": "write_to_concept_synonym",
-        "database": "alpdev_pg",
-        "dataframe": [
-          "concept_synonym_csv"
-        ],
+        "database": "demo_database",
+        "dataframe": ["concept_synonym_csv"],
         "schemaname": "cdmvocab",
         "dbtablename": "concept_synonym",
-        "description": "Describe the task of node 3f3a795d"
+        "description": "Write to concept_synonym table"
       },
       "type": "db_writer_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": -80,
-        "y": 30
-      },
+      "position": { "x": 1140, "y": 240 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": -80,
-        "y": 30
-      }
+      "positionAbsolute": { "x": 1140, "y": 240 }
     },
     {
       "id": "6d1c43a3-610d-4241-aa35-c5922667be65",
       "data": {
-        "file": "DRUG_STRENGTH.csv",
+        "file": "",
         "name": "drug_strength_csv",
+        "encoding": "utf-8",
         "delimiter": "/t",
-        "description": "Describe the task of node 6d1c43a3"
+        "description": "Upload drug_strength csv to storage"
       },
       "type": "csv_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": -630,
-        "y": -320
-      },
+      "position": { "x": -640, "y": -380 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": -630,
-        "y": -320
-      }
+      "positionAbsolute": { "x": -640, "y": -380 }
     },
     {
       "id": "ece6447a-3e2b-47ab-a046-b4a42e0df72b",
       "data": {
         "name": "write_to_drug_strength",
-        "database": "alpdev_pg",
-        "dataframe": [
-          "transformed_drug_strength"
-        ],
+        "database": "demo_database",
+        "dataframe": ["transformed_drug_strength"],
         "schemaname": "cdmvocab",
         "dbtablename": "drug_strength",
-        "description": "Describe the task of node ece6447a"
+        "description": "Write to drug_strength table"
       },
       "type": "db_writer_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 1130,
-        "y": -330
-      },
+      "position": { "x": 1120, "y": -400 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 1130,
-        "y": -330
-      }
+      "positionAbsolute": { "x": 1120, "y": -400 }
     },
     {
       "id": "f88a9d25-2259-459b-ba7d-ccbca3b7ae67",
       "data": {
-        "file": "concept_mini.csv",
+        "file": "",
         "name": "concept_csv",
+        "encoding": "utf-8",
         "delimiter": "/t",
-        "description": "Describe the task of node f88a9d25"
+        "description": "Upload concept csv to storage"
       },
       "type": "csv_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": -640,
-        "y": -680
-      },
+      "position": { "x": -640, "y": -680 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": -640,
-        "y": -680
-      }
+      "positionAbsolute": { "x": -640, "y": -680 }
     },
     {
       "id": "54eba542-c666-45ea-935f-253145baf7d3",
       "data": {
-        "file": "concept_relationship_mini.csv",
+        "file": "",
         "name": "concept_relationship_csv",
+        "encoding": "utf-8",
         "delimiter": "/t",
-        "description": "Describe the task of node 54eba542"
+        "description": "Upload concept_relationship csv to storage"
       },
       "type": "csv_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": -640,
-        "y": -1000
-      },
+      "position": { "x": -640, "y": -1000 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": -640,
-        "y": -1000
-      }
+      "positionAbsolute": { "x": -640, "y": -1000 }
     },
     {
       "id": "b2687498-5be3-4edc-88cf-9ad41e600602",
       "data": {
         "name": "transform_df",
-        "description": "Describe the task of node b2687498",
+        "description": "Transforms multiple dataframes into a format appropriate for ingestion into omop cdm vocab tables",
         "python_code": "import pandas as pd\nimport numpy as np\n\ndef exec(myinput):\n\n  original_dfs = {}\n  transformed_dfs = {}\n  original_dfs[\"drug_strength\"] = myinput[\"drug_strength_csv\"].result\n  original_dfs[\"concept\"] = myinput[\"concept_csv\"].result\n  original_dfs[\"concept_relationship\"] = myinput[\"concept_relationship_csv\"].result\n\n  for table, df in original_dfs.items():\n    df[\"valid_start_date\"] = pd.to_datetime(df[\"valid_start_date\"].astype(str))\n    df[\"valid_end_date\"] =  pd.to_datetime(df[\"valid_end_date\"].astype(str))\n\n    if table == \"drug_strength\":\n      # Integer columns use pd.NA\n      df[\"amount_unit_concept_id\"].replace('', pd.NA, inplace=True)\n      df[\"box_size\"].replace('', pd.NA, inplace=True)\n      df[\"numerator_unit_concept_id\"].replace('', pd.NA, inplace=True)\n      df[\"denominator_unit_concept_id\"].replace('', pd.NA, inplace=True)\n      \n      # Float Columns use np.nan\n      df[\"amount_value\"].replace('', np.nan, inplace=True)\n      df[\"numerator_value\"].replace('', np.nan, inplace=True)\n      df[\"denominator_value\"].replace('', np.nan, inplace=True)\n      \n      # Convert to integer\n      df[\"amount_unit_concept_id\"] = pd.to_numeric(df[\"amount_unit_concept_id\"], errors=\"coerce\").astype('Int64')\n      df[\"box_size\"] = pd.to_numeric(df[\"box_size\"], errors=\"coerce\").astype('Int64')\n      df[\"numerator_unit_concept_id\"] = pd.to_numeric(df[\"numerator_unit_concept_id\"], errors=\"coerce\").astype('Int64')\n      df[\"denominator_unit_concept_id\"] = pd.to_numeric(df[\"denominator_unit_concept_id\"], errors=\"coerce\").astype('Int64')\n      \n      # Convert to float\n      df[\"amount_value\"] = pd.to_numeric(df[\"amount_value\"], errors=\"coerce\").astype('float64')\n      df[\"numerator_value\"] = pd.to_numeric(df[\"numerator_value\"], errors=\"coerce\").astype('float64')\n      df[\"denominator_value\"] = pd.to_numeric(df[\"denominator_value\"], errors=\"coerce\").astype('float64')\n\n    df = df.replace(\"N/A\", \"N/A\")\n    df = df.rename(columns=str.lower)\n\n    transformed_dfs[table] = df\n  return transformed_dfs"
       },
       "type": "python_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 30,
-        "y": -680
-      },
+      "position": { "x": 10, "y": -680 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 30,
-        "y": -680
-      }
+      "positionAbsolute": { "x": 10, "y": -680 }
     },
     {
       "id": "63ea4f7c-9165-4943-92c0-e6fc1eeb7951",
       "data": {
-        "map": {
-          "py2table_node_0": [
-            "transform_df",
-            "drug_strength"
-          ]
-        },
+        "map": {},
         "name": "transformed_drug_strength",
-        "uiMap": {
-          "path": "$.drug_strength",
-          "source": "transform_df.script_node"
-        },
-        "description": "Describe the task of node 63ea4f7c"
+        "uiMap": { "path": "$.drug_strength", "source": "transform_df" },
+        "description": "Extracts drug_strength dataframe"
       },
       "type": "py2table_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 560,
-        "y": -330
-      },
+      "position": { "x": 570, "y": -400 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 560,
-        "y": -330
-      }
+      "positionAbsolute": { "x": 570, "y": -400 }
     },
     {
       "id": "72d2f629-6211-4650-bdc5-89567094108c",
       "data": {
-        "map": {
-          "py2table_node_1": [
-            "transform_df",
-            "concept"
-          ]
-        },
+        "map": {},
         "name": "transformed_concept",
-        "uiMap": {
-          "path": "$.concept",
-          "source": "transform_df.script_node"
-        },
-        "description": "Describe the task of node 72d2f629"
+        "uiMap": { "path": "$.concept", "source": "transform_df" },
+        "description": "Extracts concept dataframe"
       },
       "type": "py2table_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 570,
-        "y": -680
-      },
+      "position": { "x": 570, "y": -680 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 570,
-        "y": -680
-      }
+      "positionAbsolute": { "x": 570, "y": -680 }
     },
     {
       "id": "d09c87d4-6299-465d-8b14-4c90a53d68de",
       "data": {
-        "map": {
-          "py2table_node_2": [
-            "transform_df",
-            "concept_relationship"
-          ]
-        },
+        "map": {},
         "name": "transformed_concept_relationship",
         "uiMap": {
           "path": "$.concept_relationship",
-          "source": "transform_df.script_node"
+          "source": "transform_df"
         },
-        "description": "Describe the task of node d09c87d4"
+        "description": "Extracts concept_relationship dataframe"
       },
       "type": "py2table_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 570,
-        "y": -1030
-      },
+      "position": { "x": 570, "y": -1010 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 570,
-        "y": -1030
-      }
+      "positionAbsolute": { "x": 570, "y": -1010 }
     },
     {
       "id": "dc16e130-4891-4ac9-884e-0256ffc75ed9",
       "data": {
         "name": "write_to_concept",
-        "database": "alpdev_pg",
-        "dataframe": [
-          "transformed_concept"
-        ],
+        "database": "demo_database",
+        "dataframe": ["transformed_concept"],
         "schemaname": "cdmvocab",
         "dbtablename": "concept",
-        "description": "Describe the task of node dc16e130"
+        "description": "Write to concept table"
       },
       "type": "db_writer_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 1120,
-        "y": -680
-      },
+      "position": { "x": 1120, "y": -680 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 1120,
-        "y": -680
-      }
+      "positionAbsolute": { "x": 1120, "y": -680 }
     },
     {
       "id": "56ad0e7c-d2dd-4db8-ad45-ee0efa654e6b",
       "data": {
         "name": "write_to_concept_relationship",
-        "database": "alpdev_pg",
-        "dataframe": [
-          "transformed_concept_relationship"
-        ],
+        "database": "demo_database",
+        "dataframe": ["transformed_concept_relationship"],
         "schemaname": "cdmvocab",
         "dbtablename": "concept_relationship",
-        "description": "Describe the task of node 56ad0e7c"
+        "description": "Write to concept_relationship table"
       },
       "type": "db_writer_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 1120,
-        "y": -1030
-      },
+      "position": { "x": 1110, "y": -1010 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 1120,
-        "y": -1030
-      }
+      "positionAbsolute": { "x": 1110, "y": -1010 }
     },
     {
       "id": "bf69b569-78f3-48b5-82c7-2b0418d01dbc",
       "data": {
-        "file": "VOCABULARY.csv",
+        "file": "",
         "name": "vocabulary_csv",
+        "encoding": "utf-8",
         "delimiter": "/t",
-        "description": "Describe the task of node bf69b569"
+        "description": "Upload vocabulary csv to storage"
       },
       "type": "csv_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": -620,
-        "y": 310
-      },
+      "position": { "x": -630, "y": 520 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": -620,
-        "y": 310
-      }
+      "positionAbsolute": { "x": -630, "y": 520 }
     },
     {
       "id": "1f883cf7-16aa-4e9f-a29e-763d2aaaf617",
       "data": {
         "name": "write_to_vocabulary",
-        "database": "alpdev_pg",
-        "dataframe": [
-          "vocabulary_csv"
-        ],
+        "database": "demo_database",
+        "dataframe": ["vocabulary_csv"],
         "schemaname": "cdmvocab",
         "dbtablename": "vocabulary",
-        "description": "Describe the task of node 1f883cf7"
+        "description": "Write to vocabulary table"
       },
       "type": "db_writer_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": -80,
-        "y": 310
-      },
+      "position": { "x": 1140, "y": 510 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": -80,
-        "y": 310
-      }
+      "positionAbsolute": { "x": 1140, "y": 510 }
     },
     {
       "id": "9fe077a7-68a4-429d-a608-3ff1ab6e2df9",
       "data": {
         "name": "write_to_relationship",
-        "database": "alpdev_pg",
-        "dataframe": [
-          "relationship_csv"
-        ],
+        "database": "demo_database",
+        "dataframe": ["relationship_csv"],
         "schemaname": "cdmvocab",
         "dbtablename": "relationship",
-        "description": "Describe the task of node 9fe077a7"
+        "description": "Write to relationship table"
       },
       "type": "db_writer_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 1130,
-        "y": 30
-      },
+      "position": { "x": 1140, "y": 780 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 1130,
-        "y": 30
-      }
+      "positionAbsolute": { "x": 1140, "y": 780 }
     },
     {
       "id": "962eeb15-c355-4805-9c8e-7e64621be306",
       "data": {
-        "file": "concept_ancestor_mini.csv",
+        "file": "",
         "name": "concept_ancestor_csv",
+        "encoding": "utf-8",
         "delimiter": "/t",
-        "description": "Describe the task of node 962eeb15"
+        "description": "Upload concept_ancestor csv to storage"
       },
       "type": "csv_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 590,
-        "y": 300
-      },
+      "position": { "x": -630, "y": 1070 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 590,
-        "y": 300
-      }
+      "positionAbsolute": { "x": -630, "y": 1070 }
     },
     {
       "id": "bc5898f4-0a47-4d62-bdf6-754c6df6d242",
       "data": {
         "name": "write_to_concept_ancestor",
-        "database": "alpdev_pg",
-        "dataframe": [
-          "concept_ancestor_csv"
-        ],
+        "database": "demo_database",
+        "dataframe": ["concept_ancestor_csv"],
         "schemaname": "cdmvocab",
         "dbtablename": "concept_ancestor",
-        "description": "Describe the task of node bc5898f4"
+        "description": "Write to concept_ancestor table"
       },
       "type": "db_writer_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 1140,
-        "y": 300
-      },
+      "position": { "x": 1140, "y": 1060 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 1140,
-        "y": 300
-      }
+      "positionAbsolute": { "x": 1140, "y": 1060 }
     },
     {
       "id": "4cf26301-2c73-41b0-af71-285fb26211e5",
       "data": {
-        "file": "RELATIONSHIP.csv",
+        "file": "",
         "name": "relationship_csv",
+        "encoding": "utf-8",
         "delimiter": "/t",
-        "description": "Describe the task of node 4cf26301"
+        "description": "Upload relationship csv to storage"
       },
       "type": "csv_node",
       "width": 350,
       "height": 210,
       "dragging": false,
-      "position": {
-        "x": 580,
-        "y": 30
-      },
+      "position": { "x": -630, "y": 790 },
       "selected": false,
       "dragHandle": "",
       "sourcePosition": "right",
       "targetPosition": "left",
-      "positionAbsolute": {
-        "x": 580,
-        "y": 30
-      }
+      "positionAbsolute": { "x": -630, "y": 790 }
+    },
+    {
+      "id": "1dcc8ce8-6479-475d-815b-8f479323b9cd",
+      "data": {
+        "file": "",
+        "name": "domain_csv",
+        "columns": [],
+        "encoding": "utf-8",
+        "delimiter": "\\t",
+        "hasheader": true,
+        "description": "Upload domain csv to storage"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -630, "y": 1340 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -630, "y": 1340 }
+    },
+    {
+      "id": "87fb9729-7064-4d43-9e77-a4f4920d662b",
+      "data": {
+        "file": "",
+        "name": "concept_cpt4_csv",
+        "columns": [],
+        "encoding": "utf-8",
+        "delimiter": "\\t",
+        "hasheader": true,
+        "description": "Upload concept_cpt4 csv to storage"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -640, "y": -100 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -640, "y": -100 }
+    },
+    {
+      "id": "3ec60606-63bd-404b-8c37-4111d30ebced",
+      "data": {
+        "file": "",
+        "name": "concept_class_csv",
+        "columns": [],
+        "encoding": "utf-8",
+        "delimiter": "\\t",
+        "hasheader": true,
+        "description": "Upload concept_class csv to storage"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -630, "y": 1630 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -630, "y": 1630 }
+    },
+    {
+      "id": "df8b1247-2bee-4e51-9375-7d009e3528b9",
+      "data": {
+        "name": "write_to_domain",
+        "database": "demo_database",
+        "dataframe": "domain_csv",
+        "schemaname": "cdmvocab",
+        "dbtablename": "domain",
+        "description": "Write to domain table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1140, "y": 1330 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1140, "y": 1330 }
+    },
+    {
+      "id": "d452e8ff-e63e-42fa-a5e6-e7f910d494ee",
+      "data": {
+        "name": "write_to_concept_class",
+        "database": "demo_database",
+        "dataframe": "concept_class_csv",
+        "schemaname": "cdmvocab",
+        "dbtablename": "concept_class",
+        "description": "Write to concept_class table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1140, "y": 1610 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1140, "y": 1610 }
+    },
+    {
+      "id": "78ec3542-018a-4bf3-a4d5-b35bbb588aef",
+      "data": {
+        "name": "transform_cpt4",
+        "description": "Transforms cpt4 into a format appropriate for ingestion",
+        "python_code": "import pandas as pd\nimport numpy as np\n\ndef exec(myinput):\n  df = myinput[\"upload_cpt4\"].result\n\n  df[\"valid_start_date\"] = pd.to_datetime(df['valid_start_date'], format='%Y%m%d')\n  df[\"valid_end_date\"] =  pd.to_datetime(df['valid_end_date'], format='%Y%m%d')\n\n  df['concept_name'] = df['concept_name'].fillna('NULL')\n\n  return df"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 20, "y": -100 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 20, "y": -100 }
+    },
+    {
+      "id": "bb43b422-4f12-406e-a841-198949803f40",
+      "data": {
+        "name": "write_to_cpt4",
+        "database": "demo_database",
+        "dataframe": "transformed_cpt4",
+        "schemaname": "cdmvocab",
+        "dbtablename": "concept",
+        "description": "Write to concept table"
+      },
+      "type": "db_writer_node",
+      "width": 354,
+      "height": 214,
+      "dragging": false,
+      "position": { "x": 1120, "y": -100 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1120, "y": -100 }
+    },
+    {
+      "id": "0f31bfde-a45d-4f81-b3d0-1b848bb9fa0e",
+      "data": {
+        "map": {},
+        "name": "transformed_cpt4",
+        "uiMap": { "path": "$.cpt", "source": "transform_cpt4" },
+        "description": "Extracts cpt4 dataframe"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 580, "y": -100 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 580, "y": -100 }
     }
-  ]
+  ],
+  "variables": [],
+  "importLibs": []
 }
