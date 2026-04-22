@@ -1,6 +1,6 @@
 {
   "name": "Artemis",
-  "description": "An ETL pipeline using OHDSI ARTEMIS extracts OMOP drug exposure data, transforms it into aligned treatment regimens and eras, and loads the structured outputs for downstream cohort analysis.",
+  "description": "A flow using OHDSI ARTEMIS R package to identify chemotherapy regimens from an OMOP CDM database.",
   "edges": [
     {
       "id": "reactflow__edge-51cba923-4db7-4804-a46e-a47a63fc31a0source_51cba923-4db7-4804-a46e-a47a63fc31a0_object-89361be9-e4b7-46cd-9f0e-581c26b3b3dctarget_89361be9-e4b7-46cd-9f0e-581c26b3b3dc_any",
