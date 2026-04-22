@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "name": "EQ5D5L to OMOP Measurement",
   "status": "active",
-  "date": "2026-04-10",
+  "date": "2026-04-16",
   "publisher": "D4L",
   "structure": [
     {
@@ -181,7 +181,7 @@
                   "transform": "copy",
                   "parameter": [
                     {
-                      "valueInteger": 45754907
+                      "valueInteger": 32862
                     }
                   ]
                 }
@@ -209,13 +209,82 @@
               ]
             },
             {
+              "name": "setRangeHigh",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_high",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setRangeLow",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_low",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setValueAsNumber",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer.valueCoding.code",
+                  "variable": "ansCode"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_number",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "ansCode"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "val1",
               "source": [
                 {
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '1'"
+                  "condition": "valueCoding.code = '1' or valueCoding.code = 'no-problems'"
+                },
+                {
+                    "context": "ans",
+                    "element": "valueCoding.code",
+                    "variable": "ansCode"
                 }
               ],
               "target": [
@@ -238,7 +307,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '2'"
+                  "condition": "valueCoding.code = '2' or valueCoding.code = 'slight-problems'"
                 }
               ],
               "target": [
@@ -261,7 +330,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '3'"
+                  "condition": "valueCoding.code = '3' or valueCoding.code = 'moderate-problems'"
                 }
               ],
               "target": [
@@ -284,7 +353,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '4'"
+                  "condition": "valueCoding.code = '4' or valueCoding.code = 'severe-problems'"
                 }
               ],
               "target": [
@@ -307,7 +376,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '5'"
+                  "condition": "valueCoding.code = '5' or valueCoding.code = 'unable'"
                 }
               ],
               "target": [
@@ -332,7 +401,7 @@
               "context": "src",
               "element": "item",
               "variable": "qitem",
-              "condition": "linkId = 'self_care' or linkId = 'selfCare'"
+              "condition": "linkId = 'self-care' or linkId = 'selfCare'"
             }
           ],
           "target": [
@@ -472,7 +541,7 @@
                   "transform": "copy",
                   "parameter": [
                     {
-                      "valueInteger": 45754907
+                      "valueInteger": 32862
                     }
                   ]
                 }
@@ -500,13 +569,77 @@
               ]
             },
             {
+              "name": "setRangeHigh",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_high",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setRangeLow",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_low",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setValueAsNumber",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer.valueCoding.code",
+                  "variable": "ansCode"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_number",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "ansCode"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "val1",
               "source": [
                 {
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '1'"
+                  "condition": "valueCoding.code = '1' or valueCoding.code = 'no-problems'"
                 }
               ],
               "target": [
@@ -529,7 +662,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '2'"
+                  "condition": "valueCoding.code = '2' or valueCoding.code = 'slight-problems'"
                 }
               ],
               "target": [
@@ -552,7 +685,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '3'"
+                  "condition": "valueCoding.code = '3' or valueCoding.code = 'moderate-problems'"
                 }
               ],
               "target": [
@@ -575,7 +708,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '4'"
+                  "condition": "valueCoding.code = '4' or valueCoding.code = 'severe-problems'"
                 }
               ],
               "target": [
@@ -598,7 +731,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '5'"
+                  "condition": "valueCoding.code = '5' or valueCoding.code = 'unable'"
                 }
               ],
               "target": [
@@ -623,7 +756,7 @@
               "context": "src",
               "element": "item",
               "variable": "qitem",
-              "condition": "linkId = 'usual_activities' or linkId = 'usualActivities'"
+              "condition": "linkId = 'usual-activities' or linkId = 'usualActivities'"
             }
           ],
           "target": [
@@ -763,7 +896,7 @@
                   "transform": "copy",
                   "parameter": [
                     {
-                      "valueInteger": 45754907
+                      "valueInteger": 32862
                     }
                   ]
                 }
@@ -791,13 +924,77 @@
               ]
             },
             {
+              "name": "setRangeHigh",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_high",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setRangeLow",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_low",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setValueAsNumber",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer.valueCoding.code",
+                  "variable": "ansCode"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_number",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "ansCode"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "val1",
               "source": [
                 {
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '1'"
+                  "condition": "valueCoding.code = '1' or valueCoding.code = 'no-problems'"
                 }
               ],
               "target": [
@@ -820,7 +1017,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '2'"
+                  "condition": "valueCoding.code = '2' or valueCoding.code = 'slight-problems'"
                 }
               ],
               "target": [
@@ -843,7 +1040,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '3'"
+                  "condition": "valueCoding.code = '3' or valueCoding.code = 'moderate-problems'"
                 }
               ],
               "target": [
@@ -866,7 +1063,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '4'"
+                  "condition": "valueCoding.code = '4' or valueCoding.code = 'severe-problems'"
                 }
               ],
               "target": [
@@ -889,7 +1086,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '5'"
+                  "condition": "valueCoding.code = '5' or valueCoding.code = 'unable'"
                 }
               ],
               "target": [
@@ -914,7 +1111,7 @@
               "context": "src",
               "element": "item",
               "variable": "qitem",
-              "condition": "linkId = 'pain_discomfort' or linkId = 'painDiscomfort'"
+              "condition": "linkId = 'pain-discomfort' or linkId = 'painDiscomfort'"
             }
           ],
           "target": [
@@ -1054,7 +1251,7 @@
                   "transform": "copy",
                   "parameter": [
                     {
-                      "valueInteger": 45754907
+                      "valueInteger": 32862
                     }
                   ]
                 }
@@ -1082,13 +1279,77 @@
               ]
             },
             {
+              "name": "setRangeHigh",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_high",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setRangeLow",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_low",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setValueAsNumber",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer.valueCoding.code",
+                  "variable": "ansCode"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_number",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "ansCode"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "val1",
               "source": [
                 {
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '1'"
+                  "condition": "valueCoding.code = '1' or valueCoding.code = 'none'"
                 }
               ],
               "target": [
@@ -1111,7 +1372,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '2'"
+                  "condition": "valueCoding.code = '2' or valueCoding.code = 'slight'"
                 }
               ],
               "target": [
@@ -1134,7 +1395,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '3'"
+                  "condition": "valueCoding.code = '3' or valueCoding.code = 'moderate'"
                 }
               ],
               "target": [
@@ -1157,7 +1418,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '4'"
+                  "condition": "valueCoding.code = '4' or valueCoding.code = 'severe'"
                 }
               ],
               "target": [
@@ -1180,7 +1441,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '5'"
+                  "condition": "valueCoding.code = '5' or valueCoding.code = 'extreme'"
                 }
               ],
               "target": [
@@ -1205,7 +1466,7 @@
               "context": "src",
               "element": "item",
               "variable": "qitem",
-              "condition": "linkId = 'anxietyDepression' or linkId = 'anxiety_depression'"
+              "condition": "linkId = 'anxietyDepression' or linkId = 'anxiety-depression'"
             }
           ],
           "target": [
@@ -1345,7 +1606,7 @@
                   "transform": "copy",
                   "parameter": [
                     {
-                      "valueInteger": 45754907
+                      "valueInteger": 32862
                     }
                   ]
                 }
@@ -1373,13 +1634,77 @@
               ]
             },
             {
+              "name": "setRangeHigh",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_high",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setRangeLow",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_low",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setValueAsNumber",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer.valueCoding.code",
+                  "variable": "ansCode"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "value_as_number",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "ansCode"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "val1",
               "source": [
                 {
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '1'"
+                  "condition": "valueCoding.code = '1' or valueCoding.code = 'none'"
                 }
               ],
               "target": [
@@ -1402,7 +1727,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '2'"
+                  "condition": "valueCoding.code = '2' or valueCoding.code = 'slight'"
                 }
               ],
               "target": [
@@ -1425,7 +1750,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '3'"
+                  "condition": "valueCoding.code = '3' or valueCoding.code = 'moderate'"
                 }
               ],
               "target": [
@@ -1448,7 +1773,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '4'"
+                  "condition": "valueCoding.code = '4' or valueCoding.code = 'severe'"
                 }
               ],
               "target": [
@@ -1471,7 +1796,7 @@
                   "context": "qitem",
                   "element": "answer",
                   "variable": "ans",
-                  "condition": "valueCoding.code = '5'"
+                  "condition": "valueCoding.code = '5' or valueCoding.code = 'extreme'"
                 }
               ],
               "target": [
@@ -1496,7 +1821,7 @@
               "context": "src",
               "element": "item",
               "variable": "qitem",
-              "condition": "linkId = 'eq_vas' or linkId = 'euroqol-eq5d5l-vas'"
+              "condition": "linkId = 'eq_vas' or linkId = 'health-today'"
             }
           ],
           "target": [
@@ -1636,7 +1961,7 @@
                   "transform": "copy",
                   "parameter": [
                     {
-                      "valueInteger": 45754907
+                      "valueInteger": 32862
                     }
                   ]
                 }
@@ -1658,6 +1983,48 @@
                   "parameter": [
                     {
                       "valueInteger": 42537274
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setRangeHigh",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_high",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 100
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setRangeLow",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_low",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 0
                     }
                   ]
                 }
@@ -1690,6 +2057,237 @@
                       "parameter": [
                         {
                           "valueId": "vasValue"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "indexValue",
+          "source": [
+            {
+              "context": "src",
+              "element": "item",
+              "variable": "qitem",
+              "condition": "linkId = 'indexValue'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "transform": "create",
+              "parameter": [
+                {
+                  "valueString": "Measurement"
+                }
+              ]
+            }
+          ],
+          "rule": [
+            {
+              "name": "setMeasurementId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "authored"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 6
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setPersonId",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "subject",
+                  "variable": "patRef"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "person_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "patRef"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDatetime",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "dt"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_datetime",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "dt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setDate",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "authored",
+                  "variable": "d"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_date",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setSourceValue",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "id",
+                  "variable": "qrId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_source_value",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "qrId"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setTypeConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_type_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 32862
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setConceptId",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "measurement_concept_id",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 42537273
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setRangeHigh",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "linkId"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "element": "range_high",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueInteger": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "setIndexValue",
+              "source": [
+                {
+                  "context": "qitem",
+                  "element": "answer",
+                  "variable": "ans"
+                }
+              ],
+              "rule": [
+                {
+                  "name": "extractIndexInt",
+                  "source": [
+                    {
+                      "context": "ans",
+                      "element": "valueInteger",
+                      "variable": "indexVal"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "value_as_number",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "indexVal"
                         }
                       ]
                     }
