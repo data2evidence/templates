@@ -101,7 +101,7 @@
         "name": "sql_node_0",
         "error": false,
         "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"sql_node_0\",\n  \"length\": 3,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"float64\",\n    \"cohort_id\": \"float64\"\n  }\n}",
-        "description": "Execute SQL to create a new table nodetest in demo_cdm_results schema and insert cohort members into that table, then select from that table",
+        "description": "Execute SQL to create a new table nodetest in demo_cdm_results schema and select cohort members from py2table_node_0 and order them by cohort_id",
         "errorMessage": null
       },
       "type": "sql_node",
@@ -183,7 +183,7 @@
       "data": {
         "name": "db_reader_node_0",
         "error": false,
-        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"db_reader_node_0\",\n  \"length\": 9,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"float64\",\n    \"cohort_id\": \"float64\"\n  }\n}",
+        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"db_reader_node_0\",\n  \"length\": 3,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"float64\",\n    \"cohort_id\": \"float64\"\n  }\n}",
         "database": "demo_database",
         "sqlquery": "SELECT * FROM demo_cdm_results.nodetest",
         "testdata": [
