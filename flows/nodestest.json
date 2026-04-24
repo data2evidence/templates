@@ -40,11 +40,8 @@
       "id": "f39e43f1-5297-4def-a239-90420112b31b",
       "data": {
         "name": "python_node_0",
-        "error": false,
-        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"python_node_0\",\n  \"length\": 1,\n  \"type\": \"<class 'dict'>\",\n  \"schema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"cohort_members\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"person_id\": {\n              \"type\": \"number\"\n            },\n            \"cohort_id\": {\n              \"type\": \"number\"\n            }\n          },\n          \"required\": [\n            \"cohort_id\",\n            \"person_id\"\n          ]\n        }\n      }\n    }\n  }\n}",
         "description": "Update dataframe to only include cohort members with cohort_id 36 and 49",
-        "python_code": "import pandas as pd                         \n                                        \ndef exec(myinput):\n    df = myinput[\"r_node_0\"].result                                                                                                                     \n    filtered = df[df[\"cohort_id\"].isin([36, 49])]\n    return {                                                                                                                                            \n        \"cohort_members\": filtered.to_dict(orient=\"records\")\n    } ",
-        "errorMessage": null
+        "python_code": "import pandas as pd                         \n                                        \ndef exec(myinput):\n    df = myinput[\"r_node_0\"].result                                                                                                                     \n    filtered = df[df[\"cohort_id\"].isin([36, 49])]\n    return {                                                                                                                                            \n        \"cohort_members\": filtered.to_dict(orient=\"records\")\n    } "
       },
       "type": "python_node",
       "width": 350,
@@ -68,14 +65,11 @@
       "data": {
         "map": {},
         "name": "py2table_node_0",
-        "error": false,
         "uiMap": {
           "path": "$.cohort_members",
           "source": "python_node_0"
         },
-        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"py2table_node_0\",\n  \"length\": 3,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"float64\",\n    \"cohort_id\": \"float64\"\n  }\n}",
-        "description": "Convert python node output to dataframe for cohort members",
-        "errorMessage": null
+        "description": "Convert python node output to dataframe for cohort members"
       },
       "type": "py2table_node",
       "width": 350,
@@ -99,10 +93,7 @@
       "data": {
         "sql": "DROP TABLE IF EXISTS demo_cdm_results.nodetest;\nSELECT * FROM py2table_node_0\nORDER BY cohort_id ",
         "name": "sql_node_0",
-        "error": false,
-        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"sql_node_0\",\n  \"length\": 3,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"float64\",\n    \"cohort_id\": \"float64\"\n  }\n}",
-        "description": "Execute SQL to create a new table nodetest in demo_cdm_results schema and select cohort members from py2table_node_0 and order them by cohort_id",
-        "errorMessage": null
+        "description": "Execute SQL to create a new table nodetest in demo_cdm_results schema and select cohort members from py2table_node_0 and order them by cohort_id"
       },
       "type": "sql_node",
       "width": 350,
@@ -125,14 +116,11 @@
       "id": "0b1cc19f-9fb3-49e5-b614-532d6f07a5a8",
       "data": {
         "name": "db_writer_node_0",
-        "error": false,
-        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"db_writer_node_0\",\n  \"length\": null,\n  \"type\": \"<class 'int'>\"\n}",
         "database": "demo_database",
         "dataframe": "sql_node_0",
         "schemaname": "demo_cdm_results",
         "dbtablename": "nodetest",
-        "description": "Write the dataframe from sql_node_0 to database demo_database, schema demo_cdm_results, table nodetest.",
-        "errorMessage": null
+        "description": "Write the dataframe from sql_node_0 to database demo_database, schema demo_cdm_results, table nodetest."
       },
       "type": "db_writer_node",
       "width": 350,
@@ -155,11 +143,8 @@
       "id": "afa5fe8a-f201-4e71-9511-dd8ee1a91396",
       "data": {
         "name": "r_node_0",
-        "error": false,
         "r_code": "exec <- function(myinput) {                                                                                                                             \n  data.frame(                           \n    person_id = c(1, 2, 3, 4),                                                                                                                          \n    cohort_id = c(25, 49, 49, 36)                                                                                                                       \n  )                                                                                                                                                     \n}",
-        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"r_node_0\",\n  \"length\": 4,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"float64\",\n    \"cohort_id\": \"float64\"\n  }\n}",
-        "description": "Create a dataframe with person_id and cohort_id.",
-        "errorMessage": null
+        "description": "Create a dataframe with person_id and cohort_id."
       },
       "type": "r_node",
       "width": 350,
@@ -182,8 +167,6 @@
       "id": "baa1e7e5-59ff-4c7a-8af0-3dff4ec4cee2",
       "data": {
         "name": "db_reader_node_0",
-        "error": false,
-        "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"db_reader_node_0\",\n  \"length\": 3,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"float64\",\n    \"cohort_id\": \"float64\"\n  }\n}",
         "database": "demo_database",
         "sqlquery": "SELECT * FROM demo_cdm_results.nodetest",
         "testdata": [
@@ -200,8 +183,7 @@
             36
           ]
         ],
-        "description": "Read from database demo_database, table demo_cdm_results.nodetest to get the cohort members with person_id and cohort_id.",
-        "errorMessage": null
+        "description": "Read from database demo_database, table demo_cdm_results.nodetest to get the cohort members with person_id and cohort_id."
       },
       "type": "db_reader_node",
       "width": 350,
