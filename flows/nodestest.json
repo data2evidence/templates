@@ -1,6 +1,6 @@
 {
-  "name": "Nodestest",
-  "description": "Different types of nodes for testing, including r, python, py2table, sql, db reader/writer, generic file, csv nodes",
+  "name": "Nodes Test",
+  "description": "Test r, python, py2table, sql, db reader/writer, generic file, csv nodes",
   "edges": [
     {
       "id": "reactflow__edge-f39e43f1-5297-4def-a239-90420112b31bsource_f39e43f1-5297-4def-a239-90420112b31b_object-bfe6629e-7a9e-4cfc-80f2-36df8cf783a8target_bfe6629e-7a9e-4cfc-80f2-36df8cf783a8_object",
@@ -41,7 +41,7 @@
       "data": {
         "name": "python_node_0",
         "description": "Update dataframe to only include cohort members with cohort_id 36 and 49",
-        "python_code": "import pandas as pd                         \n                                        \ndef exec(myinput):\n    df = myinput[\"r_node_0\"].result                                                                                                                     \n    filtered = df[df[\"cohort_id\"].isin([36, 49])]\n    return {                                                                                                                                            \n        \"cohort_members\": filtered.to_dict(orient=\"records\")\n    } "
+          "python_code": "import pandas as pd           \nfrom typing import Any \n                                        \ndef exec(myinput: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:\n    df = myinput[\"r_node_0\"].result                                                                                                                     \n    filtered = df[df[\"cohort_id\"].isin([36, 49])]\n    return {                                                                                                                                            \n        \"cohort_members\": filtered.to_dict(orient=\"records\")\n    } "
       },
       "type": "python_node",
       "width": 350,
