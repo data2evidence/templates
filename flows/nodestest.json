@@ -1,0 +1,261 @@
+{
+  "name": "Nodes Test",
+  "description": "Test r, python, py2table, sql, db reader/writer, generic file, csv nodes",
+  "edges": [
+    {
+      "id": "reactflow__edge-f39e43f1-5297-4def-a239-90420112b31bsource_f39e43f1-5297-4def-a239-90420112b31b_object-bfe6629e-7a9e-4cfc-80f2-36df8cf783a8target_bfe6629e-7a9e-4cfc-80f2-36df8cf783a8_object",
+      "source": "f39e43f1-5297-4def-a239-90420112b31b",
+      "target": "bfe6629e-7a9e-4cfc-80f2-36df8cf783a8",
+      "selected": false,
+      "sourceHandle": "source_f39e43f1-5297-4def-a239-90420112b31b_object",
+      "targetHandle": "target_bfe6629e-7a9e-4cfc-80f2-36df8cf783a8_object"
+    },
+    {
+      "id": "reactflow__edge-bfe6629e-7a9e-4cfc-80f2-36df8cf783a8source_bfe6629e-7a9e-4cfc-80f2-36df8cf783a8_dataframe-6ba6d31d-80af-49c3-b52d-92ed5fb6e800target_6ba6d31d-80af-49c3-b52d-92ed5fb6e800_dataframe",
+      "source": "bfe6629e-7a9e-4cfc-80f2-36df8cf783a8",
+      "target": "6ba6d31d-80af-49c3-b52d-92ed5fb6e800",
+      "selected": false,
+      "sourceHandle": "source_bfe6629e-7a9e-4cfc-80f2-36df8cf783a8_dataframe",
+      "targetHandle": "target_6ba6d31d-80af-49c3-b52d-92ed5fb6e800_dataframe"
+    },
+    {
+      "id": "reactflow__edge-6ba6d31d-80af-49c3-b52d-92ed5fb6e800source_6ba6d31d-80af-49c3-b52d-92ed5fb6e800_dataframe-0b1cc19f-9fb3-49e5-b614-532d6f07a5a8target_0b1cc19f-9fb3-49e5-b614-532d6f07a5a8_dataframe",
+      "source": "6ba6d31d-80af-49c3-b52d-92ed5fb6e800",
+      "target": "0b1cc19f-9fb3-49e5-b614-532d6f07a5a8",
+      "selected": false,
+      "sourceHandle": "source_6ba6d31d-80af-49c3-b52d-92ed5fb6e800_dataframe",
+      "targetHandle": "target_0b1cc19f-9fb3-49e5-b614-532d6f07a5a8_dataframe"
+    },
+    {
+      "id": "reactflow__edge-afa5fe8a-f201-4e71-9511-dd8ee1a91396source_afa5fe8a-f201-4e71-9511-dd8ee1a91396_any-f39e43f1-5297-4def-a239-90420112b31btarget_f39e43f1-5297-4def-a239-90420112b31b_any",
+      "source": "afa5fe8a-f201-4e71-9511-dd8ee1a91396",
+      "target": "f39e43f1-5297-4def-a239-90420112b31b",
+      "selected": false,
+      "sourceHandle": "source_afa5fe8a-f201-4e71-9511-dd8ee1a91396_any",
+      "targetHandle": "target_f39e43f1-5297-4def-a239-90420112b31b_any"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "f39e43f1-5297-4def-a239-90420112b31b",
+      "data": {
+        "name": "python_node_0",
+        "description": "Update dataframe to only include cohort members with cohort_id 36 and 49",
+          "python_code": "import pandas as pd           \nfrom typing import Any \n                                        \ndef exec(myinput: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:\n    df = myinput[\"r_node_0\"].result                                                                                                                     \n    filtered = df[df[\"cohort_id\"].isin([36, 49])]\n    return {                                                                                                                                            \n        \"cohort_members\": filtered.to_dict(orient=\"records\")\n    } "
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": 210,
+        "y": 100
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": 210,
+        "y": 100
+      }
+    },
+    {
+      "id": "bfe6629e-7a9e-4cfc-80f2-36df8cf783a8",
+      "data": {
+        "map": {},
+        "name": "py2table_node_0",
+        "uiMap": {
+          "path": "$.cohort_members",
+          "source": "python_node_0"
+        },
+        "description": "Convert python node output to dataframe for cohort members"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": 650,
+        "y": 100
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": 650,
+        "y": 100
+      }
+    },
+    {
+      "id": "6ba6d31d-80af-49c3-b52d-92ed5fb6e800",
+      "data": {
+        "sql": "DROP TABLE IF EXISTS demo_cdm_results.nodetest;\nSELECT * FROM py2table_node_0\nORDER BY cohort_id ",
+        "name": "sql_node_0",
+        "description": "Execute SQL to create a new table nodetest in demo_cdm_results schema and select cohort members from py2table_node_0 and order them by cohort_id"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": 1090,
+        "y": 100
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": 1090,
+        "y": 100
+      }
+    },
+    {
+      "id": "0b1cc19f-9fb3-49e5-b614-532d6f07a5a8",
+      "data": {
+        "name": "db_writer_node_0",
+        "database": "demo_database",
+        "dataframe": "sql_node_0",
+        "schemaname": "demo_cdm_results",
+        "dbtablename": "nodetest",
+        "description": "Write the dataframe from sql_node_0 to database demo_database, schema demo_cdm_results, table nodetest."
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": 1560,
+        "y": 100
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": 1560,
+        "y": 100
+      }
+    },
+    {
+      "id": "afa5fe8a-f201-4e71-9511-dd8ee1a91396",
+      "data": {
+        "name": "r_node_0",
+        "r_code": "exec <- function(myinput) {                                                                                                                             \n  data.frame(                           \n    person_id = c(1, 2, 3, 4),                                                                                                                          \n    cohort_id = c(25, 49, 49, 36)                                                                                                                       \n  )                                                                                                                                                     \n}",
+        "description": "Create a dataframe with person_id and cohort_id."
+      },
+      "type": "r_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -220,
+        "y": 100
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -220,
+        "y": 100
+      }
+    },
+    {
+      "id": "baa1e7e5-59ff-4c7a-8af0-3dff4ec4cee2",
+      "data": {
+        "name": "db_reader_node_0",
+        "database": "demo_database",
+        "sqlquery": "SELECT * FROM demo_cdm_results.nodetest",
+        "testdata": [
+          [
+            2,
+            49
+          ],
+          [
+            3,
+            49
+          ],
+          [
+            4,
+            36
+          ]
+        ],
+        "description": "Read from database demo_database, table demo_cdm_results.nodetest to get the cohort members with person_id and cohort_id."
+      },
+      "type": "db_reader_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": 1990,
+        "y": 100
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": 1990,
+        "y": 100
+      }
+    },
+    {
+      "id": "d797bf8e-7843-4471-9d53-466f5bffb896",
+      "data": {
+        "file": "broadsea_person_200.csv",
+        "name": "file_node_0",
+        "encoding": "utf-8",
+        "description": "Upload a local file broadsea_person_200.csv and read it as a generic file node."
+      },
+      "type": "file_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": {
+        "x": -220,
+        "y": 410
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": -220,
+        "y": 410
+      }
+    },
+    {
+      "id": "9a326ef7-aafc-4065-8385-9cf4febc0a5d",
+      "data": {
+        "file": "broadsea_person_200.csv",
+        "name": "csv_node_0",
+        "columns": [],
+        "encoding": "utf-8",
+        "delimiter": ",",
+        "hasheader": true,
+        "description": "Upload a local file broadsea_person_200.csv and read it as a csv node, with the ability to specify columns, delimiter, encoding, and whether it has header or not."
+      },
+      "type": "csv_node",
+      "width": 354,
+      "height": 214,
+      "dragging": false,
+      "position": {
+        "x": 210,
+        "y": 410
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": {
+        "x": 210,
+        "y": 410
+      }
+    }
+  ],
+  "variables": [],
+  "importLibs": []
+}
