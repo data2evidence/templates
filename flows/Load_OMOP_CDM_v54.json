@@ -1,0 +1,115 @@
+{
+  "name": "Data Load OMOP CDM v5.4",
+  "description": "Load OMOP CDM v5.4 data from uploaded CSV files into database tables",
+  "edges": [
+    {
+      "id": "reactflow__edge-d494ea2d-05e0-4f18-acba-216d79d5b054source_d494ea2d-05e0-4f18-acba-216d79d5b054_any-96b63d5b-3f9e-4b6e-8667-950ed468215ftarget_96b63d5b-3f9e-4b6e-8667-950ed468215f_any",
+      "source": "d494ea2d-05e0-4f18-acba-216d79d5b054",
+      "target": "96b63d5b-3f9e-4b6e-8667-950ed468215f",
+      "sourceHandle": "source_d494ea2d-05e0-4f18-acba-216d79d5b054_any",
+      "targetHandle": "target_96b63d5b-3f9e-4b6e-8667-950ed468215f_any"
+    },
+    {
+      "id": "reactflow__edge-96b63d5b-3f9e-4b6e-8667-950ed468215fsource_96b63d5b-3f9e-4b6e-8667-950ed468215f_object-9afefa97-084a-4074-913b-c74e977188fbtarget_9afefa97-084a-4074-913b-c74e977188fb_any",
+      "source": "96b63d5b-3f9e-4b6e-8667-950ed468215f",
+      "target": "9afefa97-084a-4074-913b-c74e977188fb",
+      "sourceHandle": "source_96b63d5b-3f9e-4b6e-8667-950ed468215f_object",
+      "targetHandle": "target_9afefa97-084a-4074-913b-c74e977188fb_any"
+    },
+    {
+      "id": "reactflow__edge-2e0dc143-a89c-4a4c-9aa6-c3dd62682124source_2e0dc143-a89c-4a4c-9aa6-c3dd62682124_object-9afefa97-084a-4074-913b-c74e977188fbtarget_9afefa97-084a-4074-913b-c74e977188fb_any",
+      "source": "2e0dc143-a89c-4a4c-9aa6-c3dd62682124",
+      "target": "9afefa97-084a-4074-913b-c74e977188fb",
+      "sourceHandle": "source_2e0dc143-a89c-4a4c-9aa6-c3dd62682124_object",
+      "targetHandle": "target_9afefa97-084a-4074-913b-c74e977188fb_any"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "2e0dc143-a89c-4a4c-9aa6-c3dd62682124",
+      "data": {
+        "name": "TruncateTables",
+        "description": "Truncate tables by setting boolean flag",
+        "python_code": "def exec(myinput) -> dict[str, str]:\n  \"\"\"\n  Execute database table truncation and schema mapping for CDM and vocabulary tables.\n  \n  This function creates a mapping of OMOP CDM (Common Data Model) and vocabulary tables\n  to their respective database schemas, and optionally truncates these tables before\n  returning the mapping.\n  \n  Args:\n    myinput: Input parameter (currently unused, reserved for future functionality).\n    \n  Returns:\n    dict[str, str]: A dictionary mapping table names to their schema names.\n      Keys are table names (e.g., 'person', 'concept'), values are schema names.\n      \n  Raises:\n    Exception: If any tables fail truncation and skip_if_error is False, or if\n      truncation fails for any tables when skip_if_error is True (after attempting\n      all tables).\n      \n  Note:\n    - Requires global variables: cdm_schema, vocab_schema, database_code, truncate_tables, skip_truncate_if_error\n    - truncate_tables flag controls whether tables are truncated (default: True)\n    - skip_if_error flag controls error handling during truncation (default: False)\n  \"\"\"\n\n  # From shared variables\n  cdm_schema_var: str = cdm_schema \n  vocab_schema_var: str = vocab_schema\n  database_code_var: str = database_code\n  truncate_tables_var: bool = eval(truncate_tables) # If set to true, tables will be truncated\n  skip_if_error: bool = eval(skip_truncate_if_error) # If set to true, tables that failed to be truncated will be ignored\n\n  # List of OMOP CDM clinical data tables\n  cdm_table_list: list[str] = [\n    \"person\",\n    \"observation_period\",\n    \"visit_occurrence\",\n    \"visit_detail\",\n    \"condition_occurrence\",\n    \"drug_exposure\",\n    \"procedure_occurrence\",\n    \"device_exposure\",\n    \"measurement\",\n    \"observation\",\n    \"death\",\n    \"note\",\n    \"note_nlp\",\n    \"specimen\",\n    \"fact_relationship\",\n    \"location\",\n    \"care_site\",\n    \"provider\",\n    \"payer_plan_period\",\n    \"cost\",\n    \"drug_era\",\n    \"dose_era\",\n    \"condition_era\",\n    \"episode\",\n    \"episode_event\",\n    \"metadata\",\n    \"cdm_source\",\n    \"attribute_definition\"\n  ]\n\n  # List of OMOP vocabulary tables\n  vocab_table_list: list[str] = [\n    \"concept\",\n    \"vocabulary\",\n    \"domain\",\n    \"concept_class\",\n    \"concept_relationship\",\n    \"relationship\",\n    \"concept_synonym\",\n    \"concept_ancestor\",\n    \"source_to_concept_map\",\n    \"drug_strength\"\n  ]\n\n  # Mapping of table names to their respective schemas\n  table_schema_map: dict[str, str] = {\n    **{table: cdm_schema_var for table in cdm_table_list},\n    **{table: vocab_schema_var for table in vocab_table_list},\n  }\n\n  if truncate_tables:\n    truncate_success: dict[str, bool] = {}\n\n    dbdao = DBDao(use_cache_db=False, database_code=database_code_var)\n\n    for table, schema in table_schema_map.items():\n      try: \n        dbdao.truncate_table(schema, table)\n      except Exception as e:\n        truncate_success[table] = False\n        if skip_if_error:\n          continue\n        else:\n          raise\n      else:\n        truncate_success[table] = True\n\n    false_count = sum(1 for v in truncate_success.values() if v is False)\n    if false_count > 0:\n      false_keys = [k for k, v in truncate_success.items() if v is False]\n      raise Exception(f\"Some tables failed truncation: {false_keys}\")\n\n    return table_schema_map\n  return table_schema_map"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 100, "y": 160 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 100, "y": 160 }
+    },
+    {
+      "id": "d494ea2d-05e0-4f18-acba-216d79d5b054",
+      "data": {
+        "file": "",
+        "name": "UploadCDMData",
+        "encoding": "utf-8",
+        "description": "Upload zip file of OMOP CDM v5.3 CSVs to storage"
+      },
+      "type": "file_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 100, "y": -280 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 100, "y": -280 }
+    },
+    {
+      "id": "96b63d5b-3f9e-4b6e-8667-950ed468215f",
+      "data": {
+        "name": "LoadAndTransformFiles",
+        "description": "Load and transform source files into pandas dataframes",
+        "python_code": "import pandas as pd\nimport numpy as np\n\nfrom typing import Any, Dict\nfrom zipfile import ZipFile\nfrom pathlib import Path\n\n# Directory where downloaded and extracted files are stored\nDOWNLOADS_DIR = Path(\"/app/downloads\")\n\n\ndef exec(myinput: Dict[str, Any]) -> Dict[str, pd.DataFrame]:\n  \"\"\"\n  Main execution function to download, unzip, and load CDM data from uploaded files.\n  \n  This function retrieves the uploaded CDM data file from storage, extracts it,\n  and transforms all CSV files into pandas DataFrames.\n  \n  Args:\n    myinput: Dictionary containing workflow input data with 'UploadCDMData' key\n      that includes 'node_id' and 'filename' in its result.\n      \n  Returns:\n    Dict[str, pd.DataFrame]: Dictionary mapping table names (lowercase) to their\n      corresponding transformed DataFrames.\n      \n  Note:\n    - Requires global variables: encoding, delimiter\n    - Downloads file to DOWNLOADS_DIR\n    - Extracts zip contents to DOWNLOADS_DIR\n  \"\"\"\n  # Extract node_id and filename from workflow input\n  node_id: str = myinput.get(\"UploadCDMData\").result.get(\"node_id\")\n  filename: str = myinput.get(\"UploadCDMData\").result.get(\"filename\")\n\n  # Download the file from remote storage\n  download_file_from_storage(node_id, filename)\n  \n  # Extract the zip file contents\n  unzip_file(filename)\n\n  # Get encoding and delimiter from global configuration\n  encoding_var: str = encoding\n  delimiter_var: str = delimiter\n\n  # Determine the unzipped folder path (same name as zip file without extension)\n  unzipped_folder: Path = DOWNLOADS_DIR / Path(filename).stem\n  \n  # Load and transform all CSV files in the folder\n  return load_and_transform(unzipped_folder, encoding_var, delimiter_var)\n\n\ndef load_and_transform(folder: Path, encoding: str = \"utf-8\", delimiter: str = \",\") -> Dict[str, pd.DataFrame]:\n  \"\"\"\n  Read and transform all CSV files in a folder into DataFrames.\n  \n  This function iterates through all CSV files in the specified folder, reads each\n  into a pandas DataFrame, applies transformations, and returns a dictionary mapping\n  table names to their DataFrames.\n  \n  Args:\n    folder: Path to the directory containing CSV files.\n    encoding: Character encoding for reading CSV files (default: \"utf-8\").\n    delimiter: Field delimiter for CSV files (default: \",\").\n    \n  Returns:\n    Dict[str, pd.DataFrame]: Dictionary where keys are lowercase table names\n      (derived from CSV filenames) and values are transformed DataFrames.\n  \"\"\"\n  return {\n    file_path.stem.lower(): transform_data(\n      file_path.stem.lower(),\n      pd.read_csv(file_path, encoding=encoding, delimiter=delimiter),\n    )\n    for file_path in sorted(folder.iterdir())\n    if file_path.is_file() and file_path.suffix.lower() == \".csv\"\n  }\n\n\n\ndef transform_data(table: str, df: pd.DataFrame) -> pd.DataFrame:\n  \"\"\"\n  Apply table-specific transformations and standardize DataFrame format.\n  \n  This function applies data cleaning and standardization to OMOP CDM tables,\n  including filling null vocabulary IDs, removing empty columns, and normalizing\n  column names to lowercase.\n  \n  Args:\n    table: The name of the table (lowercase) being transformed.\n    df: The DataFrame to transform.\n    \n  Returns:\n    pd.DataFrame: The transformed DataFrame with:\n      - Filled VOCABULARY_ID for vocabulary and concept tables\n      - \"nan\" strings replaced with np.nan\n      - Empty columns removed\n      - Column names converted to lowercase\n  \"\"\"\n  # Fill missing VOCABULARY_ID for vocabulary and concept tables\n  if table in ('vocabulary', 'concept'):\n    df['VOCABULARY_ID'] = df['VOCABULARY_ID'].fillna('None')\n  \n  # Replace string \"nan\" with actual NaN values\n  df = df.replace(\"nan\", np.nan)\n  \n  # Remove columns that are entirely empty\n  df.dropna(axis=1, how='all', inplace=True)\n  \n  # Standardize column names to lowercase\n  df.columns = df.columns.str.lower()\n  \n  return df\n\n\ndef download_file_from_storage(node_id: str, filename: str) -> Path:\n  \"\"\"\n  Download a file from Supabase storage to the downloads directory.\n  \n  Args:\n    node_id: The storage node identifier where the file is located.\n    filename: The name of the file to download.\n    \n  Returns:\n    Path: The path to the downloaded file.\n  \"\"\"\n  storage_api = SupabaseStorageAPI()\n  return storage_api.download_file_to_path(node_id, filename, DOWNLOADS_DIR)\n\n\ndef unzip_file(zip_name: str) -> None:\n  \"\"\"\n  Extract contents of a zip file to the downloads directory.\n  \n  Args:\n    zip_name: The name of the zip file to extract (must exist in DOWNLOADS_DIR).\n    \n  Raises:\n    FileNotFoundError: If the specified zip file does not exist in DOWNLOADS_DIR.\n  \"\"\"\n  # Construct full path to the zip file\n  zip_path: Path = DOWNLOADS_DIR / zip_name\n\n  # Verify the zip file exists\n  if not zip_path.is_file():\n    raise FileNotFoundError(f\"'{zip_name}' not found in '{DOWNLOADS_DIR}'\")\n\n  # Extract all contents to the downloads directory\n  with ZipFile(zip_path, \"r\") as zf:\n    zf.extractall(DOWNLOADS_DIR)"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 630, "y": -160 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 630, "y": -160 }
+    },
+    {
+      "id": "9afefa97-084a-4074-913b-c74e977188fb",
+      "data": {
+        "name": "IngestTables",
+        "description": "Ingest into OMOP CDM tables",
+        "python_code": "from typing import Any, Dict, Optional\nimport pandas as pd\n\n\ndef exec(myinput: Dict[str, Any]) -> None:\n  \"\"\"\n  Ingest CDM DataFrames into their corresponding database tables.\n  \n  This function takes transformed OMOP CDM DataFrames and inserts them into\n  the appropriate database schemas using SQLAlchemy's to_sql method.\n  \n  Args:\n    myinput: Dictionary containing workflow results with:\n      - 'LoadAndTransformFiles': Contains 'result' with Dict[str, pd.DataFrame]\n        mapping table names to their DataFrames\n      - 'TruncateTables': Contains 'result' with Dict[str, str] mapping\n        table names to their schema names\n        \n  Returns:\n    None\n    \n  Note:\n    - Requires global variables: cdm_schema, vocab_schema, database_code\n    - Requires DBDao class to be available in scope\n    - Uses 'append' mode for table insertion\n    - Disposes database connection after completion\n  \"\"\"\n  # Extract the dictionary of DataFrames from the LoadAndTransformFiles step\n  df_list: Dict[str, pd.DataFrame] = myinput.get(\"LoadAndTransformFiles\").result\n  \n  # Extract the table-to-schema mapping from the TruncateTables step\n  table_schema_map: Dict[str, str] = myinput.get(\"TruncateTables\").result\n\n  # Get configuration from global variables\n  database_code_var: str = database_code\n  cdm_schema_var: str = cdm_schema \n  vocab_schema_var: str = vocab_schema\n  \n\n  # Initialize database connection (not using cache database)\n  dbdao = DBDao(use_cache_db=False, database_code=database_code_var)\n  dbconn = dbdao.engine\n\n  # Insert each DataFrame into its corresponding database table\n  for table, df in df_list.items():\n    # Insert DataFrame into the database table\n    # - Uses the schema from table_schema_map\n    # - Appends to existing data (table should already be truncated)\n    # - Does not include DataFrame index as a column\n    result: Optional[int] = df.to_sql(\n      table, \n      dbconn, \n      schema=table_schema_map[table],\n      if_exists='append',\n      index=False\n    )\n  \n  # Clean up database connection\n  dbconn.dispose()"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1110, "y": -40 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1110, "y": -40 }
+    }
+  ],
+  "variables": [
+    { "key": "database_code", "value": "demo_database" },
+    { "key": "cdm_schema", "value": "cdmdefault" },
+    { "key": "vocab_schema", "value": "cdmdefault" },
+    { "key": "delimiter", "value": "," },
+    { "key": "encoding", "value": "utf+8" },
+    { "key": "truncate_tables", "value": "True" },
+    { "key": "skip_truncate_if_error", "value": "True" }
+  ],
+  "importLibs": [
+    "from _shared_flow_utils.dao.DBDao import DBDao",
+    "from _shared_flow_utils.api.SupabaseStorageAPI import SupabaseStorageAPI"
+  ]
+}
