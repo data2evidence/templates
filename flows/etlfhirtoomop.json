@@ -2034,7 +2034,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_10",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"observation\"\n    source_col = \"observation_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"observation\"\n    source_col = \"observation_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2058,7 +2058,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_11",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"person\"\n    source_col = \"person_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"person\"\n    source_col = \"person_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2082,7 +2082,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_12",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"condition_occurrence\"\n    source_col = \"condition_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"condition_occurrence\"\n    source_col = \"condition_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2106,7 +2106,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_13",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"visit_occurrence\"\n    source_col = \"visit_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"visit_occurrence\"\n    source_col = \"visit_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2130,7 +2130,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_14",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"drug_exposure\"\n    source_col = \"drug_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"drug_exposure\"\n    source_col = \"drug_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2154,7 +2154,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_15",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"measurement\"\n    source_col = \"measurement_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"measurement\"\n    source_col = \"measurement_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2178,7 +2178,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_16",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"drug_exposure\"\n    source_col = \"drug_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"drug_exposure\"\n    source_col = \"drug_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2202,7 +2202,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_17",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"observation\"\n    source_col = \"observation_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"observation\"\n    source_col = \"observation_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2226,7 +2226,7 @@
             "data": {
                 "name": "Truncate_OMOP_cdm_tables",
                 "description": "Describe the task of node python_node_18",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    table_name = \"procedure_occurrence\"\n    source_col = \"procedure_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"procedure_occurrence\"\n    source_col = \"procedure_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
             },
             "type": "python_node",
             "width": 350,
@@ -2250,7 +2250,7 @@
             "data": {
                 "name": "Truncate_omop_tables",
                 "description": "Describe the task of node python_node_19",
-                "python_code": "def exec(myinput):\n    dbdao = DBDao(use_cache_db=False, database_code=database_code)\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"observation\")\n    dbdao.truncate_table(cdm_schema, \"measurement\")\n    dbdao.truncate_table(cdm_schema, \"person\")\n    dbdao.truncate_table(cdm_schema, \"visit_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"procedure_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"drug_exposure\")\n    dbdao.truncate_table(cdm_schema, \"condition_occurrence\")\n    return \"true\" "
+                "python_code": "def exec(myinput):\n    dbdao = DBDao(database_code=database_code)\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"observation\")\n    dbdao.truncate_table(cdm_schema, \"measurement\")\n    dbdao.truncate_table(cdm_schema, \"person\")\n    dbdao.truncate_table(cdm_schema, \"visit_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"procedure_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"drug_exposure\")\n    dbdao.truncate_table(cdm_schema, \"condition_occurrence\")\n    return \"true\" "
             },
             "type": "python_node",
             "width": 354,
