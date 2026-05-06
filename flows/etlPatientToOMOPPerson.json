@@ -1,0 +1,322 @@
+{
+    "id": "e37ef214-e661-4d17-ae2f-e38cf5c03a7b",
+    "name": "Transform FHIR Resource type Patient to OMOP Person",
+    "edges": [
+        {
+            "id": "reactflow__edge-9b834865-b421-4e6b-adb1-362db6e900a2source_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe-e696b11f-1d31-42ec-a3f2-370d3f958707target_e696b11f-1d31-42ec-a3f2-370d3f958707_any",
+            "source": "9b834865-b421-4e6b-adb1-362db6e900a2",
+            "target": "e696b11f-1d31-42ec-a3f2-370d3f958707",
+            "selected": false,
+            "sourceHandle": "source_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe",
+            "targetHandle": "target_e696b11f-1d31-42ec-a3f2-370d3f958707_any"
+        },
+        {
+            "id": "reactflow__edge-d7f46d76-5840-4248-bc64-351d53ce6e5dsource_d7f46d76-5840-4248-bc64-351d53ce6e5d_dataframe-d71fbbc1-1c00-4a30-b20e-53a8db379867target_d71fbbc1-1c00-4a30-b20e-53a8db379867_any",
+            "source": "d7f46d76-5840-4248-bc64-351d53ce6e5d",
+            "target": "d71fbbc1-1c00-4a30-b20e-53a8db379867",
+            "sourceHandle": "source_d7f46d76-5840-4248-bc64-351d53ce6e5d_dataframe",
+            "targetHandle": "target_d71fbbc1-1c00-4a30-b20e-53a8db379867_any"
+        },
+        {
+            "id": "reactflow__edge-d71fbbc1-1c00-4a30-b20e-53a8db379867source_d71fbbc1-1c00-4a30-b20e-53a8db379867_object-380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320target_380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320_object",
+            "source": "d71fbbc1-1c00-4a30-b20e-53a8db379867",
+            "target": "380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320",
+            "sourceHandle": "source_d71fbbc1-1c00-4a30-b20e-53a8db379867_object",
+            "targetHandle": "target_380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320_object"
+        },
+        {
+            "id": "reactflow__edge-380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320source_380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320_dataframe-9b834865-b421-4e6b-adb1-362db6e900a2target_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe",
+            "source": "380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320",
+            "target": "9b834865-b421-4e6b-adb1-362db6e900a2",
+            "sourceHandle": "source_380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320_dataframe",
+            "targetHandle": "target_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe"
+        },
+        {
+            "id": "reactflow__edge-e696b11f-1d31-42ec-a3f2-370d3f958707source_e696b11f-1d31-42ec-a3f2-370d3f958707_object-5630482b-10d0-42af-9cb9-fb324cd2bba2target_5630482b-10d0-42af-9cb9-fb324cd2bba2_object",
+            "source": "e696b11f-1d31-42ec-a3f2-370d3f958707",
+            "target": "5630482b-10d0-42af-9cb9-fb324cd2bba2",
+            "sourceHandle": "source_e696b11f-1d31-42ec-a3f2-370d3f958707_object",
+            "targetHandle": "target_5630482b-10d0-42af-9cb9-fb324cd2bba2_object"
+        },
+        {
+            "id": "reactflow__edge-5630482b-10d0-42af-9cb9-fb324cd2bba2source_5630482b-10d0-42af-9cb9-fb324cd2bba2_dataframe-77408cc4-7c84-43a2-ab5a-26e2709bf062target_77408cc4-7c84-43a2-ab5a-26e2709bf062_dataframe",
+            "source": "5630482b-10d0-42af-9cb9-fb324cd2bba2",
+            "target": "77408cc4-7c84-43a2-ab5a-26e2709bf062",
+            "sourceHandle": "source_5630482b-10d0-42af-9cb9-fb324cd2bba2_dataframe",
+            "targetHandle": "target_77408cc4-7c84-43a2-ab5a-26e2709bf062_dataframe"
+        },
+        {
+            "id": "reactflow__edge-77408cc4-7c84-43a2-ab5a-26e2709bf062source_77408cc4-7c84-43a2-ab5a-26e2709bf062_any-d8fa508e-1860-4c2b-85b9-1061c576534ftarget_d8fa508e-1860-4c2b-85b9-1061c576534f_any",
+            "source": "77408cc4-7c84-43a2-ab5a-26e2709bf062",
+            "target": "d8fa508e-1860-4c2b-85b9-1061c576534f",
+            "sourceHandle": "source_77408cc4-7c84-43a2-ab5a-26e2709bf062_any",
+            "targetHandle": "target_d8fa508e-1860-4c2b-85b9-1061c576534f_any"
+        }
+    ],
+    "nodes": [
+        {
+            "id": "d7f46d76-5840-4248-bc64-351d53ce6e5d",
+            "data": {
+                "name": "get_fhir_patients",
+                "error": false,
+                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"get_fhir_patients\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
+                "database": "d2e_fhir",
+                "sqlquery": "select content from \"fhir\".\"Patient\"",
+                "testdata": [
+                    []
+                ],
+                "description": "Describe the task of node db_reader_node_0",
+                "errorMessage": null
+            },
+            "type": "db_reader_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -1100,
+                "y": 70
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -1100,
+                "y": 70
+            }
+        },
+        {
+            "id": "9b834865-b421-4e6b-adb1-362db6e900a2",
+            "data": {
+                "id": "PersonMap",
+                "name": "transform_to_person",
+                "error": false,
+                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"transform_to_person\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"object\",\n    \"gender_concept_id\": \"int64\",\n    \"year_of_birth\": \"int64\",\n    \"race_concept_id\": \"int64\",\n    \"ethnicity_concept_id\": \"int64\"\n  }\n}",
+                "dataframe": "py2table_node_0",
+                "description": "Describe the task of node transform_fhir_data_node_0",
+                "errorMessage": null,
+                "structure_map": "{\n  \"resourceType\": \"StructureMap\",\n  \"id\": \"PersonMap\",\n  \"text\": {\n    \"status\": \"generated\",\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><p class=\\\"res-header-id\\\"><b>Generated Narrative: StructureMap PersonMap</b></p><a name=\\\"PersonMap\\\"> </a><a name=\\\"hcPersonMap\\\"> </a><pre class=\\\"fml\\\">\\r\\n<span style=\\\"color: #cc00cc\\\">/// <b>url</b> = </span><span style=\\\"color: blue\\\">'http://hl7.org/fhir/uv/omop/StructureMap/PersonMap'</span>\\r\\n<span style=\\\"color: #cc00cc\\\">/// <b>name</b> = </span><span style=\\\"color: blue\\\">'PersonMap'</span>\\r\\n<span style=\\\"color: #cc00cc\\\">/// <b>title</b> = </span><span style=\\\"color: blue\\\">'Mapping Patient resource to Person OMOP Domain'</span>\\r\\n<span style=\\\"color: #cc00cc\\\">/// <b>status</b> = </span><span style=\\\"color: blue\\\">'draft'</span>\\r\\n\\r\\n<b>uses</b><span style=\\\"color: navy\\\"> &quot;</span><a href=\\\"http://hl7.org/fhir/R5/patient.html\\\" title=\\\"Patient\\\">http://hl7.org/fhir/StructureDefinition/Patient</a><span style=\\\"color: navy\\\">&quot; </span><b>alias </b>Patient <b>as </b><b>source</b>\\r\\n<b>uses</b><span style=\\\"color: navy\\\"> &quot;</span><a href=\\\"StructureDefinition-Person.html\\\" title=\\\"Person OMOP Table\\\">http://hl7.org/fhir/uv/omop/StructureDefinition/Person</a><span style=\\\"color: navy\\\">&quot; </span><b>alias </b>PersonTable <b>as </b><b>target</b>\\r\\n\\r\\n<b>group </b>Person<span style=\\\"color: navy\\\">(</span><b>source</b> <span style=\\\"color: maroon\\\">src</span><span style=\\\"color: navy\\\"> : </span>Patient, <b>target</b> <span style=\\\"color: maroon\\\">tgt</span><span style=\\\"color: navy\\\"> : </span>PersonTable<span style=\\\"color: navy\\\">)</span><span style=\\\"color: navy\\\"> {\\r\\n</span>  src.gender<b> as </b><span style=\\\"color: maroon\\\">gender</span><span style=\\\"color: navy\\\"><b> -&gt; </b></span> tgt.gender_concept_id = <span style=\\\"color: maroon\\\">gender</span><span style=\\\"color: navy\\\">, </span> tgt.gender_source_value = <b>cast</b><span style=\\\"color: navy\\\">(</span><span style=\\\"color: maroon\\\">gender</span><span style=\\\"color: navy\\\">, </span><span style=\\\"color: blue\\\">'string'</span><span style=\\\"color: navy\\\">)</span><span style=\\\"color: navy\\\">;</span> <span style=\\\"color: navy\\\">// </span><span style=\\\"color: green\\\">src.id as id -&gt; tgt.person_id = cast(id, &quot;integer&quot;);</span>\\r\\n  src.birthDate<b> as </b><span style=\\\"color: maroon\\\">bdSrc</span><span style=\\\"color: navy\\\"><b> -&gt; </b></span> tgt.birth_datetime = <span style=\\\"color: maroon\\\">bdSrc</span><span style=\\\"color: navy\\\">, </span> tgt.year_of_birth = <span style=\\\"color: navy\\\">(</span>src.birthDate.toString().substring(0, 4)<span style=\\\"color: navy\\\">)</span><span style=\\\"color: navy\\\">, </span> tgt.month_of_birth = <span style=\\\"color: navy\\\">(</span>src.birthDate.toString().substring(5, 2)<span style=\\\"color: navy\\\">)</span><span style=\\\"color: navy\\\">, </span> tgt.day_of_birth = <span style=\\\"color: navy\\\">(</span>src.birthDate.toString().substring(8, 2)<span style=\\\"color: navy\\\">)</span><span style=\\\"color: navy\\\">;</span>\\r\\n<span style=\\\"color: navy\\\">}\\r\\n\\r\\n</span></pre></div>\"\n  },\n  \"extension\": [\n    {\n      \"url\": \"http://hl7.org/fhir/StructureDefinition/structuredefinition-wg\",\n      \"valueCode\": \"brr\"\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm\",\n      \"valueInteger\": 1,\n      \"_valueInteger\": {\n        \"extension\": [\n          {\n            \"url\": \"http://hl7.org/fhir/StructureDefinition/structuredefinition-conformance-derivedFrom\",\n            \"valueCanonical\": \"http://hl7.org/fhir/uv/omop/ImplementationGuide/hl7.fhir.uv.omop\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status\",\n      \"valueCode\": \"informative\",\n      \"_valueCode\": {\n        \"extension\": [\n          {\n            \"url\": \"http://hl7.org/fhir/StructureDefinition/structuredefinition-conformance-derivedFrom\",\n            \"valueCanonical\": \"http://hl7.org/fhir/uv/omop/ImplementationGuide/hl7.fhir.uv.omop\"\n          }\n        ]\n      }\n    }\n  ],\n  \"url\": \"http://hl7.org/fhir/uv/omop/StructureMap/PersonMap\",\n  \"version\": \"1.0.0-ballot\",\n  \"name\": \"PersonMap\",\n  \"title\": \"Mapping Patient resource to Person OMOP Domain\",\n  \"status\": \"draft\",\n  \"date\": \"2025-07-29T17:40:15+00:00\",\n  \"publisher\": \"HL7 International / Biomedical Research and Regulation\",\n  \"contact\": [\n    {\n      \"name\": \"HL7 International / Biomedical Research and Regulation\",\n      \"telecom\": [\n        {\n          \"system\": \"url\",\n          \"value\": \"http://www.hl7.org/Special/committees/rcrim\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"This mapping maps FHIR Patient instances to OMOP Person Table objects.\",\n  \"jurisdiction\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"http://unstats.un.org/unsd/methods/m49/m49.htm\",\n          \"code\": \"001\",\n          \"display\": \"World\"\n        }\n      ]\n    }\n  ],\n  \"structure\": [\n    {\n      \"url\": \"http://hl7.org/fhir/StructureDefinition/Patient\",\n      \"mode\": \"source\",\n      \"alias\": \"Patient\"\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/uv/omop/StructureDefinition/Person\",\n      \"mode\": \"target\",\n      \"alias\": \"PersonTable\"\n    }\n  ],\n  \"group\": [\n    {\n      \"name\": \"Person\",\n      \"input\": [\n        {\n          \"name\": \"src\",\n          \"type\": \"Patient\",\n          \"mode\": \"source\"\n        },\n        {\n          \"name\": \"tgt\",\n          \"type\": \"PersonTable\",\n          \"mode\": \"target\"\n        }\n      ],\n      \"rule\": [\n        {\n          \"name\": \"person_id\",\n          \"source\": [\n            {\n              \"context\": \"src\",\n              \"element\": \"id\",\n              \"variable\": \"patientId\"\n            }\n          ],\n          \"target\": [\n            {\n              \"context\": \"tgt\",\n              \"element\": \"person_id\",\n              \"transform\": \"copy\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"patientId\"\n                }\n              ]\n            },\n            {\n              \"context\": \"tgt\",\n              \"element\": \"person_source_value\",\n              \"transform\": \"copy\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"patientId\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"name\": \"gender\",\n          \"source\": [\n            {\n              \"context\": \"src\",\n              \"element\": \"gender\",\n              \"variable\": \"gender\"\n            }\n          ],\n          \"target\": [\n            {\n              \"context\": \"tgt\",\n              \"element\": \"gender_concept_id\",\n              \"transform\": \"copy\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"gender\"\n                }\n              ]\n            },\n            {\n              \"context\": \"tgt\",\n              \"element\": \"gender_source_value\",\n              \"transform\": \"copy\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"gender\"\n                },\n                {\n                  \"valueString\": \"string\"\n                }\n              ]\n            }\n          ],\n          \"documentation\": \"src.id as id -> tgt.person_id = cast(id, \\\"integer\\\");\"\n        },\n        {\n          \"name\": \"birthDate\",\n          \"source\": [\n            {\n              \"context\": \"src\",\n              \"element\": \"birthDate\",\n              \"variable\": \"bdSrc\"\n            }\n          ],\n          \"target\": [\n            {\n              \"context\": \"tgt\",\n              \"element\": \"birth_datetime\",\n              \"transform\": \"copy\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"bdSrc\"\n                }\n              ]\n            },\n            {\n              \"context\": \"tgt\",\n              \"element\": \"year_of_birth\",\n              \"transform\": \"evaluate\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"src\"\n                },\n                {\n                  \"valueString\": \"birthDate.substring(0,4)\"\n                }\n              ]\n            },\n            {\n              \"context\": \"tgt\",\n              \"element\": \"month_of_birth\",\n              \"transform\": \"evaluate\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"src\"\n                },\n                {\n                  \"valueString\": \"birthDate.substring(5,2)\"\n                }\n              ]\n            },\n            {\n              \"context\": \"tgt\",\n              \"element\": \"day_of_birth\",\n              \"transform\": \"evaluate\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"src\"\n                },\n                {\n                  \"valueString\": \"birthDate.substring(8,2)\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"name\": \"raceConcept\",\n          \"source\": [\n            {\n              \"context\": \"src\",\n              \"element\": \"extension.where(url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race').extension.valueCoding.display\",\n              \"variable\": \"race\"\n            }\n          ],\n          \"target\": [\n            {\n              \"context\": \"tgt\",\n              \"element\": \"race_concept_id\",\n              \"transform\": \"copy\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"race\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"name\": \"ethnicity_concept_id\",\n          \"documentation\": \"Map FHIR US Core ethnicity extension to OMOP person.ethnicity_concept_id\",\n          \"source\": [\n            {\n              \"context\": \"src\",\n              \"element\": \"extension.where(url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity').extension.where(url = 'ombCategory').valueCoding.code\",\n              \"variable\": \"ethnicityCode\"\n            }\n          ],\n          \"target\": [\n            {\n              \"context\": \"tgt\",\n              \"element\": \"ethnicity_concept_id\",\n              \"transform\": \"copy\",\n              \"parameter\": [\n                {\n                  \"valueId\": \"ethnicityCode\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                "output_omop_data": ""
+            },
+            "type": "transform_fhir_data_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 180,
+                "y": 70
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 180,
+                "y": 70
+            }
+        },
+        {
+            "id": "e696b11f-1d31-42ec-a3f2-370d3f958707",
+            "data": {
+                "name": "assign_id_to_omop_id_column",
+                "error": false,
+                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"assign_id_to_omop_id_column\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"int64\",\n    \"gender_concept_id\": \"int64\",\n    \"year_of_birth\": \"int64\",\n    \"race_concept_id\": \"int64\",\n    \"ethnicity_concept_id\": \"int64\"\n  }\n}",
+                "description": "Describe the task of node python_node_0",
+                "python_code": "import pandas as pd\nimport psycopg2.sql as pg_sql\nfrom _shared_flow_utils.types import SupportedDatabaseDialects\nfrom _shared_flow_utils.dao.DBDao import DBDao\n\nDEFAULTS = {\n    \"gender_concept_id\": 0,\n    \"year_of_birth\": 0,\n    \"race_concept_id\": 0,\n    \"ethnicity_concept_id\": 0,\n}\n\ndef get_max_person_id(dao, schema_name: str) -> int:\n    if not dao.check_table_exists(schema_name, \"person\"):\n        return 0\n\n    query = pg_sql.SQL(\n        \"SELECT COALESCE(MAX(person_id), 0) FROM {schema}.{table}\"\n    ).format(\n        schema=pg_sql.Identifier(schema_name),\n        table=pg_sql.Identifier(\"person\"),\n    )\n    rows = dao.execute_sql(query, fetch=True)\n    return int(rows[0][0]) if rows else 0\n\ndef exec(myinput):\n    df = myinput.get(\"transform_to_person\").result\n\n    if df is None or df.empty:\n        return df\n\n    if not database_code or not schema_name:\n        raise ValueError(\"`database_code` and `schema_name` must be provided in myinput\")\n\n    dao = DBDao(\n        dialect=SupportedDatabaseDialects.TREX,\n        use_cache_db=False,\n        database_code=database_code,\n    )\n\n    for col, default in DEFAULTS.items():\n        if col not in df.columns:\n            df[col] = default\n        else:\n            df[col] = df[col].fillna(default)\n\n    if \"person_id\" not in df.columns:\n        df[\"person_id\"] = pd.NA\n\n    df = df.copy()\n    df[\"person_id\"] = pd.to_numeric(df[\"person_id\"], errors=\"coerce\")\n\n    max_existing_id = get_max_person_id(dao, schema_name)\n    next_id = max_existing_id + 1\n\n    # 1) Fill missing IDs\n    missing_mask = df[\"person_id\"].isna()\n    missing_count = int(missing_mask.sum())\n    if missing_count > 0:\n        df.loc[missing_mask, \"person_id\"] = list(range(next_id, next_id + missing_count))\n        next_id += missing_count\n\n    # 2) Replace IDs that are duplicated within incoming batch\n    duplicated_in_batch = df[\"person_id\"].duplicated(keep=\"first\")\n    dup_count = int(duplicated_in_batch.sum())\n    if dup_count > 0:\n        df.loc[duplicated_in_batch, \"person_id\"] = list(range(next_id, next_id + dup_count))\n        next_id += dup_count\n\n    # 3) Replace IDs that collide with existing DB IDs\n    existing_query = pg_sql.SQL(\"SELECT person_id FROM {schema}.{table}\").format(\n        schema=pg_sql.Identifier(schema_name),\n        table=pg_sql.Identifier(\"person\"),\n    )\n    existing_rows = dao.execute_sql(existing_query, fetch=True) if dao.check_table_exists(schema_name, \"person\") else []\n    existing_ids = {int(row[0]) for row in existing_rows}\n\n    collision_mask = df[\"person_id\"].astype(\"Int64\").isin(existing_ids)\n    collision_count = int(collision_mask.sum())\n    if collision_count > 0:\n        df.loc[collision_mask, \"person_id\"] = list(range(next_id, next_id + collision_count))\n        next_id += collision_count\n\n    df[\"person_id\"] = df[\"person_id\"].astype(int)\n    return df",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 610,
+                "y": 70
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 610,
+                "y": 70
+            }
+        },
+        {
+            "id": "d71fbbc1-1c00-4a30-b20e-53a8db379867",
+            "data": {
+                "name": "flilter_new_mappings",
+                "error": false,
+                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"flilter_new_mappings\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
+                "description": "Describe the task of node python_node_1",
+                "python_code": "from _shared_flow_utils.dao.DBDao import DBDao\nfrom _shared_flow_utils.types import SupportedDatabaseDialects\nimport psycopg2.sql as pg_sql                                                                                              \n                                                                                                                            \ndef exec(myinput):\n    data = myinput.get(\"get_fhir_patients\").result  # DataFrame                                                                       \n\n    schema = f\"{database_code}_{schema_name}_fhir_mapping\"                                                                 \n    table = \"fhir_omop_key_map\"\n\n    dao = DBDao(\n            dialect=SupportedDatabaseDialects.TREX,\n            use_cache_db=False,\n            database_code=database_code,\n        )                                                                                                    \n\n    if not dao.check_schema_exists(schema) or not dao.check_table_exists(schema, table):                                   \n        return data\n                                                                                                                            \n    patient_ids = (\n        data[\"id\"].dropna().unique().tolist()\n    ) if \"id\" in data.columns else []                                                                                      \n\n    if not patient_ids:                                                                                                    \n        return data\n                                                                                                                            \n    # Fetch all Patient fhir_ids already in the mapping table\n    query = dao.execute_sql(f\"SELECT fhir_id FROM {schema}.{table} WHERE fhir_resource_type = 'Patient'\").format(\n        schema=pg_sql.Identifier(schema),                                                                                  \n        table=pg_sql.Identifier(table),\n    )                                                                                                                      \n    rows = dao.execute_sql(query, fetch=True)\n    already_mapped = {row[0] for row in rows}                                                                              \n                                                                                                                            \n    unmapped_ids = [pid for pid in patient_ids if pid not in already_mapped]\n    filtered_data = data[data[\"id\"].isin(unmapped_ids)]                                                                    \n    print(filtered_data)                                                                                             \n    return filtered_data",
+                "errorMessage": null
+            },
+            "type": "python_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -670,
+                "y": 70
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -670,
+                "y": 70
+            }
+        },
+        {
+            "id": "380fc5d3-7f5c-46f0-81ee-3dbe7c3a5320",
+            "data": {
+                "map": {},
+                "name": "py2table_node_0",
+                "error": false,
+                "uiMap": {
+                    "path": "$",
+                    "source": "flilter_new_mappings"
+                },
+                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"py2table_node_0\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"content\": \"object\"\n  }\n}",
+                "description": "Describe the task of node py2table_node_0",
+                "errorMessage": null
+            },
+            "type": "py2table_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": -260,
+                "y": 70
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": -260,
+                "y": 70
+            }
+        },
+        {
+            "id": "77408cc4-7c84-43a2-ab5a-26e2709bf062",
+            "data": {
+                "name": "write_to_cdm_person",
+                "error": false,
+                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"write_to_cdm_person\",\n  \"length\": null,\n  \"type\": \"<class 'int'>\"\n}",
+                "database": "demo_database",
+                "dataframe": "py2table_node",
+                "schemaname": "demo_cdm",
+                "dbtablename": "person",
+                "description": "Describe the task of node db_writer_node_0",
+                "errorMessage": null
+            },
+            "type": "db_writer_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 1520,
+                "y": 70
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 1520,
+                "y": 70
+            }
+        },
+        {
+            "id": "5630482b-10d0-42af-9cb9-fb324cd2bba2",
+            "data": {
+                "map": {},
+                "name": "py2table_node",
+                "error": false,
+                "uiMap": {
+                    "path": "$",
+                    "source": "assign_id_to_omop_id_column"
+                },
+                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"py2table_node\",\n  \"length\": 1,\n  \"type\": \"<class 'pandas.core.frame.DataFrame'>\",\n  \"schema\": {\n    \"person_id\": \"int64\",\n    \"gender_concept_id\": \"int64\",\n    \"year_of_birth\": \"int64\",\n    \"race_concept_id\": \"int64\",\n    \"ethnicity_concept_id\": \"int64\"\n  }\n}",
+                "description": "Describe the task of node py2table_node_1",
+                "errorMessage": null
+            },
+            "type": "py2table_node",
+            "width": 350,
+            "height": 210,
+            "dragging": false,
+            "position": {
+                "x": 1060,
+                "y": 70
+            },
+            "selected": false,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 1060,
+                "y": 70
+            }
+        },
+        {
+            "id": "d8fa508e-1860-4c2b-85b9-1061c576534f",
+            "data": {
+                "name": "fhir_mapping_node",
+                "error": false,
+                "result": "{\n  \"error\": false,\n  \"errorMessage\": null,\n  \"nodeName\": \"fhir_mapping_node\",\n  \"length\": 2,\n  \"type\": \"<class 'dict'>\",\n  \"schema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"inserted\": {\n        \"type\": \"integer\"\n      },\n      \"updated\": {\n        \"type\": \"integer\"\n      }\n    }\n  }\n}",
+                "description": "Describe the task of node fhir_mapping_node_1",
+                "schema_name": "demo_cdm",
+                "errorMessage": null,
+                "database_code": "demo_database",
+                "omop_table_name": "person",
+                "fhir_resource_type": "Patient"
+            },
+            "type": "fhir_mapping_node",
+            "width": 354,
+            "height": 214,
+            "dragging": false,
+            "position": {
+                "x": 1990,
+                "y": 60
+            },
+            "selected": true,
+            "dragHandle": "",
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "positionAbsolute": {
+                "x": 1990,
+                "y": 60
+            }
+        }
+    ],
+    "variables": [
+        {
+            "key": "database_code",
+            "value": "demo_database"
+        },
+        {
+            "key": "schema_name",
+            "value": "demo_cdm"
+        },
+        {
+            "key": "omop_table",
+            "value": "person"
+        },
+        {
+            "key": "omop_id_col",
+            "value": "person_id"
+        },
+        {
+            "key": "omop_source_value_col",
+            "value": "person_source_value"
+        },
+        {
+            "key": "fhir_resource_type",
+            "value": "Patient"
+        }
+    ],
+    "importLibs": []
+}

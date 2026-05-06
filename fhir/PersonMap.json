@@ -112,6 +112,16 @@
                                     "valueId": "patientId"
                                 }
                             ]
+                        },
+                        {
+                            "context": "tgt",
+                            "element": "person_source_value",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "patientId"
+                                }
+                            ]
                         }
                     ]
                 },
