@@ -112,13 +112,11 @@
             "id": "cacfa438-5766-4a57-bad2-71b3801bc1b8",
             "data": {
                 "name": "insert_into_omop_table",
-                "error": false,
                 "database": "demo_database",
                 "dataframe": "py2table",
                 "schemaname": "demo_cdm",
                 "dbtablename": "measurement",
-                "description": "Insert the records into omop measurement table",
-                "errorMessage": null
+                "description": "Insert the records into omop measurement table"
             },
             "type": "db_writer_node",
             "width": 350,
@@ -171,8 +169,10 @@
             "id": "4a0790fd-2758-470a-8fda-f3e8fdae71f3",
             "data": {
                 "name": "normalize_and_assign_person_id",
+                "error": false,
                 "description": "Convert column wise data to tabular",
-                "python_code": "EQ_VAS_CONCEPT_ID = 42537274\n\n\ndef _unwrap_input_value(value):\n    return value.result if hasattr(value, \"result\") else value\n\n\ndef extract_patient_ref(value):\n    if isinstance(value, dict):\n        return value.get(\"reference\") or value.get(\"id\") or str(value)\n    return str(value) if value is not None else None\n\n\ndef normalize_fhir_id(value):\n    if value is None:\n        return None\n    s = str(value).strip()\n    if not s:\n        return None\n    if \"/\" in s:\n        s = s.split(\"/\")[-1]\n    return s\n\n\ndef load_person_id_map(database_code: str, schema_name: str) -> dict[str, int]:\n    mapping_schema = f\"{database_code}_{schema_name}_fhir_mapping\"\n    dao = DBDao(\n        dialect=SupportedDatabaseDialects.TREX,\n        use_cache_db=False,\n        database_code=database_code,\n    )\n    escaped_schema = mapping_schema.replace('\"', '\"\"')\n    query = f\"\"\"\n        SELECT fhir_id, omop_id\n        FROM \"{escaped_schema}\".\"fhir_omop_key_map\"\n        WHERE omop_table_name = 'person'\n          AND omop_id IS NOT NULL\n    \"\"\"\n    rows = dao.execute_sql(query, fetch=True) or []\n    result = {}\n    for fhir_id, omop_id in rows:\n        if fhir_id is None:\n            continue\n        try:\n            omop_int = int(omop_id)\n        except Exception:\n            continue\n        raw_key = str(fhir_id).strip()\n        if raw_key:\n            result[raw_key] = omop_int\n        norm_key = normalize_fhir_id(fhir_id)\n        if norm_key:\n            result[norm_key] = omop_int\n    print(f\"[fhir mapping] loaded {len(result)} person mappings from {mapping_schema}.fhir_omop_key_map\")\n    return result\n\n\ndef exec(myinput):\n    data = _unwrap_input_value(myinput.get(\"transform_fhir_to_omop\"))\n\n    if data is None or data.empty:\n        return pd.DataFrame()\n\n    if not database_code or not cdm_schema:\n        raise ValueError(\"Missing `database_code` or `cdm_schema`\")\n\n    person_id_map = load_person_id_map(database_code, cdm_schema)\n    if not person_id_map:\n        raise ValueError(\n            f\"No person mappings found in {database_code}_{cdm_schema}_fhir_mapping.fhir_omop_key_map — \"\n            \"run the person pipeline before the measurement pipeline\"\n        )\n\n    print(f\"[normalize] columns: {list(data.columns)}, rows: {len(data)}\")\n\n    result_rows = []\n    skipped = []\n    for _, row in data.iterrows():\n        raw_ref = extract_patient_ref(row.get(\"person_id\"))\n        normalized_ref = normalize_fhir_id(raw_ref)\n        raw_ref_key = str(raw_ref).strip() if raw_ref is not None else None\n\n        person_id = person_id_map.get(raw_ref_key) or person_id_map.get(normalized_ref)\n        if person_id is None:\n            skipped.append(raw_ref_key)\n            continue\n\n        entry = row.to_dict()\n        entry[\"person_id\"] = person_id\n        entry[\"value_as_number\"] = entry.get(\"value_as_number\") if entry.get(\"measurement_concept_id\") == EQ_VAS_CONCEPT_ID else None\n        result_rows.append(entry)\n\n    if skipped:\n        print(f\"[normalize] skipped {len(skipped)} rows with no person mapping: {skipped[:10]}\")\n\n    if not result_rows:\n        raise ValueError(\n            f\"All {len(data)} rows skipped — no person_id matches found in fhir_omop_key_map. \"\n            f\"Sample unmatched refs: {skipped[:5]}\"\n        )\n\n    result_df = pd.DataFrame(result_rows)\n    print(f\"[normalize] output shape: {result_df.shape}\")\n    return result_df.reset_index(drop=True)\n"
+                "python_code": "EQ_VAS_CONCEPT_ID = 42537274\n\n\ndef _unwrap_input_value(value):\n    return value.result if hasattr(value, \"result\") else value\n\n\ndef extract_patient_ref(value):\n    if isinstance(value, dict):\n        return value.get(\"reference\") or value.get(\"id\") or str(value)\n    return str(value) if value is not None else None\n\n\ndef normalize_fhir_id(value):\n    if value is None:\n        return None\n    s = str(value).strip()\n    if not s:\n        return None\n    if \"/\" in s:\n        s = s.split(\"/\")[-1]\n    return s\n\n\ndef load_person_id_map(database_code: str, schema_name: str) -> dict[str, int]:\n    mapping_schema = f\"{database_code}_{schema_name}_fhir_mapping\"\n    dao = DBDao(\n        dialect=SupportedDatabaseDialects.TREX,\n        use_cache_db=False,\n        database_code=database_code,\n    )\n    escaped_schema = mapping_schema.replace('\"', '\"\"')\n    query = f\"\"\"\n        SELECT fhir_id, omop_id\n        FROM \"{escaped_schema}\".\"fhir_omop_key_map\"\n        WHERE omop_table_name = 'person'\n          AND omop_id IS NOT NULL\n    \"\"\"\n    rows = dao.execute_sql(query, fetch=True) or []\n    result = {}\n    for fhir_id, omop_id in rows:\n        if fhir_id is None:\n            continue\n        try:\n            omop_int = int(omop_id)\n        except Exception:\n            continue\n        raw_key = str(fhir_id).strip()\n        if raw_key:\n            result[raw_key] = omop_int\n        norm_key = normalize_fhir_id(fhir_id)\n        if norm_key:\n            result[norm_key] = omop_int\n    print(f\"[fhir mapping] loaded {len(result)} person mappings from {mapping_schema}.fhir_omop_key_map\")\n    return result\n\n\ndef exec(myinput):\n    data = _unwrap_input_value(myinput.get(\"transform_fhir_to_omop\"))\n\n    if data is None or data.empty:\n        return pd.DataFrame()\n\n    if not database_code or not cdm_schema:\n        raise ValueError(\"Missing `database_code` or `cdm_schema`\")\n\n    person_id_map = load_person_id_map(database_code, cdm_schema)\n    if not person_id_map:\n        raise ValueError(\n            f\"No person mappings found in {database_code}_{cdm_schema}_fhir_mapping.fhir_omop_key_map — \"\n            \"run the person pipeline before the measurement pipeline\"\n        )\n\n    print(f\"[normalize] columns: {list(data.columns)}, rows: {len(data)}\")\n\n    result_rows = []\n    skipped = []\n    for _, row in data.iterrows():\n        raw_ref = extract_patient_ref(row.get(\"person_id\"))\n        normalized_ref = normalize_fhir_id(raw_ref)\n        raw_ref_key = str(raw_ref).strip() if raw_ref is not None else None\n\n        person_id = person_id_map.get(raw_ref_key) or person_id_map.get(normalized_ref)\n        if person_id is None:\n            skipped.append(raw_ref_key)\n            continue\n\n        entry = row.to_dict()\n        entry[\"person_id\"] = person_id\n        entry[\"value_as_number\"] = entry.get(\"value_as_number\") if entry.get(\"measurement_concept_id\") == EQ_VAS_CONCEPT_ID else None\n        result_rows.append(entry)\n\n    if skipped:\n        print(f\"[normalize] skipped {len(skipped)} rows with no person mapping: {skipped[:10]}\")\n\n    if not result_rows:\n        raise ValueError(\n            f\"All {len(data)} rows skipped — no person_id matches found in fhir_omop_key_map. \"\n            f\"Sample unmatched refs: {skipped[:5]}\"\n        )\n\n    result_df = pd.DataFrame(result_rows)\n    print(f\"[normalize] output shape: {result_df.shape}\")\n    return result_df.reset_index(drop=True)\n",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -182,7 +182,7 @@
                 "x": -220,
                 "y": -180
             },
-            "selected": true,
+            "selected": false,
             "dragHandle": "",
             "sourcePosition": "right",
             "targetPosition": "left",
@@ -195,8 +195,10 @@
             "id": "78d4b8a7-45ac-4139-87bb-fa3b8be3c0bd",
             "data": {
                 "name": "prepare_measurement_ids",
+                "error": false,
                 "description": "Clean the OMOP CDM tables",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"normalize_and_assign_person_id\").result\n\n    if data is None or data.empty:\n        return data\n\n    data = data.dropna(subset=[\"measurement_source_value\"])\n    if data.empty:\n        return data\n\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    fhir_ids = data[\"measurement_source_value\"].unique().tolist()\n\n    omop_meta = sql.MetaData(schema=cdm_schema)\n    measurement_table = sql.Table(\"measurement\", omop_meta, autoload_with=dao.engine)\n\n    # 1. Look up existing (source_value, concept_id) → measurement_id BEFORE deleting\n    existing_rows = dao.execute_sqlalchemy_statement(\n        sql.select(\n            measurement_table.c.measurement_source_value,\n            measurement_table.c.measurement_concept_id,\n            measurement_table.c.measurement_id,\n        ).where(measurement_table.c.measurement_source_value.in_(fhir_ids)),\n        lambda r: r.fetchall(),\n    ) or []\n    existing = {(row[0], row[1]): row[2] for row in existing_rows}\n    print(f\"Found {len(existing)} existing measurement rows to reuse\")\n\n    # 2. Delete existing measurement rows for these FHIR IDs\n    deleted = dao.execute_sqlalchemy_statement(\n        measurement_table.delete().where(\n            measurement_table.c.measurement_source_value.in_(fhir_ids)\n        ),\n        lambda r: r.rowcount,\n    )\n    print(f\"Deleted {deleted} rows from {cdm_schema}.measurement\")\n\n    # 3. Assign IDs — reuse by (source_value, concept_id), mint new for new records\n    max_id = dao.execute_sqlalchemy_statement(\n        sql.select(sql.func.coalesce(sql.func.max(measurement_table.c.measurement_id), 0)),\n        lambda r: r.scalar(),\n    )\n\n    data = data.copy()\n    next_id = max(max_id, max(existing.values(), default=0)) + 1\n    assigned_ids = []\n    for _, row in data.iterrows():\n        key = (row[\"measurement_source_value\"], int(row[\"measurement_concept_id\"]))\n        if key in existing:\n            assigned_ids.append(existing[key])\n        else:\n            assigned_ids.append(next_id)\n            next_id += 1\n\n    data[\"measurement_id\"] = assigned_ids\n    reused = sum(1 for i in assigned_ids if i in {v for v in existing.values()})\n    print(f\"Assigned measurement_ids: {reused} reused, {len(assigned_ids) - reused} new\")\n    return data\n"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"normalize_and_assign_person_id\").result\n\n    if data is None or data.empty:\n        return data\n\n    data = data.dropna(subset=[\"measurement_source_value\"])\n    if data.empty:\n        return data\n\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    fhir_ids = data[\"measurement_source_value\"].unique().tolist()\n\n    omop_meta = sql.MetaData(schema=cdm_schema)\n    measurement_table = sql.Table(\"measurement\", omop_meta, autoload_with=dao.engine)\n\n    # 1. Look up existing (source_value, concept_id) → measurement_id BEFORE deleting\n    existing_rows = dao.execute_sqlalchemy_statement(\n        sql.select(\n            measurement_table.c.measurement_source_value,\n            measurement_table.c.measurement_concept_id,\n            measurement_table.c.measurement_id,\n        ).where(measurement_table.c.measurement_source_value.in_(fhir_ids)),\n        lambda r: r.fetchall(),\n    ) or []\n    existing = {(row[0], row[1]): row[2] for row in existing_rows}\n    print(f\"Found {len(existing)} existing measurement rows to reuse\")\n\n    # 2. Delete existing measurement rows for these FHIR IDs\n    deleted = dao.execute_sqlalchemy_statement(\n        measurement_table.delete().where(\n            measurement_table.c.measurement_source_value.in_(fhir_ids)\n        ),\n        lambda r: r.rowcount,\n    )\n    print(f\"Deleted {deleted} rows from {cdm_schema}.measurement\")\n\n    # 3. Assign IDs — reuse by (source_value, concept_id), mint new for new records\n    max_id = dao.execute_sqlalchemy_statement(\n        sql.select(sql.func.coalesce(sql.func.max(measurement_table.c.measurement_id), 0)),\n        lambda r: r.scalar(),\n    )\n\n    data = data.copy()\n    next_id = max(max_id, max(existing.values(), default=0)) + 1\n    assigned_ids = []\n    for _, row in data.iterrows():\n        key = (row[\"measurement_source_value\"], int(row[\"measurement_concept_id\"]))\n        if key in existing:\n            assigned_ids.append(existing[key])\n        else:\n            assigned_ids.append(next_id)\n            next_id += 1\n\n    data[\"measurement_id\"] = assigned_ids\n    reused = sum(1 for i in assigned_ids if i in {v for v in existing.values()})\n    print(f\"Assigned measurement_ids: {reused} reused, {len(assigned_ids) - reused} new\")\n    return data\n",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -219,24 +221,23 @@
             "id": "987f7dcd-884e-464f-bba8-bad6d89b5db9",
             "data": {
                 "name": "fhir_mapping_node_0",
-                "error": false,
                 "description": "Describe the task of node fhir_mapping_node_0",
                 "schema_name": "demo_cdm",
-                "errorMessage": null,
                 "database_code": "demo_database",
                 "write_key_map": false,
                 "omop_table_name": "measurement",
+                "source_value_col": "measurement_source_value",
                 "fhir_resource_type": "QuestionnaireResponse"
             },
             "type": "fhir_mapping_node",
-            "width": 350,
-            "height": 210,
+            "width": 354,
+            "height": 214,
             "dragging": false,
             "position": {
                 "x": 1530,
                 "y": -190
             },
-            "selected": false,
+            "selected": true,
             "dragHandle": "",
             "sourcePosition": "right",
             "targetPosition": "left",
