@@ -112,6 +112,16 @@
                                     "valueId": "patientId"
                                 }
                             ]
+                        },
+                        {
+                            "context": "tgt",
+                            "element": "person_source_value",
+                            "transform": "copy",
+                            "parameter": [
+                                {
+                                    "valueId": "patientId"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -127,29 +137,64 @@
                     "target": [
                         {
                             "context": "tgt",
-                            "element": "gender_concept_id",
-                            "transform": "copy",
-                            "parameter": [
-                                {
-                                    "valueId": "gender"
-                                }
-                            ]
-                        },
-                        {
-                            "context": "tgt",
                             "element": "gender_source_value",
                             "transform": "copy",
                             "parameter": [
                                 {
                                     "valueId": "gender"
-                                },
-                                {
-                                    "valueString": "string"
                                 }
                             ]
                         }
                     ],
-                    "documentation": "src.id as id -> tgt.person_id = cast(id, \"integer\");"
+                    "rule": [
+                        {
+                            "name": "setMaleConceptId",
+                            "source": [
+                                {
+                                    "context": "src",
+                                    "element": "gender",
+                                    "variable": "g",
+                                    "condition": "gender = 'male' or gender = 'M'"
+                                }
+                            ],
+                            "target": [
+                                {
+                                    "context": "tgt",
+                                    "element": "gender_concept_id",
+                                    "transform": "copy",
+                                    "parameter": [
+                                        {
+                                            "valueInteger": 8507
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "setFemaleConceptId",
+                            "source": [
+                                {
+                                    "context": "src",
+                                    "element": "gender",
+                                    "variable": "g",
+                                    "condition": "gender = 'female' or gender = 'F'"
+                                }
+                            ],
+                            "target": [
+                                {
+                                    "context": "tgt",
+                                    "element": "gender_concept_id",
+                                    "transform": "copy",
+                                    "parameter": [
+                                        {
+                                            "valueInteger": 8532
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "documentation": "Map FHIR gender to OMOP gender_concept_id: male/M -> 8507, female/F -> 8532"
                 },
                 {
                     "name": "birthDate",
@@ -228,7 +273,7 @@
                             "transform": "copy",
                             "parameter": [
                                 {
-                                    "valueId": "race"
+                                    "valueId": "8527"
                                 }
                             ]
                         }
@@ -251,7 +296,7 @@
                             "transform": "copy",
                             "parameter": [
                                 {
-                                    "valueId": "ethnicityCode"
+                                    "valueId": "8527"
                                 }
                             ]
                         }
