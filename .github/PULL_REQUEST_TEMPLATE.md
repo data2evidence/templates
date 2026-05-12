@@ -4,4 +4,4 @@ Please review this list and check any items that require additions or modificati
 
 - [ ] Added documentation and type hints for embedded Python functions in flow templates ("python_code" fields)
 - [ ] Remove result, error in node data
-- [ ] Give a description for flow template with omop cdm version, database supported
+- [ ] Added a description for the flow template, including the OMOP CDM version and supported database(s)
