@@ -1,6 +1,6 @@
 ### Merge Checklist
 
-Please cross check this list if additions / modifications needs to be done on top of your core changes and tick them off. Reviewer can as well glance through and help the developer if something is missed out.
+Please review this list and check any items that require additions or modifications beyond your core changes. Reviewers can also use it to help confirm that nothing was missed.
 
 - [ ] Added documentation and type hints for python functions
 - [ ] Remove result, error in node data
