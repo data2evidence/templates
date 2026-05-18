@@ -1,6 +1,11 @@
 {
     "id": "8da69c47-acc9-44b6-b4e3-2c6b131dfd07",
     "name": "Transform QuestionnaireResponse EQ-5D-5L to OMOP Measurement",
+    "cdmVersion": "5.4",
+    "Pre-requisites": [
+        "Run ETL pipeline to transform FHIR resource type Patient to OMOP Person for the relevant project to have the person data in place before running this pipeline as it captures person_id from subject reference in QuestionnaireResponse resource and maps it to person_id field in Measurement table. You can use the 'Transform FHIR Resource type Patient to OMOP Person with cdm v5.4' template for that.",
+        "Supports non HANA databases"
+    ],
     "edges": [
         {
             "id": "reactflow__edge-a761976d-1b68-4fff-9d09-32d4fbb64f2dsource_a761976d-1b68-4fff-9d09-32d4fbb64f2d_dataframe-0ef53c18-cf39-400e-8237-dbc805cda74dtarget_0ef53c18-cf39-400e-8237-dbc805cda74d_dataframe",

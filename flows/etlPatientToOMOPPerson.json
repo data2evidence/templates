@@ -1,6 +1,10 @@
 {
     "id": "e37ef214-e661-4d17-ae2f-e38cf5c03a7b",
     "name": "Transform FHIR Resource type Patient to OMOP Person",
+    "cdmVersion": "5.4",
+    "Pre-requisites": [
+        "Supports non HANA databases"
+    ],
     "edges": [
         {
             "id": "reactflow__edge-9b834865-b421-4e6b-adb1-362db6e900a2source_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe-e696b11f-1d31-42ec-a3f2-370d3f958707target_e696b11f-1d31-42ec-a3f2-370d3f958707_any",
