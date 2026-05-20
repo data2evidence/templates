@@ -48,7 +48,7 @@
       "data": {
         "name": "GetDBCredentials",
         "description": "Get database credentials",
-        "python_code": "def exec(myinput):\n  dbdao = DBDao(use_cache_db=False, database_code=\"demo_database\")\n  return dbdao.tenant_configs"
+        "python_code": "def exec(myinput):\n  dbdao = DBDao(database_code=\"demo_database\")\n  return dbdao.tenant_configs"
       },
       "type": "python_node",
       "width": 350,
