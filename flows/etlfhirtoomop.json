@@ -473,7 +473,7 @@
                 "name": "AllergyIntolerance",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"AllergyIntolerance\"",
+                "sqlquery": "select content from \"FHIR\".\"AllergyIntolerance\"",
                 "testdata": [
                     []
                 ],
@@ -532,7 +532,7 @@
                 "name": "Patient",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"Patient\"",
+                "sqlquery": "select content from \"FHIR\".\"Patient\"",
                 "testdata": [
                     []
                 ],
@@ -591,7 +591,7 @@
                 "name": "Condition",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"Condition\"",
+                "sqlquery": "select content from \"FHIR\".\"Condition\"",
                 "testdata": [
                     []
                 ],
@@ -650,7 +650,7 @@
                 "name": "Encounter",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"Encounter\"",
+                "sqlquery": "select content from \"FHIR\".\"Encounter\"",
                 "testdata": [
                     []
                 ],
@@ -709,7 +709,7 @@
                 "name": "Immunization",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"Immunization\"",
+                "sqlquery": "select content from \"FHIR\".\"Immunization\"",
                 "testdata": [
                     []
                 ],
@@ -768,7 +768,7 @@
                 "name": "Observation",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"Observation\"",
+                "sqlquery": "select content from \"FHIR\".\"Observation\"",
                 "testdata": [
                     []
                 ],
@@ -825,14 +825,12 @@
             "id": "140dffdd-9b98-46a7-ae23-b2b8a6a79a4e",
             "data": {
                 "name": "MedicationStatement",
-                "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"MedicationStatement\"",
+                "sqlquery": "select content from \"FHIR\".\"MedicationStatement\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for MedicationStatement resource",
-                "errorMessage": null
+                "description": "Get fhir data for MedicationStatement resource"
             },
             "type": "db_reader_node",
             "width": 350,
@@ -883,11 +881,11 @@
             "data": {
                 "name": "Observation",
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"Observation\"",
+                "sqlquery": "select content from \"FHIR\".\"Observation\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for Observation resource"
+                "description": "Get fhir data for Observation resource",
             },
             "type": "db_reader_node",
             "width": 350,
@@ -941,7 +939,7 @@
                 "name": "Procedure",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"Procedure\"",
+                "sqlquery": "select content from \"FHIR\".\"Procedure\"",
                 "testdata": [
                     []
                 ],
@@ -1235,11 +1233,13 @@
             "data": {
                 "map": {},
                 "name": "Observation_df",
+                "error": false,
                 "uiMap": {
                     "path": "$.Observation",
                     "source": "python_node"
                 },
-                "description": "Describe the task of node py2table_node_7"
+                "description": "Describe the task of node py2table_node_7",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
