@@ -941,7 +941,7 @@
                 "name": "Procedure",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"FHIR\".\"Procedure\"",
+                "sqlquery": "select content from \"fhir\".\"Procedure\"","
                 "testdata": [
                     []
                 ],
