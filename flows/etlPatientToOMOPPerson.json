@@ -53,7 +53,7 @@
                 "name": "get_fhir_patients",
                 "error": false,
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"fhir\".\"Patient\"",
+                "sqlquery": "select content from \"FHIR\".\"Patient\"",
                 "testdata": [
                     []
                 ],
