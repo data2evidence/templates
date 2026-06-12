@@ -883,7 +883,7 @@
             "data": {
                 "name": "Observation",
                 "database": "d2e_fhir",
-                "sqlquery": "select content from \"FHIR\".\"Observation\"",
+                "sqlquery": "select content from \"fhir\".\"Observation\"","
                 "testdata": [
                     []
                 ],
