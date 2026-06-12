@@ -1,6 +1,12 @@
 {
   "name": "Data Load OMOP CDM v5.4",
   "description": "Load OMOP CDM v5.4 data from uploaded CSV files into database tables",
+  "cdmVersion": "5.4",
+  "supportedDatabaseDialects": ["Postgres"],
+  "Pre-requisites": [
+    "Schema is already created in the database for CDM and vocabulary tables",
+    "CSV files for all CDM and vocabulary tables bundled in a zip file"
+  ],
   "edges": [
     {
       "id": "reactflow__edge-d494ea2d-05e0-4f18-acba-216d79d5b054source_d494ea2d-05e0-4f18-acba-216d79d5b054_any-96b63d5b-3f9e-4b6e-8667-950ed468215ftarget_96b63d5b-3f9e-4b6e-8667-950ed468215f_any",
