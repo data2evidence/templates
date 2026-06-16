@@ -1,5 +1,5 @@
 {
-    "id": "e37ef214-e661-4d17-ae2f-e38cf5c03a7b",
+    "id": "3d71d576-1fe3-4a12-b640-ab2fde619d56",
     "name": "Transform FHIR Resource type Patient to OMOP Person",
     "cdmVersion": "5.4",
     "supportedDatabaseDialects": [
@@ -8,57 +8,17 @@
     ],
     "Pre-requisites": [
     ],
-    "edges": [
-        {
-            "id": "reactflow__edge-9b834865-b421-4e6b-adb1-362db6e900a2source_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe-e696b11f-1d31-42ec-a3f2-370d3f958707target_e696b11f-1d31-42ec-a3f2-370d3f958707_any",
-            "source": "9b834865-b421-4e6b-adb1-362db6e900a2",
-            "target": "e696b11f-1d31-42ec-a3f2-370d3f958707",
-            "selected": false,
-            "sourceHandle": "source_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe",
-            "targetHandle": "target_e696b11f-1d31-42ec-a3f2-370d3f958707_any"
-        },
-        {
-            "id": "reactflow__edge-e696b11f-1d31-42ec-a3f2-370d3f958707source_e696b11f-1d31-42ec-a3f2-370d3f958707_object-5630482b-10d0-42af-9cb9-fb324cd2bba2target_5630482b-10d0-42af-9cb9-fb324cd2bba2_object",
-            "source": "e696b11f-1d31-42ec-a3f2-370d3f958707",
-            "target": "5630482b-10d0-42af-9cb9-fb324cd2bba2",
-            "sourceHandle": "source_e696b11f-1d31-42ec-a3f2-370d3f958707_object",
-            "targetHandle": "target_5630482b-10d0-42af-9cb9-fb324cd2bba2_object"
-        },
-        {
-            "id": "reactflow__edge-5630482b-10d0-42af-9cb9-fb324cd2bba2source_5630482b-10d0-42af-9cb9-fb324cd2bba2_dataframe-77408cc4-7c84-43a2-ab5a-26e2709bf062target_77408cc4-7c84-43a2-ab5a-26e2709bf062_dataframe",
-            "source": "5630482b-10d0-42af-9cb9-fb324cd2bba2",
-            "target": "77408cc4-7c84-43a2-ab5a-26e2709bf062",
-            "sourceHandle": "source_5630482b-10d0-42af-9cb9-fb324cd2bba2_dataframe",
-            "targetHandle": "target_77408cc4-7c84-43a2-ab5a-26e2709bf062_dataframe"
-        },
-        {
-            "id": "reactflow__edge-77408cc4-7c84-43a2-ab5a-26e2709bf062source_77408cc4-7c84-43a2-ab5a-26e2709bf062_any-d8fa508e-1860-4c2b-85b9-1061c576534ftarget_d8fa508e-1860-4c2b-85b9-1061c576534f_any",
-            "source": "77408cc4-7c84-43a2-ab5a-26e2709bf062",
-            "target": "d8fa508e-1860-4c2b-85b9-1061c576534f",
-            "sourceHandle": "source_77408cc4-7c84-43a2-ab5a-26e2709bf062_any",
-            "targetHandle": "target_d8fa508e-1860-4c2b-85b9-1061c576534f_any"
-        },
-        {
-            "id": "reactflow__edge-d7f46d76-5840-4248-bc64-351d53ce6e5dsource_d7f46d76-5840-4248-bc64-351d53ce6e5d_dataframe-9b834865-b421-4e6b-adb1-362db6e900a2target_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe",
-            "source": "d7f46d76-5840-4248-bc64-351d53ce6e5d",
-            "target": "9b834865-b421-4e6b-adb1-362db6e900a2",
-            "sourceHandle": "source_d7f46d76-5840-4248-bc64-351d53ce6e5d_dataframe",
-            "targetHandle": "target_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe"
-        }
-    ],
     "nodes": [
         {
             "id": "d7f46d76-5840-4248-bc64-351d53ce6e5d",
             "data": {
                 "name": "get_fhir_patients",
-                "error": false,
-                "database": "d2e_fhir",
+                "database": "fhir_db",
                 "sqlquery": "select content from \"fhir\".\"Patient\"",
                 "testdata": [
                     []
                 ],
-                "description": "Describe the task of node db_reader_node_0",
-                "errorMessage": null
+                "description": "Describe the task of node db_reader_node_0"
             },
             "type": "db_reader_node",
             "width": 350,
@@ -110,10 +70,8 @@
             "id": "e696b11f-1d31-42ec-a3f2-370d3f958707",
             "data": {
                 "name": "prepare_personIds",
-                "error": false,
                 "description": "Describe the task of node python_node_0",
-                "python_code": "# Input: transform_to_person (dataframe) - transformed OMOP person rows from the mapping node\n# Output: result (dataframe) - person rows with stable/reused `person_id` values\n\ndef _normalize_fhir_id(value):\n    if value is None:\n        return None\n    s = str(value).strip()\n    return s.split(\"/\")[-1] if \"/\" in s else s\n\n\nDEFAULTS = {\n    \"gender_concept_id\": 0,\n    \"year_of_birth\": 0,\n    \"race_concept_id\": 0,\n    \"ethnicity_concept_id\": 0,\n}\n\n\ndef exec(myinput):\n    df = myinput.get(\"transform_to_person\").result\n\n    if df is None or df.empty:\n        return df\n\n    if not database_code or not schema_name:\n        raise ValueError(\"`database_code` and `schema_name` must be provided\")\n\n    for col, default in DEFAULTS.items():\n        if col not in df.columns:\n            df[col] = default\n        else:\n            df[col] = df[col].fillna(default)\n\n    dao = SqlAlchemyDao(use_cache_db=False, database_code=database_code)\n    mapping_dao = DBDao(dialect=SupportedDatabaseDialects.TREX, use_cache_db=False, database_code=database_code)\n    mapping_schema = f\"{database_code}_{schema_name}_fhir_mapping\"\n\n    df[\"person_source_value\"] = df[\"person_source_value\"].apply(_normalize_fhir_id)\n    df = df.dropna(subset=[\"person_source_value\"])\n    if df.empty:\n        return df\n\n    fhir_ids = df[\"person_source_value\"].unique().tolist()\n\n    # 1. Look up existing person_ids from data_source before deleting\n    escaped_schema = mapping_schema.replace('\"', '\"\"')\n    try:\n        rows = mapping_dao.execute_sql(\n            f\"\"\"\n            SELECT DISTINCT ON (fhir_resource_id) fhir_resource_id, omop_id\n            FROM \"{escaped_schema}\".\"data_source\"\n            WHERE omop_table_name = 'person'\n              AND omop_id IS NOT NULL\n            ORDER BY fhir_resource_id, transformed_at DESC\n            \"\"\",\n            fetch=True,\n        ) or []\n        existing = {row[0]: int(row[1]) for row in rows if row[1] is not None}\n    except Exception:\n        existing = {}\n\n    # 2. Delete existing person rows for these FHIR IDs\n    omop_meta = sql.MetaData(schema=schema_name)\n    person_table = sql.Table(\"person\", omop_meta, autoload_with=dao.engine)\n\n    deleted = dao.execute_sqlalchemy_statement(\n        person_table.delete().where(\n            person_table.c.person_source_value.in_(fhir_ids)\n        ),\n        lambda r: r.rowcount,\n    )\n    print(f\"Deleted {deleted} rows from {schema_name}.person\")\n\n    # 3. Get max_id from what remains in the table (after deletion)\n    max_id = dao.execute_sqlalchemy_statement(\n        sql.select(sql.func.coalesce(sql.func.max(person_table.c.person_id), 0)),\n        lambda r: r.scalar(),\n    )\n\n    # 4. Assign person_ids — reuse existing, mint new for new records\n    df = df.copy()\n    next_id = max(max_id, max(existing.values(), default=0)) + 1\n    assigned_ids = []\n    for source_val in df[\"person_source_value\"]:\n        if source_val in existing:\n            assigned_ids.append(existing[source_val])\n        else:\n            assigned_ids.append(next_id)\n            next_id += 1\n\n    df[\"person_id\"] = assigned_ids\n    reused = sum(1 for i in assigned_ids if i in existing.values())\n    print(f\"Assigned person_ids: {reused} reused, {len(assigned_ids) - reused} new\")\n    return df\n",
-                "errorMessage": null
+                "python_code": "# Input: transform_to_person (dataframe) - transformed OMOP person rows from the mapping node\n# Output: result (dataframe) - person rows with stable/reused `person_id` values\n\n\ndef _normalize_fhir_id(value):\n    if value is None:\n        return None\n    s = str(value).strip()\n    return s.split(\"/\")[-1] if \"/\" in s else s\n\n\nDEFAULTS = {\n    \"gender_concept_id\": 0,\n    \"year_of_birth\": 0,\n    \"race_concept_id\": 0,\n    \"ethnicity_concept_id\": 0,\n}\n\n\ndef _assign_person_ids(source_values, existing, max_id):\n    next_id = max(max_id, max(existing.values(), default=0)) + 1\n    assigned = {}\n    assigned_ids = []\n\n    for source_val in source_values:\n        if source_val in existing:\n            person_id = existing[source_val]\n        elif source_val in assigned:\n            person_id = assigned[source_val]\n        else:\n            person_id = next_id\n            assigned[source_val] = person_id\n            next_id += 1\n        assigned_ids.append(person_id)\n\n    return assigned_ids\n\n\ndef exec(myinput):\n    df = myinput.get(\"transform_to_person\").result\n    database_code = dest_db\n    schema_name = dest_schema\n\n    if df is None or df.empty:\n        return df\n\n    if not database_code or not schema_name:\n        raise ValueError(\"`database_code` and `schema_name` must be provided\")\n\n    for col, default in DEFAULTS.items():\n        if col not in df.columns:\n            df[col] = default\n        else:\n            df[col] = df[col].fillna(default)\n\n    dao = SqlAlchemyDao(database_code=database_code)\n    mapping_dao = DBDao(dialect=SupportedDatabaseDialects.TREX, database_code=database_code)\n    mapping_schema = f\"{database_code}_{schema_name}_fhir_mapping\"\n\n    df[\"person_source_value\"] = df[\"person_source_value\"].apply(_normalize_fhir_id)\n    df = df.dropna(subset=[\"person_source_value\"])\n    if df.empty:\n        return df\n\n    fhir_ids = df[\"person_source_value\"].unique().tolist()\n\n    # 1. Look up existing person_ids from data_source before deleting\n    escaped_schema = mapping_schema.replace('\"', '\"\"')\n    try:\n        rows = mapping_dao.execute_sql(\n            f\"\"\"\n            SELECT DISTINCT ON (fhir_resource_id) fhir_resource_id, omop_id\n            FROM \"{escaped_schema}\".\"data_source\"\n            WHERE omop_table_name = 'person'\n              AND omop_id IS NOT NULL\n            ORDER BY fhir_resource_id, transformed_at DESC\n            \"\"\",\n            fetch=True,\n        ) or []\n        existing = {row[0]: int(row[1]) for row in rows if row[1] is not None}\n    except Exception:\n        existing = {}\n\n    # 2. Delete existing person rows for these FHIR IDs\n    omop_meta = sql.MetaData(schema=schema_name)\n    person_table = sql.Table(\"person\", omop_meta, autoload_with=dao.engine)\n\n    deleted = dao.execute_sqlalchemy_statement(\n        person_table.delete().where(\n            person_table.c.person_source_value.in_(fhir_ids)\n        ),\n        lambda r: r.rowcount,\n    )\n    print(f\"Deleted {deleted} rows from {schema_name}.person\")\n\n    # 3. Get max_id from what remains in the table (after deletion)\n    max_id = dao.execute_sqlalchemy_statement(\n        sql.select(sql.func.coalesce(sql.func.max(person_table.c.person_id), 0)),\n        lambda r: r.scalar(),\n    )\n\n    # 4. Assign person_ids — reuse existing, mint new for new records\n    df = df.copy()\n    assigned_ids = _assign_person_ids(df[\"person_source_value\"], existing, max_id)\n    df[\"person_id\"] = assigned_ids\n    reused = sum(1 for i in assigned_ids if i in existing.values())\n    print(f\"Assigned person_ids: {reused} reused, {len(assigned_ids) - reused} new\")\n    return df\n"
             },
             "type": "python_node",
             "width": 350,
@@ -123,7 +81,7 @@
                 "x": 610,
                 "y": 70
             },
-            "selected": false,
+            "selected": true,
             "dragHandle": "",
             "sourcePosition": "right",
             "targetPosition": "left",
@@ -136,15 +94,12 @@
             "id": "77408cc4-7c84-43a2-ab5a-26e2709bf062",
             "data": {
                 "name": "write_to_cdm_person",
-                "error": false,
-                "upsert": true,
-                "database": "demo_database",
+                "database": "dest_db",
                 "truncate": true,
                 "dataframe": "py2table_node",
-                "schemaname": "demo_cdm",
+                "schemaname": "dest_schema",
                 "dbtablename": "person",
-                "description": "Describe the task of node db_writer_node_0",
-                "errorMessage": null
+                "description": "Describe the task of node db_writer_node_0"
             },
             "type": "db_writer_node",
             "width": 354,
@@ -154,7 +109,7 @@
                 "x": 1520,
                 "y": 70
             },
-            "selected": true,
+            "selected": false,
             "dragHandle": "",
             "sourcePosition": "right",
             "targetPosition": "left",
@@ -197,11 +152,9 @@
             "id": "d8fa508e-1860-4c2b-85b9-1061c576534f",
             "data": {
                 "name": "fhir_mapping_node",
-                "error": false,
                 "description": "Describe the task of node fhir_mapping_node_1",
-                "schema_name": "demo_cdm",
-                "errorMessage": null,
-                "database_code": "demo_database",
+                "schema_name": "dest_schema",
+                "database_code": "dest_db",
                 "write_key_map": true,
                 "omop_table_name": "person",
                 "source_value_col": "person_source_value",
@@ -225,20 +178,45 @@
             }
         }
     ],
-    "variables": [
+    "edges": [
         {
-            "key": "database_code",
-            "value": "demo_database"
+            "id": "reactflow__edge-9b834865-b421-4e6b-adb1-362db6e900a2source_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe-e696b11f-1d31-42ec-a3f2-370d3f958707target_e696b11f-1d31-42ec-a3f2-370d3f958707_any",
+            "source": "9b834865-b421-4e6b-adb1-362db6e900a2",
+            "target": "e696b11f-1d31-42ec-a3f2-370d3f958707",
+            "selected": false,
+            "sourceHandle": "source_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe",
+            "targetHandle": "target_e696b11f-1d31-42ec-a3f2-370d3f958707_any"
         },
         {
-            "key": "schema_name",
-            "value": "demo_cdm"
+            "id": "reactflow__edge-e696b11f-1d31-42ec-a3f2-370d3f958707source_e696b11f-1d31-42ec-a3f2-370d3f958707_object-5630482b-10d0-42af-9cb9-fb324cd2bba2target_5630482b-10d0-42af-9cb9-fb324cd2bba2_object",
+            "source": "e696b11f-1d31-42ec-a3f2-370d3f958707",
+            "target": "5630482b-10d0-42af-9cb9-fb324cd2bba2",
+            "sourceHandle": "source_e696b11f-1d31-42ec-a3f2-370d3f958707_object",
+            "targetHandle": "target_5630482b-10d0-42af-9cb9-fb324cd2bba2_object"
         },
         {
-            "key": "fhir_id_col",
-            "value": "person_source_value"
+            "id": "reactflow__edge-5630482b-10d0-42af-9cb9-fb324cd2bba2source_5630482b-10d0-42af-9cb9-fb324cd2bba2_dataframe-77408cc4-7c84-43a2-ab5a-26e2709bf062target_77408cc4-7c84-43a2-ab5a-26e2709bf062_dataframe",
+            "source": "5630482b-10d0-42af-9cb9-fb324cd2bba2",
+            "target": "77408cc4-7c84-43a2-ab5a-26e2709bf062",
+            "sourceHandle": "source_5630482b-10d0-42af-9cb9-fb324cd2bba2_dataframe",
+            "targetHandle": "target_77408cc4-7c84-43a2-ab5a-26e2709bf062_dataframe"
+        },
+        {
+            "id": "reactflow__edge-77408cc4-7c84-43a2-ab5a-26e2709bf062source_77408cc4-7c84-43a2-ab5a-26e2709bf062_any-d8fa508e-1860-4c2b-85b9-1061c576534ftarget_d8fa508e-1860-4c2b-85b9-1061c576534f_any",
+            "source": "77408cc4-7c84-43a2-ab5a-26e2709bf062",
+            "target": "d8fa508e-1860-4c2b-85b9-1061c576534f",
+            "sourceHandle": "source_77408cc4-7c84-43a2-ab5a-26e2709bf062_any",
+            "targetHandle": "target_d8fa508e-1860-4c2b-85b9-1061c576534f_any"
+        },
+        {
+            "id": "reactflow__edge-d7f46d76-5840-4248-bc64-351d53ce6e5dsource_d7f46d76-5840-4248-bc64-351d53ce6e5d_dataframe-9b834865-b421-4e6b-adb1-362db6e900a2target_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe",
+            "source": "d7f46d76-5840-4248-bc64-351d53ce6e5d",
+            "target": "9b834865-b421-4e6b-adb1-362db6e900a2",
+            "sourceHandle": "source_d7f46d76-5840-4248-bc64-351d53ce6e5d_dataframe",
+            "targetHandle": "target_9b834865-b421-4e6b-adb1-362db6e900a2_dataframe"
         }
     ],
+    "variables": [],
     "importLibs": [
         "import pandas as pd",
         "import psycopg2.sql as pg_sql",
@@ -246,5 +224,21 @@
         "from _shared_flow_utils.types import SupportedDatabaseDialects",
         "from _shared_flow_utils.dao.DBDao import DBDao",
         "from _shared_flow_utils.dao.sqlalchemydao import SqlAlchemyDao"
+    ],
+    "databases": [
+        {
+            "code": "d2e_fhir",
+            "name": "fhir_db"
+        },
+        {
+            "code": "demo_database",
+            "name": "dest_db"
+        }
+    ],
+    "schemas": [
+        {
+            "name": "dest_schema",
+            "schema": "demo_cdm"
+        }
     ]
 }
