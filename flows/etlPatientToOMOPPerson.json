@@ -14,15 +14,15 @@
             "data": {
                 "name": "get_fhir_patients",
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"Patient\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"patient\"",
                 "testdata": [
                     []
                 ],
                 "description": "Describe the task of node db_reader_node_0"
             },
             "type": "db_reader_node",
-            "width": 350,
-            "height": 210,
+            "width": 354,
+            "height": 214,
             "dragging": false,
             "position": {
                 "x": -240,
@@ -57,7 +57,7 @@
                 "x": 180,
                 "y": 70
             },
-            "selected": false,
+            "selected": true,
             "dragHandle": "",
             "sourcePosition": "right",
             "targetPosition": "left",
@@ -81,7 +81,7 @@
                 "x": 610,
                 "y": 70
             },
-            "selected": true,
+            "selected": false,
             "dragHandle": "",
             "sourcePosition": "right",
             "targetPosition": "left",
@@ -95,15 +95,15 @@
             "data": {
                 "name": "write_to_cdm_person",
                 "database": "dest_db",
-                "truncate": true,
+                "truncate": false,
                 "dataframe": "py2table_node",
                 "schemaname": "dest_schema",
                 "dbtablename": "person",
                 "description": "Describe the task of node db_writer_node_0"
             },
             "type": "db_writer_node",
-            "width": 354,
-            "height": 214,
+            "width": 350,
+            "height": 210,
             "dragging": false,
             "position": {
                 "x": 1520,
@@ -227,7 +227,7 @@
     ],
     "databases": [
         {
-            "code": "d2e_fhir",
+            "code": "FHIR",
             "name": "fhir_db"
         },
         {

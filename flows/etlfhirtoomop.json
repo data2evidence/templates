@@ -6,12 +6,14 @@
             "id": "bc7f2e99-5533-4719-b86a-1a9a83da684f",
             "data": {
                 "name": "AllergyIntolerance",
+                "error": false,
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"AllergyIntolerance\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"AllergyIntolerance\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for AllergyIntolerance resource"
+                "description": "Get fhir data for AllergyIntolerance resource",
+                "errorMessage": null
             },
             "type": "db_reader_node",
             "width": 350,
@@ -34,16 +36,18 @@
             "id": "5f6d6ed6-01e1-4186-89cc-6574cd046d40",
             "data": {
                 "name": "insert_into_omop_observation",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_to_observation_1",
                 "schemaname": "dest_schema",
                 "dbtablename": "observation",
-                "description": "Insert into omop cdm database table"
+                "description": "Insert into omop cdm database table",
+                "errorMessage": null
             },
             "type": "db_writer_node",
-            "width": 354,
-            "height": 214,
+            "width": 350,
+            "height": 210,
             "dragging": false,
             "position": {
                 "x": 3080,
@@ -62,12 +66,14 @@
             "id": "b52d463b-e05c-44ad-90a9-7ac912b35314",
             "data": {
                 "name": "Patient",
+                "error": false,
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"Patient\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"Patient\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for Patient resource"
+                "description": "Get fhir data for Patient resource",
+                "errorMessage": null
             },
             "type": "db_reader_node",
             "width": 350,
@@ -90,12 +96,14 @@
             "id": "4b92d9e9-6a59-459f-8fc5-5a8ff5824bca",
             "data": {
                 "name": "Insert_into_omop_person",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_to_person",
                 "schemaname": "dest_schema",
                 "dbtablename": "person",
-                "description": "Insert into cdm omop database"
+                "description": "Insert into cdm omop database",
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -118,12 +126,14 @@
             "id": "4a4209c6-84f1-4afe-85a6-2c3aecfee44b",
             "data": {
                 "name": "Condition",
+                "error": false,
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"Condition\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"Condition\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for Condition resource"
+                "description": "Get fhir data for Condition resource",
+                "errorMessage": null
             },
             "type": "db_reader_node",
             "width": 350,
@@ -146,12 +156,14 @@
             "id": "5b177aca-870c-4745-95e1-6305ee390261",
             "data": {
                 "name": "Insert_into_omop_condition_occurrence",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_to_condition_occurrence",
                 "schemaname": "dest_schema",
                 "dbtablename": "condition_occurrence",
-                "description": "Insert into omop cdm database"
+                "description": "Insert into omop cdm database",
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -174,12 +186,14 @@
             "id": "fcab0880-2901-49fb-8e3c-e73735a07030",
             "data": {
                 "name": "Encounter",
+                "error": false,
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"Encounter\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"Encounter\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for Encounter resource"
+                "description": "Get fhir data for Encounter resource",
+                "errorMessage": null
             },
             "type": "db_reader_node",
             "width": 350,
@@ -202,12 +216,14 @@
             "id": "c59e95aa-1642-4f04-a07d-c19a496aca91",
             "data": {
                 "name": "Insert_into_omop_visit_occurrence",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_to_visit_occurrence",
                 "schemaname": "dest_schema",
                 "dbtablename": "visit_occurrence",
-                "description": "Insert into omop cdm database"
+                "description": "Insert into omop cdm database",
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -230,12 +246,14 @@
             "id": "97d2d719-131e-4e91-9965-5dacc4f77bba",
             "data": {
                 "name": "Immunization",
+                "error": false,
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"Immunization\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"Immunization\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for Immunization resource"
+                "description": "Get fhir data for Immunization resource",
+                "errorMessage": null
             },
             "type": "db_reader_node",
             "width": 350,
@@ -258,12 +276,14 @@
             "id": "b3e0cbd2-1680-4d5a-8a58-a74d636f1696",
             "data": {
                 "name": "Insert_into_omop_drug_exposure_1",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_drug_exposure",
                 "schemaname": "dest_schema",
                 "dbtablename": "drug_exposure",
-                "description": "Insert into omop cdm database"
+                "description": "Insert into omop cdm database",
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -286,12 +306,14 @@
             "id": "644c6dc1-72bf-4f5b-8a64-620407a36e3a",
             "data": {
                 "name": "Observation",
+                "error": false,
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"Observation\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"Observation\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for Observation resource"
+                "description": "Get fhir data for Observation resource",
+                "errorMessage": null
             },
             "type": "db_reader_node",
             "width": 350,
@@ -314,12 +336,14 @@
             "id": "9fff2d40-4802-46a6-9e9a-7615c47b7754",
             "data": {
                 "name": "Insert_into_omop_measurement",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_to_measurement",
                 "schemaname": "dest_schema",
                 "dbtablename": "measurement",
-                "description": "Insert into omop cdm database"
+                "description": "Insert into omop cdm database",
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -342,12 +366,14 @@
             "id": "140dffdd-9b98-46a7-ae23-b2b8a6a79a4e",
             "data": {
                 "name": "MedicationStatement",
+                "error": false,
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"MedicationStatement\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"MedicationStatement\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for MedicationStatement resource"
+                "description": "Get fhir data for MedicationStatement resource",
+                "errorMessage": null
             },
             "type": "db_reader_node",
             "width": 350,
@@ -370,12 +396,14 @@
             "id": "345c3710-002f-4c6d-843b-94e873927548",
             "data": {
                 "name": "Insert_into_omop_drug_exposure",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_to_drug_exposure",
                 "schemaname": "dest_schema",
                 "dbtablename": "drug_exposure",
-                "description": "Insert into omop cdm database"
+                "description": "Insert into omop cdm database",
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -398,12 +426,14 @@
             "id": "a51a4106-095e-49a8-a868-db5874ed60f5",
             "data": {
                 "name": "Insert_into_omop_observation",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_to_observation",
                 "schemaname": "dest_schema",
                 "dbtablename": "observation",
-                "description": "Insert into omop cdm database"
+                "description": "Insert into omop cdm database",
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -426,12 +456,14 @@
             "id": "230782cf-935e-4354-9c89-db8a2f37bf99",
             "data": {
                 "name": "Procedure",
+                "error": false,
                 "database": "fhir_db",
-                "sqlquery": "select content from \"fhir\".\"Procedure\"",
+                "sqlquery": "select _raw from \"FHIR\".\"d50c86c3_8e31_4d86_b179_1d0cd322e219\".\"Procedure\"",
                 "testdata": [
                     []
                 ],
-                "description": "Get fhir data for Procedure resource"
+                "description": "Get fhir data for Procedure resource",
+                "errorMessage": null
             },
             "type": "db_reader_node",
             "width": 350,
@@ -454,12 +486,14 @@
             "id": "cf76f9a9-321b-469f-8779-fc8945fd50f6",
             "data": {
                 "name": "Insert_into_omop_procedure_occurrence",
+                "error": false,
                 "database": "dest_db",
                 "truncate": false,
                 "dataframe": "py2table_to_procedure_occurrence",
                 "schemaname": "dest_schema",
                 "dbtablename": "procedure_occurrence",
-                "description": "Insert into omop cdm database"
+                "description": "Insert into omop cdm database",
+                "errorMessage": null
             },
             "type": "db_writer_node",
             "width": 350,
@@ -1064,11 +1098,13 @@
             "data": {
                 "map": {},
                 "name": "py2table_drug_exposure",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP_cdm_table_drug_expo"
                 },
-                "description": "Describe the task of node py2table_node_9"
+                "description": "Describe the task of node py2table_node_9",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
@@ -1118,11 +1154,13 @@
             "data": {
                 "map": {},
                 "name": "py2table_to_measurement",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP_cdm_table_meas"
                 },
-                "description": "Describe the task of node py2table_node_10"
+                "description": "Describe the task of node py2table_node_10",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
@@ -1170,11 +1208,13 @@
             "data": {
                 "map": {},
                 "name": "py2table_to_drug_exposure",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP_cdm_table_drug_exp"
                 },
-                "description": "Describe the task of node py2table_node_11"
+                "description": "Describe the task of node py2table_node_11",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
@@ -1224,21 +1264,23 @@
             "data": {
                 "map": {},
                 "name": "py2table_to_observation",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP_cdm_table_obs"
                 },
-                "description": "Describe the task of node py2table_node_12"
+                "description": "Describe the task of node py2table_node_12",
+                "errorMessage": null
             },
             "type": "py2table_node",
-            "width": 350,
-            "height": 210,
+            "width": 352,
+            "height": 212,
             "dragging": false,
             "position": {
                 "x": 2700,
                 "y": 1900
             },
-            "selected": true,
+            "selected": false,
             "dragHandle": "",
             "sourcePosition": "right",
             "targetPosition": "left",
@@ -1251,8 +1293,10 @@
             "id": "43ad560c-fdba-43b6-9236-4baadb718c42",
             "data": {
                 "name": "validate_cdm_data_proc_occ",
+                "error": false,
                 "description": "Describe the task of node python_node_5",
-                "python_code": "import pandas as pd\n\nREQUIRED_COLS = [\n  \"procedure_occurrence_id\",\n  \"person_id\",\n  \"procedure_concept_id\",\n  \"procedure_date\",\n  \"procedure_type_concept_id\"\n]\n\ndef exec(myinput):\n  df = myinput.get(\"transform_to_procedure_occurrence\").result\n  valid_df = df.dropna(subset=REQUIRED_COLS)\n  return valid_df\n"
+                "python_code": "import pandas as pd\n\nREQUIRED_COLS = [\n  \"procedure_occurrence_id\",\n  \"person_id\",\n  \"procedure_concept_id\",\n  \"procedure_date\",\n  \"procedure_type_concept_id\"\n]\n\ndef exec(myinput):\n  df = myinput.get(\"transform_to_procedure_occurrence\").result\n  valid_df = df.dropna(subset=REQUIRED_COLS)\n  return valid_df\n",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1276,11 +1320,13 @@
             "data": {
                 "map": {},
                 "name": "py2table_to_procedure_occurrence",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP_cdm_table_procedure_occ"
                 },
-                "description": "Describe the task of node py2table_node_13"
+                "description": "Describe the task of node py2table_node_13",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
@@ -1304,11 +1350,13 @@
             "data": {
                 "map": {},
                 "name": "py2table_to_visit_occurrence",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP_cdm_table_visit_occ"
                 },
-                "description": "Describe the task of node py2table_node_14"
+                "description": "Describe the task of node py2table_node_14",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
@@ -1358,11 +1406,13 @@
             "data": {
                 "map": {},
                 "name": "py2table_to_condition_occurrence",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP_cdm_table_co"
                 },
-                "description": "Describe the task of node py2table_node_15"
+                "description": "Describe the task of node py2table_node_15",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
@@ -1412,11 +1462,13 @@
             "data": {
                 "map": {},
                 "name": "py2table_to_person",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP_cdm_table_person"
                 },
-                "description": "Describe the task of node py2table_node_16"
+                "description": "Describe the task of node py2table_node_16",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
@@ -1439,8 +1491,10 @@
             "id": "a06d966c-271c-4fe7-8fb2-e2c8443dd22e",
             "data": {
                 "name": "validate_cdm_data",
+                "error": false,
                 "description": "Describe the task of node python_node_9",
-                "python_code": "import pandas as pd\n\nREQUIRED_COLS = [\n  \"observation_date\",\n  \"observation_id\",\n  \"person_id\",\n  \"observation_type_concept_id\",\n  \"observation_concept_id\",\n]\n\ndef exec(myinput):\n  df = myinput.get(\"transform_to_Observation\").result\n  valid_df = df.dropna(subset=REQUIRED_COLS)\n  return valid_df\n"
+                "python_code": "import pandas as pd\n\nREQUIRED_COLS = [\n  \"observation_date\",\n  \"observation_id\",\n  \"person_id\",\n  \"observation_type_concept_id\",\n  \"observation_concept_id\",\n]\n\ndef exec(myinput):\n  df = myinput.get(\"transform_to_Observation\").result\n  valid_df = df.dropna(subset=REQUIRED_COLS)\n  return valid_df\n",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1464,11 +1518,13 @@
             "data": {
                 "map": {},
                 "name": "py2table_to_observation_1",
+                "error": false,
                 "uiMap": {
                     "path": "$",
                     "source": "Truncate_OMOP__table_observation"
                 },
-                "description": "Describe the task of node py2table_node_17"
+                "description": "Describe the task of node py2table_node_17",
+                "errorMessage": null
             },
             "type": "py2table_node",
             "width": 350,
@@ -1517,8 +1573,10 @@
             "id": "f217a843-35d9-4fbb-8f08-ee9be931dc68",
             "data": {
                 "name": "Truncate_OMOP__table_observation",
+                "error": false,
                 "description": "Describe the task of node python_node_10",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"observation\"\n    source_col = \"observation_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"observation\"\n    source_col = \"observation_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1541,8 +1599,10 @@
             "id": "417bf8c6-9c9b-4ea5-a684-222fb68f786f",
             "data": {
                 "name": "Truncate_OMOP_cdm_table_person",
+                "error": false,
                 "description": "Describe the task of node python_node_11",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"person\"\n    source_col = \"person_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"person\"\n    source_col = \"person_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1565,8 +1625,10 @@
             "id": "f291bb65-0804-40cb-989c-d65387218938",
             "data": {
                 "name": "Truncate_OMOP_cdm_table_co",
+                "error": false,
                 "description": "Describe the task of node python_node_12",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"condition_occurrence\"\n    source_col = \"condition_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"condition_occurrence\"\n    source_col = \"condition_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1589,8 +1651,10 @@
             "id": "e68963a3-0fe1-42bc-9983-2ac3657a2d6b",
             "data": {
                 "name": "Truncate_OMOP_cdm_table_visit_occ",
+                "error": false,
                 "description": "Describe the task of node python_node_13",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"visit_occurrence\"\n    source_col = \"visit_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"visit_occurrence\"\n    source_col = \"visit_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1613,8 +1677,10 @@
             "id": "ebe521a0-6769-47c0-8d4b-c6e74965ee21",
             "data": {
                 "name": "Truncate_OMOP_cdm_table_drug_expo",
+                "error": false,
                 "description": "Describe the task of node python_node_14",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"drug_exposure\"\n    source_col = \"drug_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"drug_exposure\"\n    source_col = \"drug_source_value\"\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1637,8 +1703,10 @@
             "id": "fa08ff6e-f9c6-4aea-b1e4-fa03aaa83a95",
             "data": {
                 "name": "Truncate_OMOP_cdm_table_meas",
+                "error": false,
                 "description": "Describe the task of node python_node_15",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"measurement\"\n    source_col = \"measurement_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"measurement\"\n    source_col = \"measurement_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1661,8 +1729,10 @@
             "id": "4b85a7d5-6a32-465c-942c-9b843ba63e02",
             "data": {
                 "name": "Truncate_OMOP_cdm_table_drug_exp",
+                "error": false,
                 "description": "Describe the task of node python_node_16",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"drug_exposure\"\n    source_col = \"drug_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"drug_exposure\"\n    source_col = \"drug_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1685,8 +1755,10 @@
             "id": "fb5fe712-a2aa-4b29-a860-0ffe9d66e1a1",
             "data": {
                 "name": "Truncate_OMOP_cdm_table_obs",
+                "error": false,
                 "description": "Describe the task of node python_node_17",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"observation\"\n    source_col = \"observation_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"observation\"\n    source_col = \"observation_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1709,8 +1781,10 @@
             "id": "312d8dce-4c22-481a-b37e-07f7ce04a0bc",
             "data": {
                 "name": "Truncate_OMOP_cdm_table_procedure_occ",
+                "error": false,
                 "description": "Describe the task of node python_node_18",
-                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"procedure_occurrence\"\n    source_col = \"procedure_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data"
+                "python_code": "def exec(myinput):\n    data = myinput.get(\"validate_cdm_data\").result\n    database_code = dest_db\n    cdm_schema = dest_schema\n    dao = SqlAlchemyDao(database_code=database_code)\n    table_name = \"procedure_occurrence\"\n    source_col = \"procedure_source_value\"\n\n    source_ids = data[source_col].dropna().unique().tolist()\n    metadata_obj = sql.MetaData(schema=cdm_schema)\n    table_obj = sql.Table(table_name, metadata_obj, autoload_with=dao.engine)\n    delete_stmt = table_obj.delete().where(table_obj.c[source_col].in_(source_ids))\n    dao.execute_sqlalchemy_statement(delete_stmt, lambda r: r.rowcount)\n\n    return data",
+                "errorMessage": null
             },
             "type": "python_node",
             "width": 350,
@@ -1727,30 +1801,6 @@
             "positionAbsolute": {
                 "x": 2020,
                 "y": 2200
-            }
-        },
-        {
-            "id": "05615b95-3ccc-4a81-99bf-8c5a1f9c2a8d",
-            "data": {
-                "name": "Truncate_omop_tables",
-                "description": "Describe the task of node python_node_19",
-                "python_code": "def exec(myinput):\n    dbdao = DBDao(database_code=database_code)\n    # Truncate tables\n    dbdao.truncate_table(cdm_schema, \"observation\")\n    dbdao.truncate_table(cdm_schema, \"measurement\")\n    dbdao.truncate_table(cdm_schema, \"person\")\n    dbdao.truncate_table(cdm_schema, \"visit_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"procedure_occurrence\")\n    dbdao.truncate_table(cdm_schema, \"drug_exposure\")\n    dbdao.truncate_table(cdm_schema, \"condition_occurrence\")\n    return \"true\" "
-            },
-            "type": "python_node",
-            "width": 350,
-            "height": 210,
-            "dragging": false,
-            "position": {
-                "x": -650,
-                "y": -530
-            },
-            "selected": false,
-            "dragHandle": "",
-            "sourcePosition": "right",
-            "targetPosition": "left",
-            "positionAbsolute": {
-                "x": -650,
-                "y": -530
             }
         }
     ],
@@ -2219,7 +2269,7 @@
     ],
     "databases": [
         {
-            "code": "d2e_fhir",
+            "code": "FHIR",
             "name": "fhir_db"
         },
         {
