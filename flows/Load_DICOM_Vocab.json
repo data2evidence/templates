@@ -1,0 +1,378 @@
+{
+  "id": "bc35a1cc-237c-431e-9abd-44617c2f87c9",
+  "name": "Load DICOM Vocabulary from custom DICOM concepts CSV and Pickle files. Source repo: https://github.com/paulnagy/DICOM2OMOP",
+  "cdmVersion": "5.4",
+  "supportedDatabaseDialects": [
+        "Postgres"
+    ],
+  "Pre-requisites": [
+    "1. Ensure that the latest version of omop_table_staging is downloaded."
+  ],
+  "nodes": [
+    {
+      "id": "a26e8189-41df-4042-9be4-975b84e952ab",
+      "data": {
+        "name": "TransformConceptDf",
+        "description": "Read from CSV and transform concept records",
+        "python_code": "from typing import Dict, Any\n\ndef exec(myinput: Dict[str, Any]) -> pd.DataFrame:\n  \"\"\"\n  Process DICOM concept data by converting date columns to datetime format.\n  \n  This function extracts a DataFrame from the workflow input and converts\n  the 'valid_start_date' and 'valid_end_date' columns from string format\n  (YYYYMMDD) to proper datetime objects.\n  \n  Args:\n      myinput: Dictionary containing workflow data. Expected to have a key\n               \"UploadDICOMConcepts\" with a result attribute containing\n               the DICOM concepts DataFrame.\n  \n  Returns:\n      pd.DataFrame: The processed concept DataFrame with converted date columns.\n                    Invalid dates are coerced to NaT (Not a Time).\n  \"\"\"\n  # Extract DICOM concepts DataFrame from workflow input\n  concept_df: pd.DataFrame = myinput.get(\"UploadDICOMConcepts\").result\n\n  concept_df['valid_start_date'] = pd.to_datetime(\n      concept_df['valid_start_date'], \n      format='%Y%m%d', \n      errors='coerce'\n  )\n  concept_df['valid_end_date'] = pd.to_datetime(\n      concept_df['valid_end_date'], \n      format='%Y%m%d', \n      errors='coerce'\n  )\n\n  return concept_df"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -2510, "y": -350 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -2510, "y": -350 }
+    },
+    {
+      "id": "228c8b1f-2075-4b2d-bb1e-27e5d10557b6",
+      "data": {
+        "name": "IngestConceptTable",
+        "database": "target_db",
+        "truncate": true,
+        "dataframe": "GetConceptDf",
+        "schemaname": "vocab_schema",
+        "dbtablename": "concept",
+        "description": "Write to concept table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1470, "y": -350 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1470, "y": -350 }
+    },
+    {
+      "id": "f26dde21-a894-4664-97d2-ec4fddea1c28",
+      "data": {
+        "sql": "SELECT \n    'DICOM' AS vocabulary_id,\n    'Digital Imaging and Communications in Medicine (National Electrical Manufacturers Association)' AS vocabulary_name,\n    'https://www.dicomstandard.org/current' AS vocabulary_reference,\n    'NEMA Standard PS3' AS vocabulary_version,\n    2128000000 AS vocabulary_concept_id;",
+        "name": "CreateVocabEntry",
+        "description": "Create vocabulary table record for DICOM concepts"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -3050, "y": -940 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -3050, "y": -940 }
+    },
+    {
+      "id": "762477d6-c431-471b-92b2-589c0f519a56",
+      "data": {
+        "sql": "SELECT \n    'DICOM Attributes' AS concept_class_id,\n    'DICOM Attributes' AS concept_class_name,\n    2128000001 AS concept_class_concept_id\n\nUNION ALL\n\nSELECT \n    'DICOM Value Sets' AS concept_class_id,\n    'DICOM Value Sets' AS concept_class_name,\n    2128000002 AS concept_class_concept_id\n;",
+        "name": "CreateConceptClassEntry",
+        "description": "Create concept_class table records for DICOM concepts"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -3050, "y": -650 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -3050, "y": -650 }
+    },
+    {
+      "id": "9774c574-a3f7-4cff-aa37-4ee0dc473e38",
+      "data": {
+        "name": "IngestVocabTable",
+        "database": "target_db",
+        "truncate": true,
+        "dataframe": "CreateVocabEntry",
+        "schemaname": "vocab_schema",
+        "dbtablename": "vocabulary",
+        "description": "Write to vocabulary table in vocab schema"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1480, "y": -940 },
+      "selected": true,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1480, "y": -940 }
+    },
+    {
+      "id": "1d6265f4-26fd-473b-9622-07529306eb3f",
+      "data": {
+        "name": "IngestConceptClassTable",
+        "database": "target_db",
+        "truncate": true,
+        "dataframe": "CreateConceptClassEntry",
+        "schemaname": "vocab_schema",
+        "dbtablename": "concept_class",
+        "description": "Write to concept class table in vocab schema"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1480, "y": -650 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1480, "y": -650 }
+    },
+    {
+      "id": "b9174764-2398-4e39-8c09-a3ac13e7ad64",
+      "data": {
+        "file": "",
+        "name": "UploadDICOMConcepts",
+        "columns": [],
+        "encoding": "utf-8",
+        "delimiter": ",",
+        "hasheader": true,
+        "description": "Upload DICOM concepts CSV"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -3050, "y": -350 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -3050, "y": -350 }
+    },
+    {
+      "id": "b0644212-074e-41a4-a1bf-92842357b1e9",
+      "data": {
+        "map": {},
+        "name": "GetConceptDf",
+        "uiMap": { "path": "$", "source": "TransformConceptDf" },
+        "description": "Extract concept_df"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -2000, "y": -350 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -2000, "y": -350 }
+    },
+    {
+      "id": "5ade674b-abba-47dc-9fd3-af00b322b55b",
+      "data": {
+        "file": "",
+        "name": "UploadAttributes-CodeStringValues",
+        "columns": [],
+        "encoding": "utf-8",
+        "delimiter": ",",
+        "hasheader": true,
+        "description": "Upload Attributes-Code String values CSV"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -3050, "y": 220 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -3050, "y": 220 }
+    },
+    {
+      "id": "13660611-484f-48ab-80fb-ba90dc8b68aa",
+      "data": {
+        "name": "TransformConceptRelationshipDf",
+        "description": "Describe the task of node python_node_1",
+        "python_code": "import pickle\nimport numpy as np\n\nfrom pathlib import Path\nfrom typing import Any, Dict\n\ndef exec(myinput: Dict[str, Any]) -> pd.DataFrame:\n  \"\"\"\n  Combine multiple DICOM concept relationship dataframes into a single staging dataframe.\n  \n  This function processes three sources of DICOM data:\n  1. Cs_values_maps_to_value (Code String values mapped to values)\n  2. Cs_values_maps_to (Code String values mappings)\n  3. Part3_to_part16_relationship_via_CID (from pickle file in storage)\n  \n  The function downloads a pickle file containing concept relationships, converts\n  date columns to datetime format, assigns default date ranges to the other datasets,\n  and combines all three into a single dataframe.\n  \n  Args:\n      myinput: Dictionary containing workflow data with the following expected keys:\n               - \"UploadAttributes-CodeStringValues\": Result containing cs_values_maps_to_value DataFrame\n               - \"UploadCs_values_maps_to\": Result containing cs_values_maps_to DataFrame\n               - \"UploadAttributes-CID-ValueSets\": Result containing node_id and filename for pickle file\n  \n  Returns:\n      pd.DataFrame: Combined dataframe with all concept relationships, including properly\n                    formatted valid_start_date and valid_end_date columns.\n  \"\"\"\n  cs_values_maps_to_value_df: pd.DataFrame = myinput.get(\"UploadAttributes-CodeStringValues\").result\n  cs_values_maps_to_df: pd.DataFrame = myinput.get(\"UploadCs_values_maps_to\").result\n  \n  node_id: str = myinput.get(\"UploadAttributes-CID-ValueSets\").result.get(\"node_id\")\n  filename: str = myinput.get(\"UploadAttributes-CID-ValueSets\").result.get(\"filename\")\n  \n  # Download the pickle file from remote storage\n  download_file_from_storage(node_id, filename)\n\n  filepath: Path = Path(DOWNLOADS_DIR) / filename\n\n  concept_relationship_staging: pd.DataFrame = pd.read_pickle(filepath)\n\n  # Convert date columns from integer (YYYYMMDD) to datetime using vectorized operations\n  concept_relationship_staging['valid_start_date'] = pd.to_datetime(\n      concept_relationship_staging['valid_start_date'], \n      format='%Y%m%d', \n      errors='coerce'\n  )\n\n  concept_relationship_staging['valid_end_date'] = pd.to_datetime(\n      concept_relationship_staging['valid_end_date'], \n      format='%Y%m%d', \n      errors='coerce'\n  )\n\n  # Assign constant dates to all rows (vectorized - no loops needed)\n  cs_values_maps_to_value_df['valid_start_date'] = pd.to_datetime('1993-01-01')\n  cs_values_maps_to_value_df['valid_end_date'] = pd.to_datetime('2099-12-31')\n\n  cs_values_maps_to_df['valid_start_date'] = pd.to_datetime('1993-01-01')\n  cs_values_maps_to_df['valid_end_date'] = pd.to_datetime('2099-12-31')\n\n  # Combine the three dataframes into one\n  combined_df: pd.DataFrame = pd.concat([concept_relationship_staging, cs_values_maps_to_value_df, cs_values_maps_to_df], ignore_index=True)\n\n  return combined_df\n\n\ndef download_file_from_storage(node_id: str, filename: str) -> Path:\n  \"\"\"\n  Download a file from Supabase storage to the downloads directory.\n  \n  Args:\n    node_id: The storage node identifier where the file is located.\n    filename: The name of the file to download.\n    \n  Returns:\n    Path: The path to the downloaded file.\n  \"\"\"\n  storage_api = SupabaseStorageAPI()\n  return storage_api.download_file_to_path(node_id, filename, Path(DOWNLOADS_DIR))"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -2510, "y": 220 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -2510, "y": 220 }
+    },
+    {
+      "id": "606ea775-9219-4481-867a-3977326cff66",
+      "data": {
+        "map": {},
+        "name": "GetConceptRelationshipDf",
+        "uiMap": { "path": "$", "source": "TransformConceptRelationshipDf" },
+        "description": "Extract concept_relationship df"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1990, "y": 220 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1990, "y": 220 }
+    },
+    {
+      "id": "49b714eb-dcba-47aa-bbb3-155f21fbad2a",
+      "data": {
+        "name": "IngestConceptRelationshipTable",
+        "database": "target_db",
+        "truncate": true,
+        "dataframe": "GetConceptRelationshipDf",
+        "schemaname": "vocab_schema",
+        "dbtablename": "concept_relationship",
+        "description": "Write to concept_relationship table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1480, "y": 220 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1480, "y": 220 }
+    },
+    {
+      "id": "ff8b483a-d443-43a1-80cb-3fed14017d45",
+      "data": {
+        "file": "",
+        "name": "UploadAttributes-CID-ValueSets",
+        "encoding": "utf-8",
+        "description": "Upload Attributes-CID-ValueSets CSV"
+      },
+      "type": "file_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -3050, "y": -50 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -3050, "y": -50 }
+    },
+    {
+      "id": "ed46e1fa-e2f2-4680-a807-16ddd3519926",
+      "data": {
+        "file": "",
+        "name": "UploadCs_values_maps_to",
+        "columns": [],
+        "encoding": "utf-8",
+        "delimiter": ",",
+        "hasheader": true,
+        "description": "Upload cs_values_maps_to CSV"
+      },
+      "type": "csv_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -3050, "y": 500 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -3050, "y": 500 }
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-762477d6-c431-471b-92b2-589c0f519a56source_762477d6-c431-471b-92b2-589c0f519a56_dataframe-1d6265f4-26fd-473b-9622-07529306eb3ftarget_1d6265f4-26fd-473b-9622-07529306eb3f_dataframe",
+      "source": "762477d6-c431-471b-92b2-589c0f519a56",
+      "target": "1d6265f4-26fd-473b-9622-07529306eb3f",
+      "selected": false,
+      "sourceHandle": "source_762477d6-c431-471b-92b2-589c0f519a56_dataframe",
+      "targetHandle": "target_1d6265f4-26fd-473b-9622-07529306eb3f_dataframe"
+    },
+    {
+      "id": "reactflow__edge-f26dde21-a894-4664-97d2-ec4fddea1c28source_f26dde21-a894-4664-97d2-ec4fddea1c28_dataframe-9774c574-a3f7-4cff-aa37-4ee0dc473e38target_9774c574-a3f7-4cff-aa37-4ee0dc473e38_dataframe",
+      "source": "f26dde21-a894-4664-97d2-ec4fddea1c28",
+      "target": "9774c574-a3f7-4cff-aa37-4ee0dc473e38",
+      "sourceHandle": "source_f26dde21-a894-4664-97d2-ec4fddea1c28_dataframe",
+      "targetHandle": "target_9774c574-a3f7-4cff-aa37-4ee0dc473e38_dataframe"
+    },
+    {
+      "id": "reactflow__edge-b9174764-2398-4e39-8c09-a3ac13e7ad64source_b9174764-2398-4e39-8c09-a3ac13e7ad64_any-a26e8189-41df-4042-9be4-975b84e952abtarget_a26e8189-41df-4042-9be4-975b84e952ab_any",
+      "source": "b9174764-2398-4e39-8c09-a3ac13e7ad64",
+      "target": "a26e8189-41df-4042-9be4-975b84e952ab",
+      "sourceHandle": "source_b9174764-2398-4e39-8c09-a3ac13e7ad64_any",
+      "targetHandle": "target_a26e8189-41df-4042-9be4-975b84e952ab_any"
+    },
+    {
+      "id": "reactflow__edge-a26e8189-41df-4042-9be4-975b84e952absource_a26e8189-41df-4042-9be4-975b84e952ab_object-b0644212-074e-41a4-a1bf-92842357b1e9target_b0644212-074e-41a4-a1bf-92842357b1e9_object",
+      "source": "a26e8189-41df-4042-9be4-975b84e952ab",
+      "target": "b0644212-074e-41a4-a1bf-92842357b1e9",
+      "sourceHandle": "source_a26e8189-41df-4042-9be4-975b84e952ab_object",
+      "targetHandle": "target_b0644212-074e-41a4-a1bf-92842357b1e9_object"
+    },
+    {
+      "id": "reactflow__edge-b0644212-074e-41a4-a1bf-92842357b1e9source_b0644212-074e-41a4-a1bf-92842357b1e9_dataframe-228c8b1f-2075-4b2d-bb1e-27e5d10557b6target_228c8b1f-2075-4b2d-bb1e-27e5d10557b6_dataframe",
+      "source": "b0644212-074e-41a4-a1bf-92842357b1e9",
+      "target": "228c8b1f-2075-4b2d-bb1e-27e5d10557b6",
+      "sourceHandle": "source_b0644212-074e-41a4-a1bf-92842357b1e9_dataframe",
+      "targetHandle": "target_228c8b1f-2075-4b2d-bb1e-27e5d10557b6_dataframe"
+    },
+    {
+      "id": "reactflow__edge-5ade674b-abba-47dc-9fd3-af00b322b55bsource_5ade674b-abba-47dc-9fd3-af00b322b55b_any-13660611-484f-48ab-80fb-ba90dc8b68aatarget_13660611-484f-48ab-80fb-ba90dc8b68aa_any",
+      "source": "5ade674b-abba-47dc-9fd3-af00b322b55b",
+      "target": "13660611-484f-48ab-80fb-ba90dc8b68aa",
+      "selected": false,
+      "sourceHandle": "source_5ade674b-abba-47dc-9fd3-af00b322b55b_any",
+      "targetHandle": "target_13660611-484f-48ab-80fb-ba90dc8b68aa_any"
+    },
+    {
+      "id": "reactflow__edge-13660611-484f-48ab-80fb-ba90dc8b68aasource_13660611-484f-48ab-80fb-ba90dc8b68aa_object-606ea775-9219-4481-867a-3977326cff66target_606ea775-9219-4481-867a-3977326cff66_object",
+      "source": "13660611-484f-48ab-80fb-ba90dc8b68aa",
+      "target": "606ea775-9219-4481-867a-3977326cff66",
+      "sourceHandle": "source_13660611-484f-48ab-80fb-ba90dc8b68aa_object",
+      "targetHandle": "target_606ea775-9219-4481-867a-3977326cff66_object"
+    },
+    {
+      "id": "reactflow__edge-606ea775-9219-4481-867a-3977326cff66source_606ea775-9219-4481-867a-3977326cff66_dataframe-49b714eb-dcba-47aa-bbb3-155f21fbad2atarget_49b714eb-dcba-47aa-bbb3-155f21fbad2a_dataframe",
+      "source": "606ea775-9219-4481-867a-3977326cff66",
+      "target": "49b714eb-dcba-47aa-bbb3-155f21fbad2a",
+      "sourceHandle": "source_606ea775-9219-4481-867a-3977326cff66_dataframe",
+      "targetHandle": "target_49b714eb-dcba-47aa-bbb3-155f21fbad2a_dataframe"
+    },
+    {
+      "id": "reactflow__edge-ff8b483a-d443-43a1-80cb-3fed14017d45source_ff8b483a-d443-43a1-80cb-3fed14017d45_any-13660611-484f-48ab-80fb-ba90dc8b68aatarget_13660611-484f-48ab-80fb-ba90dc8b68aa_any",
+      "source": "ff8b483a-d443-43a1-80cb-3fed14017d45",
+      "target": "13660611-484f-48ab-80fb-ba90dc8b68aa",
+      "sourceHandle": "source_ff8b483a-d443-43a1-80cb-3fed14017d45_any",
+      "targetHandle": "target_13660611-484f-48ab-80fb-ba90dc8b68aa_any"
+    },
+    {
+      "id": "reactflow__edge-ed46e1fa-e2f2-4680-a807-16ddd3519926source_ed46e1fa-e2f2-4680-a807-16ddd3519926_any-13660611-484f-48ab-80fb-ba90dc8b68aatarget_13660611-484f-48ab-80fb-ba90dc8b68aa_any",
+      "source": "ed46e1fa-e2f2-4680-a807-16ddd3519926",
+      "target": "13660611-484f-48ab-80fb-ba90dc8b68aa",
+      "sourceHandle": "source_ed46e1fa-e2f2-4680-a807-16ddd3519926_any",
+      "targetHandle": "target_13660611-484f-48ab-80fb-ba90dc8b68aa_any"
+    }
+  ],
+  "variables": [{ "key": "DOWNLOADS_DIR", "value": "/app/downloads" }],
+  "importLibs": [
+    "from _shared_flow_utils.dao.DBDao import DBDao",
+    "from _shared_flow_utils.api.SupabaseStorageAPI import SupabaseStorageAPI",
+    "import pandas as pd"
+  ],
+  "databases": [{ "code": "demo_database", "name": "target_db" }],
+  "schemas": [{ "name": "vocab_schema", "schema": "cdmvocab" }]
+}
