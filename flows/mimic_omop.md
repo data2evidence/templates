@@ -72,7 +72,7 @@ Benchmarked on the same 32 GB RAM / 512 GB disk server (MIMIC-IV v2.2, full data
 
 ## How to use
 
-1. In the d2e Dataflow UI, import `mimic_omop.json` as a new dataflow (or select the built-in template).
+1. In the d2e Dataflow UI, create a new dataflow from the built-in **MIMIC_OMOP** template. (Alternatively, `mimic_omop.json` can be imported manually as a new dataflow.)
 2. Adjust the flow variables (see below) — at minimum `flow_action_type`, `database_code`, and `schema_name`.
 3. Run the flow. Progress for each stage is written to the Prefect run logs.
 
