@@ -238,7 +238,7 @@
     },
     {
       "key": "use_trex_connection",
-      "value": "True"
+      "value": "False"
     },
     {
       "key": "chunk_size",
