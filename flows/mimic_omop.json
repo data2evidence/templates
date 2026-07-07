@@ -225,14 +225,6 @@
       "value": "mimic_to_database"
     },
     {
-      "key": "database_code",
-      "value": "demo_database"
-    },
-    {
-      "key": "schema_name",
-      "value": "dataflow_ui_mimic"
-    },
-    {
       "key": "overwrite_schema",
       "value": "True"
     },
@@ -263,5 +255,17 @@
     "from sqlalchemy import text",
     "from _shared_flow_utils.types import SupportedDatabaseDialects",
     "from _shared_flow_utils.dao.DBDao import DBDao"
+  ],
+  "databases": [
+    {
+      "code": "demo_database",
+      "name": "database_code"
+    }
+  ],
+  "schemas": [
+    {
+      "name": "schema_name",
+      "schema": "dataflow_ui_mimic"
+    }
   ]
 }
