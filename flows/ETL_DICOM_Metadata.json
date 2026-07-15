@@ -1,0 +1,533 @@
+{
+  "id": "0d3eda8c-d7ba-41b7-971d-ce518c086c75",
+  "name": "Extract, Transform, and Load DICOM metadata to OMOP CDM tables",
+  "cdmVersion": "5.4",
+  "supportedDatabaseDialects": [
+        "Postgres"
+    ],
+  "Pre-requisites": [
+    "1. Ensure that the folder containing DICOM files are mounted to the appropriate directory at /app/externalfiles/dicom-images-test.\n2. Ensure that medical imaging and cdm tables are created in the database and the user has write access to these tables.\n3. Ensure that the DICOM vocabulary is loaded into the concept table in the database."
+  ],
+  "nodes": [
+    {
+      "id": "c044e18e-24a2-4d2f-a139-714bca5d8e46",
+      "data": {
+        "name": "GetDICOMFileList",
+        "description": "Retrieve DICOM files to ingest",
+        "python_code": "from pathlib import Path\nfrom typing import Any, List\n\ndef exec(myinput: Any) -> List[str]:\n  \"\"\"\n  Recursively search for all DICOM files in the specified directory.\n  \n  This function scans the DICOM images directory and returns a list of absolute\n  paths to all files with .dcm or .DCM extensions.\n  \n  Args:\n      myinput: Any.\n  \n  Returns:\n      List[str]: List of absolute file paths to all DICOM files found in the directory.\n  \"\"\"\n  # This is the file path of the dicom files mounted to the flow run container\n  dicom_file_abs_path: str = \"/app/externalfiles/dicom-images-test\"\n  root_dir: Path = Path(dicom_file_abs_path)\n  dcm_files: List[str] = [str(path) for path in root_dir.rglob('*.dcm')] + [str(path) for path in root_dir.rglob('*.DCM')]\n  print(f\"Found {len(dcm_files)} DICOM files for processing!\")\n\n  return dcm_files"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1330, "y": 210 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1330, "y": 210 }
+    },
+    {
+      "id": "4b645aa8-5c51-4420-a846-63fdbb972b2a",
+      "data": {
+        "name": "ExtractMetadata",
+        "description": "Extract tag metadata from dicom files",
+        "python_code": "from typing import Any, Dict, List, Generator, Optional\nfrom pydicom import dcmread\nfrom pydicom.dataelem import DataElement\nfrom pydicom.tag import BaseTag\n\ndef exec(myinput: Dict[str, Any]) -> pd.DataFrame:\n  \"\"\"\n  Extract metadata from DICOM files retrieved from the workflow.\n  \n  This is the main entry point that retrieves a list of DICOM file paths\n  from the workflow input and extracts all metadata elements from each file.\n  \n  Args:\n      myinput: Dictionary containing workflow data, expected to have a\n               \"GetDICOMFileList\" key with result containing DICOM file paths.\n  \n  Returns:\n      pd.DataFrame: DataFrame containing extracted metadata from all DICOM files,\n                    with columns for study UIDs, series UIDs, tags, values, and more.\n  \"\"\"\n  dcm_files: List[str] = myinput[\"GetDICOMFileList\"].result\n\n  extracted_data_df: pd.DataFrame = extract_data_elements(dcm_files)\n  \n  return extracted_data_df\n\ndef extract_data_elements(dicom_files: List[str]) -> pd.DataFrame:\n    \"\"\"\n    Extract all metadata elements from a list of DICOM files.\n    \n    This function iterates through each DICOM file, extracts key identifiers\n    (Study/Series/SOP Instance UIDs), and recursively processes all data elements\n    including nested sequences. Skips elements with VR=\"UN\" (Unknown) and handles\n    errors gracefully.\n    \n    Args:\n        dicom_files: List of absolute file paths to DICOM files.\n    \n    Returns:\n        pd.DataFrame: DataFrame with extracted metadata including columns:\n                     - id: Unique identifier for each metadata record\n                     - metadata_source_name: DICOM element name\n                     - tag: DICOM tag in string format\n                     - VR: Value Representation\n                     - value: Element value (None for sequences)\n                     - image_study_uid, image_series_uid, sop_instance_id\n                     - And more fields...\n    \n    Raises:\n        Exception: If any data elements fail to process.\n    \n    Note:\n        - Asserts that each file has a unique SOP Instance ID\n        - Asserts that each metadata record has a unique ID\n    \"\"\"\n    extracted_metadata: List[Dict[str, Any]] = []\n    error_elements: List[Dict[str, Any]] = []\n    generator_fn: Generator[int, None, None] = incrementer()\n\n    print(f\"Extracting metadata from {len(dicom_files)} files..\")\n\n    for filepath in dicom_files:\n        with dcmread(filepath, stop_before_pixels=True, force=True) as dicom_f:\n\n            study_instance_uid = dicom_f.get(\"StudyInstanceUID\")  # [0x0020, 0x000D]\n            series_instance_uid = dicom_f.get(\"SeriesInstanceUID\")  # [0x0020, 0x000E]\n            sop_instance_uid = dicom_f.get(\"SOPInstanceUID\")  # [0x0008,0x0018]\n            instance_number = dicom_f.get(\"InstanceNumber\", None)  # [0x0020,0x0013]\n\n            record = {\n                \"image_study_uid\": study_instance_uid,\n                \"image_series_uid\": series_instance_uid,\n                \"sop_instance_id\": sop_instance_uid,\n                \"instance_number\": instance_number,\n                \"filepath\": str(filepath)\n            }\n\n\n\n            for data_elem in dicom_f:\n                # Filter out values that are too large to store in db\n                if data_elem.VR == \"UN\":\n                    continue  # skip\n                else:\n                    try:\n                        extracted_metadata.extend(data_elem_to_dict(\n                            data_elem, record, generator_fn))\n                    except Exception as e:\n                        error_msg = f\"Failed to process {data_elem.name}: {e}\"\n                        error_elements.append(\n                            {\n                                \"filepath\": str(filepath),\n                                \"data_element_name\": data_elem.name,\n                                \"data_element_tag\": data_elem.tag,\n                                \"data_element_vr\": data_elem.VR\n                            }\n                        )\n                        print(error_msg)\n\n    print(f\"Successfully extracted metadata for {len(extracted_metadata)} data elements\")\n\n    if len(error_elements) > 0:\n        processing_error_msg = f\"Failed to extract metadata for {len(error_elements)} data elements\"\n        print(processing_error_msg)\n        raise Exception(processing_error_msg)\n\n    extracted_metadata_df: pd.DataFrame = pd.DataFrame(extracted_metadata)\n\n    assert extracted_metadata_df[\"sop_instance_id\"].nunique() == len(\n        dicom_files)\n    assert extracted_metadata_df[\"id\"].nunique() == len(extracted_metadata)\n\n    return extracted_metadata_df\n\n\n\ndef incrementer() -> Generator[int, None, None]:\n    \"\"\"\n    Generate sequential integer IDs starting from 1.\n    \n    This generator provides unique incremental IDs for metadata records,\n    ensuring each extracted data element has a unique identifier.\n    \n    Yields:\n        int: The next sequential integer (1, 2, 3, ...).\n    \"\"\"\n    n: int = 1\n    while True:\n        yield n\n        n += 1\n\n\ndef convert_tag_to_string(tag: BaseTag) -> str:\n    \"\"\"\n    Convert a DICOM tag to its string representation.\n    \n    Formats a DICOM tag as an 8-character hexadecimal string by concatenating\n    the group and element numbers (e.g., \"00100010\" for Patient Name).\n    \n    Args:\n        tag: DICOM tag object containing group and element numbers.\n    \n    Returns:\n        str: 8-character hexadecimal string representation (e.g., \"00100010\").\n    \"\"\"\n    tag_str: str = f\"{tag.group:04X}{tag.element:04X}\"\n    return tag_str\n\n\ndef data_elem_to_dict(data_element: DataElement, record: Dict[str, Any], \n                      generator_fn: Generator[int, None, None], \n                      parent_seq_id: Optional[int] = None) -> List[Dict[str, Any]]:\n    \"\"\"\n    Recursively convert a DICOM data element to dictionary records.\n    \n    Processes a single DICOM data element and extracts its metadata. If the element\n    is a sequence (VR=\"SQ\"), recursively processes nested data elements within the\n    first item of the sequence.\n    \n    Args:\n        data_element: DICOM data element to process.\n        record: Base record dictionary containing study/series/SOP UIDs and filepath.\n        generator_fn: Generator function providing unique IDs for each record.\n        parent_seq_id: ID of the parent sequence if this element is nested, None otherwise.\n    \n    Returns:\n        List[Dict[str, Any]]: List containing the current element's metadata and all\n                             nested elements' metadata (if it's a sequence).\n    \n    Note:\n        - For sequences, only the first item (index 0) is processed to avoid excessive data\n        - Each nested element maintains a reference to its parent via parent_seq_id\n    \"\"\"\n    \n    id: int = next(generator_fn)\n\n    result: List[Dict[str, Any]] = [extract_metadata(data_element, record, id, parent_seq_id)]\n    \n    if data_element.VR == \"SQ\": # Include nested data elements in sequences\n        sq_dataset = data_element.value\n\n        if len(sq_dataset) > 0: # non-empty sequence\n            for sq_data_elem in sq_dataset[0]: # Use the 0 idx to access data elements in the dataset in the sequence\n                result.extend(data_elem_to_dict(data_element=sq_data_elem, record=record,\n                                                generator_fn=generator_fn, parent_seq_id=id))\n    return result\n\n\ndef extract_metadata(data_element: DataElement, record: Dict[str, Any], \n                    id: int, parent_sequence_id: Optional[int] = None) -> Dict[str, Any]:\n    \"\"\"\n    Extract metadata from a DICOM data element into a dictionary.\n    \n    Creates a comprehensive metadata dictionary for a DICOM data element, including\n    tag information, value representation, actual value, sequence details, and privacy status.\n    \n    Args:\n        data_element: DICOM data element to extract metadata from.\n        record: Base record dictionary containing study/series/SOP UIDs and filepath.\n        id: Unique identifier for this metadata record.\n        parent_sequence_id: ID of parent sequence if this element is nested, None otherwise.\n    \n    Returns:\n        Dict[str, Any]: Dictionary containing all metadata fields:\n                       - id, metadata_source_name, metadata_source_keyword\n                       - tag (string), tag_tuple (formatted), VR, value\n                       - is_sequence, sequence_length, parent_sequence_id\n                       - is_private, private_creator\n                       - Plus all fields from the base record\n    \"\"\"\n    sequence_length: Optional[int] = get_sequence_length(data_element) if data_element.VR == \"SQ\" else None\n    metadata: Dict[str, Any] = {\n        \"id\": id,\n        \"metadata_source_name\": data_element.name,\n        \"metadata_source_keyword\": data_element.keyword,\n        \"tag\": convert_tag_to_string(data_element.tag),\n        \"tag_tuple\": convert_tag_to_tuple(data_element.tag),\n        \"VR\": data_element.VR,\n        \"value\": None if data_element.VR == \"SQ\" else extract_data_element_value(data_element),\n        \"is_sequence\": True if data_element.VR == \"SQ\" else False,\n        \"sequence_length\": sequence_length,\n        \"parent_sequence_id\": parent_sequence_id if parent_sequence_id else None,\n        \"is_private\": data_element.is_private,\n        \"private_creator\": data_element.private_creator,\n    }\n    metadata.update(record)\n    return metadata\n\n\ndef get_sequence_length(data_element: DataElement) -> int:\n    \"\"\"\n    Get the number of elements in the first level of a DICOM sequence.\n    \n    For sequence data elements (VR=\"SQ\"), returns the count of data elements\n    contained in the first item of the sequence. Empty sequences return 0.\n    \n    Args:\n        data_element: DICOM sequence data element.\n    \n    Returns:\n        int: Number of data elements in the first sequence item, or 0 if empty.\n    \"\"\"\n    if data_element.value:\n        sq_dataset = data_element.value  # Access the sequence \n        return len(sq_dataset[0])\n    else:\n        # Empty sequences don't have a .value\n        return 0\n\ndef convert_tag_to_tuple(tag: BaseTag) -> str:\n    \"\"\"\n    Convert a DICOM tag to its tuple string representation.\n    \n    Formats a DICOM tag as a tuple-like string with hexadecimal group and element\n    numbers (e.g., \"(0010,0010)\" for Patient Name).\n    \n    Args:\n        tag: DICOM tag object containing group and element numbers.\n    \n    Returns:\n        str: Tuple-formatted string (e.g., \"(0010,0010)\").\n    \"\"\"\n    tag_tuple: str = f\"({tag.group:04X},{tag.element:04X})\"\n    return tag_tuple\n\ndef extract_data_element_value(data_element: DataElement) -> Optional[str]:\n    \"\"\"\n    Extract and convert a DICOM data element's value to string.\n    \n    Converts the data element's value to a string representation. Returns None\n    if the element has no value.\n    \n    Args:\n        data_element: DICOM data element to extract value from.\n    \n    Returns:\n        Optional[str]: String representation of the value, or None if no value exists.\n    \n    Note:\n        This function is typically not called for sequence elements (VR=\"SQ\"),\n        which have their value set to None in the metadata.\n    \"\"\"\n    if data_element.value: \n        return str(data_element.value)\n    return None\n"
+      },
+      "type": "python_node",
+      "width": 354,
+      "height": 214,
+      "dragging": false,
+      "position": { "x": -880, "y": 210 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -880, "y": 210 }
+    },
+    {
+      "id": "dc5bfd50-6974-46ea-bbab-ea1200c316bb",
+      "data": {
+        "map": {},
+        "name": "GetMetadataDf",
+        "uiMap": { "path": "$", "source": "ExtractMetadata" },
+        "description": "Extract metadata_df"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -440, "y": 210 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -440, "y": 210 }
+    },
+    {
+      "id": "d41be624-46e7-40c4-9103-0f651bc73b95",
+      "data": {
+        "name": "ConceptIDTagsDf",
+        "database": "vocab_db",
+        "sqlquery": "select \n    concept_id,\n    concept_name,\n    concept_code \nfrom concept where\nvocabulary_id = 'DICOM'\n",
+        "testdata": [[]],
+        "description": "Fetch Concept IDs for DICOM tags"
+      },
+      "type": "db_reader_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1330, "y": 490 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1330, "y": 490 }
+    },
+    {
+      "id": "e8a9e55f-80cb-46cb-b347-074955525466",
+      "data": {
+        "sql": "SELECT \n    MetadataDf.*,\n    CAST(ConceptIDTagsDf.concept_id AS INT) AS concept_id,\n    ConceptIDTagsDf.concept_code,\n    ConceptIDTagsDf.concept_name\nFROM MetadataDf\nLEFT JOIN ConceptIDTagsDf\nON MetadataDf.tag = ConceptIDTagsDf.concept_code",
+        "name": "MappedConceptsDf",
+        "description": "Map Concept ID to metadata"
+      },
+      "type": "sql_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -20, "y": 340 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -20, "y": 340 }
+    },
+    {
+      "id": "a96780de-4ec7-40c2-bfaa-c3cc14b072cc",
+      "data": {
+        "name": "GetNextRecordIDs",
+        "description": "Get next record ids for ingestion tables ",
+        "python_code": "from typing import Dict, Any\n\ndef exec(myinput: Any) -> Dict[str, int]:\n  \"\"\"\n  Retrieve the next available record IDs for multiple database tables.\n  \n  This function initializes a database DAO connection and fetches the next\n  sequential record IDs for various OMOP CDM and Medical Imaging schema tables.\n  These IDs are used to ensure unique identifiers when inserting new records.\n  \n  Returns:\n      Dict[str, int]: A dictionary mapping table names to their next available record IDs.\n                     Keys include:\n                     - image_occurrence: Next ID for image_occurrence table\n                     - procedure_occurrence: Next ID for procedure_occurrence table\n                     - visit_occurrence: Next ID for visit_occurrence table\n                     - measurement: Next ID for measurement table\n                     - image_feature: Next ID for image_feature table\n                     - dicom_file_metadata: Next ID for dicom_file_metadata table\n  \"\"\"\n  dbdao: DBDao = DBDao(database_code=database_code)\n  \n  return {\n    \"image_occurrence\": dbdao.get_next_record_id(mi_schema, \"image_occurrence\", \"image_occurrence_id\"),\n    \"procedure_occurrence\": dbdao.get_next_record_id(cdm_schema, \"procedure_occurrence\", \"procedure_occurrence_id\"),\n    \"visit_occurrence\": dbdao.get_next_record_id(cdm_schema, \"visit_occurrence\", \"visit_occurrence_id\"),\n    \"measurement\": dbdao.get_next_record_id(cdm_schema, \"measurement\", \"measurement_id\"),\n    \"image_feature\": dbdao.get_next_record_id(mi_schema, \"image_feature\", \"image_feature_id\"),\n    \"dicom_file_metadata\": dbdao.get_next_record_id(mi_schema, \"dicom_file_metadata\", \"metadata_id\")\n  }"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": -1330, "y": 790 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": -1330, "y": 790 }
+    },
+    {
+      "id": "15156d49-0282-4dc4-86ae-559b14786a38",
+      "data": {
+        "name": "TransformForIngestion",
+        "description": "Transform mapped metadata for ingestion",
+        "python_code": "import numpy as np\nfrom typing import Any, Dict, List\nfrom datetime import datetime\n\ndef exec(myinput: Dict[str, Any]) -> Dict[str, pd.DataFrame]:\n    \"\"\"\n    Transform DICOM metadata into OMOP CDM tables for imaging data.\n    \n    This function processes mapped DICOM concepts and creates records for three OMOP CDM tables:\n    - image_occurrence: Contains image-specific metadata (study/series UIDs, modality, anatomic site)\n    - procedure_occurrence: Records imaging procedures performed\n    - visit_occurrence: Records patient visits when imaging was performed\n    \n    The function performs the following operations:\n    1. Extracts key DICOM tags (Study Date, Patient ID, Modality, Body Part Examined)\n    2. Pivots data to create one record per image series\n    3. Maps Patient IDs to person_ids from the person table\n    4. Maps DICOM codes to concept IDs (modality and anatomic site)\n    5. Generates sequential IDs for each table\n    6. Creates properly formatted records for each OMOP table\n    \n    Args:\n        myinput: Dictionary containing workflow data with the following expected keys:\n                 - \"MappedConceptsDf\": Result containing mapped DICOM concepts DataFrame\n                 - \"ConceptIDTagsDf\": Result containing concept ID mappings DataFrame\n                 - \"GetNextRecordIDs\": Result with next available IDs for each table\n    \n    Returns:\n        Dict[str, pd.DataFrame]: Dictionary containing four DataFrames:\n                                - \"image_occurrence\": Image occurrence table records\n                                - \"procedure_occurrence\": Procedure occurrence table records\n                                - \"visit_occurrence\": Visit occurrence table records\n                                - \"transformed_df\": Full transformed DataFrame with all fields\n    \n    Note:\n        - Uses person_id=0 for unmatched patients\n        - Uses concept_id=0 for unmapped codes\n        - Defaults to visit_type_concept_id=32817 (EHR) and visit_concept_id=9202 (Outpatient)\n        - Missing study dates default to 1993-01-01 (earliest vocabulary valid date)\n    \"\"\"\n    mapped_concepts_df: pd.DataFrame = myinput[\"MappedConceptsDf\"].result\n    concept_df: pd.DataFrame = myinput[\"ConceptIDTagsDf\"].result\n\n    next_po_id: int = myinput[\"GetNextRecordIDs\"].result.get(\"procedure_occurrence\")\n    next_vo_id: int = myinput[\"GetNextRecordIDs\"].result.get(\"visit_occurrence\")\n    next_io_id: int = myinput[\"GetNextRecordIDs\"].result.get(\"image_occurrence\")\n    \n    # Tags used for image_occurrence, procedure_occurrence, visit_occurrence\n    # 00080020: Study Date, 00100020: Patient ID, 00080060: Modality\n    # 00180015: Body Part Examined (Optional in Image Occurrence table)\n    tags_for_columns: List[str] = [\"00080020\", \"00100020\", \"00080060\", \"00180015\"]\n\n    # Select only rows with the above tags\n    df_subset: pd.DataFrame = mapped_concepts_df[mapped_concepts_df[\"tag\"].isin(tags_for_columns)][[\"image_study_uid\",\n                                                                                      \"image_series_uid\",\n                                                                                      \"tag\",\n                                                                                      \"value\"]]\n    \n    # Pivot to wide format and select only keep unique series uids\n    df_subset_pivoted: pd.DataFrame = df_subset.pivot_table(\n        index=[\"image_study_uid\", \"image_series_uid\"], columns=\"tag\", values=\"value\", aggfunc=\"first\")\n    df_subset_pivoted.reset_index(inplace=True)\n    df_subset_pivoted = df_subset_pivoted.drop_duplicates(\n        subset=[\"image_study_uid\", \"image_series_uid\"])\n\n    # Create \"00180015\" BodyPartExamined column if it doesn't exist and fill with NaN\n    if '00180015' not in df_subset_pivoted.columns:\n        df_subset_pivoted['00180015'] = np.nan\n        df_subset_pivoted['00180015'] = df_subset_pivoted['00180015'].astype('object')\n\n    # Create \"00080020\" StudyDate column if it doesn't exist and fill with 19930101 i.e. earliest vocab valid date\n    if '00080020' not in df_subset_pivoted.columns:\n        df_subset_pivoted['00080020'] = \"19930101\"\n\n\n    # Map Person ID\n    person_id_col: str = \"person_id\"\n    patient_id_col: str = \"person_source_value\"\n\n    dbdao: DBDao = DBDao(database_code=database_code)\n\n    with dbdao.ibis_connect() as conn:\n        mapping_table = conn.table(\"person\",\n                                   database=person_mapping_schema)\n\n        mapping_df = mapping_table[[person_id_col, patient_id_col]].execute()\n\n    transformed_df: pd.DataFrame = df_subset_pivoted.merge(mapping_df[[person_id_col, patient_id_col]],\n                                                  how=\"left\", left_on=\"00100020\", right_on=patient_id_col)\n    transformed_df.rename(\n        columns={person_id_col: 'person_id'}, inplace=True)\n\n    # Use person_id = 0 for unmatched patient_ids\n    transformed_df['person_id'] = transformed_df['person_id'].fillna(\n        0)\n    transformed_df['person_id'] = transformed_df['person_id'].astype(\n        'Int64')\n\n    # Get concept id for modality and body part\n    concept_df['concept_code'] = concept_df['concept_code'].astype(str)\n    concept_df['concept_code'] = concept_df['concept_code'].str.upper()\n\n    # Todo: Update with standard concept ids\n    # Get concept id for BodyPartExamined -> anatomic_site_concept_id\n    print(\"Mapping BodyPartExamined tag to concept_id..\")\n    transformed_df = transformed_df.merge(concept_df[[\"concept_id\", \"concept_code\"]],\n                                                    how=\"left\", left_on=\"00180015\", right_on=\"concept_code\")\n    transformed_df.rename(\n        columns={\"concept_id\": \"anatomic_site_concept_id\"}, inplace=True)\n\n    # Use anatomic_site_concept_id = 0 for unmatched patient_ids\n    transformed_df['anatomic_site_concept_id'] = transformed_df['anatomic_site_concept_id'].fillna(\n        0)\n    transformed_df['anatomic_site_concept_id'] = transformed_df['anatomic_site_concept_id'].astype(\n        'Int64')\n\n    # Todo: Update with standard concept id\n    # Get concept id for Modality -> modality_concept_id\n    print(\"Mapping Modality tag to concept_id..\")\n    transformed_df = transformed_df.merge(concept_df[[\"concept_id\", \"concept_code\"]],\n                                                    how=\"left\", left_on=\"00080060\", right_on=\"concept_code\")\n    transformed_df.rename(\n        columns={\"concept_id\": \"modality_concept_id\"}, inplace=True)\n\n    # Use modality_concept_id = 0 for unmatched patient_ids\n    transformed_df['modality_concept_id'] = transformed_df['modality_concept_id'].fillna(\n        0)\n    transformed_df['modality_concept_id'] = transformed_df['modality_concept_id'].astype(\n        'Int64')\n\n    # Todo: Update wadors_uri, local_path, visit_type_concept_id & visit_concept_id\n    transformed_df['image_occurrence_date'] = pd.to_datetime(\n        transformed_df['00080020'])\n    transformed_df['image_occurrence_date'] = transformed_df['image_occurrence_date'].fillna(\n        pd.to_datetime(\"1993-01-01\"))\n\n    transformed_df['visit_type_concept_id'] = 32817  # EHR\n    transformed_df['visit_concept_id'] = 9202  # Outpatient visit\n\n    transformed_df['image_occurrence_id'] = pd.Series(range(next_io_id,\n                                                                 next_io_id + len(transformed_df)))\n    transformed_df['procedure_occurrence_id'] = pd.Series(range(next_po_id,\n                                                                     next_po_id + len(transformed_df)))\n    transformed_df['visit_occurrence_id'] = pd.Series(range(next_vo_id,\n                                                                 next_vo_id + len(transformed_df)))\n\n    print(\"Successfully created records for image occurrence, procedure occurrence and visit occurrence tables!\")\n        \n    # return transformed_df\n\n    return {\n        \"image_occurrence\": image_occurrence(transformed_df),\n        \"procedure_occurrence\": procedure_occurrence(transformed_df),\n        \"visit_occurrence\": visit_occurrence(transformed_df),\n        \"transformed_df\": transformed_df\n    }\n\n\ndef image_occurrence(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"\n    Create image_occurrence table records from transformed DICOM data.\n    \n    Extracts and returns only the columns required for the OMOP CDM image_occurrence table,\n    which contains metadata about medical imaging studies.\n    \n    Args:\n        df: Transformed DataFrame containing all processed DICOM metadata and IDs.\n    \n    Returns:\n        pd.DataFrame: DataFrame with image_occurrence table columns:\n                     - image_occurrence_id: Unique identifier for the image\n                     - person_id: Foreign key to person table\n                     - procedure_occurrence_id: Foreign key linking to the procedure\n                     - visit_occurrence_id: Foreign key linking to the visit\n                     - anatomic_site_concept_id: Concept for body part examined\n                     - image_occurrence_date: Date the image was acquired\n                     - image_study_uid: DICOM Study Instance UID\n                     - image_series_uid: DICOM Series Instance UID\n                     - modality_concept_id: Concept for imaging modality (CT, MRI, etc.)\n    \"\"\"\n    image_occurrence_columns: List[str] = [\n        \"image_occurrence_id\",\n        \"person_id\",\n        \"procedure_occurrence_id\",\n        \"visit_occurrence_id\",\n        \"anatomic_site_concept_id\",\n        \"image_occurrence_date\",\n        \"image_study_uid\",\n        \"image_series_uid\",\n        \"modality_concept_id\"\n    ]\n    return df[image_occurrence_columns]\n\n\ndef procedure_occurrence(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"\n    Create procedure_occurrence table records from transformed DICOM data.\n    \n    Extracts relevant columns and renames them to match the OMOP CDM procedure_occurrence\n    table schema. Each imaging study is treated as a procedure.\n    \n    Args:\n        df: Transformed DataFrame containing all processed DICOM metadata and IDs.\n    \n    Returns:\n        pd.DataFrame: DataFrame with procedure_occurrence table columns:\n                     - procedure_occurrence_id: Unique identifier for the procedure\n                     - person_id: Foreign key to person table\n                     - procedure_concept_id: Concept representing the imaging procedure\n                     - procedure_date: Date the procedure was performed\n                     - procedure_type_concept_id: Concept for procedure type (e.g., EHR)\n    \"\"\"\n    procedure_occurrence_columns: List[str] = [\n        \"procedure_occurrence_id\",\n        \"person_id\",\n        \"modality_concept_id\",\n        \"image_occurrence_date\",\n        \"visit_type_concept_id\"\n    ]\n\n    df_po: pd.DataFrame = df[procedure_occurrence_columns].rename(\n        columns={\n            \"modality_concept_id\": \"procedure_concept_id\",\n            \"image_occurrence_date\": \"procedure_date\",\n            \"visit_type_concept_id\": \"procedure_type_concept_id\"\n        }\n    )\n    return df_po\n\ndef visit_occurrence(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"\n    Create visit_occurrence table records from transformed DICOM data.\n    \n    Extracts relevant columns and renames them to match the OMOP CDM visit_occurrence\n    table schema. Sets visit_end_date equal to visit_start_date since imaging visits\n    are typically single-day events.\n    \n    Args:\n        df: Transformed DataFrame containing all processed DICOM metadata and IDs.\n    \n    Returns:\n        pd.DataFrame: DataFrame with visit_occurrence table columns:\n                     - visit_occurrence_id: Unique identifier for the visit\n                     - person_id: Foreign key to person table\n                     - visit_concept_id: Concept representing visit type (e.g., Outpatient)\n                     - visit_start_date: Date the visit started\n                     - visit_end_date: Date the visit ended (same as start for imaging)\n                     - visit_type_concept_id: Concept for visit type source (e.g., EHR)\n    \"\"\"\n    visit_occurrence_columns: List[str] = [\n        \"visit_occurrence_id\",\n        \"person_id\",\n        \"visit_concept_id\",\n        \"image_occurrence_date\",\n        \"visit_type_concept_id\"\n    ]\n\n    df_vo: pd.DataFrame = df[visit_occurrence_columns].rename(\n        columns={\n            \"image_occurrence_date\": \"visit_start_date\"\n        }\n    )\n\n    df_vo[\"visit_end_date\"] = df_vo[\"visit_start_date\"]\n\n    return df_vo"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 450, "y": 480 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 450, "y": 480 }
+    },
+    {
+      "id": "1d7a3f8a-319e-4b77-9f00-9275619cc524",
+      "data": {
+        "map": {},
+        "name": "GetImageOccurrence",
+        "uiMap": {
+          "path": "$.image_occurrence",
+          "source": "TransformForIngestion"
+        },
+        "description": "Get image occurrence dataframe"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1320, "y": 480 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1320, "y": 480 }
+    },
+    {
+      "id": "6c924282-3fb7-447c-9515-2c0e0e0fbc43",
+      "data": {
+        "map": {},
+        "name": "GetProcedureOccurrence",
+        "uiMap": {
+          "path": "$.procedure_occurrence",
+          "source": "TransformForIngestion"
+        },
+        "description": "Get procedure occurrence dataframe"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1330, "y": -40 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1330, "y": -40 }
+    },
+    {
+      "id": "dcbb10fa-f677-43a1-b574-14c0f6562f90",
+      "data": {
+        "map": {},
+        "name": "GetVisitOccurrence",
+        "uiMap": {
+          "path": "$.visit_occurrence",
+          "source": "TransformForIngestion"
+        },
+        "description": "Get visit occurrence dataframe"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1320, "y": 220 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1320, "y": 220 }
+    },
+    {
+      "id": "972032b3-b157-4c0b-acfa-94c64ae8c758",
+      "data": {
+        "name": "IngestImageOccurrence",
+        "database": "mi_db",
+        "truncate": true,
+        "dataframe": "GetImageOccurrence",
+        "schemaname": "mi_schema",
+        "dbtablename": "image_occurrence",
+        "description": "Write to image occurrence table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1750, "y": 480 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1750, "y": 480 }
+    },
+    {
+      "id": "ebcdf595-d0b4-4580-aa9b-f7e5b2a9c3bc",
+      "data": {
+        "name": "IngestProcedureOccurrence",
+        "database": "cdm_db",
+        "truncate": true,
+        "dataframe": "GetProcedureOccurrence",
+        "schemaname": "cdm_schema",
+        "dbtablename": "procedure_occurrence",
+        "description": "Write to procedure occurrence table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1750, "y": -40 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1750, "y": -40 }
+    },
+    {
+      "id": "84a6ac89-3e12-4be5-81fb-09471040bfd7",
+      "data": {
+        "name": "IngestVisitOccurrence",
+        "database": "cdm_db",
+        "truncate": true,
+        "dataframe": "GetVisitOccurrence",
+        "schemaname": "cdm_schema",
+        "dbtablename": "visit_occurrence",
+        "description": "Write to visit occurrence table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1750, "y": 220 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1750, "y": 220 }
+    },
+    {
+      "id": "99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7",
+      "data": {
+        "name": "TransformForEAVTable",
+        "description": "Transform for ingestion into EAV table",
+        "python_code": "import numpy as np\nfrom typing import Any, Dict, List\nfrom datetime import datetime\n\ndef exec(myinput: Dict[str, Any]) -> Dict[str, pd.DataFrame]:\n    \"\"\"\n    Transform DICOM metadata into OMOP CDM tables for imaging data.\n    \n    This function processes mapped DICOM concepts and creates records for three OMOP CDM tables:\n    - image_occurrence: Contains image-specific metadata (study/series UIDs, modality, anatomic site)\n    - procedure_occurrence: Records imaging procedures performed\n    - visit_occurrence: Records patient visits when imaging was performed\n    \n    The function performs the following operations:\n    1. Extracts key DICOM tags (Study Date, Patient ID, Modality, Body Part Examined)\n    2. Pivots data to create one record per image series\n    3. Maps Patient IDs to person_ids from the person table\n    4. Maps DICOM codes to concept IDs (modality and anatomic site)\n    5. Generates sequential IDs for each table\n    6. Creates properly formatted records for each OMOP table\n    \n    Args:\n        myinput: Dictionary containing workflow data with the following expected keys:\n                 - \"MappedConceptsDf\": Result containing mapped DICOM concepts DataFrame\n                 - \"ConceptIDTagsDf\": Result containing concept ID mappings DataFrame\n                 - \"GetNextRecordIDs\": Result with next available IDs for each table\n    \n    Returns:\n        Dict[str, pd.DataFrame]: Dictionary containing four DataFrames:\n                                - \"image_occurrence\": Image occurrence table records\n                                - \"procedure_occurrence\": Procedure occurrence table records\n                                - \"visit_occurrence\": Visit occurrence table records\n                                - \"transformed_df\": Full transformed DataFrame with all fields\n    \n    Note:\n        - Uses person_id=0 for unmatched patients\n        - Uses concept_id=0 for unmapped codes\n        - Defaults to visit_type_concept_id=32817 (EHR) and visit_concept_id=9202 (Outpatient)\n        - Missing study dates default to 1993-01-01 (earliest vocabulary valid date)\n    \"\"\"\n    mapped_concepts_df: pd.DataFrame = myinput[\"MappedConceptsDf\"].result\n    concept_df: pd.DataFrame = myinput[\"ConceptIDTagsDf\"].result\n\n    next_po_id: int = myinput[\"GetNextRecordIDs\"].result.get(\"procedure_occurrence\")\n    next_vo_id: int = myinput[\"GetNextRecordIDs\"].result.get(\"visit_occurrence\")\n    next_io_id: int = myinput[\"GetNextRecordIDs\"].result.get(\"image_occurrence\")\n    \n    # Tags used for image_occurrence, procedure_occurrence, visit_occurrence\n    # 00080020: Study Date, 00100020: Patient ID, 00080060: Modality\n    # 00180015: Body Part Examined (Optional in Image Occurrence table)\n    tags_for_columns: List[str] = [\"00080020\", \"00100020\", \"00080060\", \"00180015\"]\n\n    # Select only rows with the above tags\n    df_subset: pd.DataFrame = mapped_concepts_df[mapped_concepts_df[\"tag\"].isin(tags_for_columns)][[\"image_study_uid\",\n                                                                                      \"image_series_uid\",\n                                                                                      \"tag\",\n                                                                                      \"value\"]]\n    \n    # Pivot to wide format and select only keep unique series uids\n    df_subset_pivoted: pd.DataFrame = df_subset.pivot_table(\n        index=[\"image_study_uid\", \"image_series_uid\"], columns=\"tag\", values=\"value\", aggfunc=\"first\")\n    df_subset_pivoted.reset_index(inplace=True)\n    df_subset_pivoted = df_subset_pivoted.drop_duplicates(\n        subset=[\"image_study_uid\", \"image_series_uid\"])\n\n    # Create \"00180015\" BodyPartExamined column if it doesn't exist and fill with NaN\n    if '00180015' not in df_subset_pivoted.columns:\n        df_subset_pivoted['00180015'] = np.nan\n        df_subset_pivoted['00180015'] = df_subset_pivoted['00180015'].astype('object')\n\n    # Create \"00080020\" StudyDate column if it doesn't exist and fill with 19930101 i.e. earliest vocab valid date\n    if '00080020' not in df_subset_pivoted.columns:\n        df_subset_pivoted['00080020'] = \"19930101\"\n\n\n    # Map Person ID\n    person_id_col: str = \"person_id\"\n    patient_id_col: str = \"person_source_value\"\n\n    dbdao: DBDao = DBDao(database_code=database_code)\n\n    with dbdao.ibis_connect() as conn:\n        mapping_table = conn.table(\"person\",\n                                   database=person_mapping_schema)\n\n        mapping_df = mapping_table[[person_id_col, patient_id_col]].execute()\n\n    transformed_df: pd.DataFrame = df_subset_pivoted.merge(mapping_df[[person_id_col, patient_id_col]],\n                                                  how=\"left\", left_on=\"00100020\", right_on=patient_id_col)\n    transformed_df.rename(\n        columns={person_id_col: 'person_id'}, inplace=True)\n\n    # Use person_id = 0 for unmatched patient_ids\n    transformed_df['person_id'] = transformed_df['person_id'].fillna(\n        0)\n    transformed_df['person_id'] = transformed_df['person_id'].astype(\n        'Int64')\n\n    # Get concept id for modality and body part\n    concept_df['concept_code'] = concept_df['concept_code'].astype(str)\n    concept_df['concept_code'] = concept_df['concept_code'].str.upper()\n\n    # Todo: Update with standard concept ids\n    # Get concept id for BodyPartExamined -> anatomic_site_concept_id\n    print(\"Mapping BodyPartExamined tag to concept_id..\")\n    transformed_df = transformed_df.merge(concept_df[[\"concept_id\", \"concept_code\"]],\n                                                    how=\"left\", left_on=\"00180015\", right_on=\"concept_code\")\n    transformed_df.rename(\n        columns={\"concept_id\": \"anatomic_site_concept_id\"}, inplace=True)\n\n    # Use anatomic_site_concept_id = 0 for unmatched patient_ids\n    transformed_df['anatomic_site_concept_id'] = transformed_df['anatomic_site_concept_id'].fillna(\n        0)\n    transformed_df['anatomic_site_concept_id'] = transformed_df['anatomic_site_concept_id'].astype(\n        'Int64')\n\n    # Todo: Update with standard concept id\n    # Get concept id for Modality -> modality_concept_id\n    print(\"Mapping Modality tag to concept_id..\")\n    transformed_df = transformed_df.merge(concept_df[[\"concept_id\", \"concept_code\"]],\n                                                    how=\"left\", left_on=\"00080060\", right_on=\"concept_code\")\n    transformed_df.rename(\n        columns={\"concept_id\": \"modality_concept_id\"}, inplace=True)\n\n    # Use modality_concept_id = 0 for unmatched patient_ids\n    transformed_df['modality_concept_id'] = transformed_df['modality_concept_id'].fillna(\n        0)\n    transformed_df['modality_concept_id'] = transformed_df['modality_concept_id'].astype(\n        'Int64')\n\n    # Todo: Update wadors_uri, local_path, visit_type_concept_id & visit_concept_id\n    transformed_df['image_occurrence_date'] = pd.to_datetime(\n        transformed_df['00080020'])\n    transformed_df['image_occurrence_date'] = transformed_df['image_occurrence_date'].fillna(\n        pd.to_datetime(\"1993-01-01\"))\n\n    transformed_df['visit_type_concept_id'] = 32817  # EHR\n    transformed_df['visit_concept_id'] = 9202  # Outpatient visit\n\n    transformed_df['image_occurrence_id'] = pd.Series(range(next_io_id,\n                                                                 next_io_id + len(transformed_df)))\n    transformed_df['procedure_occurrence_id'] = pd.Series(range(next_po_id,\n                                                                     next_po_id + len(transformed_df)))\n    transformed_df['visit_occurrence_id'] = pd.Series(range(next_vo_id,\n                                                                 next_vo_id + len(transformed_df)))\n\n    print(\"Successfully created records for image occurrence, procedure occurrence and visit occurrence tables!\")\n        \n    # return transformed_df\n\n    return {\n        \"image_occurrence\": image_occurrence(transformed_df),\n        \"procedure_occurrence\": procedure_occurrence(transformed_df),\n        \"visit_occurrence\": visit_occurrence(transformed_df),\n        \"transformed_df\": transformed_df\n    }\n\n\ndef image_occurrence(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"\n    Create image_occurrence table records from transformed DICOM data.\n    \n    Extracts and returns only the columns required for the OMOP CDM image_occurrence table,\n    which contains metadata about medical imaging studies.\n    \n    Args:\n        df: Transformed DataFrame containing all processed DICOM metadata and IDs.\n    \n    Returns:\n        pd.DataFrame: DataFrame with image_occurrence table columns:\n                     - image_occurrence_id: Unique identifier for the image\n                     - person_id: Foreign key to person table\n                     - procedure_occurrence_id: Foreign key linking to the procedure\n                     - visit_occurrence_id: Foreign key linking to the visit\n                     - anatomic_site_concept_id: Concept for body part examined\n                     - image_occurrence_date: Date the image was acquired\n                     - image_study_uid: DICOM Study Instance UID\n                     - image_series_uid: DICOM Series Instance UID\n                     - modality_concept_id: Concept for imaging modality (CT, MRI, etc.)\n    \"\"\"\n    image_occurrence_columns: List[str] = [\n        \"image_occurrence_id\",\n        \"person_id\",\n        \"procedure_occurrence_id\",\n        \"visit_occurrence_id\",\n        \"anatomic_site_concept_id\",\n        \"image_occurrence_date\",\n        \"image_study_uid\",\n        \"image_series_uid\",\n        \"modality_concept_id\"\n    ]\n    return df[image_occurrence_columns]\n\n\ndef procedure_occurrence(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"\n    Create procedure_occurrence table records from transformed DICOM data.\n    \n    Extracts relevant columns and renames them to match the OMOP CDM procedure_occurrence\n    table schema. Each imaging study is treated as a procedure.\n    \n    Args:\n        df: Transformed DataFrame containing all processed DICOM metadata and IDs.\n    \n    Returns:\n        pd.DataFrame: DataFrame with procedure_occurrence table columns:\n                     - procedure_occurrence_id: Unique identifier for the procedure\n                     - person_id: Foreign key to person table\n                     - procedure_concept_id: Concept representing the imaging procedure\n                     - procedure_date: Date the procedure was performed\n                     - procedure_type_concept_id: Concept for procedure type (e.g., EHR)\n    \"\"\"\n    procedure_occurrence_columns: List[str] = [\n        \"procedure_occurrence_id\",\n        \"person_id\",\n        \"modality_concept_id\",\n        \"image_occurrence_date\",\n        \"visit_type_concept_id\"\n    ]\n\n    df_po: pd.DataFrame = df[procedure_occurrence_columns].rename(\n        columns={\n            \"modality_concept_id\": \"procedure_concept_id\",\n            \"image_occurrence_date\": \"procedure_date\",\n            \"visit_type_concept_id\": \"procedure_type_concept_id\"\n        }\n    )\n    return df_po\n\ndef visit_occurrence(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"\n    Create visit_occurrence table records from transformed DICOM data.\n    \n    Extracts relevant columns and renames them to match the OMOP CDM visit_occurrence\n    table schema. Sets visit_end_date equal to visit_start_date since imaging visits\n    are typically single-day events.\n    \n    Args:\n        df: Transformed DataFrame containing all processed DICOM metadata and IDs.\n    \n    Returns:\n        pd.DataFrame: DataFrame with visit_occurrence table columns:\n                     - visit_occurrence_id: Unique identifier for the visit\n                     - person_id: Foreign key to person table\n                     - visit_concept_id: Concept representing visit type (e.g., Outpatient)\n                     - visit_start_date: Date the visit started\n                     - visit_end_date: Date the visit ended (same as start for imaging)\n                     - visit_type_concept_id: Concept for visit type source (e.g., EHR)\n    \"\"\"\n    visit_occurrence_columns: List[str] = [\n        \"visit_occurrence_id\",\n        \"person_id\",\n        \"visit_concept_id\",\n        \"image_occurrence_date\",\n        \"visit_type_concept_id\"\n    ]\n\n    df_vo: pd.DataFrame = df[visit_occurrence_columns].rename(\n        columns={\n            \"image_occurrence_date\": \"visit_start_date\"\n        }\n    )\n\n    df_vo[\"visit_end_date\"] = df_vo[\"visit_start_date\"]\n\n    return df_vo"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 880, "y": 930 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 880, "y": 930 }
+    },
+    {
+      "id": "6014d38b-1860-457b-9247-4149e6cf9633",
+      "data": {
+        "map": {},
+        "name": "GetNumericRecords",
+        "uiMap": {
+          "path": "$.numeric_records",
+          "source": "TransformForEAVTable"
+        },
+        "description": "Get numeric records dataframe"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1320, "y": 790 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1320, "y": 790 }
+    },
+    {
+      "id": "97dce0b1-c57b-4245-9450-a686396382f1",
+      "data": {
+        "map": {},
+        "name": "GetNonNumericRecords",
+        "uiMap": {
+          "path": "$.non_numeric_records",
+          "source": "TransformForEAVTable"
+        },
+        "description": "Get non-numeric records dataframe"
+      },
+      "type": "py2table_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1320, "y": 1050 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1320, "y": 1050 }
+    },
+    {
+      "id": "c43ab5bf-4e30-458c-8ae1-d8eee6a34bcd",
+      "data": {
+        "name": "IngestNumericEAVRecords",
+        "database": "mi_db",
+        "truncate": true,
+        "dataframe": "GetNumericRecords",
+        "schemaname": "mi_schema",
+        "dbtablename": "dicom_file_metadata",
+        "description": "Write numeric records to EAV table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1750, "y": 790 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1750, "y": 790 }
+    },
+    {
+      "id": "594dc87a-0f40-4a83-a193-0204c49a40e1",
+      "data": {
+        "name": "IngestNonNumericEAVRecords",
+        "database": "mi_db",
+        "truncate": true,
+        "dataframe": "GetNonNumericRecords",
+        "schemaname": "mi_schema",
+        "dbtablename": "dicom_file_metadata",
+        "description": "Write non-numeric records to EAV table"
+      },
+      "type": "db_writer_node",
+      "width": 350,
+      "height": 210,
+      "dragging": false,
+      "position": { "x": 1750, "y": 1050 },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "positionAbsolute": { "x": 1750, "y": 1050 }
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-c044e18e-24a2-4d2f-a139-714bca5d8e46source_c044e18e-24a2-4d2f-a139-714bca5d8e46_object-4b645aa8-5c51-4420-a846-63fdbb972b2atarget_4b645aa8-5c51-4420-a846-63fdbb972b2a_any",
+      "source": "c044e18e-24a2-4d2f-a139-714bca5d8e46",
+      "target": "4b645aa8-5c51-4420-a846-63fdbb972b2a",
+      "sourceHandle": "source_c044e18e-24a2-4d2f-a139-714bca5d8e46_object",
+      "targetHandle": "target_4b645aa8-5c51-4420-a846-63fdbb972b2a_any"
+    },
+    {
+      "id": "reactflow__edge-4b645aa8-5c51-4420-a846-63fdbb972b2asource_4b645aa8-5c51-4420-a846-63fdbb972b2a_object-dc5bfd50-6974-46ea-bbab-ea1200c316bbtarget_dc5bfd50-6974-46ea-bbab-ea1200c316bb_object",
+      "source": "4b645aa8-5c51-4420-a846-63fdbb972b2a",
+      "target": "dc5bfd50-6974-46ea-bbab-ea1200c316bb",
+      "sourceHandle": "source_4b645aa8-5c51-4420-a846-63fdbb972b2a_object",
+      "targetHandle": "target_dc5bfd50-6974-46ea-bbab-ea1200c316bb_object"
+    },
+    {
+      "id": "reactflow__edge-dc5bfd50-6974-46ea-bbab-ea1200c316bbsource_dc5bfd50-6974-46ea-bbab-ea1200c316bb_dataframe-e8a9e55f-80cb-46cb-b347-074955525466target_e8a9e55f-80cb-46cb-b347-074955525466_dataframe",
+      "source": "dc5bfd50-6974-46ea-bbab-ea1200c316bb",
+      "target": "e8a9e55f-80cb-46cb-b347-074955525466",
+      "sourceHandle": "source_dc5bfd50-6974-46ea-bbab-ea1200c316bb_dataframe",
+      "targetHandle": "target_e8a9e55f-80cb-46cb-b347-074955525466_dataframe"
+    },
+    {
+      "id": "reactflow__edge-d41be624-46e7-40c4-9103-0f651bc73b95source_d41be624-46e7-40c4-9103-0f651bc73b95_dataframe-e8a9e55f-80cb-46cb-b347-074955525466target_e8a9e55f-80cb-46cb-b347-074955525466_dataframe",
+      "source": "d41be624-46e7-40c4-9103-0f651bc73b95",
+      "target": "e8a9e55f-80cb-46cb-b347-074955525466",
+      "selected": false,
+      "sourceHandle": "source_d41be624-46e7-40c4-9103-0f651bc73b95_dataframe",
+      "targetHandle": "target_e8a9e55f-80cb-46cb-b347-074955525466_dataframe"
+    },
+    {
+      "id": "reactflow__edge-e8a9e55f-80cb-46cb-b347-074955525466source_e8a9e55f-80cb-46cb-b347-074955525466_dataframe-15156d49-0282-4dc4-86ae-559b14786a38target_15156d49-0282-4dc4-86ae-559b14786a38_any",
+      "source": "e8a9e55f-80cb-46cb-b347-074955525466",
+      "target": "15156d49-0282-4dc4-86ae-559b14786a38",
+      "sourceHandle": "source_e8a9e55f-80cb-46cb-b347-074955525466_dataframe",
+      "targetHandle": "target_15156d49-0282-4dc4-86ae-559b14786a38_any"
+    },
+    {
+      "id": "reactflow__edge-a96780de-4ec7-40c2-bfaa-c3cc14b072ccsource_a96780de-4ec7-40c2-bfaa-c3cc14b072cc_object-15156d49-0282-4dc4-86ae-559b14786a38target_15156d49-0282-4dc4-86ae-559b14786a38_any",
+      "source": "a96780de-4ec7-40c2-bfaa-c3cc14b072cc",
+      "target": "15156d49-0282-4dc4-86ae-559b14786a38",
+      "sourceHandle": "source_a96780de-4ec7-40c2-bfaa-c3cc14b072cc_object",
+      "targetHandle": "target_15156d49-0282-4dc4-86ae-559b14786a38_any"
+    },
+    {
+      "id": "reactflow__edge-15156d49-0282-4dc4-86ae-559b14786a38source_15156d49-0282-4dc4-86ae-559b14786a38_object-1d7a3f8a-319e-4b77-9f00-9275619cc524target_1d7a3f8a-319e-4b77-9f00-9275619cc524_object",
+      "source": "15156d49-0282-4dc4-86ae-559b14786a38",
+      "target": "1d7a3f8a-319e-4b77-9f00-9275619cc524",
+      "selected": false,
+      "sourceHandle": "source_15156d49-0282-4dc4-86ae-559b14786a38_object",
+      "targetHandle": "target_1d7a3f8a-319e-4b77-9f00-9275619cc524_object"
+    },
+    {
+      "id": "reactflow__edge-15156d49-0282-4dc4-86ae-559b14786a38source_15156d49-0282-4dc4-86ae-559b14786a38_object-6c924282-3fb7-447c-9515-2c0e0e0fbc43target_6c924282-3fb7-447c-9515-2c0e0e0fbc43_object",
+      "source": "15156d49-0282-4dc4-86ae-559b14786a38",
+      "target": "6c924282-3fb7-447c-9515-2c0e0e0fbc43",
+      "selected": false,
+      "sourceHandle": "source_15156d49-0282-4dc4-86ae-559b14786a38_object",
+      "targetHandle": "target_6c924282-3fb7-447c-9515-2c0e0e0fbc43_object"
+    },
+    {
+      "id": "reactflow__edge-15156d49-0282-4dc4-86ae-559b14786a38source_15156d49-0282-4dc4-86ae-559b14786a38_object-dcbb10fa-f677-43a1-b574-14c0f6562f90target_dcbb10fa-f677-43a1-b574-14c0f6562f90_object",
+      "source": "15156d49-0282-4dc4-86ae-559b14786a38",
+      "target": "dcbb10fa-f677-43a1-b574-14c0f6562f90",
+      "selected": false,
+      "sourceHandle": "source_15156d49-0282-4dc4-86ae-559b14786a38_object",
+      "targetHandle": "target_dcbb10fa-f677-43a1-b574-14c0f6562f90_object"
+    },
+    {
+      "id": "reactflow__edge-1d7a3f8a-319e-4b77-9f00-9275619cc524source_1d7a3f8a-319e-4b77-9f00-9275619cc524_dataframe-972032b3-b157-4c0b-acfa-94c64ae8c758target_972032b3-b157-4c0b-acfa-94c64ae8c758_dataframe",
+      "source": "1d7a3f8a-319e-4b77-9f00-9275619cc524",
+      "target": "972032b3-b157-4c0b-acfa-94c64ae8c758",
+      "selected": false,
+      "sourceHandle": "source_1d7a3f8a-319e-4b77-9f00-9275619cc524_dataframe",
+      "targetHandle": "target_972032b3-b157-4c0b-acfa-94c64ae8c758_dataframe"
+    },
+    {
+      "id": "reactflow__edge-6c924282-3fb7-447c-9515-2c0e0e0fbc43source_6c924282-3fb7-447c-9515-2c0e0e0fbc43_dataframe-ebcdf595-d0b4-4580-aa9b-f7e5b2a9c3bctarget_ebcdf595-d0b4-4580-aa9b-f7e5b2a9c3bc_dataframe",
+      "source": "6c924282-3fb7-447c-9515-2c0e0e0fbc43",
+      "target": "ebcdf595-d0b4-4580-aa9b-f7e5b2a9c3bc",
+      "selected": false,
+      "sourceHandle": "source_6c924282-3fb7-447c-9515-2c0e0e0fbc43_dataframe",
+      "targetHandle": "target_ebcdf595-d0b4-4580-aa9b-f7e5b2a9c3bc_dataframe"
+    },
+    {
+      "id": "reactflow__edge-dcbb10fa-f677-43a1-b574-14c0f6562f90source_dcbb10fa-f677-43a1-b574-14c0f6562f90_dataframe-84a6ac89-3e12-4be5-81fb-09471040bfd7target_84a6ac89-3e12-4be5-81fb-09471040bfd7_dataframe",
+      "source": "dcbb10fa-f677-43a1-b574-14c0f6562f90",
+      "target": "84a6ac89-3e12-4be5-81fb-09471040bfd7",
+      "selected": false,
+      "sourceHandle": "source_dcbb10fa-f677-43a1-b574-14c0f6562f90_dataframe",
+      "targetHandle": "target_84a6ac89-3e12-4be5-81fb-09471040bfd7_dataframe"
+    },
+    {
+      "id": "reactflow__edge-15156d49-0282-4dc4-86ae-559b14786a38source_15156d49-0282-4dc4-86ae-559b14786a38_object-99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7target_99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7_any",
+      "source": "15156d49-0282-4dc4-86ae-559b14786a38",
+      "target": "99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7",
+      "sourceHandle": "source_15156d49-0282-4dc4-86ae-559b14786a38_object",
+      "targetHandle": "target_99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7_any"
+    },
+    {
+      "id": "reactflow__edge-99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7source_99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7_object-6014d38b-1860-457b-9247-4149e6cf9633target_6014d38b-1860-457b-9247-4149e6cf9633_object",
+      "source": "99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7",
+      "target": "6014d38b-1860-457b-9247-4149e6cf9633",
+      "selected": false,
+      "sourceHandle": "source_99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7_object",
+      "targetHandle": "target_6014d38b-1860-457b-9247-4149e6cf9633_object"
+    },
+    {
+      "id": "reactflow__edge-99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7source_99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7_object-97dce0b1-c57b-4245-9450-a686396382f1target_97dce0b1-c57b-4245-9450-a686396382f1_object",
+      "source": "99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7",
+      "target": "97dce0b1-c57b-4245-9450-a686396382f1",
+      "selected": false,
+      "sourceHandle": "source_99ffb4e4-1c5c-41c4-82a3-b4911ea58ab7_object",
+      "targetHandle": "target_97dce0b1-c57b-4245-9450-a686396382f1_object"
+    },
+    {
+      "id": "reactflow__edge-6014d38b-1860-457b-9247-4149e6cf9633source_6014d38b-1860-457b-9247-4149e6cf9633_dataframe-c43ab5bf-4e30-458c-8ae1-d8eee6a34bcdtarget_c43ab5bf-4e30-458c-8ae1-d8eee6a34bcd_dataframe",
+      "source": "6014d38b-1860-457b-9247-4149e6cf9633",
+      "target": "c43ab5bf-4e30-458c-8ae1-d8eee6a34bcd",
+      "selected": false,
+      "sourceHandle": "source_6014d38b-1860-457b-9247-4149e6cf9633_dataframe",
+      "targetHandle": "target_c43ab5bf-4e30-458c-8ae1-d8eee6a34bcd_dataframe"
+    },
+    {
+      "id": "reactflow__edge-97dce0b1-c57b-4245-9450-a686396382f1source_97dce0b1-c57b-4245-9450-a686396382f1_dataframe-594dc87a-0f40-4a83-a193-0204c49a40e1target_594dc87a-0f40-4a83-a193-0204c49a40e1_dataframe",
+      "source": "97dce0b1-c57b-4245-9450-a686396382f1",
+      "target": "594dc87a-0f40-4a83-a193-0204c49a40e1",
+      "selected": false,
+      "sourceHandle": "source_97dce0b1-c57b-4245-9450-a686396382f1_dataframe",
+      "targetHandle": "target_594dc87a-0f40-4a83-a193-0204c49a40e1_dataframe"
+    }
+  ],
+  "variables": [
+    { "key": "cdm_schema", "value": "cdmdefault" },
+    { "key": "vocab_schema", "value": "cdmvocab" },
+    { "key": "mi_schema", "value": "cdmdicom" },
+    { "key": "person_mapping_schema", "value": "cdmdefault" },
+    { "key": "database_code", "value": "demo_database" }
+  ],
+  "importLibs": [
+    "from _shared_flow_utils.dao.DBDao import DBDao",
+    "import pandas as pd"
+  ],
+  "databases": [
+    { "code": "demo_database", "name": "vocab_db" },
+    { "code": "demo_database", "name": "cdm_db" },
+    { "code": "demo_database", "name": "mi_db" }
+  ],
+  "schemas": [
+    { "name": "vocab_schema", "schema": "cdmvocab" },
+    { "name": "cdm_schema", "schema": "cdmdefault" },
+    { "name": "mi_schema", "schema": "cdmdicom" }
+  ]
+}
