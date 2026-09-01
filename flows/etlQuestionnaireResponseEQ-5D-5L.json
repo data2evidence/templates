@@ -107,7 +107,7 @@
                     "path": "$",
                     "source": "prepare_measurement_ids"
                 },
-                "description": "Describe the task of node py2table_node_0",
+                "description": "Convert the preceding transformation output into a DataFrame for database loading.",
                 "errorMessage": null
             },
             "type": "py2table_node",
@@ -184,7 +184,7 @@
             "data": {
                 "name": "fhir_mapping_node_0",
                 "error": false,
-                "description": "Describe the task of node fhir_mapping_node_0",
+                "description": "Record mappings between source FHIR identifiers and the generated OMOP records.",
                 "schema_name": "dest_schema",
                 "errorMessage": null,
                 "database_code": "dest_db",

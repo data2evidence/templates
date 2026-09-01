@@ -139,14 +139,6 @@
     ],
     "variables": [
         {
-            "key": "database_code",
-            "value": "alpdev_pg"
-        },
-        {
-            "key": "schema_name",
-            "value": "cdmdefault"
-        },
-        {
             "key": "note_table",
             "value": "note"
         },
@@ -172,5 +164,17 @@
         "from py_name_entity_recognition import extract_entities",
         "from prefect.blocks.system import Secret",
         "import asyncio, os"
+    ],
+    "databases": [
+        {
+            "code": "demo_database",
+            "name": "database_code"
+        }
+    ],
+    "schemas": [
+        {
+            "name": "schema_name",
+            "schema": "cdmdefault"
+        }
     ]
 }
