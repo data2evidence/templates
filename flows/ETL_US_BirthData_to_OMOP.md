@@ -62,9 +62,6 @@ docker exec alp-dataflow-gen-worker ls -l /app/data_load
 2. Save the imported flow immediately.
 
 
-The required libraries are already declared in the JSON template and should still be visible after saving.
-
-
 ## Step 3: Create the dataset and set `dataset_id`
 
 Create the destination OMOP CDM 5.4 dataset before running the flow. Creating it through the Dataset page.
@@ -81,53 +78,27 @@ Example:
 dataset_id=ccedce26-6db6-4732-8948-c64ed0ba7cd2
 ```
 
-The ETL converts hyphens in the dataset ID to underscores when deriving the DuckDB/TREX cache catalog name. For the example above, the cache catalog is:
-
-```text
-ccedce26_6db6_4732_8948_c64ed0ba7cd2
-```
 
 ## Step 4: Configure the source filename and destination
 
-Set the source-file variable to the filename inside `/app/data_load`:
+- Set the source-file variable "nat2022_filename" to the filename inside `/app/data_load`:
+- Set the correct destination database and schema in the flow configuration:
 
 ```text
-nat2022_filename=nat2022_sample10_manual_test.txt
-```
-
-Set the correct destination database and schema in the flow configuration:
-
-```text
+nat2022_filename=${filename_of_Unziped_2022_US_birth_data.txt}
 destination_database_code=<database code>
 destination_schema_name=<OMOP schema name>
 ```
-
-The destination is resolved as:
-
-```text
-<cache catalog>.<destination_schema_name>.<table name>
-```
-
-The default chunk size is:
+- The default chunk size is:
 
 ```text
 chunk_size=200000
 ```
 
-The small ten-record test does not require changing it.
+## Step 5: Upload local mapping table via CSV node
 
-## Step 5: Recreate the CSV mapping node
-
-1. Delete the imported CSV node.
-2. Create a new CSV node.
-3. Upload or select the current `Merged_US_Birth_Data.csv`.
-4. Ensure that the CSV node name is:
-
-   ```text
-   csv_node_0
-   ```
-
-5. Connect the new CSV node to the `transform_facts` node.
+- In CSV node, upload the mapping table using exact same name as `Merged_US_Birth_Data.csv`.
+- Ensure that the CSV node name is `csv_node_0`
 
 *The Python transform expects its mapping DataFrame from `csv_node_0`. A differently named or disconnected node will cause the flow to fail.
 
@@ -158,6 +129,8 @@ The ETL writes the following tables:
 
 First confirm that the tables exist in the expected catalog and schema:
 
+- cache_catalog: can be found in trex 
+
 ```sql
 SELECT
     table_catalog,
@@ -169,7 +142,6 @@ WHERE table_catalog = '<cache_catalog>'
   AND table_type = 'BASE TABLE'
 ORDER BY table_name;
 ```
-
 
 Then generate exact `COUNT(*)` queries for all tables in the destination schema:
 
@@ -198,15 +170,9 @@ Copy and execute the generated SQL. Add this to the end if desired:
 ORDER BY row_count DESC;
 ```
 
-For `nat2022_sample10_manual_test.txt`, the expected PERSON count is:
-
-```text
-10 source records × 3 roles (Child, Mother, Father) = 30 PERSON rows
-```
-
 ## Re-running the test
 
-The ETL truncates its destination tables before loading them. After each successful run of the ten-record sample, the PERSON table should contain 30 rows, not an accumulated multiple such as 60 or 150.
+The ETL truncates its destination tables before loading them. For example, after each successful run of the ten-record sample, the PERSON table should contain 30 rows, not an accumulated multiple such as 60 or 150.
 
 Verify this with an exact count:
 
@@ -224,5 +190,3 @@ If this returns 30 while `duckdb_tables().estimated_size` shows an older value, 
 - **Source file is not found:** Confirm the host-directory mount and `nat2022_filename` value.
 - **Wrong cache receives data:** Confirm that `dataset_id` is the ID returned for the intended Web API dataset.
 - **Wrong destination:** Confirm both `destination_database_code` and `destination_schema_name`.
-- **Apparently stale row counts:** Use `COUNT(*)`, not `duckdb_tables().estimated_size`.
-- **Repeated runs accumulate rows:** Verify that the flow can truncate the fully qualified catalog/schema tables and inspect the flow logs for truncation or load errors.
