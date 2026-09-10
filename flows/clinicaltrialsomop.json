@@ -181,7 +181,7 @@
       "id": "8e707161-6558-4df6-8249-8fdaa6eeae85",
       "data": {
         "name": "GetFiles",
-        "description": "Describe the task of node python_node_0",
+        "description": "Discover clinical trial source files in the configured input folder.",
         "python_code": "from pathlib import Path\n\ndef exec(myinput):\n  csv_folder = Path(source_csv_folder)\n\n  # Get only CSV files in the folder\n  csv_files = list(csv_folder.glob(\"*.csv\"))\n  \n  absolute_paths = [csv_file.absolute() for csv_file in sorted(csv_files)]\n\n  return absolute_paths"
       },
       "type": "python_node",
@@ -199,7 +199,7 @@
       "id": "326f88c3-e78c-4d7b-81f7-baba15068f73",
       "data": {
         "name": "Staging_SDTM",
-        "description": "Describe the task of node python_node_1",
+        "description": "Load and stage the source clinical trial files as SDTM data frames.",
         "python_code": "def exec(myinput):\n  file_list = myinput[\"GetFiles\"].result\n\n  processed = {}\n\n  for file in file_list:\n    domain = file.stem.lower()\n\n    # Process based on domain\n    if domain in [\"dm\", \"ds\", \"sv\", \"cm\"]:\n\n      source_df = pd.read_csv(file)\n\n      # Convert columns to lowercase for consistent handling\n\n      source_df.columns = [col.lower() for col in source_df.columns]\n\n      # Special case handling\n      match domain:\n        case \"cm\": # Concomitant Medications\n          convert_col_to_integer('visitnum', source_df)\n          convert_col_to_integer('cmstdy', source_df)\n          convert_col_to_integer('cmendy', source_df)\n\n          source_df['cm_concat'] = source_df['cmtrt'].astype(str) + '|' + source_df['cmdose'].astype(str) + '|' + source_df['cmdosu'].astype(str) + '|' + source_df['cmroute'].astype(str)\n          \n        case \"ds\": # Disposition\n          convert_col_to_integer('visitnum', source_df)\n          convert_col_to_integer('dsstdy', source_df)\n          # Todo: Uncomment\n          # convert_col_to_integer('livedy', source_df)\n          # convert_col_to_integer('totcldur', source_df)\n\n\n        case \"sv\":\n          convert_col_to_integer('svstdy', source_df)\n          convert_col_to_integer('svendy', source_df)\n\n      processed[domain] = source_df\n\n  return processed\n\ndef convert_col_to_integer(col, df):\n    df[col] = df[col].apply(lambda x: None if pd.isna(x) else int(x))\n\n\n\n    "
       },
       "type": "python_node",
@@ -217,7 +217,7 @@
       "id": "ccc9781e-66c7-4fb3-b210-94db69b2a5d9",
       "data": {
         "name": "DownloadSTCMSeedCSVs",
-        "description": "Describe the task of node python_node_2",
+        "description": "Download the source-to-concept mapping seed files used by the clinical trial transformations.",
         "python_code": "def exec(myinput):\n\n    base_url = \"https://raw.githubusercontent.com/OHDSI/ClinicalTrialsWG-TB/refs/heads/main/seeds/stcm/\"\n\n    seed_data = {}\n    for name in [\"drug_route\", \"source_to_concept_map\"]:\n        csv_url = base_url + name + \".csv\"\n        df = pd.read_csv(csv_url)\n        df.columns = [col.lower() for col in df.columns]\n        seed_data[name] = df\n\n    return seed_data"
       },
       "type": "python_node",
@@ -273,7 +273,7 @@
       "data": {
         "sql": "WITH sites AS (\n    SELECT DISTINCT\n        siteid\n        , country\n    FROM DemographicsData\n)\n\nSELECT\n    ROW_NUMBER() OVER (ORDER BY sites.siteid) AS care_site_id\n    , loc.location_id\n    , sites.siteid AS care_site_source_value\nFROM sites\nLEFT JOIN CreateLocationRecords AS loc\n    ON sites.country = loc.location_source_value\n",
         "name": "CreateCareSiteRecords",
-        "description": "Describe the task of node sql_node_1"
+        "description": "Transform staged study site data into OMOP care_site records."
       },
       "type": "sql_node",
       "width": 350,
@@ -291,7 +291,7 @@
       "data": {
         "sql": "SELECT\n    ROW_NUMBER() OVER (ORDER BY dm.usubjid) AS person_id\n    , CASE\n        WHEN dm.sex = 'M' THEN 8507\n        WHEN dm.sex = 'F' THEN 8532\n        ELSE 0\n    END AS gender_concept_id\n    , 2014 - dm.age::int AS year_of_birth\n    , CASE\n        WHEN dm.race = 'BLACK OR AFRICAN AMERICAN' THEN 8516\n        WHEN dm.race = 'WHITE' THEN 8527\n        WHEN dm.race = 'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' THEN 8557\n        ELSE 0\n    END AS race_concept_id\n    , CASE\n        WHEN dm.ethnic = 'NOT HISPANIC OR LATINO' THEN 38003564\n        ELSE 0\n    END AS ethnicity_concept_id\n    , loc.location_id\n    , cs.care_site_id\n    , dm.usubjid AS person_source_value\n    , dm.sex AS gender_source_value\n    , dm.race AS race_source_value\n    , dm.ethnic AS ethnicity_source_value\nFROM DemographicsData AS dm\nLEFT JOIN CreateLocationRecords AS loc\n    ON dm.country = loc.location_source_value\nLEFT JOIN CreateCareSiteRecords AS cs\n    ON dm.siteid = cs.care_site_source_value\nWHERE\n    dm.usubjid IS NOT NULL\n    AND dm.age IS NOT NULL",
         "name": "CreatePersonRecords",
-        "description": "Describe the task of node sql_node_2"
+        "description": "Transform staged subject demographics into OMOP person records."
       },
       "type": "sql_node",
       "width": 350,
@@ -309,7 +309,7 @@
       "data": {
         "sql": "SELECT\n    ROW_NUMBER() OVER (ORDER BY per.person_id, sv.visitnum) AS visit_occurrence_id\n    , per.person_id\n    , 581477 AS visit_concept_id  -- 'Office visit'\n    , DATE '2014-10-23' + sv.svstdy * INTERVAL 1 DAY AS visit_start_date\n    , DATE '2014-10-23' + sv.svendy * INTERVAL 1 DAY AS visit_end_date\n    , 32809 AS visit_type_concept_id -- 'Case Report Form'\n    , sv.visitnum AS visit_source_value\nFROM SubjectVisitsData AS sv\nLEFT JOIN CreatePersonRecords AS per\n    ON sv.usubjid = per.person_source_value\nWHERE\n    sv.svstdy IS NOT NULL\n    AND sv.svendy IS NOT NULL\n",
         "name": "CreateVisitOccurrenceRecords",
-        "description": "Describe the task of node sql_node_3"
+        "description": "Transform staged subject visits into OMOP visit_occurrence records."
       },
       "type": "sql_node",
       "width": 350,
@@ -328,7 +328,7 @@
         "map": {},
         "name": "SubjectVisitsData",
         "uiMap": { "path": "$.sv", "source": "Staging_SDTM" },
-        "description": "Describe the task of node py2table_node_1"
+        "description": "Convert staged subject visit data into a table for OMOP transformation."
       },
       "type": "py2table_node",
       "width": 350,
@@ -347,7 +347,7 @@
         "map": {},
         "name": "ConcomitantMedicationsData",
         "uiMap": { "path": "$.cm", "source": "Staging_SDTM" },
-        "description": "Describe the task of node py2table_node_2"
+        "description": "Convert staged concomitant medication data into a table for OMOP transformation."
       },
       "type": "py2table_node",
       "width": 350,
@@ -365,7 +365,7 @@
       "data": {
         "sql": "SELECT\n    ROW_NUMBER() OVER (ORDER BY per.person_id, cm.cmstdy) AS drug_exposure_id\n    , per.person_id\n    , DATE '2014-10-23' + cm.cmstdy * INTERVAL 1 DAY AS drug_exposure_start_date\n    , CASE\n        WHEN cm.cmendy IS NOT NULL THEN DATE '2014-10-23' + cm.cmendy * INTERVAL 1 DAY\n        -- TODO add proper THEMIS imputation rules\n        ELSE DATE '2014-10-23' + cm.cmstdy * INTERVAL 1 DAY\n    END AS drug_exposure_end_date\n    , cm.cm_concat AS drug_source_value\n    , stcm.target_concept_id AS drug_concept_id\n    , 32809 AS drug_type_concept_id  -- 'Case Report Form'\n    , cm.cmendy - cm.cmstdy + 1 AS days_supply\n    , dr.concept_id AS route_concept_id\n    , cm.cmroute AS route_source_value\n    , vo.visit_occurrence_id\nFROM ConcomitantMedicationsData AS cm\nLEFT JOIN CreatePersonRecords AS per\n    ON cm.usubjid = per.person_source_value\nLEFT JOIN CreateVisitOccurrenceRecords AS vo\n    ON\n        cm.visitnum = vo.visit_source_value\n        AND per.person_id = vo.person_id\nLEFT JOIN SourceToConceptMapData AS stcm\n    ON\n        cm.cm_concat = stcm.source_code\n        AND stcm.source_vocabulary_id = 'TB1015_CM'\nLEFT JOIN DrugRouteData AS dr\n    ON UPPER(TRIM(cm.cmroute)) = dr.route",
         "name": "CreateDrugExposureRecords",
-        "description": "Describe the task of node sql_node_4"
+        "description": "Transform concomitant medication data into OMOP drug_exposure records."
       },
       "type": "sql_node",
       "width": 350,
@@ -387,7 +387,7 @@
           "path": "$.source_to_concept_map",
           "source": "DownloadSTCMSeedCSVs"
         },
-        "description": "Describe the task of node py2table_node_3"
+        "description": "Convert source-to-concept mappings into a table for terminology lookup."
       },
       "type": "py2table_node",
       "width": 350,
@@ -406,7 +406,7 @@
         "map": {},
         "name": "DrugRouteData",
         "uiMap": { "path": "$.drug_route", "source": "DownloadSTCMSeedCSVs" },
-        "description": "Describe the task of node py2table_node_4"
+        "description": "Convert drug route mappings into a table for drug exposure transformation."
       },
       "type": "py2table_node",
       "width": 350,
@@ -423,11 +423,11 @@
       "id": "692fd894-bf41-4cdc-8472-8d6175f562f8",
       "data": {
         "name": "IngestLocationTable",
-        "database": "demo_database",
+        "database": "target_db",
         "dataframe": "CreateLocationRecords",
-        "schemaname": "clinicaltrialsomop",
+        "schemaname": "target_schema",
         "dbtablename": "location",
-        "description": "IngestLocationRecords"
+        "description": "Write transformed location records to the configured OMOP database and schema."
       },
       "type": "db_writer_node",
       "width": 350,
@@ -444,11 +444,11 @@
       "id": "d6f01d61-e8a3-44d2-8932-04445d41cf1e",
       "data": {
         "name": "IngestPersonTable",
-        "database": "demo_database",
+        "database": "target_db",
         "dataframe": "CreatePersonRecords",
-        "schemaname": "clinicaltrialsomop",
+        "schemaname": "target_schema",
         "dbtablename": "person",
-        "description": "Describe the task of node db_writer_node_1"
+        "description": "Write transformed Person records to the configured OMOP database and schema."
       },
       "type": "db_writer_node",
       "width": 350,
@@ -465,11 +465,11 @@
       "id": "c0b9e1a5-b0b6-4e86-95cd-b561e39477ee",
       "data": {
         "name": "IngestCareSiteTable",
-        "database": "demo_database",
+        "database": "target_db",
         "dataframe": "CreateCareSiteRecords",
-        "schemaname": "clinicaltrialsomop",
+        "schemaname": "target_schema",
         "dbtablename": "care_site",
-        "description": "Describe the task of node db_writer_node_2"
+        "description": "Write transformed Care Site records to the configured OMOP database and schema."
       },
       "type": "db_writer_node",
       "width": 350,
@@ -486,11 +486,11 @@
       "id": "9fa52bdd-3b3d-4ce4-911b-7f4bfbcfe44f",
       "data": {
         "name": "IngestVisitOccurrenceTable",
-        "database": "demo_database",
+        "database": "target_db",
         "dataframe": "CreateVisitOccurrenceRecords",
-        "schemaname": "clinicaltrialsomop",
+        "schemaname": "target_schema",
         "dbtablename": "visit_occurrence",
-        "description": "Describe the task of node db_writer_node_3"
+        "description": "Write transformed Visit Occurrence records to the configured OMOP database and schema."
       },
       "type": "db_writer_node",
       "width": 350,
@@ -507,11 +507,11 @@
       "id": "c18e0a68-cb27-4ea8-ae8c-9bf9118230be",
       "data": {
         "name": "IngestDrugExposureTable",
-        "database": "demo_database",
+        "database": "target_db",
         "dataframe": "CreateDrugExposureRecords",
-        "schemaname": "clinicaltrialsomop",
+        "schemaname": "target_schema",
         "dbtablename": "drug_exposure",
-        "description": "Describe the task of node db_writer_node_4"
+        "description": "Write transformed Drug Exposure records to the configured OMOP database and schema."
       },
       "type": "db_writer_node",
       "width": 350,
@@ -528,5 +528,11 @@
   "variables": [
     { "key": "source_csv_folder", "value": "/app/clinicaltrialstb" }
   ],
-  "importLibs": ["import pandas as pd"]
+  "importLibs": ["import pandas as pd"],
+  "databases": [
+    { "code": "demo_database", "name": "target_db" }
+  ],
+  "schemas": [
+    { "name": "target_schema", "schema": "clinicaltrialsomop" }
+  ]
 }

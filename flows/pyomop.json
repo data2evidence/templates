@@ -30,7 +30,7 @@
       "data": {
         "name": "InsertPersonRecords",
         "description": "Insert person table records",
-        "python_code": "async def exec(myinput):\n  tenant_configs = myinput[\"GetDBCredentials\"].result\n  \n  cdm = CdmEngineFactory(\n    db='pgsql', \n    host=tenant_configs.host, \n    port=tenant_configs.port,\n    user=tenant_configs.adminUser,\n    pw=tenant_configs.adminPassword.get_secret_value(),\n    name=tenant_configs.databaseName, \n    schema='demo_cdm'\n  )\n  \n  engine = cdm.engine\n\n  async with cdm.session() as session:\n    async with session.begin():\n      session.add(\n          Person(\n              person_id=100,\n              gender_concept_id=8532,\n              gender_source_concept_id=8512,\n              year_of_birth=1980,\n              month_of_birth=1,\n              day_of_birth=1,\n              birth_datetime=datetime.datetime(1980, 1, 1),\n              race_concept_id=8552,\n              race_source_concept_id=8552,\n              ethnicity_concept_id=38003564,\n              ethnicity_source_concept_id=38003564,\n          )\n      )\n\n      session.add(\n          Person(\n              person_id=101,\n              gender_concept_id=8532,\n              gender_source_concept_id=8512,\n              year_of_birth=1980,\n              month_of_birth=1,\n              day_of_birth=1,\n              birth_datetime=datetime.datetime(1980, 1, 1),\n              race_concept_id=8552,\n              race_source_concept_id=8552,\n              ethnicity_concept_id=38003564,\n              ethnicity_source_concept_id=38003564,\n          )\n      )\n    await session.commit()\n\n    await session.close()\n  await engine.dispose()\n    \n  return cdm"
+        "python_code": "async def exec(myinput):\n  tenant_configs = myinput[\"GetDBCredentials\"].result\n  \n  cdm = CdmEngineFactory(\n    db='pgsql', \n    host=tenant_configs.host, \n    port=tenant_configs.port,\n    user=tenant_configs.adminUser,\n    pw=tenant_configs.adminPassword.get_secret_value(),\n    name=tenant_configs.databaseName, \n    schema=schema_name\n  )\n  \n  engine = cdm.engine\n\n  async with cdm.session() as session:\n    async with session.begin():\n      session.add(\n          Person(\n              person_id=100,\n              gender_concept_id=8532,\n              gender_source_concept_id=8512,\n              year_of_birth=1980,\n              month_of_birth=1,\n              day_of_birth=1,\n              birth_datetime=datetime.datetime(1980, 1, 1),\n              race_concept_id=8552,\n              race_source_concept_id=8552,\n              ethnicity_concept_id=38003564,\n              ethnicity_source_concept_id=38003564,\n          )\n      )\n\n      session.add(\n          Person(\n              person_id=101,\n              gender_concept_id=8532,\n              gender_source_concept_id=8512,\n              year_of_birth=1980,\n              month_of_birth=1,\n              day_of_birth=1,\n              birth_datetime=datetime.datetime(1980, 1, 1),\n              race_concept_id=8552,\n              race_source_concept_id=8552,\n              ethnicity_concept_id=38003564,\n              ethnicity_source_concept_id=38003564,\n          )\n      )\n    await session.commit()\n\n    await session.close()\n  await engine.dispose()\n    \n  return cdm"
       },
       "type": "python_node",
       "width": 350,
@@ -48,7 +48,7 @@
       "data": {
         "name": "GetDBCredentials",
         "description": "Get database credentials",
-        "python_code": "def exec(myinput):\n  dbdao = DBDao(database_code=\"demo_database\")\n  return dbdao.tenant_configs"
+        "python_code": "def exec(myinput):\n  dbdao = DBDao(database_code = database_code)\n  return dbdao.tenant_configs"
       },
       "type": "python_node",
       "width": 350,
@@ -106,5 +106,11 @@
     "from sqlalchemy.future import select",
     "from pyomop import CdmEngineFactory, CdmVocabulary, CdmVector",
     "from pyomop.cdm54 import Person, Cohort, Vocabulary, Base"
+  ],
+  "databases": [
+    { "code": "demo_database", "name": "database_code" }
+  ],
+  "schemas": [
+    { "name": "schema_name", "schema": "demo_cdm" }
   ]
 }
