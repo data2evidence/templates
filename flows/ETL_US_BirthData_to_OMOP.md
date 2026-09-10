@@ -10,39 +10,50 @@ The input is the 2022 US birth public-use data from the CDC/NCHS
 
 The template currently retains `nat2022` in several variable names and staging-file names. These are implementation names; when loading 2022 data, verify that the fixed-width positions used by the parser match the 2022 User Guide before running the complete dataset.
 
-For a small manual test, this guide uses:
+This guide uses:
 
 ```text
-nat2022_sample10_manual_test.txt
+Unziped_2022_US_birth_data.txt
 ```
 
 The mapping input is:
 
 ```text
-Merged_US_Birth_Data.csv
+Merged_US_Birth_Data.csv # will be uploaded locally
 ```
 
 ## Prerequisites
 
-- A D2E environment in which the flow service can run the imported template.
+- A running D2E environment.
 - An OMOP CDM 5.4 dataset created before running the ETL.
-- The dataset ID returned by the Web API.
+- The dataset ID copied from the Datasets page.
 - The destination database code and schema name.
 - The fixed-width birth-data file available on the host.
-- The current `Merged_US_Birth_Data.csv` mapping file.
+- The `Merged_US_Birth_Data.csv` mapping file.
 
 ## Step 1: Mount the source-data directory
 
 Mount the host directory containing the fixed-width source file into the flow container at `/app/data_load`:
 
-```text
-/path/to/store/nat2022_sample10_manual_test_txt:/app/data_load
+- Open a terminal in the d2e directory.
+- Run the following commands to define directories:
+
+```sh
+export BIRTH_DATA_DIR="/absolute/path/to/birth_data"
+yq -i '.services.alp-dataflow-gen-worker.volumes = ((.services.alp-dataflow-gen-worker.volumes // []) + [strenv(BIRTH_DATA_DIR) + ":/app/data_load"] | unique)' docker-compose.yml
 ```
 
-The file should therefore be available inside the container as:
+Restart D2E to apply the updated container mount:
 
-```text
-/app/data_load/nat2022_sample10_manual_test.txt
+```sh
+d2e stop
+d2e start
+```
+
+After the restart, verify that the worker can see the mounted files:
+
+```sh
+docker exec alp-dataflow-gen-worker ls -l /app/data_load
 ```
 
 ## Step 2: Import and save the template
