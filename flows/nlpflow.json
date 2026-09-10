@@ -86,6 +86,6 @@
     { "code": "demo_database", "name": "database_code" }
   ],
   "schemas": [
-    { "name": "schema_name", "schema": "cdmdefault" }
+    { "name": "schema_name", "schema": "demo_cdm" }
   ]
 }
