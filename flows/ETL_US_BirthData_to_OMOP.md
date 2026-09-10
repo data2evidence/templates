@@ -5,10 +5,10 @@ This runbook explains how to import and run
 
 ## Data source
 
-The input is the 2021 US birth public-use data from the CDC/NCHS
+The input is the 2022 US birth public-use data from the CDC/NCHS
 [Vital Statistics Online Data Portal](https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm).
 
-The template currently retains `nat2022` in several variable names and staging-file names. These are implementation names; when loading 2021 data, verify that the fixed-width positions used by the parser match the 2021 User Guide before running the complete dataset.
+The template currently retains `nat2022` in several variable names and staging-file names. These are implementation names; when loading 2022 data, verify that the fixed-width positions used by the parser match the 2022 User Guide before running the complete dataset.
 
 For a small manual test, this guide uses:
 
