@@ -1,0 +1,266 @@
+{
+  "resourceType": "StructureMap",
+  "id": "EQ5D5L-to-OMOP-Measurement",
+  "url": "http://example.org/StructureMap/EQ5D5L-to-OMOP-Measurement",
+  "version": "1.0.0",
+  "name": "EQ5D5L to OMOP Measurement",
+  "status": "active",
+  "date": "2026-04-16",
+  "publisher": "D4L",
+  "description": "Maps the numeric eq_vas/health-today item from a QuestionnaireResponse to an OMOP Measurement row (the patient's self-rated overall health, 0-100 VAS scale). indexValue is not mapped here - eq5d5l's own scoring plugin computes the index value itself, server-side, from the 5 dimension Observation rows (see EQ5D5L-to-OMOP-Observation); it never reads a pre-computed indexValue from the QuestionnaireResponse.",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+      "mode": "source"
+    },
+    {
+      "url": "http://hl7.org/fhir/uv/omop/StructureDefinition/Measurement",
+      "mode": "target"
+    }
+  ],
+  "group": [
+    {
+      "name": "EQ5D5L_to_Measurement",
+      "typeMode": "none",
+      "input": [
+        {
+          "name": "src",
+          "type": "QuestionnaireResponse",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "Measurement",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "captureQrId",
+          "source": [
+            {
+              "context": "src",
+              "element": "id",
+              "variable": "qrId"
+            }
+          ],
+          "rule": [
+            {
+              "name": "eq_vas",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "item",
+                  "variable": "qitem",
+                  "condition": "linkId = 'eq_vas' or linkId = 'health-today'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "transform": "create",
+                  "parameter": [
+                    {
+                      "valueString": "Measurement"
+                    }
+                  ]
+                }
+              ],
+              "rule": [
+                {
+                  "name": "setMeasurementId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "authored"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "measurement_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueInteger": 0
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setPersonId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "subject",
+                      "variable": "patRef"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "person_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "patRef"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDatetime",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "dt"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "measurement_datetime",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "dt"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDate",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "d"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "measurement_date",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "d"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setSourceValue",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "linkId",
+                      "variable": "lid"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "measurement_source_value",
+                      "transform": "evaluate",
+                      "parameter": [
+                        {
+                          "valueId": "src"
+                        },
+                        {
+                          "valueString": "id & '::eq_vas'"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setRangeHigh",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "linkId"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "range_high",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueInteger": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setRangeLow",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "linkId"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "range_low",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueInteger": 0
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setVasValue",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "answer",
+                      "variable": "ans"
+                    }
+                  ],
+                  "rule": [
+                    {
+                      "name": "extractVasInt",
+                      "source": [
+                        {
+                          "context": "ans",
+                          "element": "valueInteger",
+                          "variable": "vasValue"
+                        }
+                      ],
+                      "target": [
+                        {
+                          "context": "tgt",
+                          "element": "value_as_number",
+                          "transform": "copy",
+                          "parameter": [
+                            {
+                              "valueId": "vasValue"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
