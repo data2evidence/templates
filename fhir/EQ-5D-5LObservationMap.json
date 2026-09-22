@@ -1,0 +1,858 @@
+{
+  "resourceType": "StructureMap",
+  "id": "EQ5D5L-to-OMOP-Observation",
+  "url": "http://example.org/StructureMap/EQ5D5L-to-OMOP-Observation",
+  "version": "1.0.0",
+  "name": "EQ5D5L to OMOP Observation",
+  "status": "active",
+  "date": "2026-04-16",
+  "publisher": "D4L",
+  "description": "Maps the five categorical EQ-5D-5L dimension items (mobility, self-care, usual-activities, pain-discomfort, anxiety-depression) from a QuestionnaireResponse to OMOP Observation rows.",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+      "mode": "source"
+    },
+    {
+      "url": "http://hl7.org/fhir/uv/omop/StructureDefinition/Observation",
+      "mode": "target"
+    }
+  ],
+  "group": [
+    {
+      "name": "EQ5D5L_to_Observation",
+      "typeMode": "none",
+      "input": [
+        {
+          "name": "src",
+          "type": "QuestionnaireResponse",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "Observation",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "captureQrId",
+          "source": [
+            {
+              "context": "src",
+              "element": "id",
+              "variable": "qrId"
+            }
+          ],
+          "rule": [
+            {
+              "name": "mobility",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "item",
+                  "variable": "qitem",
+                  "condition": "linkId = 'mobility'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "transform": "create",
+                  "parameter": [
+                    {
+                      "valueString": "Observation"
+                    }
+                  ]
+                }
+              ],
+              "rule": [
+                {
+                  "name": "setObservationId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "authored"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueInteger": 0
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setPersonId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "subject",
+                      "variable": "patRef"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "person_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "patRef"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDatetime",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "dt"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_datetime",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "dt"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDate",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "d"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_date",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "d"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setSourceValue",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "linkId",
+                      "variable": "lid"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_source_value",
+                      "transform": "evaluate",
+                      "parameter": [
+                        {
+                          "valueId": "src"
+                        },
+                        {
+                          "valueString": "id & '::mobility'"
+                        }
+                      ]
+                    }
+                  ],
+                  "documentation": "qrId (src.id) concatenated with this rule's own known linkId ('mobility') - evaluated against 'src' (a single context, matching what this StructureMap library's evaluate transform actually supports) rather than trying to reference two different bound variables (qrId from an ancestor rule, linkId from this one) in one expression, which this library does not resolve correctly."
+                },
+                {
+                  "name": "setValueSourceValue",
+                  "documentation": "Raw answer code resolved to value_as_concept_id downstream via the EQ-5D-5L Questionnaire's answerOption entries.",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "answer.valueCoding.code",
+                      "variable": "ansCode"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "value_source_value",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "ansCode"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "self_care",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "item",
+                  "variable": "qitem",
+                  "condition": "linkId = 'self-care' or linkId = 'selfCare'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "transform": "create",
+                  "parameter": [
+                    {
+                      "valueString": "Observation"
+                    }
+                  ]
+                }
+              ],
+              "rule": [
+                {
+                  "name": "setObservationId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "authored"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueInteger": 1
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setPersonId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "subject",
+                      "variable": "patRef"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "person_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "patRef"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDatetime",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "dt"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_datetime",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "dt"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDate",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "d"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_date",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "d"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setSourceValue",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "linkId",
+                      "variable": "lid"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_source_value",
+                      "transform": "evaluate",
+                      "parameter": [
+                        {
+                          "valueId": "src"
+                        },
+                        {
+                          "valueString": "id & '::self-care'"
+                        }
+                      ]
+                    }
+                  ],
+                  "documentation": "qrId (src.id) concatenated with this rule's own known linkId ('self-care') - evaluated against 'src' (a single context, matching what this StructureMap library's evaluate transform actually supports) rather than trying to reference two different bound variables (qrId from an ancestor rule, linkId from this one) in one expression, which this library does not resolve correctly."
+                },
+                {
+                  "name": "setValueSourceValue",
+                  "documentation": "Raw answer code resolved to value_as_concept_id downstream via the EQ-5D-5L Questionnaire's answerOption entries.",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "answer.valueCoding.code",
+                      "variable": "ansCode"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "value_source_value",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "ansCode"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "usual_activities",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "item",
+                  "variable": "qitem",
+                  "condition": "linkId = 'usual-activities' or linkId = 'usualActivities'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "transform": "create",
+                  "parameter": [
+                    {
+                      "valueString": "Observation"
+                    }
+                  ]
+                }
+              ],
+              "rule": [
+                {
+                  "name": "setObservationId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "authored"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueInteger": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setPersonId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "subject",
+                      "variable": "patRef"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "person_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "patRef"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDatetime",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "dt"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_datetime",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "dt"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDate",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "d"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_date",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "d"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setSourceValue",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "linkId",
+                      "variable": "lid"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_source_value",
+                      "transform": "evaluate",
+                      "parameter": [
+                        {
+                          "valueId": "src"
+                        },
+                        {
+                          "valueString": "id & '::usual-activities'"
+                        }
+                      ]
+                    }
+                  ],
+                  "documentation": "qrId (src.id) concatenated with this rule's own known linkId ('usual-activities') - evaluated against 'src' (a single context, matching what this StructureMap library's evaluate transform actually supports) rather than trying to reference two different bound variables (qrId from an ancestor rule, linkId from this one) in one expression, which this library does not resolve correctly."
+                },
+                {
+                  "name": "setValueSourceValue",
+                  "documentation": "Raw answer code resolved to value_as_concept_id downstream via the EQ-5D-5L Questionnaire's answerOption entries.",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "answer.valueCoding.code",
+                      "variable": "ansCode"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "value_source_value",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "ansCode"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pain_discomfort",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "item",
+                  "variable": "qitem",
+                  "condition": "linkId = 'pain-discomfort' or linkId = 'painDiscomfort'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "transform": "create",
+                  "parameter": [
+                    {
+                      "valueString": "Observation"
+                    }
+                  ]
+                }
+              ],
+              "rule": [
+                {
+                  "name": "setObservationId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "authored"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueInteger": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setPersonId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "subject",
+                      "variable": "patRef"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "person_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "patRef"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDatetime",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "dt"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_datetime",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "dt"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDate",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "d"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_date",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "d"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setSourceValue",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "linkId",
+                      "variable": "lid"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_source_value",
+                      "transform": "evaluate",
+                      "parameter": [
+                        {
+                          "valueId": "src"
+                        },
+                        {
+                          "valueString": "id & '::pain-discomfort'"
+                        }
+                      ]
+                    }
+                  ],
+                  "documentation": "qrId (src.id) concatenated with this rule's own known linkId ('pain-discomfort') - evaluated against 'src' (a single context, matching what this StructureMap library's evaluate transform actually supports) rather than trying to reference two different bound variables (qrId from an ancestor rule, linkId from this one) in one expression, which this library does not resolve correctly."
+                },
+                {
+                  "name": "setValueSourceValue",
+                  "documentation": "Raw answer code resolved to value_as_concept_id downstream via the EQ-5D-5L Questionnaire's answerOption entries.",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "answer.valueCoding.code",
+                      "variable": "ansCode"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "value_source_value",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "ansCode"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "anxiety_depression",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "item",
+                  "variable": "qitem",
+                  "condition": "linkId = 'anxietyDepression' or linkId = 'anxiety-depression'"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "transform": "create",
+                  "parameter": [
+                    {
+                      "valueString": "Observation"
+                    }
+                  ]
+                }
+              ],
+              "rule": [
+                {
+                  "name": "setObservationId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "authored"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueInteger": 4
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setPersonId",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "subject",
+                      "variable": "patRef"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "person_id",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "patRef"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDatetime",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "dt"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_datetime",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "dt"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setDate",
+                  "source": [
+                    {
+                      "context": "src",
+                      "element": "authored",
+                      "variable": "d"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_date",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "d"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "setSourceValue",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "linkId",
+                      "variable": "lid"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "observation_source_value",
+                      "transform": "evaluate",
+                      "parameter": [
+                        {
+                          "valueId": "src"
+                        },
+                        {
+                          "valueString": "id & '::anxiety-depression'"
+                        }
+                      ]
+                    }
+                  ],
+                  "documentation": "qrId (src.id) concatenated with this rule's own known linkId ('anxiety-depression') - evaluated against 'src' (a single context, matching what this StructureMap library's evaluate transform actually supports) rather than trying to reference two different bound variables (qrId from an ancestor rule, linkId from this one) in one expression, which this library does not resolve correctly."
+                },
+                {
+                  "name": "setValueSourceValue",
+                  "documentation": "Raw answer code resolved to value_as_concept_id downstream via the EQ-5D-5L Questionnaire's answerOption entries.",
+                  "source": [
+                    {
+                      "context": "qitem",
+                      "element": "answer.valueCoding.code",
+                      "variable": "ansCode"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "tgt",
+                      "element": "value_source_value",
+                      "transform": "copy",
+                      "parameter": [
+                        {
+                          "valueId": "ansCode"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
