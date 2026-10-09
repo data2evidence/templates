@@ -233,11 +233,11 @@
                   ],
                   "rule": [
                     {
-                      "name": "extractVasInt",
+                      "name": "extractVasDecimal",
                       "source": [
                         {
                           "context": "ans",
-                          "element": "valueInteger",
+                          "element": "valueDecimal",
                           "variable": "vasValue"
                         }
                       ],
