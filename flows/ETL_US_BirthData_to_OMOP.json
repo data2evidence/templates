@@ -79,6 +79,25 @@
       "targetPosition": "left"
     },
     {
+      "id": "node-observation-period",
+      "data": {
+        "name": "generate_observation_period",
+        "description": "Rebuild one observation period per person from non-null visit start/end dates",
+        "python_code": "def _sanitize_cache_id(raw_id: str) -> str:\n    cleaned = raw_id.replace(\"-\", \"_\")\n    return f\"_{cleaned}\" if cleaned[:1].isdigit() else cleaned\n\n\ndef _quote_identifier(value: str) -> str:\n    return '\"' + value.replace('\"', '\"\"') + '\"'\n\n\ndef exec(myinput):\n    logger = get_run_logger()\n    cache_catalog = _sanitize_cache_id(dataset_id)\n    dbdao = DBDao(\n        database_code=destination_database_code,\n        cache_id=cache_catalog,\n        dialect=SupportedDatabaseDialects.TREX,\n    )\n    dest_schema = f\"{_quote_identifier(cache_catalog)}.{_quote_identifier(destination_schema_name)}\"\n    # Qualify DELETE and INSERT identically so the connection's default catalog\n    # cannot cause another dataset's observation periods to be deleted.\n    dbdao.execute_sql(f\"DELETE FROM {dest_schema}.observation_period\")\n    dbdao.execute_sql(f\"\"\"\n        INSERT INTO {dest_schema}.observation_period (\n            observation_period_id,\n            person_id,\n            observation_period_start_date,\n            observation_period_end_date,\n            period_type_concept_id\n        )\n        SELECT\n            ROW_NUMBER() OVER (ORDER BY person_id),\n            person_id,\n            MIN(visit_start_date),\n            MAX(visit_end_date),\n            44814725\n        FROM {dest_schema}.visit_occurrence\n        WHERE visit_start_date IS NOT NULL\n          AND visit_end_date IS NOT NULL\n        GROUP BY person_id\n    \"\"\")\n    count = int(dbdao.execute_sql(\n        f\"SELECT COUNT(*) FROM {dest_schema}.observation_period\", fetch=True\n    )[0][0])\n    message = f\"Generated {count} rows into {destination_schema_name}.observation_period\"\n    logger.info(message)\n    return message\n"
+      },
+      "type": "python_node",
+      "width": 350,
+      "height": 210,
+      "position": {
+        "x": 2130,
+        "y": 110
+      },
+      "selected": false,
+      "dragHandle": "",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
       "id": "1c6cc31b-fb15-4628-88f5-5c37abe4bec0",
       "data": {
         "name": "csv_node_0",
@@ -141,6 +160,13 @@
       "target": "node-provider",
       "sourceHandle": "source_1c6cc31b-fb15-4628-88f5-5c37abe4bec0_any",
       "targetHandle": "target_node-provider_any"
+    },
+    {
+      "id": "edge-node-provider-node-observation-period",
+      "source": "node-provider",
+      "target": "node-observation-period",
+      "sourceHandle": "source_node-provider_object",
+      "targetHandle": "target_node-observation-period_any"
     }
   ],
   "variables": [
