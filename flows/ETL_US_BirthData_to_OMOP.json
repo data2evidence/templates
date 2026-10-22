@@ -180,7 +180,7 @@
     },
     {
       "key": "chunk_size",
-      "value": "200000"
+      "value": "50000"
     }
   ],
   "importLibs": [

@@ -71,7 +71,7 @@ docker exec alp-dataflow-gen-worker ls -l /app/data_load
 <img src="image-1.png" alt="alt text" width="100" />
 
 2. Then set individual variables as showen below:
-<img src="image.png" alt="alt text" width="400"/>
+<img src="image-4.png" alt="alt text" width="400"/>
 
 - Set dataset_id from step 1
 - Set "nat2022_filename" to the filename inside `/app/data_load`:
@@ -83,7 +83,7 @@ destination_database_code=<database code>
 destination_schema_name=<OMOP schema name>
 ```
 
-3. Save the configuration of flow immediately.
+1. Save the configuration of flow immediately.
 
 ## Step 5: Upload local mapping table via CSV node
 
@@ -105,7 +105,34 @@ The ETL writes the following tables:
 - `payer_plan_period`
 - `provider`
 
-## Step 7: Verify the cache tables
+## Step 7: Run the DQD and DC
+### Trigger DQD from Dataset window
+<img src="image.png" alt="alt text" width="300" />
+
+### Trigger DC from Job flow window
+- set `data charaterization` parameter
+```
+{
+  "options": {
+    "cacheId": "{replace "-" to "_" in datasetID}",
+    "comment": "",
+    "datasetId": "{copy_from_dataset_page}",
+    "releaseId": "",
+    "schemaName": "{copy_from_dataset_page}",
+    "releaseDate": "{current_date}",
+    "databaseCode": "{copy_from_dataset_page}",
+    "resultsSchema": "{schemaName}_results",
+    "vocabSchemaName": "{schemaName}",
+    "cdmVersionNumber": "5.4",
+    "excludeAnalysisIds": "",
+    "useSourceConnection": false,
+    "executeConceptRecordCount": true
+  }
+}
+```
+- set `flow run name` = `DC_alpdev_pg.{schemaName}`
+
+## Step 8: Verify the cache tables
 
 ### Get the cache catalog ID
 
