@@ -1,0 +1,293 @@
+{
+  "repo_notes": [
+    {
+      "content": "Audience: template users and developers. Lead each workflow with purpose, when to use it, inputs, outputs, prerequisites, and configuration; follow with implementation and extension details. Use exact repository paths, compact tables, and source-grounded DAGs."
+    },
+    {
+      "content": "Prepared against data2evidence/templates commit 1252468e7b67e8792b4785479549ffa9c8426244 (2026-10-12), reviewed 2026-10-22. If indexing a newer revision, reconcile every file and behavior against that indexed source and report the revision; do not preserve outdated assertions from this configuration."
+    },
+    {
+      "content": "Source of truth: tracked JSON files, embedded executable Python/R/SQL, serialized StructureMaps, and notebookContent. Node descriptions, comments, saved results, and notebook headings can be stale; identify discrepancies and prioritize executable logic. Cite supporting code for implementation claims."
+    },
+    {
+      "content": "Cover all tracked flow, mapping, and notebook templates. Exclude local untracked tests and generated artifacts. Do not invent absent files, historical aliases, additional flow variants, runtime APIs, UI instructions, or supported database dialects. Missing metadata should be stated as unspecified."
+    },
+    {
+      "content": "Distinguish this repository's configuration from external D2E runtime behavior, FHIR transformation engines, vocabulary assets, and Strategus/OHDSI packages. Explain external dependencies named in code, but do not invent their implementation, installation commands, outputs, or guarantees."
+    },
+    {
+      "content": "Treat schema names, database codes, paths, cohort IDs, dates, sample person IDs, and placeholder credentials as environment-specific configuration. Explain actual truncate, delete, insert, download, subprocess, cleanup, and result-upload behavior where relevant. Stable identifier reuse does not establish atomicity, concurrency safety, or full idempotence."
+    },
+    {
+      "content": "Keep mapping and workflow pages complementary: mapping pages own field-level rules; workflow pages own orchestration, post-processing, configuration, and persistence. Do not infer standardized concept conversion from a copied code, or data validity from a declared active map status."
+    },
+    {
+      "content": "Documentation is based on static source inspection, not successful execution of ETL or study templates. Explain observed placeholders and inconsistencies concretely without asserting unverified failures or results."
+    }
+  ],
+  "pages": [
+    {
+      "title": "Overview",
+      "purpose": "Introduce data2evidence/templates as reusable D2E flow definitions, FHIR StructureMaps, and observational study notebook exports. Explain how users select templates and how developers adapt them. Show the relationships between the three directories and the external D2E runtime.",
+      "page_notes": [
+        {
+          "content": "Primary sources: README.md, flows/, fhir/, notebooks/. Explain repository boundaries: runtime node implementations and study engines are external. Link to the catalog, setup guide, workflow pages, mapping reference, and study notebooks."
+        }
+      ]
+    },
+    {
+      "title": "Template Catalog",
+      "purpose": "Provide a complete, navigable inventory of current tracked templates, grouped by use case, with exact paths, purpose, inputs, outputs, and links to detailed pages.",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/, fhir/, notebooks/. Baseline inventory: 15 flow JSON files, 11 StructureMap JSON files, and four notebook JSON files. Derive CDM versions and supported dialects from each file; mark missing declarations as unspecified. Exclude untracked local files and deleted historical templates."
+        }
+      ]
+    },
+    {
+      "title": "Using and Adapting Templates",
+      "purpose": "Explain how to prepare a template for a D2E environment: select the use case, inspect prerequisites, bind databases and schemas, supply source files and vocabularies, adjust embedded SQL and code, and check outputs.",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/Load_OMOP_CDM_v54.json, flows/etlPatientToOMOPPerson.json, flows/etlQuestionnaireResponseEQ-5D-5L.json, notebooks/treatment_utilization.json. Separate declared variables, database aliases, schema aliases, runtime imports, and hardcoded values inside node code. Explain that editing a top-level alias may not update SQL literals. Identify actual truncate/delete behavior before describing reruns. Do not invent UI import steps or standalone CLI commands."
+        }
+      ]
+    },
+    {
+      "title": "Flow Format and Node Types",
+      "purpose": "Explain the flow JSON contract using real examples: metadata, nodes, node data, edges and handles, variables, importLibs, databases, schemas, embedded Python/R/SQL, and serialized StructureMaps. Explain how data moves between nodes.",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/nodestest.json, flows/etlPatientToOMOPPerson.json, flows/etlQuestionnaireResponseEQ-5D-5L.json. Cover observed node types including r_node and fhir_mapping_node. Distinguish execution fields from editor layout, saved test data, and historical result/error fields. Derive dependencies from edges and code references; duplicate display names are not unique node identifiers."
+        }
+      ]
+    },
+    {
+      "title": "ETL Workflows",
+      "purpose": "Help users choose among the ETL templates by source format and desired OMOP output. Summarize prerequisites and link to every flow-specific page.",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/. Explain dependencies such as Patient-to-Person before EQ-5D-5L and DICOM vocabulary before metadata loading. Avoid repeating full implementation details from child pages."
+        }
+      ]
+    },
+    {
+      "title": "General FHIR to OMOP Pipeline",
+      "purpose": "Document the complete reader-to-transform-to-validation-to-writer paths for Patient, Condition, Encounter, AllergyIntolerance, Observation, MedicationStatement, Immunization, and Procedure. Include a readable DAG and a resource-to-map-to-table matrix.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/etlfhirtoomop.json. Inspect the actual graph, shared Python setup, py2table nodes, embedded StructureMaps, validation, and truncate nodes. Explain multiple paths to observation and drug_exposure and inspect their ordering. Do not reuse the old nine-reader description or assume every node is active. Distinguish this pipeline from the dedicated stable-ID Patient workflow."
+        }
+      ]
+    },
+    {
+      "title": "Patient to Person and Identifier Mapping",
+      "purpose": "Document the dedicated Patient-to-Person pipeline, source configuration, embedded Person transformation, preparation of person identifiers, writing person records, and recording FHIR-to-OMOP key mappings.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/etlPatientToOMOPPerson.json, fhir/PersonMap.json. Trace prepare_personIds and fhir_mapping_node, existing-record handling, mapping storage, and rerun behavior from code. Explain why this is a prerequisite for EQ-5D-5L. Compare embedded and standalone maps rather than assuming they are identical."
+        }
+      ]
+    },
+    {
+      "title": "EQ-5D-5L Questionnaire ETL",
+      "purpose": "Document the current two-branch QuestionnaireResponse pipeline: five categorical dimensions to Observation and numeric VAS to Measurement. Explain patient mapping prerequisites, Questionnaire lookup, vocabulary resolution, stable identifiers, writes, and FHIR mapping reconciliation. Include a DAG and preparation checklist.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/etlQuestionnaireResponseEQ-5D-5L.json, fhir/EQ-5D-5LObservationMap.json, fhir/EQ-5D-5LMeasurementMap.json. Use current executable code over stale node descriptions. Both branches resolve concepts from the response's Questionnaire and the vocabulary concept table; the VAS concept is not fixed. Cover canonical url|version matching, language preference, string-based version ordering, vocab_schema fallback, direct standard SNOMED lookup, and limitations of the first-code/top-level-item extraction. Observation accepts answer codes 1-5; VAS reads valueDecimal for eq_vas or health-today. Explain temporary qrId::linkId source values, restoration to qrId, fixed type concept 32862, skipped-row diagnostics, and all-rows-skipped errors. Document delete-and-reinsert behavior with ID reuse by source value and concept, without promising transactional or concurrent-run safety. The prerequisites mention build_concept_lookup but that is not a current node. EQ-5D-5LQuestionnaire.json is an external prerequisite, not a file in this repository. Attribute the external scoring-plugin statement to the map description; this ETL does not calculate the utility index."
+        }
+      ]
+    },
+    {
+      "title": "OMOP CDM 5.3 and 5.4 Data Loading",
+      "purpose": "Compare the two ZIP-of-CSV data loading templates and explain schema prerequisites, upload handling, table truncation, file transformation, and ingestion.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/Load_OMOP_CDM_v53.json, flows/Load_OMOP_CDM_v54.json. Trace UploadCDMData, TruncateTables, LoadAndTransformFiles, and IngestTables. Derive actual file naming, table lists, type conversions, vocabulary handling, and version differences from code. Explain data replacement and required existing schemas. Do not describe these as absent historical SynPUF or loadvocab templates."
+        }
+      ]
+    },
+    {
+      "title": "DICOM Vocabulary Loading",
+      "purpose": "Explain how DICOM concept and mapping inputs populate the OMOP vocabulary tables and prepare the metadata pipeline.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/Load_DICOM_Vocab.json. Cover each CSV/file input, DOWNLOADS_DIR, transformations, concept, vocabulary, concept_class, and concept_relationship writers. Inspect the actual parser for each file input rather than trusting labels or assuming pickle versus CSV. Identify external DICOM2OMOP assets and omop_table_staging prerequisites."
+        }
+      ]
+    },
+    {
+      "title": "DICOM Metadata ETL",
+      "purpose": "Document mounted DICOM file discovery, metadata extraction, concept mapping, identifier allocation, and ingestion into image, procedure, visit, and numeric/non-numeric EAV outputs.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/ETL_DICOM_Metadata.json. Explain required mounts, existing CDM/imaging tables, vocabulary setup, database bindings, exact output table names, and identifier assumptions. Show the graph and distinguish image metadata extraction from image pixel processing."
+        }
+      ]
+    },
+    {
+      "title": "FHIR Anonymization",
+      "purpose": "Explain configuring and running the Microsoft FHIR Anonymizer flow with NDJSON input, JSON configuration, tool selection, downloaded binaries, and output handling.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/fhir_anonymizer.json. Inspect edges to identify connected nodes and disconnected alternatives. Cover R4/STU3 and Mac/Windows variants, storage retrieval, constants, download URLs, and subprocess/runtime requirements from code. Do not repeat old active/inactive node counts or treat node descriptions as proof of execution behavior. Do not claim anonymization guarantees beyond implemented configuration."
+        }
+      ]
+    },
+    {
+      "title": "Clinical NLP Workflows",
+      "purpose": "Compare spaCy/SciSpaCy clinical entity extraction and OMOP linking with the LLM-based py_name_entity_extraction flow. Explain inputs, dependencies, configuration, and actual outputs.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/nlpflow.json, flows/nlp_pyner.json. For nlpflow trace UMLS-to-OMOP mapping and NOTE_NLP writes. For nlp_pyner cover entity categories, LLM configuration, mode, output format, main execution, and py2table. Distinguish DataFrame output from persisted database writes. Document only these two current NLP flow files."
+        }
+      ]
+    },
+    {
+      "title": "Clinical Trials SDTM to OMOP",
+      "purpose": "Document staging SDTM CSV domains and transforming clinical trial data into OMOP location, care_site, person, visit_occurrence, and drug_exposure records.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/clinicaltrialsomop.json. Cover source_csv_folder, DM/DS/SV/CM staging, downloaded source-to-concept and route seed tables, SQL joins, and database writers. Highlight study-specific country mappings, fixed year/date anchors, vocabulary assumptions, and incomplete TODOs as adaptation points; do not claim general SDTM coverage."
+        }
+      ]
+    },
+    {
+      "title": "MIMIC to OMOP",
+      "purpose": "Explain the MIMIC loading and transformation flow using DuckDB, including source data, vocabulary, staging, ETL, CDM generation, and cleanup.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/mimic_omop.json. Trace flow_action_type branches, inputs, paths, downloaded dependencies, and cleanup effects from embedded code. Distinguish conditional actions from the visual edge order and do not claim compatibility with unspecified MIMIC releases."
+        }
+      ]
+    },
+    {
+      "title": "ARTEMIS Chemotherapy Regimens",
+      "purpose": "Explain the OHDSI ARTEMIS R workflow for identifying chemotherapy regimens in an OMOP database, with database connection, condition selection, cohort naming, and result schema configuration.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/artemis.json. Read both README and Artemis node code. Derive supported conditions, parameters, package/driver requirements, and outputs from the implementation. Treat connection values as examples. ARTEMIS here is not an Athena vocabulary loader."
+        }
+      ]
+    },
+    {
+      "title": "PyOmop and Node Examples",
+      "purpose": "Document PyOmop database interaction examples and the node interoperability example, explaining how developers adapt each.",
+      "parent": "ETL Workflows",
+      "page_notes": [
+        {
+          "content": "Primary sources: flows/pyomop.json, flows/nodestest.json. For PyOmop cover credential retrieval, insertion, query-library execution, and selection from person. For nodestest cover Python, R, py2table, SQL, reader/writer, file, and CSV nodes and their actual connections. Mark cohort IDs, person IDs, paths, and schemas as sample-specific. Do not present these examples as automated test coverage."
+        }
+      ]
+    },
+    {
+      "title": "FHIR StructureMaps",
+      "purpose": "Introduce StructureMap resources and provide a complete map inventory with source resource, target structure, declared status, and flow usage. Explain groups, rules, aliases, nested rules, conditions, and observed transforms.",
+      "page_notes": [
+        {
+          "content": "Primary sources: fhir/, flows/etlfhirtoomop.json, flows/etlPatientToOMOPPerson.json, flows/etlQuestionnaireResponseEQ-5D-5L.json. Distinguish standalone map files from serialized structure_map strings embedded in flows. A map may require downstream validation, ID resolution, or terminology lookup. Declared status is metadata, not a runtime validation result. Use the exact filename AllergeMap.json."
+        }
+      ]
+    },
+    {
+      "title": "Person Mapping",
+      "purpose": "Explain Patient-to-Person mapping rules and limitations, with source field, condition, transform, target field, and downstream processing requirements.",
+      "parent": "FHIR StructureMaps",
+      "page_notes": [
+        {
+          "content": "Primary sources: fhir/PersonMap.json, flows/etlPatientToOMOPPerson.json. Cover identifiers, gender, birth information, race, and ethnicity as implemented. Distinguish copied source identifiers and codes from numeric OMOP identifiers and standard concept resolution. Compare the dedicated flow's embedded mapping."
+        }
+      ]
+    },
+    {
+      "title": "Clinical Event Mapping",
+      "purpose": "Document Condition, Encounter, Procedure, and AllergyIntolerance maps and their OMOP targets with field-level mapping tables.",
+      "parent": "FHIR StructureMaps",
+      "page_notes": [
+        {
+          "content": "Primary sources: fhir/ConditionMap.json, fhir/EncounterVisitMap.json, fhir/ProcedureMap.json, fhir/AllergeMap.json. Inspect date variants, references, coding selection, fixed values, and omitted fields. Preserve the AllergeMap.json filename even if internal resource names differ. Explain actual limitations without implying complete FHIR or OMOP compliance."
+        }
+      ]
+    },
+    {
+      "title": "Medication and Immunization Mapping",
+      "purpose": "Document MedicationStatement and Immunization transformations to DrugExposure, including identifiers, coding, dates, route, dose, and source fields.",
+      "parent": "FHIR StructureMaps",
+      "page_notes": [
+        {
+          "content": "Primary sources: fhir/MedicationMap.json, fhir/ImmunizationMap.json. Derive fixed concept IDs, effective/occurrence variants, and field coverage from rules. Distinguish copied FHIR values from subsequent validation and vocabulary normalization."
+        }
+      ]
+    },
+    {
+      "title": "Observation, Measurement, and EQ-5D-5L Mapping",
+      "purpose": "Explain general Observation routing and the two questionnaire maps, with field-level tables and clear responsibility boundaries between mapping rules and Python post-processing.",
+      "parent": "FHIR StructureMaps",
+      "page_notes": [
+        {
+          "content": "Primary sources: fhir/ObservationMap.json, fhir/MeasurementMap.json, fhir/EQ-5D-5LObservationMap.json, fhir/EQ-5D-5LMeasurementMap.json. Verify category filters and fixed values in general maps. EQ-5D-5L dimensions produce Observation rows; VAS produces Measurement rows. Explain linkIds, coded versus decimal answers, provisional IDs, source-value construction, and later person/concept resolution. Do not reproduce the obsolete claim that all questionnaire dimensions become Measurement records. Link to the EQ-5D-5L workflow for operational details."
+        }
+      ]
+    },
+    {
+      "title": "Observational Study Notebooks",
+      "purpose": "Introduce all four JSON notebook exports and the common R/Strategus workflow: cohort definitions, shared resources, module specifications, analysis assembly, options, and execution through rD2E.",
+      "page_notes": [
+        {
+          "content": "Primary sources: notebooks/treatment_utilization.json, notebooks/survival_analysis.json, notebooks/survival_analysis_cs.json, notebooks/treatment_safety.json. Explain notebookContent and export metadata. Executable cells contain R despite Python language metadata. Identify required external packages/runtime, cohort availability, study IDs, and upload_results settings. Do not invent a simplified notebook or claim these templates were executed successfully."
+        }
+      ]
+    },
+    {
+      "title": "Treatment Utilization Study",
+      "purpose": "Document the depression antidepressant treatment-pathway study and its TreatmentPatternsModule configuration, cohort generation, 365-day window, specification assembly, and execution.",
+      "parent": "Observational Study Notebooks",
+      "page_notes": [
+        {
+          "content": "Primary sources: notebooks/treatment_utilization.json. Current example cohort mapping is depression 68, SNRI 67, SSRI 66, BUPROPION 65; these are replaceable environment-specific IDs. Trace which declared settings are actually passed to modules, including study dates. Explain configured outputs without inventing observed results."
+        }
+      ]
+    },
+    {
+      "title": "Comparative Survival Analysis",
+      "purpose": "Document the celecoxib-versus-diclofenac GI bleeding study using CohortMethodModule, including target/comparator/outcome construction, time-at-risk anchors, prior outcomes, propensity scores, matching, balance diagnostics, and Cox outcome modeling.",
+      "parent": "Observational Study Notebooks",
+      "page_notes": [
+        {
+          "content": "Primary sources: notebooks/survival_analysis.json. Explain example cohort IDs 61/62/63 as replaceable. The notebook includes propensity-score matching and a stratified covariate-adjusted Cox model, not merely a Kaplan-Meier plot. Derive exact study-population flags and risk windows from code. Do not promise causal validity or successful execution."
+        }
+      ]
+    },
+    {
+      "title": "Single-Cohort Survival Analysis",
+      "purpose": "Document the celecoxib-to-first-GI-bleed example using CohortSurvivalModule, its target and outcome inputs, shared resources, specifications, and execution.",
+      "parent": "Observational Study Notebooks",
+      "page_notes": [
+        {
+          "content": "Primary sources: notebooks/survival_analysis_cs.json. Distinguish active settings analysisType='single_event', strata=NULL, and competingOutcomeCohortTable=NULL from commented options. Identify the empty cohorts_set, sample IDs, unused declared settings, and reference to path without a local definition as items requiring adaptation. Compare with the separate CohortMethod study."
+        }
+      ]
+    },
+    {
+      "title": "Treatment Safety Prediction",
+      "purpose": "Document the patient-level GI-bleed prediction template using PatientLevelPredictionModule, model-design loops, cohort generation, time-at-risk, population criteria, covariates, preprocessing, and lasso logistic regression.",
+      "parent": "Observational Study Notebooks",
+      "page_notes": [
+        {
+          "content": "Primary sources: notebooks/treatment_safety.json. Distinguish individual risk prediction from comparative treatment-effect estimation. Explain example target/outcome IDs 12/11, the literal cohortId != 3 target-selection filter, and how that filter may retain the outcome cohort. Discuss active firstExposureOnly settings versus the narrative research question, the 1-365-day window, and the example study_id. Attribute outputs to configured external modules; no results are bundled."
+        }
+      ]
+    }
+  ]
+}
